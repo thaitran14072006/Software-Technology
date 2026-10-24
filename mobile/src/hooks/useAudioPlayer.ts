@@ -7,7 +7,6 @@ import { useLanguageStore } from '../store/languageStore';
 import { usePlayback } from '../store/playbackStore';
 import type { Poi } from '../services/api/poi.api';
 import {useToast} from '../store/toastStore';
-import {runtimeConfig} from '../services/api/runtimeConfig';
 import i18n from '../i18n';
 
 const LOCALE: Record<string, string> = { vi: 'vi-VN', en: 'en-US', ja: 'ja-JP', zh: 'zh-CN', ko: 'ko-KR' };
@@ -24,31 +23,46 @@ export function useAudioPlayer(): AudioApi {
   const { position, duration } = useProgress(500);
   const mark = usePlayback((s) => s.markPlayed);
   const usingFile = useRef(false);
+  const speechRun = useRef(0);
 
   const stop = useCallback(async () => {
+    speechRun.current++;
     Speech.stop(); setSpeaking(false);
     try{await setup();await TrackPlayer.reset();}catch{}
     setPlayingId(null);
   }, []);
 
-  const speak = useCallback((poi: Poi) => {
+  const speak = useCallback(async (poi: Poi) => {
+    const run = ++speechRun.current;
+    usingFile.current = false;
+    const locale = LOCALE[poi.lang] ?? poi.lang;
+    const normalize = (value: string) => value.replaceAll('_', '-').toLowerCase();
+    const voices = await Speech.getAvailableVoicesAsync().catch(() => []);
+    if (run !== speechRun.current) return;
+    const voice = voices.find(v => normalize(v.language) === normalize(locale))
+      ?? voices.find(v => normalize(v.language).split('-')[0] === normalize(locale).split('-')[0]);
+    if (!voice) {
+      setSpeaking(false); setPlayingId(null);
+      useToast.getState().show(i18n.t('errors.voiceMissing'));
+      return;
+    }
     usingFile.current = false; setSpeaking(true);
-    Speech.speak(poi.scriptText, { language: LOCALE[poi.lang] ?? poi.lang, onStart:()=>mark(poi.id), onDone: () => {setSpeaking(false);setPlayingId(null);}, onStopped: () => setSpeaking(false),onError:()=>{setSpeaking(false);setPlayingId(null);} });
-  }, []);
+    Speech.speak(poi.scriptText, { language: locale, voice: voice.identifier, onStart:()=>mark(poi.id), onDone: () => {setSpeaking(false);setPlayingId(null);}, onStopped: () => setSpeaking(false),onError:()=>{setSpeaking(false);setPlayingId(null);} });
+  }, [mark]);
 
   const play = useCallback(async (poi: Poi) => {
     await stop();
+    if (poi.translationMissing || poi.lang !== useLanguageStore.getState().lang) { setPlayingId(null); useToast.getState().show(i18n.t('errors.translationMissing')); return; }
     setPlayingId(poi.id);
-    const googleRequired=poi.audio?.provider==='GEMINI'||(runtimeConfig() as any).tts_provider==='GEMINI';
-    const uri = resolveAudioUri(useLanguageStore.getState().lang, poi.id, poi.audio?.url);
-    if (!uri) {if(googleRequired){setPlayingId(null);useToast.getState().show(i18n.t('errors.googleAudio'));return;}return speak(poi);}
+    const uri = resolveAudioUri(poi.lang, poi.id, poi.audio?.url);
+    if (!uri) return speak(poi);
     try {
       usingFile.current = true;
       await setup();
       await TrackPlayer.add({ id: poi.id, url: uri, title: `${poi.code}. ${poi.name}`, artist: 'Nam Cát Tiên' });
       await TrackPlayer.play();
       mark(poi.id);
-    } catch { if(googleRequired){setPlayingId(null);useToast.getState().show(i18n.t('errors.googleAudio'));}else speak(poi); }
+    } catch { speak(poi); }
   }, [stop, mark, speak]);
 
   const seekFraction = useCallback(async (f: number) => {

@@ -1,16 +1,16 @@
 # Google AI Studio, ngoại tuyến và ngôn ngữ
 
-**Cập nhật 24/10/2026:** hiện có 12 MP3 Google thật, còn 73 bản chờ. Hàng đợi được đặt thử tiếp lúc 14:02 cùng ngày theo thời gian thử lại Google trả. Các số 11/74 và lịch 17:27 bên dưới là kết quả lần kiểm tra 23/10. Xem [tiến độ mới nhất](GEMINI_AUDIO_PROGRESS.md).
+**Cập nhật 24/10/2026:** fixture hiện có 16 MP3 Google thật, còn 69 bản chưa có MP3. Xem [tiến độ mới nhất](GEMINI_AUDIO_PROGRESS.md).
 
 Cập nhật ngày 23/10/2026. Báo cáo này thay thế các mô tả cũ về nguồn giọng mặc định trong VOICE_FIX.md và CAT_TIEN_INTEGRATION.md.
 
 ## Kết quả hiện tại
 
-Đã tích hợp Gemini TTS của Google AI Studio ở máy chủ, tạo và lưu **11 MP3 Google thật**, gồm Việt 3, Anh 3, Nhật 2, Hàn 1 và Trung 2. Bài Bàu Sấu tiếng Việt dùng đúng kịch bản trong file Word, giọng Kore, dài khoảng 28,68 giây. Mẫu WAV do Google trả về đã được chuyển thành MP3 bằng FFmpeg; file MP3 này được phát và tải ngoại tuyến nguyên byte.
+Đã tích hợp Gemini TTS của Google AI Studio ở máy chủ, tạo và lưu **16 MP3 Google thật**: Việt 5, Anh 4, Nhật 2, Hàn 2 và Trung 3. Bài Bàu Sấu tiếng Việt dùng đúng kịch bản trong file Word, giọng Kore, dài khoảng 28,68 giây. Mẫu WAV do Google trả về đã được chuyển thành MP3 bằng FFmpeg; file MP3 này được phát và tải ngoại tuyến nguyên byte.
 
-Trong 11 file hiện có, 5 file dùng kịch bản Word mới và 6 file dùng nội dung POI cũ được giữ lại. Đây là số file theo ngôn ngữ, không phải 11 địa điểm đã có đủ giọng. Các file sẵn sàng: Việt — mã 9, 13, 10; Anh — mã 2, 13, 10; Nhật — mã 10, 11; Hàn — mã 10; Trung — mã 8, 10.
+Đây là số file theo ngôn ngữ, không phải số POI đã có đủ giọng. Các file sẵn sàng: Việt — mã 3, 9, 10, 12, 13; Anh — mã 2, 10, 11, 13; Nhật — mã 10, 11; Hàn — mã 10, 11; Trung — mã 8, 10, 11.
 
-**Chưa hoàn tất toàn bộ audio:** còn 74/85 bản của 17 POI đang chờ. Google trả HTTP 429 với thông báo hạn mức miễn phí của model `gemini-3.8-flash-lite-tts` là 10 yêu cầu/ngày và thời gian thử lại khoảng 20 giờ. Đây là hạn mức thực tế của khóa đã thử, không phải cam kết chung cho mọi tài khoản. Không bật billing, không chuyển sang eSpeak để giả là đã tạo đủ.
+**Chưa hoàn tất toàn bộ Google audio:** còn 69/85 bản của 17 POI chưa có MP3. Khi bài thiếu MP3, web/mobile thử voice hệ thống cùng ngôn ngữ và báo rõ nếu thiết bị không có voice phù hợp. Google trả HTTP 429 trong lần tạo trước; quota thực tế phụ thuộc tài khoản và model.
 
 Hàng đợi được tạm dừng bền vững đến **17:27:38 ngày 24/10/2026, giờ Việt Nam**, lâu hơn thời gian Google yêu cầu để tránh lặp lỗi. Thời điểm này được trả trong `/content-api/configs` và hiển thị trên giao diện với bài chưa có audio. Nếu máy chủ tiếp tục chạy sau thời gian này, worker có thể tiếp tục job; nếu lại hết quota, nó tạm dừng tiếp. Muốn tạo đủ nhanh hơn cần hạn mức phù hợp từ tài khoản Google; chưa thực hiện thay đổi gói dịch vụ.
 
@@ -60,7 +60,7 @@ Nếu đã có phiên đang chạy, dừng bằng Ctrl+C trước khi chạy th�
 
 Mở `http://127.0.0.1:4173/?source=api&poi=9` để nghe Bàu Sấu tiếng Việt. Trên điện thoại cùng Wi-Fi, dùng địa chỉ LAN do terminal in ra, hiện là `http://192.168.1.60:4173/?source=api`. **Không dùng `source=demo` để kiểm tra nội dung Google**, vì demo là bộ mẫu riêng.
 
-Nguồn giọng mặc định là **Google AI Studio · MP3 có sẵn**. Nếu bài chưa có audio, giao diện báo chưa sẵn sàng/quota; không tự thay giọng robot. Người dùng vẫn có thể tự chọn nguồn trình duyệt hoặc MP3 khác nếu muốn. Với file Google đã có nhưng tải lỗi, ứng dụng báo lỗi thay vì đọc lại bằng giọng máy.
+Nguồn giọng mặc định ưu tiên **Google AI Studio · MP3 có sẵn**. Nếu thiếu MP3 hoặc file lỗi, web/mobile thử voice hệ thống đúng ngôn ngữ; nếu thiết bị không có voice phù hợp, ứng dụng báo rõ và không đọc bằng ngôn ngữ khác. Người dùng vẫn có thể chọn riêng giọng trình duyệt hoặc MP3.
 
 Khóa chỉ lưu trong `backend/.env`, không đưa vào HTML, ZIP, app mobile, API công khai hoặc README. Khóa người dùng đã gửi trong chat nên cần thay sau thử nghiệm. Cấu hình:
 
@@ -80,7 +80,7 @@ Khi mở trang backend lần đầu có audio Google, ứng dụng hiện lời 
 - **Localhost hoặc HTTPS:** lưu nội dung 5 ngôn ngữ và các MP3 Google đang sẵn sàng vào Cache API. Có kiểm tra kích thước file, giữ nguyên byte audio, lưu metadata provider/voice. Nếu file tải lỗi, giữ gói cũ; không báo hoàn tất giả. Số bài chưa có Google được hiển thị riêng.
 - **Điện thoại qua HTTP Wi-Fi:** trình duyệt thường không cho PWA/Service Worker. Nút tải dùng file `offline-guide.zip` thay thế. Giải nén toàn bộ, mở `CatTienGuide/index.html` bằng trình duyệt hỗ trợ file cục bộ. Hoặc nghe từng MP3 bằng trình phát âm thanh. Giữ thư mục audio cạnh index.html. Cách mở HTML tải xuống tùy hệ điều hành; các MP3 không cần mạng để phát.
 
-Gói hiện tại là **gói một phần, 11 MP3**, khoảng 3,8 MB. Có font Noto Sans, trang nghe với 5 ngôn ngữ, và manifest chứa SHA-256 của mỗi MP3. Không có API key hay chức năng gọi Google trong trang ngoại tuyến. Gói ZIP không chứa đủ các bài đang chờ quota và không bao gồm nền OSM để tải hàng loạt.
+Gói hiện tại là **gói một phần, 16 MP3** trong tổng số 85 bản, khoảng 3,8 MB. Có font Noto Sans, trang nghe với 5 ngôn ngữ, và manifest chứa SHA-256 của mỗi MP3. Không có API key hay chức năng gọi Google trong trang ngoại tuyến. Gói ZIP không chứa đủ các bài đang chờ quota và không bao gồm nền OSM để tải hàng loạt. Bản chưa có MP3 chỉ phát được ngoại tuyến nếu thiết bị đã cài voice cùng ngôn ngữ.
 
 Sau khi tạo thêm audio, tải lại gói. Để xếp các bản còn thiếu vào hàng đợi khi quota đã mở, dùng `npm run audio:gemini`. Script kiểm tra đúng provider, không ghi đè bản thu âm và dừng nếu API báo đang tạm dừng. Khi tải qua web, endpoint ZIP tự đóng gói lại theo revision nội dung để nhận audio mới. Để xuất file ZIP riêng, chạy `npm run offline:archive` khi backend đang chạy; chỉ cần Node của dự án, không cần Python. Công cụ Python vẫn giữ để đối chiếu độc lập định dạng ZIP.
 
@@ -93,7 +93,7 @@ Sau khi tạo thêm audio, tải lại gói. Để xếp các bản còn thiếu
 - Mobile có thêm đầy đủ các danh mục Nhật/Hàn/Trung ngoài nhóm legacy, kiểm tra cùng bộ key với Việt/Anh. Đổi các nhãn Mapbox cũ sang MapLibre.
 - Service Worker v7 cập nhật nguyên bộ shell và chỉ dùng cache đúng phiên bản; sửa tình trạng giao diện cũ lẫn module mới khi mất kết nối.
 
-Mobile cũng đã bỏ cơ chế tự chuyển về gói tiếng Việt khi thiếu ngôn ngữ đã chọn, không dùng MP3 hash cũ thay cho bản Google mới, và không đổi sang giọng thiết bị khi audio Google lỗi.
+Mobile không tự chuyển về gói tiếng Việt khi thiếu ngôn ngữ đã chọn, không dùng MP3 hash cũ thay cho bản Google mới, và chỉ chọn voice hệ thống khớp locale của nội dung đang phát.
 
 ## Kiểm chứng
 

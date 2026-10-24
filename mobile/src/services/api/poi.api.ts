@@ -7,7 +7,7 @@ export interface Poi {
   schematic: [number, number] | null;                   // tọa độ "raw" trên sơ đồ
   floorId: string | null; categoryId: number | null; imageUrl: string | null;
   triggerRadiusM: number | null; version: number;
-  lang: string; name: string; summary: string | null; scriptText: string;
+  lang: string; name: string; summary: string | null; scriptText: string; translationMissing?: boolean;
   audio: { url: string; durationSec: number | null; sizeBytes: number | null; provider?: string; voiceName?: string } | null;
 }
 export interface PoiList { contentVersion: number; items: Poi[]; }

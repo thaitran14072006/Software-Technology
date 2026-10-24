@@ -116,14 +116,14 @@ function renderDetail() {
   const p = selected();
   if (!p) { $('#detail').innerHTML = `<div class="empty">↟<br>${esc(t('choose'))}</div>`; return; }
   const kind = p.categoryId === 3 ? 'water' : p.categoryId === 1 ? 'facility' : '';
-  $('#detail').innerHTML = `<div class="detail-art ${kind}"><span class="detail-number">${esc(p.code.padStart(2, '0'))}</span><span class="detail-tag">${esc(LANGS[p.lang] || LANGS[state.lang])}</span></div><div class="detail-body"><p class="detail-category">${esc(group(p.categoryId))}</p><h2>${esc(p.name)}</h2><p class="script-text">${esc(p.scriptText || p.summary)}</p><div class="detail-info"><span>⌖ ${esc(p.geoVerified ? t('verified') : p.geoSourceUrl ? translateUI('Tọa độ đối chiếu nguồn bản đồ',state.lang) : t('schematic'))}</span><span>◎ ${esc(LANGS[p.lang] || LANGS[state.lang])}</span></div><div class="player"><button id="play" class="button primary">${esc(state.playing ? t('stop') : t('play'))}</button><div class="player-options"><label class="check" title="${esc(t('autoHint'))}"><input id="auto" type="checkbox" ${state.auto ? 'checked' : ''}>${esc(t('auto'))}</label><button id="share" class="button quiet">↗</button></div><p id="player-status" class="player-status" role="status">${esc(state.playing ? t('narration') : p.audio?.url ? 'MP3 · Audio' : 'TTS · Giọng đọc của trình duyệt')}</p><div class="route-controls"><select id="route-from" aria-label="${esc(t('from'))}"><option value="0">${esc(t('center'))}</option>${state.pois.map(x => `<option value="${esc(x.code)}" ${state.from === x.code ? 'selected' : ''}>${esc(x.code)} · ${esc(x.name)}</option>`).join('')}</select><button id="route" class="button">↗ ${esc(t('route'))}</button></div><p class="route-result" id="route-result">${state.route ? esc(`${state.route.km.toFixed(1)} ${t('distance')} ${state.route.minutes} ${t('minute')}. ${t('map')}`) : ''}</p></div></div>`;
+  $('#detail').innerHTML = `<div class="detail-art ${kind}"><span class="detail-number">${esc(p.code.padStart(2, '0'))}</span><span class="detail-tag">${esc(LANGS[p.lang] || LANGS[state.lang])}</span></div><div class="detail-body"><p class="detail-category">${esc(group(p.categoryId))}</p><h2>${esc(p.name || p.code)}</h2><p class="script-text">${esc(p.translationMissing ? 'Chưa có lời thuyết minh cho ngôn ngữ này.' : p.scriptText || p.summary)}</p><div class="detail-info"><span>⌖ ${esc(p.geoVerified ? t('verified') : p.geoSourceUrl ? translateUI('Tọa độ đối chiếu nguồn bản đồ',state.lang) : t('schematic'))}</span><span>◎ ${esc(LANGS[p.lang] || LANGS[state.lang])}</span></div><div class="player"><button id="play" class="button primary" ${p.translationMissing ? 'disabled' : ''}>${esc(state.playing ? t('stop') : t('play'))}</button><div class="player-options"><label class="check" title="${esc(t('autoHint'))}"><input id="auto" type="checkbox" ${state.auto ? 'checked' : ''}>${esc(t('auto'))}</label><button id="share" class="button quiet">↗</button></div><p id="player-status" class="player-status" role="status">${esc(state.playing ? t('narration') : p.audio?.url ? 'MP3 · Audio' : 'TTS · Giọng đọc của trình duyệt')}</p><div class="route-controls"><select id="route-from" aria-label="${esc(t('from'))}"><option value="0">${esc(t('center'))}</option>${state.pois.map(x => `<option value="${esc(x.code)}" ${state.from === x.code ? 'selected' : ''}>${esc(x.code)} · ${esc(x.name)}</option>`).join('')}</select><button id="route" class="button">↗ ${esc(t('route'))}</button></div><p class="route-result" id="route-result">${state.route ? esc(`${state.route.km.toFixed(1)} ${t('distance')} ${state.route.minutes} ${t('minute')}. ${t('map')}`) : ''}</p></div></div>`;
   $('#share').ariaLabel = t('share'); $('#share').title = t('share');
   const sourceControl = document.createElement('label');
   sourceControl.className = 'field';
-  sourceControl.innerHTML = `<span>Nguồn giọng đọc</span><select id="voice-mode"><option value="auto">Google AI Studio · MP3 có sẵn</option><option value="browser">Giọng trình duyệt · như cat-tien-app</option><option value="mp3">MP3 đã lưu · dùng ngoại tuyến</option></select>`;
+  sourceControl.innerHTML = `<span>Nguồn giọng đọc</span><select id="voice-mode"><option value="auto">Tự động · MP3 đúng ngôn ngữ, thiếu thì dùng giọng thiết bị</option><option value="browser">Giọng trình duyệt · như cat-tien-app</option><option value="mp3">MP3 đã lưu · dùng ngoại tuyến</option></select>`;
   $('#player-status').before(sourceControl);
   $('#voice-mode').value = voiceMode;
-  if (!state.playing) $('#player-status').textContent = p.audio?.provider === 'GEMINI' && voiceMode !== 'browser' ? `Google AI Studio · ${p.audio.voiceName || 'MP3'}` : voiceMode==='auto' && runtimeConfig.tts_provider==='GEMINI' ? translateUI('Giọng Google cho bài này chưa sẵn sàng. Không tự đổi sang giọng máy.',state.lang) : voiceMode === 'mp3' && p.audio?.url ? 'MP3 · Audio' : 'TTS · Giọng đọc của trình duyệt';
+  if (!state.playing) $('#player-status').textContent = p.audio?.url && voiceMode !== 'browser' ? `${p.audio.provider === 'GEMINI' ? 'Google AI Studio' : p.audio.provider || 'MP3'} · ${p.audio.voiceName || 'MP3'}` : voiceMode==='auto' && runtimeConfig.tts_provider==='GEMINI' && !p.audio?.url ? 'MP3 Google chưa sẵn sàng · sẽ thử giọng thiết bị cùng ngôn ngữ' : voiceMode === 'mp3' && p.audio?.url ? 'MP3 · Audio' : 'TTS · Giọng đọc của trình duyệt';
   if(!state.playing && voiceMode==='auto' && p.audio?.provider!=='GEMINI' && runtimeConfig.tts_paused_until)$('#player-status').textContent+=' '+formatUI('Hạn mức Google đã hết. Có thể tiếp tục từ {0}.',[new Date(runtimeConfig.tts_paused_until).toLocaleString(LOCALES[state.lang])],state.lang);
 }
 function stopAudio() {
@@ -143,6 +143,13 @@ async function speak(p, onStarted) {
   const utterance = new SpeechSynthesisUtterance(p.scriptText || p.summary || p.name);
   utterance.lang = LOCALES[p.lang] || LOCALES[state.lang];
   const voice = selectVoice(voices, utterance.lang);
+  // Browsers can silently use their default voice when the requested locale
+  // is missing. Never play a different language by accident.
+  if (!voice) {
+    playbackDone();
+    toast(`Thiết bị chưa có giọng đọc ${LANGS[p.lang] || p.lang}. Hãy cài giọng này trong cài đặt hệ điều hành hoặc chọn MP3 thuyết minh.`, true);
+    return;
+  }
   if (voice) utterance.voice = voice;
   utterance.onstart = onStarted;
   utterance.onend = () => { if (run === audioRun) playbackDone(); };
@@ -152,17 +159,17 @@ async function speak(p, onStarted) {
 }
 async function playAudio() {
   const p = selected(); if (!p) return;
+  if (p.translationMissing || p.lang !== state.lang) { toast('Bản thuyết minh ngôn ngữ đã chọn chưa có.', true); return; }
   stopAudio(); state.playing = true; $('#play').textContent = t('stop');
-  if(voiceMode==='auto' && ((runtimeConfig.tts_provider==='GEMINI' && p.audio?.provider!=='GEMINI') || (state.source==='offline' && !p.audio?.url))){playbackDone();toast(translateUI('Giọng Google cho bài này chưa sẵn sàng. Không tự đổi sang giọng máy.',state.lang),true);return;}
   const onStarted = counter.begin(p, settings.mode);
   const url = safeURL(p.audio?.url);
-  const source = playbackSource(voiceMode === 'auto' && p.audio?.provider === 'GEMINI' ? 'mp3' : voiceMode, Boolean(url), 'speechSynthesis' in window);
+  const source = playbackSource(voiceMode, Boolean(url), 'speechSynthesis' in window);
   if (!source) { playbackDone(); toast('Trình duyệt chưa hỗ trợ giọng đọc và điểm này chưa có MP3.', true); return; }
   if (source === 'mp3') {
     const current = audio = new Audio(url);
     current.onplaying = onStarted;
     current.onended = playbackDone;
-    const fallback = () => { if (audio === current && state.playing) { audio = null; current.onerror = null; current.pause(); current.removeAttribute('src'); current.load(); if(p.audio?.provider==='GEMINI'){playbackDone();toast(translateUI('Không tải được giọng Google. Kết nối mạng và tải lại gói thuyết minh.',state.lang),true);return;} toast('Không phát được MP3. Đang chuyển sang giọng đọc của trình duyệt.', true); speak(p, onStarted); } };
+    const fallback = () => { if (audio === current && state.playing) { audio = null; current.onerror = null; current.pause(); current.removeAttribute('src'); current.load(); toast('MP3 không phát được. Đang thử giọng thiết bị cùng ngôn ngữ.', true); speak(p, onStarted); } };
     current.onerror = fallback;
     try { await current.play(); if ($('#player-status') && audio === current) $('#player-status').textContent = p.audio?.provider === 'GEMINI' ? `Google AI Studio · ${p.audio.voiceName || 'MP3'}` : 'MP3 · Audio'; } catch { fallback(); }
   } else speak(p, onStarted);
@@ -397,7 +404,7 @@ try {
   if ('serviceWorker' in navigator) navigator.serviceWorker.register('./sw.js').catch(() => toast('Không bật được bộ nhớ ngoại tuyến. Kiểm tra localhost hoặc HTTPS.', true));
   await refresh();
   if(settings.mode==='api' && !localStorage.getItem('sag:entry-download-seen') && state.pois.some(p=>p.audio?.provider==='GEMINI')) {
-    const entry=document.createElement('dialog');entry.innerHTML='<h2>Lưu giọng Google trước khi vào rừng</h2><p>Giữ nguyên file audio khi ngoại tuyến; không tự đổi sang giọng máy.</p><div class="dialog-actions"><button class="button" data-later>Để sau</button><button class="button primary" data-save>Tải gói thuyết minh</button></div>';
+    const entry=document.createElement('dialog');entry.innerHTML='<h2>Lưu giọng Google trước khi vào rừng</h2><p>MP3 đã tải dùng được ngoại tuyến. Bài chưa có MP3 chỉ đọc được nếu thiết bị đã cài giọng cùng ngôn ngữ.</p><div class="dialog-actions"><button class="button" data-later>Để sau</button><button class="button primary" data-save>Tải gói thuyết minh</button></div>';
     document.body.append(entry);entry.querySelector('[data-later]').onclick=()=>{localStorage.setItem('sag:entry-download-seen','1');entry.close();};entry.querySelector('[data-save]').onclick=()=>{localStorage.setItem('sag:entry-download-seen','1');entry.close();$('#offline-save').click();};entry.showModal();
   }
   startUsageLoop();

@@ -23,7 +23,9 @@
     "retry": "Retry",
     "cameraDenied": "Camera permission is required to scan QR codes.",
     "qrInvalid": "Invalid QR code or not part of this system. Please try again",
-    "googleAudio": "Google audio is missing or unavailable. Download the pack while online; device speech will not be substituted."
+    "googleAudio": "Google audio is missing or unavailable. The app will try a device voice in the same language.",
+    "voiceMissing": "This device has no voice for the selected language. Install its speech voice or download the matching narration MP3.",
+    "translationMissing": "Narration is not available in the selected language."
   },
   "offline": {
     "title": "Offline pack",

@@ -4,7 +4,7 @@
 
 **Chia nhau tạo Google audio:** xem [COLLABORATIVE_AUDIO.md](docs/COLLABORATIVE_AUDIO.md). Mỗi thành viên dùng khóa riêng phía backend, nhận một phần ngôn ngữ bằng `TTS_LANGUAGES`, tạo MP3 rồi commit fixture để cả nhóm pull và nhập bằng `npm run content:seed`.
 
-**Cập nhật Google AI Studio:** đã tích hợp Gemini TTS, kịch bản Word, gói audio tải về, font tiếng Việt và bộ dịch giao diện 5 ngôn ngữ. Hiện có 17 POI và 16 MP3 Google thật; còn 69 bản chờ quota miễn phí, nên chưa hoàn tất toàn bộ audio. Xem [tiến độ tạo audio ngày 24/10](docs/GEMINI_AUDIO_PROGRESS.md) và [hướng dẫn Google/ngoại tuyến](docs/GOOGLE_AI_STUDIO_AND_OFFLINE.md). Chạy `npm run dev:gemini:lan` và dùng `?source=api`; các hướng dẫn eSpeak bên dưới là chế độ thay thế.
+**Cập nhật Google AI Studio:** đã tích hợp Gemini TTS, kịch bản Word, gói audio tải về, font tiếng Việt và bộ dịch giao diện 5 ngôn ngữ. Hiện có 17 POI và 16 MP3 Google thật; còn 69 bản chưa có MP3. Khi thiếu hoặc MP3 lỗi, web/mobile thử voice hệ thống đúng ngôn ngữ; nếu thiết bị không có voice đó thì báo rõ, không đọc bằng tiếng khác. Xem [tiến độ tạo audio ngày 24/10](docs/GEMINI_AUDIO_PROGRESS.md) và [hướng dẫn Google/ngoại tuyến](docs/GOOGLE_AI_STUDIO_AND_OFFLINE.md). Chạy `npm run dev:gemini:lan` và dùng `?source=api`; các hướng dẫn eSpeak bên dưới là chế độ thay thế.
 
 Hệ thống tham quan gồm web/PWA, backend NestJS/PostgreSQL và mobile Expo. Backend hiện có 17 điểm (demo riêng vẫn 15), 5 ngôn ngữ, sơ đồ, nghe thuyết minh, GPS/QR, gói ngoại tuyến và quản trị.
 
@@ -48,7 +48,7 @@ Nếu có nhiều card mạng hoặc đã lưu một URL QR khác, kiểm tra ô
 
 Trên điện thoại qua HTTP LAN, trang, MP3 và QR tham gia có thể dùng; GPS, quét camera trong web và cài PWA cần HTTPS. Có thể dùng camera hệ thống của điện thoại để quét QR mở trang. Kiểm thử từ máy tính không thay thế việc kiểm tra trên điện thoại hoặc cấu hình Wi-Fi có cô lập thiết bị.
 
-**Giọng đọc hiện tại:** nguồn tự động ưu tiên MP3 Google AI Studio. Bài chưa có Google sẽ báo chờ quota, không tự đổi giọng robot khi đang chạy Gemini. Giọng trình duyệt và MP3 khác vẫn là lựa chọn riêng. Xem [Google AI Studio và ngoại tuyến](docs/GOOGLE_AI_STUDIO_AND_OFFLINE.md); [VOICE_FIX.md](docs/VOICE_FIX.md) ghi lại lần sửa nguồn giọng trước đó.
+**Giọng đọc hiện tại:** nguồn tự động ưu tiên MP3 Google AI Studio đã sẵn sàng; nếu thiếu hoặc MP3 lỗi, ứng dụng thử giọng thiết bị đúng ngôn ngữ. Thiết bị cần có voice tương ứng; nếu không, ứng dụng báo rõ và không đọc bằng ngôn ngữ khác. Hiện có 16 MP3 cho 85 bản thuyết minh. Xem [Google AI Studio và ngoại tuyến](docs/GOOGLE_AI_STUDIO_AND_OFFLINE.md); [VOICE_FIX.md](docs/VOICE_FIX.md) ghi lại lần sửa nguồn giọng trước đó.
 
 Lần đầu cần mạng tải image PostgreSQL/thư viện. Script tự build, áp dụng migration bổ sung, seed các POI chưa có, tạo QR và chuẩn bị admin local. Không xóa hoặc ghi đè nội dung POI đã chỉnh sửa.
 

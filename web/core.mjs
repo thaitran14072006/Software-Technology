@@ -11,8 +11,10 @@ export function newId() {
   return `${hex.slice(0, 8)}-${hex.slice(8, 12)}-${hex.slice(12, 16)}-${hex.slice(16, 20)}-${hex.slice(20)}`;
 }
 export function localize(poi, lang) {
-  const tr = poi.translations?.find(t => t.langCode === lang) || poi.translations?.find(t => t.langCode === 'vi') || poi.translations?.[0];
-  return tr ? { ...poi, lang: tr.langCode, name: tr.name, summary: tr.summary || '', scriptText: tr.scriptText, audio: poi.audios?.find(a => a.langCode === tr.langCode && a.status === 'READY') ? { url: poi.audios.find(a => a.langCode === tr.langCode && a.status === 'READY').audioUrl, provider: poi.audios.find(a => a.langCode === tr.langCode && a.status === 'READY').provider, voiceName: poi.audios.find(a => a.langCode === tr.langCode && a.status === 'READY').voiceName } : poi.audio || null } : poi;
+  const tr = poi.translations?.find(t => t.langCode === lang);
+  if (!tr) return { ...poi, lang, name: '', summary: '', scriptText: '', audio: null, translationMissing: true };
+  const audio = poi.audios?.find(a => a.langCode === lang && a.status === 'READY' && (!tr.textHash || a.textHash === tr.textHash));
+  return { ...poi, lang, name: tr.name, summary: tr.summary || '', scriptText: tr.scriptText, audio: audio ? { url: audio.audioUrl, provider: audio.provider, voiceName: audio.voiceName } : null, translationMissing: false };
 }
 export function routeTo(edges, from, to) {
   from = String(from); to = String(to);

@@ -2,18 +2,18 @@
 
 **Mốc chia sẻ Git mới lúc 14:07:** quota đã được làm mới và worker tiếp tục tạo audio. Fixture xuất để chia sẻ có **16 MP3 Google / 85 bài**, còn **69 bài thiếu** (vi 5, en 4, ja 2, ko 2, zh 3). Các số 12/73 và thời gian chờ bên dưới là kết quả kiểm tra trước thời điểm quota được làm mới, không phải trạng thái mới nhất. Xem [hướng dẫn cùng tạo audio](COLLABORATIVE_AUDIO.md) và [bàn giao Git](GIT_HANDOFF.md).
 
-Đã tạo thêm 1 bản Google AI Studio tiếng Việt cho POI mã 3, chuyển WAV thành MP3 và gắn đúng bản dịch/text hash trong database. Giữ nguyên 11 bản Google đã có và không thay bằng giọng eSpeak/thiết bị.
+Tổng fixture hiện có 16 MP3 Google: Việt 5, Anh 4, Nhật 2, Hàn 2, Trung 3. 69 bản còn lại chưa có MP3; ứng dụng hiện thử voice hệ thống đúng ngôn ngữ cho các bài này.
 
 | Ngôn ngữ | MP3 Google đã sẵn sàng |
 |---|---:|
-| Việt | 4 |
-| Anh | 3 |
+| Việt | 5 |
+| Anh | 4 |
 | Nhật | 2 |
-| Hàn | 1 |
-| Trung | 2 |
-| Tổng | 12 |
+| Hàn | 2 |
+| Trung | 3 |
+| Tổng | 16 |
 
-Đây là số file theo ngôn ngữ, không phải số POI đã có đủ mọi ngôn ngữ. Còn 73/85 bản của 17 POI chưa có Google audio.
+Đây là số file theo ngôn ngữ, không phải số POI đã có đủ mọi ngôn ngữ. Còn 69/85 bản của 17 POI chưa có Google audio.
 
 ## Lý do chưa tạo hết
 

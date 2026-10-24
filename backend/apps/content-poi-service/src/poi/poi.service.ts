@@ -116,9 +116,9 @@ export class PoiService {
  adminList(page=1,limit=20) {if(!Number.isInteger(page)||page<1||!Number.isInteger(limit)||limit<1)throw new BadRequestException('page/limit phải nguyên dương.');limit=Math.min(limit,100);return this.pois.findAndCount({relations:{translations:true,audios:true},order:{sortOrder:'ASC',code:'ASC'},skip:(page-1)*limit,take:limit}).then(([items,total])=>({items,total,page,limit}));}
  queryPublic(mapId:string) {return this.pois.find({where:{mapId,status:'PUBLISHED'},relations:{translations:true,audios:true},order:{sortOrder:'ASC',code:'ASC'}});}
  toPublic(p:Poi,lang:string) {
-   const tr=p.translations.find(t=>t.langCode===lang)??p.translations.find(t=>t.langCode==='vi')??p.translations[0];
-   if(!tr) throw new BadRequestException('POI chưa có bản dịch.');
+   const tr=p.translations.find(t=>t.langCode===lang);
+   if(!tr) return {id:p.id,code:p.code,lat:p.latitude,lng:p.longitude,geoVerified:p.geoVerified,geoSourceUrl:p.geoSourceUrl,schematic:p.schematicX!=null?[p.schematicX,p.schematicY]:null,floorId:p.floorId,categoryId:p.categoryId,imageUrl:p.imageUrl,triggerRadiusM:p.triggerRadiusM,version:p.version,lang,name:'',summary:null,scriptText:'',audio:null,translationMissing:true};
    const au=p.audios.find(a=>a.langCode===tr.langCode&&a.status==='READY'&&a.textHash===tr.textHash&&a.audioUrl);
-   return {id:p.id,code:p.code,lat:p.latitude,lng:p.longitude,geoVerified:p.geoVerified,geoSourceUrl:p.geoSourceUrl,schematic:p.schematicX!=null?[p.schematicX,p.schematicY]:null,floorId:p.floorId,categoryId:p.categoryId,imageUrl:p.imageUrl,triggerRadiusM:p.triggerRadiusM,version:p.version,lang:tr.langCode,name:tr.name,summary:tr.summary,scriptText:tr.scriptText,audio:au?{url:au.audioUrl,provider:au.provider,voiceName:au.voiceName,durationSec:au.durationSec?+au.durationSec:null,sizeBytes:au.sizeBytes}:null};
+   return {id:p.id,code:p.code,lat:p.latitude,lng:p.longitude,geoVerified:p.geoVerified,geoSourceUrl:p.geoSourceUrl,schematic:p.schematicX!=null?[p.schematicX,p.schematicY]:null,floorId:p.floorId,categoryId:p.categoryId,imageUrl:p.imageUrl,triggerRadiusM:p.triggerRadiusM,version:p.version,lang:tr.langCode,name:tr.name,summary:tr.summary,scriptText:tr.scriptText,audio:au?{url:au.audioUrl,provider:au.provider,voiceName:au.voiceName,durationSec:au.durationSec?+au.durationSec:null,sizeBytes:au.sizeBytes}:null,translationMissing:false};
  }
 }

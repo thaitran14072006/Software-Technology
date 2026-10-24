@@ -98,7 +98,7 @@
       ]
     ],
     "alt": "A1. Mobile có mã BLE khi GPS yếu và có beacon đã đăng ký; chưa kiểm thử phần cứng. Web không quét BLE. A2. Dùng UC4 hoặc UC6 khi định vị không phù hợp.",
-    "exc": "E1. GPS yếu/thiếu quyền: không bảo đảm tự phát. E2. Trong thời gian chống phát lại: không tự phát lại. E3. Google chưa sẵn sàng: báo chờ, không tự đổi giọng thiết bị. E4. Trình duyệt chặn phát tự động: User bấm Phát.",
+    "exc": "E1. GPS yếu/thiếu quyền: không bảo đảm tự phát. E2. Trong thời gian chống phát lại: không tự phát lại. E3. Google chưa sẵn sàng: thử voice thiết bị đúng ngôn ngữ; nếu thiếu thì báo lỗi, không đọc sai ngôn ngữ. E4. Trình duyệt chặn phát tự động: User bấm Phát.",
     "trigger": "Vị trí thay đổi khi chế độ tự phát đang bật.",
     "pre": "Có POI geoVerified, quyền vị trí, nội dung ngôn ngữ hiện tại; phát âm thanh chịu chính sách thiết bị.",
     "post": "POI được chọn; audio phát khi sẵn sàng và được thiết bị cho phép.",

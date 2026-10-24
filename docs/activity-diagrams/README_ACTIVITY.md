@@ -48,7 +48,7 @@ Cách mở: giải nén ZIP, mở diagrams.net, chọn File → Open From → De
 
 - Luồng chính: B1–B5.
 - Thay thế: A1. Mobile có mã BLE khi GPS yếu và có beacon đã đăng ký; chưa kiểm thử phần cứng. Web không quét BLE. A2. Dùng UC4 hoặc UC6 khi định vị không phù hợp.
-- Ngoại lệ: E1. GPS yếu/thiếu quyền: không bảo đảm tự phát. E2. Trong thời gian chống phát lại: không tự phát lại. E3. Google chưa sẵn sàng: báo chờ, không tự đổi giọng thiết bị. E4. Trình duyệt chặn phát tự động: User bấm Phát.
+- Ngoại lệ: E1. GPS yếu/thiếu quyền: không bảo đảm tự phát. E2. Trong thời gian chống phát lại: không tự phát lại. E3. Google chưa sẵn sàng: thử voice thiết bị đúng ngôn ngữ; nếu thiếu thì báo lỗi, không đọc sai ngôn ngữ. E4. Trình duyệt chặn phát tự động: User bấm Phát.
 - Hậu điều kiện: POI được chọn; audio phát khi sẵn sàng và được thiết bị cho phép.
 - Kiểm tra cấu trúc: 59 nút; 54 đường nối; mọi nút hoạt động tới được từ Start; các nhánh có điểm kết thúc hoặc quay lại luồng.
 

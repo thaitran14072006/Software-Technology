@@ -23,7 +23,9 @@
     "retry": "Thử lại",
     "cameraDenied": "Cần quyền truy cập Camera để quét mã QR.",
     "qrInvalid": "Mã QR không hợp lệ hoặc không thuộc hệ thống. Vui lòng thử lại",
-    "googleAudio": "Giọng Google chưa có hoặc không tải được. Hãy tải lại gói khi có mạng; không tự đổi giọng máy."
+    "googleAudio": "Giọng Google chưa có hoặc không tải được. Ứng dụng sẽ thử giọng thiết bị cùng ngôn ngữ.",
+    "voiceMissing": "Thiết bị chưa có giọng đọc cho ngôn ngữ này. Hãy cài giọng tương ứng hoặc tải MP3 thuyết minh đúng ngôn ngữ.",
+    "translationMissing": "Chưa có lời thuyết minh cho ngôn ngữ đã chọn."
   },
   "offline": {
     "title": "Gói dùng ngoại tuyến",

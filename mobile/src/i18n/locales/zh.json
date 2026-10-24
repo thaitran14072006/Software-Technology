@@ -23,7 +23,9 @@
     "retry": "重试",
     "cameraDenied": "扫描二维码需要相机权限。",
     "qrInvalid": "无效的二维码或不属于本系统。请重试",
-    "googleAudio": "Google音频尚未就绪或无法加载，请联网重新下载，不会自动切换机器语音。"
+    "googleAudio": "Google 音频尚未就绪或无法加载，应用将尝试使用相同语言的设备语音。",
+    "voiceMissing": "此设备没有所选语言的语音。请安装相应语音，或下载同一语言的讲解 MP3。",
+    "translationMissing": "所选语言暂无讲解内容。"
   },
   "offline": {
     "title": "离线包",

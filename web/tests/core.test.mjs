@@ -12,6 +12,17 @@ test('all 15 stops have five complete translations and no fabricated GPS', () =>
     if (poi.code !== '9') { assert.equal(poi.lat, null); assert.equal(poi.geoVerified, false); }
   }
 });
+test('localization never reuses another language transcript or audio', () => {
+  const item = localize({
+    id: 'x', lang: 'en', name: 'English', scriptText: 'English narration', audio: { url: '/english.mp3' },
+    translations: [{ langCode: 'vi', name: 'Tiếng Việt', scriptText: 'Lời Việt' }],
+    audios: [{ langCode: 'en', status: 'READY', audioUrl: '/english.mp3' }],
+  }, 'ja');
+  assert.equal(item.lang, 'ja');
+  assert.equal(item.translationMissing, true);
+  assert.equal(item.scriptText, '');
+  assert.equal(item.audio, null);
+});
 test('shortest paths cover all pairs, preserve distances and reverse symmetrically', () => {
   const codes = ['0', ...seed.pois.map(p => p.code)];
   for (const from of codes) for (const to of codes) {

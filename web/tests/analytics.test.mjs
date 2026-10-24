@@ -1,7 +1,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { randomUUID } from 'node:crypto';
-import { mkdtemp, rm, rmdir } from 'node:fs/promises';
+import { mkdtemp, rm } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
 import { DemoAnalytics } from '../demo-analytics.mjs';
@@ -34,7 +34,7 @@ test('demo listens survive restart while online presence resets', async () => {
     const stats = new DemoAnalytics(file); stats.presence(visitor()); await stats.listen(event());
     const reloaded = await new DemoAnalytics(file).summary();
     assert.equal(reloaded.totalListens, 1); assert.equal(reloaded.activeUsers, 0);
-  } finally { await rm(file, { force: true }); await rmdir(dir); }
+  } finally { await rm(dir, { recursive: true, force: true, maxRetries: 5, retryDelay: 50 }); }
 });
 test('malformed telemetry is rejected before storage', async () => {
   const stats = new DemoAnalytics();
