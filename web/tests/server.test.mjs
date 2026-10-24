@@ -27,6 +27,9 @@ test('serves built app and modules with correct types and security headers', asy
   assert.equal(res.headers.get('referrer-policy'), 'strict-origin-when-cross-origin');
   const script = await fetch(`${origin}/app.mjs`); assert.match(script.headers.get('content-type'), /javascript/);
   assert.equal((await fetch(`${origin}/data/pois.json`)).status, 200);
+  const audio = await fetch(`${origin}/audio/9-vi-04db39243e81.mp3`);
+  assert.equal(audio.status, 200); assert.equal(audio.headers.get('content-type'), 'audio/mpeg');
+  assert.ok(Number(audio.headers.get('content-length')) > 0);
 });
 test('refuses traversal, missing files and non-GET static mutations', async () => {
   assert.equal((await fetch(`${origin}/%2e%2e%2fpackage.json`)).status, 403);

@@ -6,7 +6,7 @@ import { DemoAnalytics } from './demo-analytics.mjs';
 import {buildOfflineArchive} from '../scripts/build-offline-archive.mjs';
 
 const root = path.resolve(fileURLToPath(new URL('./dist/', import.meta.url)));
-const mime = { '.zip': 'application/zip', '.ttf': 'font/ttf', '.html': 'text/html; charset=utf-8', '.css': 'text/css; charset=utf-8', '.mjs': 'text/javascript; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.json': 'application/json; charset=utf-8', '.webmanifest': 'application/manifest+json', '.svg': 'image/svg+xml' };
+const mime = { '.zip': 'application/zip', '.mp3': 'audio/mpeg', '.ttf': 'font/ttf', '.html': 'text/html; charset=utf-8', '.css': 'text/css; charset=utf-8', '.mjs': 'text/javascript; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.json': 'application/json; charset=utf-8', '.webmanifest': 'application/manifest+json', '.svg': 'image/svg+xml' };
 const services = { '/content-api/': process.env.CONTENT_API_URL || 'http://127.0.0.1:3001', '/qr-api/': process.env.QR_API_URL || 'http://127.0.0.1:3003' };
 
 export function createServer(options = {}) {
@@ -68,9 +68,11 @@ export function createServer(options = {}) {
       try { decoded = decodeURIComponent(url.pathname); } catch { res.writeHead(400); res.end(); return; }
       const filename = path.resolve(root, `.${decoded === '/' ? '/index.html' : decoded}`);
       if (!filename.startsWith(root + path.sep)) { res.writeHead(403); res.end(); return; }
-      if (!(await stat(filename)).isFile()) { res.writeHead(404); res.end(); return; }
+      const fileStat = await stat(filename);
+      if (!fileStat.isFile()) { res.writeHead(404); res.end(); return; }
       res.writeHead(200, {
         'content-type': mime[path.extname(filename)] || 'application/octet-stream',
+        'content-length': fileStat.size,
         'cache-control': 'no-cache', 'x-content-type-options': 'nosniff',
         'referrer-policy': 'strict-origin-when-cross-origin',
         'content-security-policy': "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data: https://tile.openstreetmap.org; connect-src 'self' http: https:; media-src 'self' http: https: blob:; worker-src 'self'; object-src 'none'; base-uri 'self'; frame-ancestors 'none'",

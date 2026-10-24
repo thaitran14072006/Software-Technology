@@ -1,0 +1,398 @@
+{
+  "1:vi": {
+    "file": "1-vi.mp3",
+    "textHash": "97ec68a7522f8f2547bc5b504386bf3fca4c171b38713bc4ae6c0df1c466f6a6",
+    "provider": "GEMINI",
+    "model": "gemini-3.8-flash-tts",
+    "voice": "Kore",
+    "voiceName": "Gemini gemini-3.8-flash-tts · Kore",
+    "bytes": 336428
+  },
+  "1:en": {
+    "file": "1-en.mp3",
+    "textHash": "af8cc79611d3d5a184cd53465ab5e45bca0866d672ce67af4881b80657192824",
+    "provider": "GEMINI",
+    "model": "gemini-3.8-flash-tts",
+    "voice": "Kore",
+    "voiceName": "Gemini gemini-3.8-flash-tts · Kore",
+    "bytes": 390572
+  },
+  "1:ko": {
+    "file": "1-ko.mp3",
+    "textHash": "987ea326c62e6661bf7b1c2a21a8728d36ea2810567201d9e940b941a524caa0",
+    "provider": "GEMINI",
+    "model": "gemini-3.8-flash-tts",
+    "voice": "Kore",
+    "voiceName": "Gemini gemini-3.8-flash-tts · Kore",
+    "bytes": 440108
+  },
+  "1:ja": {
+    "file": "1-ja.mp3",
+    "textHash": "c5864befd4f568eb7b1ef711f97e8c266995f660656e005393bf6fff5b0b89fa",
+    "provider": "GEMINI",
+    "model": "gemini-3.8-flash-tts",
+    "voice": "Kore",
+    "voiceName": "Gemini gemini-3.8-flash-tts · Kore",
+    "bytes": 392108
+  },
+  "1:zh": {
+    "file": "1-zh.mp3",
+    "textHash": "8a185289fbf6ddfc235bbe07d4bfa7faf62c413571106d987ce658ae487c30df",
+    "provider": "GEMINI",
+    "model": "gemini-3.8-flash-tts",
+    "voice": "Kore",
+    "voiceName": "Gemini gemini-3.8-flash-tts · Kore",
+    "bytes": 388268
+  },
+  "11:vi": {
+    "file": "11-vi.mp3",
+    "textHash": "8d3472ed502f423b5322af5ed2a44bf35a26e60d92aa0f2470db35b73f49bf82",
+    "provider": "GEMINI",
+    "model": "gemini-3.8-flash-tts",
+    "voice": "Kore",
+    "voiceName": "Gemini gemini-3.8-flash-tts · Kore",
+    "bytes": 99500
+  },
+  "12:en": {
+    "file": "12-en.mp3",
+    "textHash": "0a2fe6b91081af42ed5338d722e60649110a36890de35de8fbc66f32c74c3723",
+    "provider": "GEMINI",
+    "model": "gemini-3.8-flash-tts",
+    "voice": "Kore",
+    "voiceName": "Gemini gemini-3.8-flash-tts · Kore",
+    "bytes": 135212
+  },
+  "12:ja": {
+    "file": "12-ja.mp3",
+    "textHash": "45d3c6e98fc184ef12a17cdda6fcacde39bb45775229da898e29e4c7d61a19ff",
+    "provider": "GEMINI",
+    "model": "gemini-3.8-flash-tts",
+    "voice": "Kore",
+    "voiceName": "Gemini gemini-3.8-flash-tts · Kore",
+    "bytes": 112940
+  },
+  "12:ko": {
+    "file": "12-ko.mp3",
+    "textHash": "3e1b6ebe1cb376137de147beb3164924370bf7f4ee122e1680c3a12933a271af",
+    "provider": "GEMINI",
+    "model": "gemini-3.8-flash-tts",
+    "voice": "Kore",
+    "voiceName": "Gemini gemini-3.8-flash-tts · Kore",
+    "bytes": 135212
+  },
+  "12:zh": {
+    "file": "12-zh.mp3",
+    "textHash": "772ac92ee99e24ae50ef792c52a823065c9e564c21651083e759f5840bd881d7",
+    "provider": "GEMINI",
+    "model": "gemini-3.8-flash-tts",
+    "voice": "Kore",
+    "voiceName": "Gemini gemini-3.8-flash-tts · Kore",
+    "bytes": 99500
+  },
+  "13:ja": {
+    "file": "13-ja.mp3",
+    "textHash": "1bf40857673bff138d44790f266dbd03e65a842e99933e7b0c851636909c7b96",
+    "provider": "GEMINI",
+    "model": "gemini-3.8-flash-tts",
+    "voice": "Kore",
+    "voiceName": "Gemini gemini-3.8-flash-tts · Kore",
+    "bytes": 379820
+  },
+  "13:ko": {
+    "file": "13-ko.mp3",
+    "textHash": "5e6014cf0fa73912acdbdf9aa31242aeb50a1dd785e0f48e7d3e3f0c958d9884",
+    "provider": "GEMINI",
+    "model": "gemini-3.8-flash-tts",
+    "voice": "Kore",
+    "voiceName": "Gemini gemini-3.8-flash-tts · Kore",
+    "bytes": 445868
+  },
+  "13:zh": {
+    "file": "13-zh.mp3",
+    "textHash": "3b2ba089d92e3af60952a7465a1fbef4f627b31ead113cbd9282c69ec29061ba",
+    "provider": "GEMINI",
+    "model": "gemini-3.8-flash-tts",
+    "voice": "Kore",
+    "voiceName": "Gemini gemini-3.8-flash-tts · Kore",
+    "bytes": 347180
+  },
+  "14:vi": {
+    "file": "14-vi.mp3",
+    "textHash": "30570274085b8ca49c8e58a79cc6c157e814c5672fe39f92a9294148a232779d",
+    "provider": "GEMINI",
+    "model": "gemini-3.8-flash-tts",
+    "voice": "Kore",
+    "voiceName": "Gemini gemini-3.8-flash-tts · Kore",
+    "bytes": 384812
+  },
+  "14:en": {
+    "file": "14-en.mp3",
+    "textHash": "cf9918670b97fc20dc9dc4932a9ed366568e2c23731eccad9cdb8c3f97d7f148",
+    "voiceName": "eSpeak NG en-us+f3",
+    "bytes": 430959
+  },
+  "14:ja": {
+    "file": "14-ja.mp3",
+    "textHash": "22edb8ac214134cf8d03e18f7ae65bdf120d9128e4d2babe8a57f7a72dc078e3",
+    "voiceName": "eSpeak NG ja+f3",
+    "bytes": 493653
+  },
+  "14:ko": {
+    "file": "14-ko.mp3",
+    "textHash": "98a4ad1dc418f6f9973a23409e16968967d10aca24bf8923bcb993e1184d6b92",
+    "voiceName": "eSpeak NG ko+f3",
+    "bytes": 569304
+  },
+  "14:zh": {
+    "file": "14-zh.mp3",
+    "textHash": "3e5fb9c0ece6c323a2567a934675d3725b62d53a658a2d045d23bdbc54b24585",
+    "voiceName": "eSpeak NG cmn+f3",
+    "bytes": 559273
+  },
+  "15:vi": {
+    "file": "15-vi.mp3",
+    "textHash": "5d3aba52c0d2dba4c09645447baa2704af88eff59398ad973ee63a5b75844e86",
+    "voiceName": "eSpeak NG vi+f3",
+    "bytes": 285510
+  },
+  "15:en": {
+    "file": "15-en.mp3",
+    "textHash": "6d3fe5c314e612d6b0f2ab9515485d160dd7a29d356409f1d8c459b1b0703ed1",
+    "voiceName": "eSpeak NG en-us+f3",
+    "bytes": 329813
+  },
+  "15:ja": {
+    "file": "15-ja.mp3",
+    "textHash": "d7e05560253741267515ec14f6f7ae7b58d1c7a918f2d617f3d073db20185031",
+    "voiceName": "eSpeak NG ja+f3",
+    "bytes": 410479
+  },
+  "15:ko": {
+    "file": "15-ko.mp3",
+    "textHash": "3f4e228dfc98b938c32690583487cb409647b0a136e716daca8a1753134353ee",
+    "voiceName": "eSpeak NG ko+f3",
+    "bytes": 412569
+  },
+  "15:zh": {
+    "file": "15-zh.mp3",
+    "textHash": "0f3f6cd43d259fbea3081181e71f5e8f95b89309dc133b3adf8766cba3a9a0bb",
+    "voiceName": "eSpeak NG cmn+f3",
+    "bytes": 434721
+  },
+  "2:vi": {
+    "file": "2-vi.mp3",
+    "textHash": "9c9b5a0d91993e577103b931a80764c2245fa423f42524f0455e37d55abf3d9b",
+    "voiceName": "eSpeak NG vi+f3",
+    "bytes": 308497
+  },
+  "2:ja": {
+    "file": "2-ja.mp3",
+    "textHash": "c3ed77fa1f5eab02d85bfc37f235df6de913eb44af8cdbc52e1397f012552bd0",
+    "voiceName": "eSpeak NG ja+f3",
+    "bytes": 441826
+  },
+  "2:ko": {
+    "file": "2-ko.mp3",
+    "textHash": "a72f0f4c97ec437e1eb8aebb1b99bc0522778c509eac3d354905ed339d23178c",
+    "voiceName": "eSpeak NG ko+f3",
+    "bytes": 459799
+  },
+  "3:en": {
+    "file": "3-en.mp3",
+    "textHash": "ba92c3d1dfa85accb7ea366ca5de5a9ddbcf4485b6fa4b3b3332747038c3c52d",
+    "voiceName": "eSpeak NG en-us+f3",
+    "bytes": 124595
+  },
+  "2:zh": {
+    "file": "2-zh.mp3",
+    "textHash": "71df9871611d08099350522c7678a541b42a5ecba783f3fa7b025a332900eb36",
+    "voiceName": "eSpeak NG cmn+f3",
+    "bytes": 539629
+  },
+  "3:ja": {
+    "file": "3-ja.mp3",
+    "textHash": "e73dc2816640dea64e9ecb1c4174124d7ed0b6b25cd225aac80c2ae427efb85a",
+    "voiceName": "eSpeak NG ja+f3",
+    "bytes": 125013
+  },
+  "3:ko": {
+    "file": "3-ko.mp3",
+    "textHash": "a2deedc313c54a8d78af61e409367e6525d6577741c7f98837099993366c2f3b",
+    "voiceName": "eSpeak NG ko+f3",
+    "bytes": 139224
+  },
+  "3:zh": {
+    "file": "3-zh.mp3",
+    "textHash": "ff44faa9c5e98c4aeda0c62a23e6e313cc67f0da9a25f68395e89ab183a93ebf",
+    "voiceName": "eSpeak NG cmn+f3",
+    "bytes": 106623
+  },
+  "4:vi": {
+    "file": "4-vi.mp3",
+    "textHash": "341062c72098bdafd44014ee12741184b51860a82d6b9250a13091739496418c",
+    "voiceName": "eSpeak NG vi+f3",
+    "bytes": 97428
+  },
+  "4:en": {
+    "file": "4-en.mp3",
+    "textHash": "7590f1644475b8bce6e9a6c07c7d3ac6d76932701334c4d153759c48c2379df8",
+    "voiceName": "eSpeak NG en-us+f3",
+    "bytes": 125431
+  },
+  "4:ja": {
+    "file": "4-ja.mp3",
+    "textHash": "9be87c9e44500b10f3bb1709448993fa16932fc0b012f2303487ce6f0b77c98d",
+    "voiceName": "eSpeak NG ja+f3",
+    "bytes": 120416
+  },
+  "4:ko": {
+    "file": "4-ko.mp3",
+    "textHash": "0f3e215d4b63395e02e7fd0543b3c7bf6d6f09434a05c92ea6f3afa98fd0737a",
+    "voiceName": "eSpeak NG ko+f3",
+    "bytes": 138806
+  },
+  "4:zh": {
+    "file": "4-zh.mp3",
+    "textHash": "53828deee1b91173242c8efcde4094831150c14bdf9305c974647bed7a074433",
+    "voiceName": "eSpeak NG cmn+f3",
+    "bytes": 112057
+  },
+  "5:vi": {
+    "file": "5-vi.mp3",
+    "textHash": "78080688529a3d0bebf036a0bcdf8f99feabd398def97f0384b705d67d780498",
+    "voiceName": "eSpeak NG vi+f3",
+    "bytes": 319364
+  },
+  "5:en": {
+    "file": "5-en.mp3",
+    "textHash": "a51778f3abfa1be0613a43c71ee5d79342702f27347158073c9539cba6c11981",
+    "voiceName": "eSpeak NG en-us+f3",
+    "bytes": 380804
+  },
+  "5:ja": {
+    "file": "5-ja.mp3",
+    "textHash": "a5988415847ec7d97ec3f3b39a21da1a9a1e2713810240290c30e13e4a76e91b",
+    "voiceName": "eSpeak NG ja+f3",
+    "bytes": 490728
+  },
+  "5:ko": {
+    "file": "5-ko.mp3",
+    "textHash": "15e9260cf9c0090ed6fa1c12ca498b121d59cd991dc646201783f11a86052b93",
+    "voiceName": "eSpeak NG ko+f3",
+    "bytes": 468576
+  },
+  "5:zh": {
+    "file": "5-zh.mp3",
+    "textHash": "c89a0ef0c595e119742582a764b98579a210570cece2a3db3a8e7950be2dc46a",
+    "voiceName": "eSpeak NG cmn+f3",
+    "bytes": 484040
+  },
+  "6:vi": {
+    "file": "6-vi.mp3",
+    "textHash": "929839e45993fb28e7e7fc4a69765ce3e28b5485a352db0eea4a11b3408393c9",
+    "voiceName": "eSpeak NG vi+f3",
+    "bytes": 185617
+  },
+  "6:en": {
+    "file": "6-en.mp3",
+    "textHash": "f00c2280893c43fcdd1c66b88d7f0a70f81e7dc2e79e1b52335ee5fd3172a0cb",
+    "voiceName": "eSpeak NG en-us+f3",
+    "bytes": 249147
+  },
+  "6:ja": {
+    "file": "6-ja.mp3",
+    "textHash": "1bd65e864c55b7672927f6887003fd488a706bfe711fd39c1cb50aae6d1b7586",
+    "voiceName": "eSpeak NG ja+f3",
+    "bytes": 285928
+  },
+  "6:ko": {
+    "file": "6-ko.mp3",
+    "textHash": "3158a7b4f0e99dede8ec70945d9faeb085d1f48cd2567dce1e24bbd048910073",
+    "voiceName": "eSpeak NG ko+f3",
+    "bytes": 280494
+  },
+  "6:zh": {
+    "file": "6-zh.mp3",
+    "textHash": "4e43df028f6932eccb68902ac2563b5b95b3ea11909de246fb02e6744bfb2e60",
+    "voiceName": "eSpeak NG cmn+f3",
+    "bytes": 270463
+  },
+  "7:vi": {
+    "file": "7-vi.mp3",
+    "textHash": "59a80b22b16a7b3b2ed76c1068c749d1bdecf2cbce4279e3c0e5405e81c78ba0",
+    "voiceName": "eSpeak NG vi+f3",
+    "bytes": 324380
+  },
+  "7:en": {
+    "file": "7-en.mp3",
+    "textHash": "c3e020288c1f88c60e0e7b8f6f8a2b41163fb1aaacd25039b743a3d3801e9fb9",
+    "voiceName": "eSpeak NG en-us+f3",
+    "bytes": 395851
+  },
+  "7:ja": {
+    "file": "7-ja.mp3",
+    "textHash": "f10e129f01b3a99e806a4769133b39f77b4a836fb865352709b11805955b99ba",
+    "voiceName": "eSpeak NG ja+f3",
+    "bytes": 583515
+  },
+  "7:ko": {
+    "file": "7-ko.mp3",
+    "textHash": "89a2c5b66f7f55b1c53e8a1a2c2ff9cdfe47de559134137c99b13bafcab7c2fa",
+    "voiceName": "eSpeak NG ko+f3",
+    "bytes": 560527
+  },
+  "8:vi": {
+    "file": "8-vi.mp3",
+    "textHash": "c281d93a850f2d4c2ff6ac3aaf4c205b441f2bb7a5db932d77f207de4eaa22ed",
+    "voiceName": "eSpeak NG vi+f3",
+    "bytes": 295123
+  },
+  "7:zh": {
+    "file": "7-zh.mp3",
+    "textHash": "52f96332f23cc081dc9d14e8277197df5ab09973367cde5bab5485c0ba039f8f",
+    "voiceName": "eSpeak NG cmn+f3",
+    "bytes": 538793
+  },
+  "8:en": {
+    "file": "8-en.mp3",
+    "textHash": "cd914112e80ee8b373e38111fdae064e9aeaa40d2175201539752558409a319f",
+    "voiceName": "eSpeak NG en-us+f3",
+    "bytes": 354473
+  },
+  "8:ja": {
+    "file": "8-ja.mp3",
+    "textHash": "44ec42fd8f6122706ea7318f710833e3dd63a56312aa8074bdd60d822a6bfba0",
+    "voiceName": "eSpeak NG ja+f3",
+    "bytes": 476517
+  },
+  "8:ko": {
+    "file": "8-ko.mp3",
+    "textHash": "34d400b98d8facb7680873427c34c8a00145b3ea39ed1de6d5aa0b2a35b116e6",
+    "voiceName": "eSpeak NG ko+f3",
+    "bytes": 387492
+  },
+  "9:en": {
+    "file": "9-en.mp3",
+    "textHash": "66c55e508cd56594d7670c33c1ba6779d1dbea8d4f5e94f3ba6e7dd27a64cf15",
+    "voiceName": "eSpeak NG en-us+f3",
+    "bytes": 491564
+  },
+  "9:ja": {
+    "file": "9-ja.mp3",
+    "textHash": "239bde85d4302f2d5a9e68020838f07cd52fb26fa702e2f5201609928a4f4eab",
+    "voiceName": "eSpeak NG ja+f3",
+    "bytes": 602741
+  },
+  "9:ko": {
+    "file": "9-ko.mp3",
+    "textHash": "26e70e645a51326511a23ae2bd0f8a75f1a4f7cc53f142e2886d0b3a709d8020",
+    "voiceName": "eSpeak NG ko+f3",
+    "bytes": 593964
+  },
+  "9:zh": {
+    "file": "9-zh.mp3",
+    "textHash": "88226e9d8fdc94b978283128563b49f7560ce779515362531b5ac68de01f8848",
+    "voiceName": "eSpeak NG cmn+f3",
+    "bytes": 659583
+  }
+}

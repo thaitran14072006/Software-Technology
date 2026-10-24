@@ -11,6 +11,9 @@ test('all 15 stops have five complete translations and no fabricated GPS', () =>
     for (const lang of Object.keys(LANGS)) { const item = localize(poi, lang); assert.equal(item.lang, lang); assert.ok(item.name); assert.ok(item.scriptText); }
     if (poi.code !== '9') { assert.equal(poi.lat, null); assert.equal(poi.geoVerified, false); }
   }
+  const bausau = localize(seed.pois.find(p => p.code === '9'), 'vi');
+  assert.equal(bausau.audio?.provider, 'GEMINI');
+  assert.equal(bausau.audio?.url, '/audio/9-vi-04db39243e81.mp3');
 });
 test('localization never reuses another language transcript or audio', () => {
   const item = localize({

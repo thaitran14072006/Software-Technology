@@ -73,8 +73,8 @@
           "lang_code": "en",
           "name": "Six-pack Tree",
           "summary": "Cay 6 mui",
-          "script_text": "Stop 10: Six-pack Tree. It is about 7.5 km from stop 8 on the tourist map. ",
-          "text_hash": "87f0357a411c37a543f23d33285040dc43e1d91dfe4088414c0140fb6bdf3043",
+          "script_text": "The name “Six-pack Tree” gives this stop a memorable character. As you arrive, take a close look at the outline of the trunk and the prominent forms around its base; the shape helps explain why the place is known by such a familiar nickname. Each forest tree develops its own profile over time and in its own growing conditions. The visitor map places this stop about 7.5 kilometres from the Loc Giao Banyan Tree. Map distances are for orientation only, so follow the signs on site and take care not to damage the trees around you.",
+          "text_hash": "036d2778cccb06b733c4f44fb915c1178526f6cd6939960bd02d05e0bde4c9fa",
           "audio": {
             "file": "audio/10-en-54a13db64e81.mp3",
             "sha256": "54a13db64e819ddf1024edd0161f6005a26dcac3d16fb4c0665e8f5fa5eb91db",
@@ -89,8 +89,8 @@
           "lang_code": "ja",
           "name": "シックスパックの木",
           "summary": "Cay 6 mui",
-          "script_text": "10番：シックスパックの木。8番から約7.5キロメートルの場所です。",
-          "text_hash": "6302aeadaa74ce4f164b62f4c3a5a806e293e21b94bf1a146f925e4f35b1f6b7",
+          "script_text": "「シックスパックの木」という親しみやすい名前が、この場所を印象づけています。幹の輪郭や根元の目立つ形を観察すると、なぜこの呼び名が付いたのかを想像できます。森の木は、それぞれの環境の中で時を重ね、異なる姿に育っていきます。案内図では、ダ・ロックザオの木から約七・五キロメートルの場所です。図上の距離は目安ですので、現地の標識に従い、木を傷つけないようにしましょう。",
+          "text_hash": "c9d90f22b12bd22e4cf9a9ddfafb415598b68b8d4fb487bb0c2bccc7bf6d850f",
           "audio": {
             "file": "audio/10-ja-0007018d5d92.mp3",
             "sha256": "0007018d5d92f3613c396ce8d53fce08b328edbd85e3dbd16ebda882229b7fc9",
@@ -105,8 +105,8 @@
           "lang_code": "ko",
           "name": "식스팩 나무",
           "summary": "Cay 6 mui",
-          "script_text": "10번 지점: 식스팩 나무. 8번 지점에서 약 7.5킬로미터 떨어져 있습니다. ",
-          "text_hash": "7909eaed24923133ef2b917d8dd95b87fb5ddf6c6599dc5ca9c6ee51aaa396e1",
+          "script_text": "‘식스팩 나무’라는 이름은 이곳을 기억에 남게 합니다. 나무에 다가가 줄기의 윤곽과 밑동 주변의 도드라진 형태를 살펴보세요. 그 모양을 보면 왜 친근한 별칭이 붙었는지 짐작할 수 있습니다. 숲의 나무는 각기 다른 환경 속에서 저마다의 모습으로 자랍니다. 안내 지도에는 록자오 반얀트리에서 약 7.5킬로미터 떨어진 곳으로 표시되어 있습니다. 지도상의 거리는 참고용이므로 현장 표지판을 따르고 나무를 훼손하지 않도록 주의해 주세요.",
+          "text_hash": "40c785ed5e9f45ee18bdf46394a13ffc6ef8f542a4b28fb8f6843f34e276f289",
           "audio": {
             "file": "audio/10-ko-95e5412f3156.mp3",
             "sha256": "95e5412f31568471851e1cfe6c12d06c60fbcdab1d644affc85c8df8cf25a42d",
@@ -121,8 +121,8 @@
           "lang_code": "vi",
           "name": "Cây 6 múi",
           "summary": null,
-          "script_text": "Điểm 10: Cây 6 múi. Cách điểm 8 khoảng 7,5 km theo sơ đồ. ",
-          "text_hash": "0327b2ad39369a2bf6510daafb755b0f66ca7bbda8d4e693165f9023e2dd9e2b",
+          "script_text": "Cây 6 múi là cái tên gợi nên hình ảnh rất riêng. Khi đứng trước điểm dừng này, bạn hãy thử quan sát đường nét của thân cây và những phần nổi bật quanh gốc; hình dáng ấy giúp ta hiểu vì sao địa điểm được gọi bằng một cái tên gần gũi như vậy. Mỗi cây trong rừng có một cách tạo hình khác nhau, qua thời gian và điều kiện sinh trưởng của riêng mình. Theo sơ đồ tham quan, điểm này cách Cây Đa Lộc Giao khoảng bảy phẩy năm ki-lô-mét. Quãng đường trên sơ đồ chỉ mang tính tham khảo; hãy theo biển chỉ dẫn tại vườn và giữ gìn cây cối quanh bạn.",
+          "text_hash": "9c83c0b98fbea14b14fd6bf55cd6d03b174afe19397a32cbfc3472e2eda5be17",
           "audio": {
             "file": "audio/10-vi-9ec4a474be5e.mp3",
             "sha256": "9ec4a474be5e752cd2257dc38af4f5eb3c7236d0588d52aa0eb501e4c2d44492",
@@ -137,8 +137,8 @@
           "lang_code": "zh",
           "name": "六棱树",
           "summary": "Cay 6 mui",
-          "script_text": "第10站：六棱树。距离第8站约7.5公里。",
-          "text_hash": "5e4fc130e6ca0d74580078bf31848705965e04775a5f3b3198b89f87f713ef86",
+          "script_text": "“六块腹肌树”这个名字让人很容易记住这个地点。来到树前，可以观察树干的轮廓和基部突出的形态，想一想它们为何让人联想到这个有趣的称呼。森林里的每棵树都在自己的生长环境中逐渐形成独特的样子。游览示意图显示，这里距离交会榕树约7.5公里。图上距离仅供参考，请以现场标识为准，并爱护周围的树木。",
+          "text_hash": "35b9afd1c623668643ae4ac2d8494ab4e50aed9341f76c01ab7bde880e836a5d",
           "audio": {
             "file": "audio/10-zh-1fe10f9cf5fd.mp3",
             "sha256": "1fe10f9cf5fd6cc3c3e4219ee8d31badb56adce39186f3efd136ce987ab14439",
@@ -170,8 +170,8 @@
           "lang_code": "en",
           "name": "Vase-shaped Lagerstroemia",
           "summary": "Bang lang loc binh",
-          "script_text": "Stop 11: Vase-shaped Lagerstroemia. It is about 1 km from stop 10 on the tourist map. ",
-          "text_hash": "c2123ae73909c732796bc29f13c16519a2adc95b01724b604f80d4f5e7ab7884",
+          "script_text": "The Vase-shaped Lagerstroemia takes its name from a silhouette that recalls a traditional decorative vase. Step back to see the overall balance of the tree, then look more closely at how its branches divide. From a distance and up close, the same tree offers different details to notice. Its appeal is a reminder that a tree’s character comes not only from its size, but also from its distinctive form. The visitor map places this stop about one kilometre from the Six-pack Tree. Please observe from the path and do not carve or write on the trunk.",
+          "text_hash": "fc98a186e37531cf4641ad838c459119f5bfc7fd8fe023045a4be34e3cffb960",
           "audio": {
             "file": "audio/11-en-403ac387641f.mp3",
             "sha256": "403ac387641f2b7cf602258d9f701e6c506de0463e31c57adda81ca974e12782",
@@ -186,8 +186,8 @@
           "lang_code": "ja",
           "name": "花瓶形のサルスベリ",
           "summary": "Bang lang loc binh",
-          "script_text": "11番：花瓶形のサルスベリ。10番から約1キロメートルの場所です。",
-          "text_hash": "73547e561c82949094e0d7e15561736e758c7186b349e46905d47046fdd10c05",
+          "script_text": "「花瓶形のサルスベリ」は、花瓶を思わせる樹形にちなんだ名前です。少し離れて全体のバランスを眺めた後、近くで枝分かれの様子を見てみましょう。同じ木でも、遠くから見る姿と近くで見つける細部は異なります。木の魅力は大きさだけでなく、一株ごとの形にも表れます。案内図では、シックスパックの木から約一キロメートルの場所です。遊歩道から観察し、幹に文字を刻んだり書いたりしないでください。",
+          "text_hash": "75d6f8b6687f7c8612df77ce2a72837c288fdd2642e1a3cda39301a8d91ec2cb",
           "audio": {
             "file": "audio/11-ja-0cfac7dd3f56.mp3",
             "sha256": "0cfac7dd3f5687262ae7a6ca9615da7a98d41483a981df5aa945206f82b7af7b",
@@ -202,8 +202,8 @@
           "lang_code": "ko",
           "name": "화병 모양 배롱나무",
           "summary": "Bang lang loc binh",
-          "script_text": "11번 지점: 화병 모양 배롱나무. 10번 지점에서 약 1킬로미터 떨어져 있습니다. ",
-          "text_hash": "54143859f76596ec6d15e94a33283c270a4919b43ddb4fcf8ce095ceaffb9d40",
+          "script_text": "화병 모양 배롱나무는 나무의 윤곽이 장식용 화병을 떠올리게 해 붙은 이름입니다. 조금 떨어져 전체적인 균형을 살펴본 뒤, 가까이에서 가지가 갈라지는 모습도 관찰해 보세요. 멀리서 볼 때와 가까이에서 볼 때 서로 다른 특징을 발견할 수 있습니다. 나무의 매력은 크기뿐 아니라 저마다 다른 형태에도 있습니다. 안내 지도에는 식스팩 나무에서 약 일 킬로미터 떨어진 곳으로 표시되어 있습니다. 산책로에서 감상하고 나무줄기에 글씨를 새기거나 쓰지 말아 주세요.",
+          "text_hash": "fa104e7489eccaec6fe9dc462a46afff1c82ee11f73c4cddd6a1690b1ad9baa7",
           "audio": {
             "file": "audio/11-ko-06780f27c0be.mp3",
             "sha256": "06780f27c0bec026f7690a407488cf96b09302ea897936f7ba9fe86b72bb6a56",
@@ -218,15 +218,15 @@
           "lang_code": "vi",
           "name": "Bằng lăng lộc bình",
           "summary": null,
-          "script_text": "Điểm 11: Bằng lăng lộc bình. Cách điểm 10 khoảng 1 km theo sơ đồ. ",
-          "text_hash": "8d3472ed502f423b5322af5ed2a44bf35a26e60d92aa0f2470db35b73f49bf82"
+          "script_text": "Bằng lăng lộc bình được gọi tên theo dáng cây gợi liên tưởng đến chiếc lộc bình: phần thân và tán tạo nên một đường nét cân đối, mềm mại. Hãy thử lùi lại một chút để nhìn toàn dáng, rồi quan sát gần hơn cách các cành phân nhánh. Từ xa và từ gần, cây mang lại những ấn tượng khác nhau. Đây là dịp để bạn nhận ra vẻ đẹp không chỉ nằm ở kích thước mà còn ở hình dáng riêng của từng cây. Trên sơ đồ tham quan, điểm này cách Cây 6 múi khoảng một ki-lô-mét. Xin quan sát từ lối đi và không khắc vẽ lên thân cây.",
+          "text_hash": "2e9b467a4bd594e5c1b9c3d7b00c1ac268fc2b7481dde3512d9833402454908a"
         },
         {
           "lang_code": "zh",
           "name": "花瓶形紫薇树",
           "summary": "Bang lang loc binh",
-          "script_text": "第11站：花瓶形紫薇树。距离第10站约1公里。",
-          "text_hash": "765d6ff790022cbb218ce087a48dc722ac1157b005ef10e25bec2ad73ba03120",
+          "script_text": "花瓶形紫薇树的名字来自它令人联想到花瓶的轮廓。可以先退后几步，看看整株树的比例，再走近观察枝条如何分开。同一棵树，远看和近看会呈现不同的细节。树木的魅力不只在于高大，也在于各自独特的形态。游览示意图显示，这里距离六棱树约一公里。请在步道上观赏，不要在树干上刻画或涂写。",
+          "text_hash": "417fcecda9e5165551c4c643c814a17ae7e4a88f5dc84a5b0e126951ffac3a5e",
           "audio": {
             "file": "audio/11-zh-498c70ae8a45.mp3",
             "sha256": "498c70ae8a45d553c5b954b1b8f6ee24795d39d6159fa26d42ddc748582d98ca",
@@ -258,29 +258,29 @@
           "lang_code": "en",
           "name": "Dai Phong Tu Forest",
           "summary": "Rung Dai Phong Tu",
-          "script_text": "Stop 12: Dai Phong Tu Forest. It is about 0.5 km from stop 11 on the tourist map. ",
-          "text_hash": "0a2fe6b91081af42ed5338d722e60649110a36890de35de8fbc66f32c74c3723"
+          "script_text": "Dai Phong Tu Forest is a place to slow down and experience the forest with more than just your eyes. Look through the different layers of the canopy, notice the patches of light and shade on the path, and listen to the sounds around you. Instead of hurrying through, pause for a moment and notice how the forest changes from one space to another. The visitor map places this stop about five hundred metres from the Vase-shaped Lagerstroemia. Map distances are for orientation only; follow the marked route and keep your voice low so wildlife is not disturbed.",
+          "text_hash": "4cda061c1b40523e84c0f1535095783ef0877ab9a2d9324d3b3fbe7019367a86"
         },
         {
           "lang_code": "ja",
           "name": "大風子の森",
           "summary": "Rung Dai Phong Tu",
-          "script_text": "12番：大風子の森。11番から約0.5キロメートルの場所です。",
-          "text_hash": "45d3c6e98fc184ef12a17cdda6fcacde39bb45775229da898e29e4c7d61a19ff"
+          "script_text": "大風子の森では、歩みをゆるめ、目だけでなく耳でも森を感じてみましょう。樹冠の重なりや遊歩道に落ちる光と影を眺め、周囲の自然の音に耳を傾けてください。急いで通り過ぎず、場所によって森の表情がどう変わるかを少し立ち止まって味わいましょう。案内図では、花瓶形のサルスベリから約五百メートルです。図上の距離は目安です。標識のある道を歩き、野生動物を驚かせないよう静かに過ごしてください。",
+          "text_hash": "19d9cebe0cafd95c3b8c28121f1184e2ebe71db078be2515e38a3d647da574be"
         },
         {
           "lang_code": "ko",
           "name": "대풍자 숲",
           "summary": "Rung Dai Phong Tu",
-          "script_text": "12번 지점: 대풍자 숲. 11번 지점에서 약 0.5킬로미터 떨어져 있습니다. ",
-          "text_hash": "3e1b6ebe1cb376137de147beb3164924370bf7f4ee122e1680c3a12933a271af"
+          "script_text": "대풍자 숲에서는 걸음을 늦추고 눈뿐 아니라 귀로도 숲을 느껴 보세요. 여러 겹으로 이어지는 수관과 산책로 위에 드리운 빛과 그늘을 살펴보고, 주변의 자연 소리에 귀를 기울여 보세요. 서둘러 지나가기보다 잠시 멈춰 공간마다 숲의 모습이 어떻게 달라지는지 느껴 보세요. 안내 지도에는 화병 모양 배롱나무에서 약 오백 미터 떨어진 곳으로 표시되어 있습니다. 지도상의 거리는 참고용입니다. 지정된 길을 따르고 야생동물을 놀라게 하지 않도록 조용히 걸어 주세요.",
+          "text_hash": "40af64c8a6a039beb16d87cd15f657329647655237bfd8904d6616cdad0cdab4"
         },
         {
           "lang_code": "vi",
           "name": "Rừng Đại Phong Tử",
           "summary": null,
-          "script_text": "Điểm 12: Rừng Đại Phong Tử. Cách điểm 11 khoảng 0,5 km theo sơ đồ. ",
-          "text_hash": "3fc07b8f824c46ab44a5e20c43540c289158e4b2f74fe41e8aa3607a445961ec",
+          "script_text": "Rừng Đại Phong Tử là điểm dừng để bạn chậm lại và cảm nhận không gian rừng bằng nhiều giác quan. Hãy nhìn lên những tầng cây, để ý những mảng sáng tối trên lối đi và lắng nghe âm thanh tự nhiên quanh mình. Thay vì chỉ bước qua thật nhanh, bạn có thể dành một phút để nhận ra khu rừng thay đổi thế nào theo từng khoảng không gian. Theo sơ đồ tham quan, điểm này cách Bằng lăng lộc bình khoảng năm trăm mét. Khoảng cách trên sơ đồ chỉ để định hướng; hãy theo lối đi được chỉ dẫn và giữ yên tĩnh để không làm phiền sinh vật trong rừng.",
+          "text_hash": "f8fd37b165e63e27181f0e8d1eb07acef6e89d0f6ac66a6165a301d53ea6bbd3",
           "audio": {
             "file": "audio/12-vi-83ff466fc621.mp3",
             "sha256": "83ff466fc6210c04cb7012b5731abbe631fe92d5fcdfd69ab549d93cafd49f3d",
@@ -295,8 +295,8 @@
           "lang_code": "zh",
           "name": "大风子林",
           "summary": "Rung Dai Phong Tu",
-          "script_text": "第12站：大风子林。距离第11站约0.5公里。",
-          "text_hash": "772ac92ee99e24ae50ef792c52a823065c9e564c21651083e759f5840bd881d7"
+          "script_text": "在大风子林，不妨放慢脚步，用眼睛和耳朵一起感受森林。看看层层树冠如何交叠，留意步道上的光影，也听一听周围的自然声音。与其匆匆经过，不如停留片刻，感受不同位置的森林景致如何变化。游览示意图显示，这里距离花瓶形紫薇树约五百米。图上距离仅供辨认方向，请沿指定路线行走，并保持安静，避免惊扰野生动物。",
+          "text_hash": "96d96eb3e5f84839cdfb931958a563c2557654ac1ecb5f04cf01038a6764c47b"
         }
       ]
     },
@@ -554,29 +554,29 @@
           "lang_code": "en",
           "name": "Five-top Lagerstroemia",
           "summary": "Bang lang 5 ngon",
-          "script_text": "Stop 3: Five-top Lagerstroemia. It is about 0.2 km from stop 4 on the tourist map. ",
-          "text_hash": "ba92c3d1dfa85accb7ea366ca5de5a9ddbcf4485b6fa4b3b3332747038c3c52d"
+          "script_text": "Take a moment to look at the Five-top Lagerstroemia. Its distinctive outline invites you to follow the tree from the base up into the canopy. Several large branches spread in different directions, creating the impression of five separate crowns and inspiring the tree’s name. The shape changes as you view it from another angle. The visitor map places this stop about two hundred metres from the Ancient Cycad. Please stay on the path, take your time observing, and let the tree continue to grow undisturbed.",
+          "text_hash": "9630c1b47d18218e4561c5d725e95cd6579f37950721bd58bee1439acc766b63"
         },
         {
           "lang_code": "ja",
           "name": "五つ又のサルスベリ",
           "summary": "Bang lang 5 ngon",
-          "script_text": "3番：五つ又のサルスベリ。4番から約0.2キロメートルの場所です。",
-          "text_hash": "e73dc2816640dea64e9ecb1c4174124d7ed0b6b25cd225aac80c2ae427efb85a"
+          "script_text": "ここは「五つ又のサルスベリ」です。幹の根元から樹冠へと視線を向けると、大きな枝がさまざまな方向へ伸び、五つの頂があるような姿を形づくっていることに気づきます。その特徴が、この木の名前の由来です。立つ位置を変えると、幹や枝の重なり方も違って見えます。案内図では、千年ソテツから約二百メートルの場所にあります。遊歩道からゆっくり観察し、木の成長を妨げないようにしましょう。",
+          "text_hash": "0f2b98de9d43ae48592c61a8bcfe3aa80495c3d6a917b1695bfdc461c5ca6c7d"
         },
         {
           "lang_code": "ko",
           "name": "다섯 갈래 배롱나무",
           "summary": "Bang lang 5 ngon",
-          "script_text": "3번 지점: 다섯 갈래 배롱나무. 4번 지점에서 약 0.2킬로미터 떨어져 있습니다. ",
-          "text_hash": "a2deedc313c54a8d78af61e409367e6525d6577741c7f98837099993366c2f3b"
+          "script_text": "이곳은 ‘다섯 갈래 배롱나무’입니다. 줄기 밑동에서 수관까지 천천히 시선을 옮겨 보세요. 굵은 가지들이 여러 방향으로 뻗어 마치 다섯 개의 봉우리가 있는 듯한 모습을 만듭니다. 나무 이름도 이 독특한 형태에서 비롯되었습니다. 서 있는 위치에 따라 줄기와 가지가 겹쳐 보이는 모습이 달라집니다. 안내 지도에는 천년 소철에서 약 이백 미터 떨어진 곳으로 표시되어 있습니다. 산책로에서 천천히 관찰하고 나무가 자연스럽게 자라도록 보호해 주세요.",
+          "text_hash": "5574ee9c159535dbdcb161be96c884077846d23714078729dbf0c44c10bf7b87"
         },
         {
           "lang_code": "vi",
           "name": "Bằng lăng 5 ngọn",
           "summary": null,
-          "script_text": "Điểm 3: Bằng lăng 5 ngọn. Cách điểm 4 khoảng 0,2 km theo sơ đồ. ",
-          "text_hash": "aa500624b742d4c35e6ceb5f9a0c8c06959a9575ea74b75ba2b9bd650fe899c3",
+          "script_text": "Trước mắt bạn là Bằng lăng 5 ngọn, một dáng cây khiến người ta muốn dừng lại ngắm kỹ. Hãy thử nhìn từ phần gốc lên tán: những nhánh lớn tỏa ra theo nhiều hướng, tạo nên hình dáng gợi liên tưởng đến năm ngọn riêng biệt. Tên gọi của cây cũng bắt nguồn từ nét đặc trưng ấy. Mỗi góc nhìn lại làm đường nét của thân và cành hiện lên khác nhau. Trên sơ đồ tham quan, điểm này cách Thiên tuế khoảng hai trăm mét. Bạn hãy bước chậm, quan sát từ lối đi và để cây được phát triển tự nhiên.",
+          "text_hash": "d597029336ee71843bcb5e3e473465460b47e891b2a7a0b5dcfb0736ecea8bc1",
           "audio": {
             "file": "audio/3-vi-b8cd1ca0021b.mp3",
             "sha256": "b8cd1ca0021b5aa7c34ec2a07c2c154ca39338dbffe922946f5c6a75db3face1",
@@ -591,8 +591,8 @@
           "lang_code": "zh",
           "name": "五冠紫薇树",
           "summary": "Bang lang 5 ngon",
-          "script_text": "第3站：五冠紫薇树。距离第4站约0.2公里。",
-          "text_hash": "ff44faa9c5e98c4aeda0c62a23e6e313cc67f0da9a25f68395e89ab183a93ebf"
+          "script_text": "这里是“五冠紫薇树”。请从树干基部向上观察树冠：几条粗壮的枝干向不同方向伸展，远看仿佛形成了五个树冠，这正是它名字的由来。换一个角度，枝干交错的轮廓也会随之变化。游览示意图显示，这里距离千年苏铁约两百米。请沿步道慢慢观赏，不触碰或攀爬树木，让它继续自然生长。",
+          "text_hash": "2e2137089ed58898c562ad5e05b76cce9e96d4c9f9a05b750e4d23fb16eae118"
         }
       ]
     },
@@ -615,36 +615,36 @@
           "lang_code": "en",
           "name": "Ancient Cycad",
           "summary": "Thien tue",
-          "script_text": "Stop 4: Ancient Cycad. It is about 0.7 km from the Visitor Center on the tourist map. ",
-          "text_hash": "7590f1644475b8bce6e9a6c07c7d3ac6d76932701334c4d153759c48c2379df8"
+          "script_text": "The cycad stands out from the surrounding forest with a form unlike that of most broad-leaved trees. Notice its sturdy trunk and the crown of long, firm leaves spreading above it. The leaves radiate in a ring, giving the plant a distinctive, almost ancient appearance. Its Vietnamese name evokes longevity, but there is no need to guess the age of this individual plant; simply take in its structure and character. The visitor map places this stop about seven hundred metres from the Visitor Centre. Please observe from the path and do not remove any leaves.",
+          "text_hash": "23110ec53becf37e130cfe82612ee44f164af62047b477fb2451d99ddaccd4b8"
         },
         {
           "lang_code": "ja",
           "name": "千年ソテツ",
           "summary": "Thien tue",
-          "script_text": "4番：千年ソテツ。ビジターセンターから約0.7キロメートルの場所です。",
-          "text_hash": "9be87c9e44500b10f3bb1709448993fa16932fc0b012f2303487ce6f0b77c98d"
+          "script_text": "ソテツは、周囲の広葉樹とは異なる姿が印象的な植物です。しっかりとした幹と、その上に輪のように広がる長く硬い葉を観察してみてください。葉の広がりが、どこか太古を思わせる独特の姿をつくっています。ベトナム語の「ティエン・トゥエ」という名は長い時を連想させますが、この株の樹齢を決めつける必要はありません。形や質感をゆっくり味わいましょう。案内図では、ビジターセンターから約七百メートルです。遊歩道から観察し、葉を折らないようにしてください。",
+          "text_hash": "a1b03a20b4325f6ca590e2aaac902cdc24c600c2975a75805278026857f2e89e"
         },
         {
           "lang_code": "ko",
           "name": "천년 소철",
           "summary": "Thien tue",
-          "script_text": "4번 지점: 천년 소철. 방문자 센터에서 약 0.7킬로미터 떨어져 있습니다. ",
-          "text_hash": "0f3e215d4b63395e02e7fd0543b3c7bf6d6f09434a05c92ea6f3afa98fd0737a"
+          "script_text": "소철은 주변의 넓은 잎나무들과 다른 독특한 모습으로 눈길을 끕니다. 단단한 줄기와 그 위로 둥글게 퍼지는 길고 뻣뻣한 잎을 살펴보세요. 잎이 방사형으로 뻗은 모습은 고풍스럽고 개성 있는 인상을 줍니다. 베트남어 이름 ‘티엔뚜에’는 긴 세월을 떠올리게 하지만, 이 나무의 나이를 짐작할 필요는 없습니다. 형태와 질감을 천천히 감상해 보세요. 안내 지도에는 방문자 센터에서 약 칠백 미터 떨어진 곳으로 표시되어 있습니다. 산책로에서 관찰하고 잎을 꺾지 말아 주세요.",
+          "text_hash": "52216ad1816779357a2313ab42d60d4515b4abd643a8a2bc61f8c569bb75cc73"
         },
         {
           "lang_code": "vi",
           "name": "Thiên tuế",
           "summary": null,
-          "script_text": "Điểm 4: Thiên tuế. Cách Trung tâm Du khách khoảng 0,7 km theo sơ đồ. ",
-          "text_hash": "341062c72098bdafd44014ee12741184b51860a82d6b9250a13091739496418c"
+          "script_text": "Thiên tuế là một loài cây có dáng vẻ khác biệt giữa những tán cây rừng. Hãy quan sát thân cây chắc khỏe và vòng lá dài, cứng, xòe ra ở phía trên. Những chiếc lá mọc thành vòng khiến cây trông vừa cổ kính vừa mạnh mẽ. Tên gọi “thiên tuế” thường gợi đến sức sống lâu bền, nhưng ở đây chúng ta không cần đoán tuổi của cây; hãy dành thời gian nhận ra cấu trúc và vẻ đẹp riêng của nó. Theo sơ đồ tham quan, điểm này cách Trung tâm Du khách khoảng bảy trăm mét. Xin chỉ quan sát từ lối đi và không bẻ lá.",
+          "text_hash": "2b945465803ac0aa0858b49f0a3a9ff34ad39fe87c0837ac387e159e73a70a6f"
         },
         {
           "lang_code": "zh",
           "name": "千年苏铁",
           "summary": "Thien tue",
-          "script_text": "第4站：千年苏铁。距离游客中心约0.7公里。",
-          "text_hash": "53828deee1b91173242c8efcde4094831150c14bdf9305c974647bed7a074433"
+          "script_text": "苏铁的形态与周围常见的阔叶树不同，很容易让人停下脚步。请留意它结实的树干，以及顶部向四周展开的一圈长而坚硬的叶片。叶片呈放射状舒展，形成独特而古朴的轮廓。越南语名称“Thiên tuế”让人联想到长寿，但我们不必据此推测眼前这株植物的年龄，不妨专注欣赏它的形态与质感。游览示意图显示，这里距离游客中心约七百米。请在步道上观赏，不要折摘叶片。",
+          "text_hash": "d17635a602ade87c26fb88849d0e8d8e40a10b290fedc0e7da6d6c2085c6b812"
         }
       ]
     },
@@ -719,36 +719,36 @@
           "lang_code": "en",
           "name": "Botanical Garden",
           "summary": "Vuon thuc vat",
-          "script_text": "Stop 6: Botanical Garden. It is about 0.1 km from stop 5 on the tourist map. This is the main junction: one way leads deep into the forest, the other to Heaven Rapids, 3.6 km away. ",
-          "text_hash": "f00c2280893c43fcdd1c66b88d7f0a70f81e7dc2e79e1b52335ee5fd3172a0cb"
+          "script_text": "The Botanical Garden is a good place to pause and look more closely at the variety of plants before continuing into the forest. Notice the shapes and colours of the leaves, and how different layers of vegetation meet the light. Small details like these make the richness of the forest easier to appreciate. This is also an important junction on the visitor route. The map shows about one hundred metres from stop five to here; one direction continues deeper into the forest, while the other leads toward Heaven Rapids, about 3.6 kilometres away on the map. Check the signs on site, stay on marked paths, and do not pick plants.",
+          "text_hash": "3fbe24b17b85d9fb2f390fe75c1a06204ac5e94c762d3e1fc2173c7abe80007d"
         },
         {
           "lang_code": "ja",
           "name": "植物園",
           "summary": "Vuon thuc vat",
-          "script_text": "6番：植物園。5番から約0.1キロメートルの場所です。ここは主要な分岐点です。一方は深い森へ、もう一方は3.6キロメートル先の天国の急流へ続きます。",
-          "text_hash": "1bd65e864c55b7672927f6887003fd488a706bfe711fd39c1cb50aae6d1b7586"
+          "script_text": "植物園は、森の散策を続ける前に、植物の多様さを近くで感じられる休憩地点です。葉の形や色、木々の層に光が差し込む様子を観察してみましょう。小さな違いに気づくことで、森の豊かさがより身近になります。ここは遊歩道の大切な分岐点でもあります。案内図では、5番から約百メートル。一方は森の奥へ、もう一方は案内図上で約三・六キロメートル先の天の滝へ続きます。出発前に現地の標識を確認し、決められた道を歩き、植物を採らないようにしましょう。",
+          "text_hash": "136a97fe215f52cdd9671106d7825d0cad0c118b76a05cb92160578270a744d9"
         },
         {
           "lang_code": "ko",
           "name": "식물원",
           "summary": "Vuon thuc vat",
-          "script_text": "6번 지점: 식물원. 5번 지점에서 약 0.1킬로미터 떨어져 있습니다. 주요 갈림길입니다. 한쪽은 깊은 숲으로, 다른 쪽은 3.6킬로미터 떨어진 천국 급류로 이어집니다. ",
-          "text_hash": "3158a7b4f0e99dede8ec70945d9faeb085d1f48cd2567dce1e24bbd048910073"
+          "script_text": "식물원은 숲길을 계속 걷기 전에 다양한 식물을 가까이 살펴볼 수 있는 좋은 쉼터입니다. 잎의 모양과 색, 여러 층의 식생 사이로 빛이 드는 모습을 관찰해 보세요. 작은 차이를 알아차리면 숲의 풍요로움이 더욱 잘 느껴집니다. 이곳은 탐방로의 중요한 갈림길이기도 합니다. 안내 지도에는 5번 지점에서 약 백 미터로 표시되어 있습니다. 한쪽은 숲 깊은 곳으로 이어지고, 다른 쪽은 지도상 약 3.6킬로미터 떨어진 천국 급류 방향으로 이어집니다. 출발 전 현장 표지판을 확인하고, 지정된 길을 이용하며 식물을 꺾지 말아 주세요.",
+          "text_hash": "2df549ddaa33a82080d1776d8d6e71cead865580a0dc045674b8c7961f75eb22"
         },
         {
           "lang_code": "vi",
           "name": "Vườn thực vật",
           "summary": null,
-          "script_text": "Điểm 6: Vườn thực vật. Cách điểm 5 khoảng 0,1 km theo sơ đồ. Đây là ngã ba chính: một hướng vào rừng sâu, một hướng đến Thác Trời cách 3,6 km. ",
-          "text_hash": "929839e45993fb28e7e7fc4a69765ce3e28b5485a352db0eea4a11b3408393c9"
+          "script_text": "Vườn thực vật là điểm dừng để bạn nhìn gần hơn sự đa dạng của cây cối trước khi tiếp tục hành trình trong rừng. Hãy dành một phút quan sát hình dáng lá, màu sắc và cách các tầng cây đón ánh sáng; mỗi chi tiết đều giúp ta cảm nhận khu rừng phong phú hơn. Đây cũng là một nút giao quan trọng trên tuyến tham quan. Theo sơ đồ, từ điểm 5 đến đây khoảng một trăm mét; một hướng tiếp tục vào rừng sâu, hướng còn lại dẫn về Thác Trời, cách khoảng ba phẩy sáu ki-lô-mét theo sơ đồ. Hãy xem biển chỉ dẫn thực tế trước khi đi, đi đúng lối và không hái cây.",
+          "text_hash": "f2ce2b6f80eabffe1bd8410fcdc5814d800d73c20ddc6a888d2a6edd9596e8db"
         },
         {
           "lang_code": "zh",
           "name": "植物园",
           "summary": "Vuon thuc vat",
-          "script_text": "第6站：植物园。距离第5站约0.1公里。这里是主要岔路口：一条通往密林深处，另一条通往天堂急流，相距3.6公里。",
-          "text_hash": "4e43df028f6932eccb68902ac2563b5b95b3ea11909de246fb02e6744bfb2e60"
+          "script_text": "植物园是继续深入森林前，近距离观察植物多样性的好地方。可以留意叶片的形状与颜色，也看看不同层次的植被如何接收阳光。发现这些细节，会让人更容易感受到森林的丰富。这里也是游览路线上的重要岔路口。示意图显示，从第5站到这里约一百米；一条路继续通往森林深处，另一条通往约3.6公里外的天瀑方向。出发前请查看现场指示牌，沿指定路线行走，不采摘植物。",
+          "text_hash": "e6732c152ff359e891d0f351bf4485524658813720b5d74c80286e8f9963ec96"
         }
       ]
     },
