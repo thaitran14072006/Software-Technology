@@ -1,0 +1,12 @@
+{
+  "checkedOn": "2026-10-23",
+  "points": [
+    {"existingCode":"9","documentOrder":1,"latitude":11.4591271,"longitude":107.3453414,"source":"https://www.openstreetmap.org/node/5072875722","note":"Named visitor attraction at Crocodile Lake, not the lake polygon centroid."},
+    {"existingCode":"7","documentOrder":3,"latitude":11.4374073,"longitude":107.4234363,"source":"https://www.openstreetmap.org/node/4746491491","note":"Named natural monument Cây Gõ bác Đồng; distinct from nearby information sign."},
+    {"existingCode":"5","documentOrder":8,"latitude":11.4344393,"longitude":107.4295182,"source":"https://www.openstreetmap.org/node/12613087809","note":"Ben Cu rapids viewpoint."},
+    {"code":"doc-13","documentOrder":13,"latitude":11.4333159,"longitude":107.4332859,"source":"https://www.openstreetmap.org/node/11675219811","note":"Named Dao Tien primate rescue centre."},
+    {"code":"doc-14","documentOrder":14,"latitude":11.5292777778,"longitude":107.3981666667,"source":"https://tmso.baotanglamdong.com.vn/bo-suu-tap/khao-co-cat-tien/di-tich-quoc-gia-dac-biet-khao-co-cat-tien/","note":"Museum publishes 11°31′45.4″N, 107°23′53.4″E; converted to decimal degrees."}
+  ],
+  "unresolvedDocumentOrders": [2,4,5,6,7,9,10,11,12,15],
+  "notes": ["Existing coordinates not in points are left unchanged and unverified.","Two OSM Tung tree records are far from the old schematic stop; identity needs confirmation before replacing its coordinates.","Ta Lai locality/commune coordinates are not a verified cultural-village entrance.","Night safari is a moving route, not a single observation spot. No invented marker is added."]
+}
