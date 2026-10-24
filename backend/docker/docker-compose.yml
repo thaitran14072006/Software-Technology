@@ -1,0 +1,33 @@
+services:
+  local-tts:
+    profiles: [local-tts]
+    build: ../local-tts
+    ports: ["127.0.0.1:3010:3010"]
+    restart: unless-stopped
+  postgres:
+    image: postgres:16-alpine
+    environment: { POSTGRES_USER: sag, POSTGRES_PASSWORD: sag, POSTGRES_DB: sag }
+    ports: ["127.0.0.1:5432:5432"]
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ../db/schema.sql:/docker-entrypoint-initdb.d/01-schema.sql:ro
+      - ../db/analytics.sql:/docker-entrypoint-initdb.d/02-analytics.sql:ro
+      - ../db/complete.sql:/docker-entrypoint-initdb.d/03-complete.sql:ro
+  redis:
+    profiles: [legacy]
+    image: redis:7-alpine
+    ports: ["6379:6379"]
+  mongo:
+    profiles: [legacy]
+    image: mongo:7
+    ports: ["27017:27017"]
+    volumes: ["mongodata:/data/db"]
+  rabbitmq:
+    profiles: [legacy]
+    image: rabbitmq:3.13-management
+    ports: ["5672:5672", "15672:15672"]
+    volumes: ["rabbitdata:/var/lib/rabbitmq"]
+volumes:
+  pgdata: {}
+  mongodata: {}
+  rabbitdata: {}

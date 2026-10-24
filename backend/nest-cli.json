@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json.schemastore.org/nest-cli",
+  "collection": "@nestjs/schematics",
+  "sourceRoot": "apps/content-poi-service/src",
+  "monorepo": true,
+  "root": "apps/content-poi-service",
+  "compilerOptions": { "webpack": true, "tsConfigPath": "apps/content-poi-service/tsconfig.app.json" },
+  "projects": {
+    "content-poi-service": { "type": "application", "root": "apps/content-poi-service", "entryFile": "main", "sourceRoot": "apps/content-poi-service/src", "compilerOptions": { "tsConfigPath": "apps/content-poi-service/tsconfig.app.json" } },
+    "audio-tts-service": { "type": "application", "root": "apps/audio-tts-service", "entryFile": "main", "sourceRoot": "apps/audio-tts-service/src", "compilerOptions": { "tsConfigPath": "apps/audio-tts-service/tsconfig.app.json" } },
+    "qr-fallback-service": { "type": "application", "root": "apps/qr-fallback-service", "entryFile": "main", "sourceRoot": "apps/qr-fallback-service/src", "compilerOptions": { "tsConfigPath": "apps/qr-fallback-service/tsconfig.app.json" } }
+  }
+}
