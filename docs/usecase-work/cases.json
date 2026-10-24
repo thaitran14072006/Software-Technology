@@ -1,0 +1,362 @@
+[
+  {
+    "name": "Truy cập hệ thống và chọn ngôn ngữ",
+    "actor": "Khách tham quan (User); Admin có thể dùng như User",
+    "summary": "User mở web bằng QR tại cổng hoặc URL, chọn một trong 5 ngôn ngữ; không cần tài khoản.",
+    "steps": [
+      [
+        0,
+        "Mở URL web hoặc quét QR tham gia."
+      ],
+      [
+        1,
+        "Hiển thị trang tham quan và bộ chọn ngôn ngữ."
+      ],
+      [
+        0,
+        "Chọn Việt, Anh, Nhật, Hàn hoặc Trung."
+      ],
+      [
+        1,
+        "Lưu lựa chọn; tải nội dung và đổi giao diện theo ngôn ngữ đã chọn."
+      ]
+    ],
+    "alt": "A1. Truy cập bằng URL trực tiếp cho kết quả tương tự. A2. Mobile có màn hình bắt đầu riêng; chưa có APK phát hành.",
+    "exc": "E1. Chưa có mạng và chưa tải gói: không mở được lần đầu. E2. QR chứa localhost hoặc IP cũ: dùng URL LAN đang hoạt động.",
+    "trigger": "User bắt đầu sử dụng hướng dẫn tham quan.",
+    "pre": "Web/backend đang chạy; QR dùng URL truy cập được từ thiết bị, hoặc đã có gói ngoại tuyến.",
+    "post": "Trang tham quan dùng ngôn ngữ đã chọn; User không có phiên đăng nhập.",
+    "ref": "UC7; app.mjs; ui-i18n.mjs",
+    "decision": "Trang hoặc gói có sẵn?",
+    "yes": "Chọn ngôn ngữ và xem nội dung",
+    "no": "Báo lỗi truy cập; kiểm tra URL hoặc mạng"
+  },
+  {
+    "name": "Xem bản đồ và tìm tuyến trên sơ đồ",
+    "actor": "Khách tham quan (User); Admin có thể dùng như User; OpenStreetMap",
+    "summary": "User tìm/lọc POI, đổi giữa sơ đồ và Leaflet/OpenStreetMap trên web. Tuyến tham khảo được tính trên đồ thị sơ đồ.",
+    "steps": [
+      [
+        0,
+        "Mở trang Khám phá; chọn bộ lọc hoặc tìm POI."
+      ],
+      [
+        1,
+        "Đồng bộ danh sách và marker; chỉ đưa POI có tọa độ đã xác thực hoặc có nguồn lên bản đồ địa lý."
+      ],
+      [
+        0,
+        "Chọn POI; bật GPS nếu muốn xem vị trí."
+      ],
+      [
+        1,
+        "Hiển thị chi tiết; cập nhật vị trí khi được cấp quyền."
+      ],
+      [
+        0,
+        "Chọn điểm xuất phát và bấm Chỉ đường."
+      ],
+      [
+        1,
+        "Chuyển về sơ đồ và hiển thị tuyến, khoảng cách/thời gian ước tính nếu có đường nối."
+      ]
+    ],
+    "alt": "A1. User đổi bản đồ/sơ đồ thủ công. A2. Mobile dùng MapLibre; ngoài đồ thị chỉ có đường thẳng ước lượng, không phải tuyến đi bộ thực tế.",
+    "exc": "E1. Không có đường nối: báo không tìm được tuyến. E2. Từ chối GPS vẫn xem được POI. E3. Mất mạng có thể không tải được nền OSM.",
+    "trigger": "User muốn tìm POI hoặc xem tuyến tham khảo.",
+    "pre": "Có dữ liệu POI và sơ đồ; GPS trên web cần localhost hoặc HTTPS và quyền vị trí.",
+    "post": "POI được chọn; tuyến tham khảo hiển thị khi dữ liệu đồ thị hỗ trợ.",
+    "ref": "core.mjs; directions.ts",
+    "decision": "Có tuyến trong đồ thị?",
+    "yes": "Vẽ tuyến sơ đồ và số liệu ước tính",
+    "no": "Báo không có tuyến; vẫn cho xem POI"
+  },
+  {
+    "name": "Tự động phát thuyết minh theo vị trí",
+    "actor": "Khách tham quan (User); Admin có thể dùng như User; dịch vụ định vị; BLE trên mobile",
+    "summary": "Khi User bật tự phát và định vị, hệ thống xét vùng POI đã xác thực tọa độ; chỉ phát audio sẵn sàng theo ngôn ngữ hiện tại.",
+    "steps": [
+      [
+        0,
+        "Bật GPS và Tự động phát; giữ ứng dụng hoạt động."
+      ],
+      [
+        1,
+        "Xin quyền và cập nhật vị trí; kiểm tra độ chính xác."
+      ],
+      [
+        0,
+        "Di chuyển vào vùng của POI đã xác thực."
+      ],
+      [
+        1,
+        "Kiểm tra mẫu vị trí liên tiếp, bán kính và thời gian không phát lại."
+      ],
+      [
+        1,
+        "Chọn POI và yêu cầu phát audio đúng ngôn ngữ nếu đáp ứng điều kiện."
+      ]
+    ],
+    "alt": "A1. Mobile có mã BLE khi GPS yếu và có beacon đã đăng ký; chưa kiểm thử phần cứng. Web không quét BLE. A2. Dùng UC4 hoặc UC6 khi định vị không phù hợp.",
+    "exc": "E1. GPS yếu/thiếu quyền: không bảo đảm tự phát. E2. Trong thời gian chống phát lại: không tự phát lại. E3. Google chưa sẵn sàng: báo chờ, không tự đổi giọng thiết bị. E4. Trình duyệt chặn phát tự động: User bấm Phát.",
+    "trigger": "Vị trí thay đổi khi chế độ tự phát đang bật.",
+    "pre": "Có POI geoVerified, quyền vị trí, nội dung ngôn ngữ hiện tại; phát âm thanh chịu chính sách thiết bị.",
+    "post": "POI được chọn; audio phát khi sẵn sàng và được thiết bị cho phép.",
+    "ref": "UC4; UC6; useAutoPlay.ts",
+    "decision": "Đủ điều kiện và có audio?",
+    "yes": "Chọn POI và yêu cầu phát thuyết minh",
+    "no": "Chờ vị trí hoặc báo thiếu audio; cho nghe thủ công"
+  },
+  {
+    "name": "Quét QR tại điểm tham quan",
+    "actor": "Khách tham quan (User); Admin có thể dùng như User",
+    "summary": "User quét hoặc nhập mã QR POI để mở đúng bài thuyết minh; sử dụng được độc lập hoặc khi GPS không phù hợp.",
+    "steps": [
+      [
+        0,
+        "Mở chức năng QR; chọn quét camera hoặc nhập mã."
+      ],
+      [
+        1,
+        "Xin quyền camera nếu quét trong web và thiết bị hỗ trợ."
+      ],
+      [
+        0,
+        "Quét hoặc dán nội dung QR của POI."
+      ],
+      [
+        1,
+        "Tra token đang hoạt động qua QR API hoặc bảng mã đã lưu."
+      ],
+      [
+        1,
+        "Chọn POI đúng ngôn ngữ và yêu cầu phát audio sẵn sàng."
+      ]
+    ],
+    "alt": "A1. Nhập token hoặc nội dung mã khi camera không hỗ trợ. A2. QR tham gia dạng URL mở web; QR POI dạng sag://poi/token được xử lý trong ứng dụng, không bảo đảm camera hệ thống mở được.",
+    "exc": "E1. Token lạ, bị tắt hoặc POI không công bố: báo lỗi. E2. HTTP LAN không hỗ trợ camera trong web: nhập mã hoặc dùng camera hệ thống với QR URL. E3. Chưa có audio: báo chờ. E4. Ngoại tuyến chưa lưu bảng QR: không tra được token.",
+    "trigger": "User muốn mở nhanh thuyết minh của một POI.",
+    "pre": "Có QR hợp lệ; kết nối backend hoặc đã lưu dữ liệu POI và bảng QR phù hợp.",
+    "post": "POI đúng mã được mở; chỉ phát khi audio sẵn sàng và thiết bị cho phép.",
+    "ref": "UC6; UC7; resolveQR",
+    "decision": "Tra được POI hợp lệ?",
+    "yes": "Mở chi tiết và yêu cầu phát audio",
+    "no": "Báo mã không hợp lệ hoặc thiếu dữ liệu"
+  },
+  {
+    "name": "Quản lý POI và tạo âm thanh TTS",
+    "actor": "Quản trị viên (Admin); Google AI Studio Gemini TTS",
+    "summary": "Admin quản lý POI, bản dịch và yêu cầu tạo MP3 qua hàng đợi. Nội dung được lưu trước khi có kết quả audio.",
+    "steps": [
+      [
+        0,
+        "Đăng nhập UC8; chọn thêm/sửa POI."
+      ],
+      [
+        1,
+        "Hiển thị POI, tọa độ, trạng thái và bản dịch."
+      ],
+      [
+        0,
+        "Nhập dữ liệu; lưu và yêu cầu tạo audio."
+      ],
+      [
+        1,
+        "Kiểm tra; lưu PostgreSQL và xếp job TTS."
+      ],
+      [
+        1,
+        "Worker tạo MP3; lưu file và metadata trạng thái."
+      ],
+      [
+        0,
+        "Theo dõi job; kiểm tra bản thu trước khi dùng."
+      ]
+    ],
+    "alt": "A1. Tải MP3 có sẵn cho bản dịch đã lưu (tối đa 20 MB). A2. Chạy chế độ LOCAL để dùng eSpeak khi chủ động lựa chọn. A3. Lưu DRAFT hoặc PUBLISHED theo quyền admin.",
+    "exc": "E1. Thiếu dữ liệu: từ chối lưu. E2. Quota/timeout: giữ nội dung, ghi lỗi hoặc thời điểm chờ. E3. Thiếu khóa/cấu hình Gemini: không tạo được Google audio.",
+    "trigger": "Admin cần thay đổi POI hoặc tạo/cập nhật thuyết minh.",
+    "pre": "Phiên ADMIN hợp lệ; database hoạt động. Tạo Google cần khóa phía máy chủ, mạng và quota.",
+    "post": "POI đã lưu; MP3 nằm trong kho file, metadata ở database. Audio có thể đang chờ, sẵn sàng hoặc lỗi.",
+    "ref": "UC8; poi.service.ts; JobWorker",
+    "decision": "Dữ liệu nhập hợp lệ?",
+    "yes": "Lưu POI và xếp job; theo dõi kết quả",
+    "no": "Báo dữ liệu sai; giữ form để sửa"
+  },
+  {
+    "name": "Nghe thuyết minh chủ động",
+    "actor": "Khách tham quan (User); Admin có thể dùng như User",
+    "summary": "User chọn POI và bấm Phát theo ngôn ngữ hiện tại, không phụ thuộc GPS hoặc QR.",
+    "steps": [
+      [
+        0,
+        "Chọn POI từ danh sách, sơ đồ hoặc bản đồ."
+      ],
+      [
+        1,
+        "Hiển thị nội dung và trạng thái audio theo ngôn ngữ."
+      ],
+      [
+        0,
+        "Bấm Phát thuyết minh."
+      ],
+      [
+        1,
+        "Ưu tiên MP3 Google sẵn sàng khi chạy Gemini; dùng file đã tải nếu ngoại tuyến."
+      ],
+      [
+        0,
+        "Bấm Dừng hoặc chọn bài khác khi cần."
+      ]
+    ],
+    "alt": "A1. User chủ động chọn nguồn giọng trình duyệt hoặc MP3 khác trên web; chất lượng và khả năng ngoại tuyến tùy nguồn.",
+    "exc": "E1. Google chưa có file hoặc tải file lỗi: báo rõ, không tự thay bằng giọng máy. E2. Ngoại tuyến chưa tải file đúng bài/ngôn ngữ: không nghe được bản Google.",
+    "trigger": "User muốn nghe hoặc dừng một bài thuyết minh.",
+    "pre": "Có nội dung POI; audio tương ứng sẵn sàng trực tuyến hoặc đã tải về.",
+    "post": "Audio đúng bài/ngôn ngữ được phát hoặc dừng; lỗi được thông báo khi chưa thể phát.",
+    "ref": "UC1; useAudioPlayer.ts",
+    "decision": "Audio đúng ngôn ngữ sẵn sàng?",
+    "yes": "Phát MP3; cho phép dừng",
+    "no": "Báo chưa sẵn sàng; không tự đổi giọng"
+  },
+  {
+    "name": "Tải gói và nghe thuyết minh ngoại tuyến",
+    "actor": "Khách tham quan (User); Admin có thể dùng như User",
+    "summary": "User tải nội dung và các MP3 Google đã có khi còn mạng; ngoại tuyến phát lại đúng file, giữ nguyên giọng đã tải.",
+    "steps": [
+      [
+        0,
+        "Chọn tải gói ngoại tuyến khi còn kết nối."
+      ],
+      [
+        1,
+        "Đọc nội dung 5 ngôn ngữ; lấy MP3 sẵn sàng và kiểm tra file."
+      ],
+      [
+        1,
+        "Lưu gói PWA trên localhost/HTTPS; HTTP LAN cung cấp ZIP tải về."
+      ],
+      [
+        0,
+        "Nếu tải ZIP: giải nén và mở index.html; nếu PWA: mở lại trang đã lưu."
+      ],
+      [
+        1,
+        "Hiển thị nội dung đã tải và phát đúng MP3 có trong gói."
+      ]
+    ],
+    "alt": "A1. Gói thiếu một số audio vẫn ghi rõ số đã có và số thiếu. A2. Tải lại sau khi nội dung/audio thay đổi để nhận bản mới.",
+    "exc": "E1. Lần đầu không có mạng: không tải được gói. E2. PWA tải audio lỗi: không thay gói cũ bằng gói lỗi. E3. Bài/ngôn ngữ chưa có trong gói: báo thiếu, không tạo Google TTS ngoại tuyến.",
+    "trigger": "User chuẩn bị vào khu vực kết nối yếu hoặc muốn giữ giọng Google khi mất mạng.",
+    "pre": "Đang có mạng để tải; có dung lượng lưu và MP3 đã tạo. ZIP không phải bản đồ OSM ngoại tuyến đầy đủ.",
+    "post": "Nội dung và MP3 đã tải dùng được ngoại tuyến; không cam kết có mọi bài hoặc mọi ngôn ngữ.",
+    "ref": "UC6; store.mjs; sw.js",
+    "decision": "Có file Google tải được?",
+    "yes": "Lưu gói và phát lại file ngoại tuyến",
+    "no": "Báo chưa có gói/audio để tải"
+  },
+  {
+    "name": "Đăng nhập và đăng xuất quản trị",
+    "actor": "Quản trị viên (Admin)",
+    "summary": "Admin đăng nhập bằng email/mật khẩu để mở chức năng quản lý; User tham quan không đăng ký hoặc đăng nhập.",
+    "steps": [
+      [
+        0,
+        "Mở Kết nối và nhập email, mật khẩu admin."
+      ],
+      [
+        1,
+        "Xác thực qua backend và kiểm tra quyền ADMIN."
+      ],
+      [
+        1,
+        "Lưu access/refresh token trong phiên tab, chuyển sang dữ liệu API và mở quản trị."
+      ],
+      [
+        0,
+        "Thực hiện chức năng quản lý hoặc bấm Đăng xuất."
+      ],
+      [
+        1,
+        "Khi đăng xuất: thu hồi refresh token và xóa thông tin phiên trên trình duyệt."
+      ]
+    ],
+    "alt": "A1. Nhập JWT ADMIN thủ công khi đã có token hợp lệ; không cần làm bước này khi dùng email/mật khẩu. A2. Admin quay về trang tham quan và dùng như User.",
+    "exc": "E1. Sai mật khẩu/tài khoản không hoạt động: từ chối. E2. Token hết hạn hoặc thiếu quyền: yêu cầu xác thực lại hoặc từ chối thao tác quản trị. E3. Backend không chạy: báo lỗi kết nối.",
+    "trigger": "Admin cần vào hoặc thoát khu vực quản lý.",
+    "pre": "Có tài khoản ADMIN đã được tạo; backend và database hoạt động.",
+    "post": "Đăng nhập tạo phiên ADMIN hợp lệ; đăng xuất kết thúc phiên, vẫn cho phép tham quan.",
+    "ref": "UC5; auth.controller.ts",
+    "decision": "Thông tin và quyền hợp lệ?",
+    "yes": "Lưu phiên và mở quản trị",
+    "no": "Báo lỗi; không cấp quyền quản trị"
+  },
+  {
+    "name": "Quản lý QR beacon và cấu hình tự phát",
+    "actor": "Quản trị viên (Admin)",
+    "summary": "Admin xem QR, bật/tắt mã, tải SVG; đăng ký beacon và cấu hình bán kính cùng thời gian không phát lại.",
+    "steps": [
+      [
+        0,
+        "Đăng nhập; mở công cụ cấu hình và mã tại điểm."
+      ],
+      [
+        1,
+        "Tải danh sách QR, beacon, cấu hình và trạng thái job."
+      ],
+      [
+        0,
+        "Chọn bật/tắt QR hoặc beacon, đăng ký beacon, hoặc sửa cấu hình."
+      ],
+      [
+        1,
+        "Kiểm tra quyền/dữ liệu và lưu thay đổi."
+      ],
+      [
+        0,
+        "Tải SVG QR hoặc kiểm tra lại danh sách đã lưu."
+      ]
+    ],
+    "alt": "A1. QR tham gia dùng URL web truy cập được qua LAN/HTTPS. A2. Beacon cần thiết bị thật và mobile hỗ trợ; đăng ký không chứng minh đã hoạt động ngoài thực tế.",
+    "exc": "E1. Thiếu quyền hoặc dữ liệu không hợp lệ: từ chối lưu. E2. QR bị tắt không tra được qua API khi trực tuyến; bản offline cũ chỉ cập nhật sau khi tải lại.",
+    "trigger": "Admin chuẩn bị hoặc điều chỉnh cách nhận diện POI.",
+    "pre": "UC8 thành công; POI và backend tồn tại; cấu hình áp dụng theo lần tải dữ liệu của client.",
+    "post": "QR/beacon/cấu hình được lưu; không khẳng định web hỗ trợ BLE.",
+    "ref": "UC3; UC4; admin-tools.mjs",
+    "decision": "Có quyền và dữ liệu hợp lệ?",
+    "yes": "Lưu cấu hình hoặc cập nhật trạng thái mã",
+    "no": "Báo lỗi; không thay cấu hình"
+  },
+  {
+    "name": "Xem thống kê và nhật ký quản trị",
+    "actor": "Quản trị viên (Admin)",
+    "summary": "Admin xem lượt hiện diện/nghe, dữ liệu vị trí đã được khách đồng ý chia sẻ, trạng thái TTS và nhật ký để theo dõi hệ thống.",
+    "steps": [
+      [
+        0,
+        "Đăng nhập và mở thống kê/công cụ quản trị."
+      ],
+      [
+        1,
+        "Tải thống kê, job và nhật ký theo API tương ứng."
+      ],
+      [
+        0,
+        "Chọn xem vùng có lượt ghé hoặc các bản ghi gần đây."
+      ],
+      [
+        1,
+        "Hiển thị số liệu và heatmap tổng hợp khi có mẫu vị trí đã được chia sẻ."
+      ]
+    ],
+    "alt": "A1. Khi chưa có dữ liệu, hiển thị danh sách rỗng hoặc thông báo chưa có mẫu.",
+    "exc": "E1. Không có quyền ADMIN: từ chối truy cập. E2. Lỗi mạng/backend: báo lỗi tải. E3. Khách không đồng ý chia sẻ vị trí: không có mẫu vị trí của khách đó để hiển thị.",
+    "trigger": "Admin muốn theo dõi sử dụng và kiểm tra lỗi vận hành.",
+    "pre": "UC8 thành công; chỉ có thể thống kê các sự kiện đã được hệ thống ghi nhận.",
+    "post": "Admin xem dữ liệu hiện có; số liệu không đại diện đầy đủ cho mọi khách ngoài thực tế.",
+    "ref": "analytics.controller.ts; admin-tools.mjs",
+    "decision": "Tải dữ liệu thành công?",
+    "yes": "Hiển thị số liệu hoặc trạng thái rỗng",
+    "no": "Báo lỗi kết nối hoặc quyền truy cập"
+  }
+]

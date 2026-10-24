@@ -1,0 +1,3239 @@
+{
+  "version": 0.6,
+  "generator": "Overpass API 0.7.62.11 87bfad18",
+  "osm3s": {
+    "timestamp_osm_base": "2026-10-23T10:07:21Z",
+    "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL."
+  },
+  "elements": [
+    {
+      "type": "node",
+      "id": 4095230835,
+      "lat": 11.5228988,
+      "lon": 107.4659648,
+      "tags": {
+        "amenity": "fuel",
+        "building": "roof",
+        "name": "Mipecorp Fuel",
+        "source": "GPS"
+      }
+    },
+    {
+      "type": "node",
+      "id": 4601990417,
+      "lat": 11.4972429,
+      "lon": 107.3808274,
+      "tags": {
+        "name": "100 Roots Tree",
+        "name:vi": "si",
+        "natural": "tree"
+      }
+    },
+    {
+      "type": "node",
+      "id": 4746491491,
+      "lat": 11.4374073,
+      "lon": 107.4234363,
+      "tags": {
+        "denotation": "natural_monument",
+        "height": "30",
+        "name": "Cây Gõ bác Đồng",
+        "name:en": "Uncle Dong Makha Tree",
+        "natural": "tree"
+      }
+    },
+    {
+      "type": "node",
+      "id": 5043949621,
+      "lat": 11.4588741,
+      "lon": 107.3454316,
+      "tags": {
+        "name": "Bàu Sấu Nam Cát Tiên",
+        "name:vi": "Bàu Sấu Nam Cát Tiên",
+        "tourism": "attraction"
+      }
+    },
+    {
+      "type": "node",
+      "id": 5072875722,
+      "lat": 11.4591271,
+      "lon": 107.3453414,
+      "tags": {
+        "name": "Bàu Sấu",
+        "name:en": "Crocodile Lake",
+        "name:vi": "Bàu Sấu",
+        "tourism": "attraction"
+      }
+    },
+    {
+      "type": "node",
+      "id": 5366011821,
+      "lat": 11.4501435,
+      "lon": 107.3646063,
+      "tags": {
+        "leaf_cycle": "deciduous",
+        "leaf_type": "broadleaved",
+        "name": "Tetrameles nudiflora",
+        "name:en": "The Giant Tung Tree",
+        "natural": "tree"
+      }
+    },
+    {
+      "type": "node",
+      "id": 5853872491,
+      "lat": 11.5589855,
+      "lon": 107.317744,
+      "tags": {
+        "amenity": "cafe",
+        "name": "cà phê Hà Đa",
+        "name:en": "Ha Da coffee",
+        "name:vi": "cà phê Hà Đa"
+      }
+    },
+    {
+      "type": "node",
+      "id": 6263652489,
+      "lat": 11.5357206,
+      "lon": 107.4370312,
+      "tags": {
+        "addr:street": "Tỉnh Lộ 721",
+        "email": "dinhnhan.info@gmail.com",
+        "name": "Nem chả Hồ Gia",
+        "opening_hours": "24/7",
+        "phone": "0973387373",
+        "shop": "variety_store"
+      }
+    },
+    {
+      "type": "node",
+      "id": 6308020222,
+      "lat": 11.4507116,
+      "lon": 107.3643051,
+      "tags": {
+        "denotation": "natural_monument",
+        "name": "Scaphium macropodum",
+        "name:vi": "Lười ươi",
+        "natural": "tree"
+      }
+    },
+    {
+      "type": "node",
+      "id": 7908036692,
+      "lat": 11.4418514,
+      "lon": 107.4066266,
+      "tags": {
+        "name": "Cây da lôc giao",
+        "name:en": "6 rooted-intersecting ficus",
+        "tourism": "information"
+      }
+    },
+    {
+      "type": "node",
+      "id": 7908036889,
+      "lat": 11.4379546,
+      "lon": 107.4223609,
+      "tags": {
+        "information": "guidepost",
+        "name": "Cây gõ bác dông",
+        "name:en": "Uncle Dong Reddish Wood Tree Sign",
+        "tourism": "information"
+      }
+    },
+    {
+      "type": "node",
+      "id": 9602758001,
+      "lat": 11.3689925,
+      "lon": 107.3898711,
+      "tags": {
+        "amenity": "school",
+        "name": "Trường Trung học phổ thông Tôn Đức Thắng"
+      }
+    },
+    {
+      "type": "node",
+      "id": 10729927905,
+      "lat": 11.4266271,
+      "lon": 107.4345619,
+      "tags": {
+        "addr:housenumber": "4",
+        "addr:street": "Hemlet",
+        "contact:facebook": "greenhopelodge",
+        "email": "phamdacluan1992@gmail.com",
+        "internet_access": "wlan",
+        "name": "Khu Nhà Nghỉ Dưỡng Hi Vọng Xanh",
+        "name:en": "Green Hope Lodge",
+        "operator": "Mr. Luan",
+        "phone": "+84972184683",
+        "tourism": "guest_house",
+        "website": "http://www.greenhopelodge.com/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 10729928005,
+      "lat": 11.4506693,
+      "lon": 107.3644575,
+      "tags": {
+        "name": "Cây Tung Cô Thụ",
+        "name:en": "The Giant Ancient Tung",
+        "tourism": "attraction"
+      }
+    },
+    {
+      "type": "node",
+      "id": 10828328309,
+      "lat": 11.4244334,
+      "lon": 107.4288891,
+      "tags": {
+        "name": "Cat Tien National Park headquarters",
+        "name:ru": "Кат Тьен визит центр",
+        "office": "forestry"
+      }
+    },
+    {
+      "type": "node",
+      "id": 10828329807,
+      "lat": 11.4230563,
+      "lon": 107.4288735,
+      "tags": {
+        "amenity": "restaurant",
+        "name": "Restaurant"
+      }
+    },
+    {
+      "type": "node",
+      "id": 10828803976,
+      "lat": 11.4047414,
+      "lon": 107.3915995,
+      "tags": {
+        "name": "Grasslands observation tower (east)",
+        "tourism": "viewpoint"
+      }
+    },
+    {
+      "type": "node",
+      "id": 11126828105,
+      "lat": 11.36549,
+      "lon": 107.3896474,
+      "tags": {
+        "amenity": "veterinary",
+        "name": "Bảo"
+      }
+    },
+    {
+      "type": "node",
+      "id": 11328791012,
+      "lat": 11.5462622,
+      "lon": 107.4275224,
+      "tags": {
+        "name": "Vĩnh Phước",
+        "place": "village"
+      }
+    },
+    {
+      "type": "node",
+      "id": 11328791013,
+      "lat": 11.5282298,
+      "lon": 107.4223391,
+      "tags": {
+        "name": "Đạ Lây",
+        "place": "village"
+      }
+    },
+    {
+      "type": "node",
+      "id": 11328791018,
+      "lat": 11.5255264,
+      "lon": 107.4390404,
+      "tags": {
+        "name": "Hương Lâm",
+        "place": "village"
+      }
+    },
+    {
+      "type": "node",
+      "id": 11328791021,
+      "lat": 11.4252031,
+      "lon": 107.4497589,
+      "tags": {
+        "name": "Thôn 9",
+        "place": "village"
+      }
+    },
+    {
+      "type": "node",
+      "id": 11328791022,
+      "lat": 11.4587426,
+      "lon": 107.4633833,
+      "tags": {
+        "name": "Thôn 8",
+        "place": "village"
+      }
+    },
+    {
+      "type": "node",
+      "id": 11328791023,
+      "lat": 11.4763048,
+      "lon": 107.4732725,
+      "tags": {
+        "name": "Thôn 7",
+        "place": "village"
+      }
+    },
+    {
+      "type": "node",
+      "id": 11328791031,
+      "lat": 11.5330572,
+      "lon": 107.4582968,
+      "tags": {
+        "name": "Đạ Hàm",
+        "place": "village"
+      }
+    },
+    {
+      "type": "node",
+      "id": 11328791034,
+      "lat": 11.5128838,
+      "lon": 107.4524817,
+      "tags": {
+        "name": "An Nhơn",
+        "place": "village"
+      }
+    },
+    {
+      "type": "node",
+      "id": 11328791046,
+      "lat": 11.5058293,
+      "lon": 107.4790229,
+      "tags": {
+        "name": "Thôn 3",
+        "place": "village"
+      }
+    },
+    {
+      "type": "node",
+      "id": 11328791056,
+      "lat": 11.496656,
+      "lon": 107.4711223,
+      "tags": {
+        "name": "Thôn 7",
+        "place": "village"
+      }
+    },
+    {
+      "type": "node",
+      "id": 11329388401,
+      "lat": 11.5468177,
+      "lon": 107.3804282,
+      "tags": {
+        "name": "Thôn 4",
+        "place": "village"
+      }
+    },
+    {
+      "type": "node",
+      "id": 11329388402,
+      "lat": 11.5563613,
+      "lon": 107.3964514,
+      "tags": {
+        "name": "Thôn 3",
+        "place": "village"
+      }
+    },
+    {
+      "type": "node",
+      "id": 11329388403,
+      "lat": 11.5368224,
+      "lon": 107.3791542,
+      "tags": {
+        "name": "Thôn 2",
+        "place": "village"
+      }
+    },
+    {
+      "type": "node",
+      "id": 11329388404,
+      "lat": 11.5226619,
+      "lon": 107.3817003,
+      "tags": {
+        "name": "Thôn 1",
+        "place": "village"
+      }
+    },
+    {
+      "type": "node",
+      "id": 11329388428,
+      "lat": 11.5530139,
+      "lon": 107.3419964,
+      "tags": {
+        "name": "Phổ Vinh",
+        "place": "village"
+      }
+    },
+    {
+      "type": "node",
+      "id": 11329388442,
+      "lat": 11.5559792,
+      "lon": 107.3214914,
+      "tags": {
+        "name": "Cát An",
+        "place": "village"
+      }
+    },
+    {
+      "type": "node",
+      "id": 11329388443,
+      "lat": 11.5574338,
+      "lon": 107.3654266,
+      "tags": {
+        "name": "Tổ dân phố 15",
+        "place": "quarter"
+      }
+    },
+    {
+      "type": "node",
+      "id": 11335132192,
+      "lat": 11.3737836,
+      "lon": 107.3688081,
+      "tags": {
+        "man_made": "monitoring_station",
+        "monitoring:weather": "yes",
+        "name": "Trạm Khí tượng Tà Lài"
+      }
+    },
+    {
+      "type": "node",
+      "id": 11540487237,
+      "lat": 11.4313519,
+      "lon": 107.4717079,
+      "tags": {
+        "addr:city": "Tân Phú",
+        "addr:district": "Xã Nam Cát Tiên",
+        "addr:province": "Đồng Nai",
+        "amenity": "place_of_worship",
+        "name": "Chùa Hoa Đạo",
+        "religion": "buddhist"
+      }
+    },
+    {
+      "type": "node",
+      "id": 11675219811,
+      "lat": 11.4333159,
+      "lon": 107.4332859,
+      "tags": {
+        "leisure": "nature_reserve",
+        "name": "Trung tâm cứu hộ linh trưởng Đảo Tiên"
+      }
+    },
+    {
+      "type": "node",
+      "id": 11730261643,
+      "lat": 11.420824,
+      "lon": 107.4302228,
+      "tags": {
+        "name": "Green Bamboo Lodge",
+        "tourism": "hotel"
+      }
+    },
+    {
+      "type": "node",
+      "id": 11759198345,
+      "lat": 11.5057412,
+      "lon": 107.3971081,
+      "tags": {
+        "ele": "232",
+        "name": "Núi Đang Mun Mung",
+        "natural": "peak"
+      }
+    },
+    {
+      "type": "node",
+      "id": 12015233369,
+      "lat": 11.4213545,
+      "lon": 107.4305206,
+      "tags": {
+        "addr:street": "Nam Cát Tiên, Vườn Quốc Gia Cát Tiên, Đồng Nai, Vietnam",
+        "name": "Lava Rock Viet Nam Lodge",
+        "phone": "+84 938 899 300",
+        "tourism": "hotel"
+      }
+    },
+    {
+      "type": "node",
+      "id": 12613087809,
+      "lat": 11.4344393,
+      "lon": 107.4295182,
+      "tags": {
+        "name": "Ben Cu",
+        "name:en": "Rapids",
+        "name:ru": "Вид на пороги",
+        "tourism": "viewpoint"
+      }
+    },
+    {
+      "type": "node",
+      "id": 12670326634,
+      "lat": 11.4233673,
+      "lon": 107.4310127,
+      "tags": {
+        "charge": "60 000 VND/aduld; Crocodile Lake 250 000 VND/aduld",
+        "description": "Cat Tien National Park - 60.000 VND per adult - crocodile lake is 250.000 VND extra payable in the park",
+        "name": "Quây Vé",
+        "shop": "ticket"
+      }
+    },
+    {
+      "type": "node",
+      "id": 12670348476,
+      "lat": 11.4374681,
+      "lon": 107.4234286,
+      "tags": {
+        "board_type": "nature",
+        "information": "board",
+        "name": "Cây Gõ bác Đồng",
+        "name:en": "Uncle Dong Makha Tree",
+        "tourism": "information"
+      }
+    },
+    {
+      "type": "node",
+      "id": 12670419044,
+      "lat": 11.4412547,
+      "lon": 107.4302752,
+      "tags": {
+        "information": "board",
+        "name": "KHU K.I AREA I",
+        "tourism": "information"
+      }
+    },
+    {
+      "type": "node",
+      "id": 12670442144,
+      "lat": 11.4431681,
+      "lon": 107.4324972,
+      "tags": {
+        "information": "board",
+        "name": "KHU K.I AREA I",
+        "tourism": "information"
+      }
+    },
+    {
+      "type": "node",
+      "id": 12670465925,
+      "lat": 11.4504765,
+      "lon": 107.4425002,
+      "tags": {
+        "name": "Heaven's Rapids",
+        "tourism": "viewpoint"
+      }
+    },
+    {
+      "type": "node",
+      "id": 12670483118,
+      "lat": 11.4600943,
+      "lon": 107.3745071,
+      "tags": {
+        "charge": "250 000 VND/aduld",
+        "name": "entrance to crocodile lake - only by foot from here - entrance fee is 250.000 VND extra",
+        "shop": "ticket"
+      }
+    },
+    {
+      "type": "node",
+      "id": 12670520287,
+      "lat": 11.45078,
+      "lon": 107.3643127,
+      "tags": {
+        "board_type": "nature",
+        "information": "board",
+        "name": "Cây Tụng",
+        "name:en": "Acient Tung Tree",
+        "tourism": "information"
+      }
+    },
+    {
+      "type": "node",
+      "id": 12670594871,
+      "lat": 11.4415621,
+      "lon": 107.4318184,
+      "tags": {
+        "information": "board",
+        "name": "KHU K.I AREA I",
+        "tourism": "information"
+      }
+    },
+    {
+      "type": "node",
+      "id": 12738680193,
+      "lat": 11.3472098,
+      "lon": 107.3311722,
+      "tags": {
+        "name": "Ấp 7",
+        "place": "village",
+        "place:VI": "Ấp"
+      }
+    },
+    {
+      "type": "node",
+      "id": 12777620943,
+      "lat": 11.5255264,
+      "lon": 107.2824705,
+      "tags": {
+        "name": "Ấp 7",
+        "place": "village",
+        "place:VI": "Ấp"
+      }
+    },
+    {
+      "type": "node",
+      "id": 12777620952,
+      "lat": 11.3533807,
+      "lon": 107.3787556,
+      "tags": {
+        "name": "Ấp 3",
+        "place": "village",
+        "place:VI": "Ấp"
+      }
+    },
+    {
+      "type": "node",
+      "id": 12777620953,
+      "lat": 11.3746026,
+      "lon": 107.3533069,
+      "tags": {
+        "name": "Ấp 4",
+        "place": "village",
+        "place:VI": "Ấp"
+      }
+    },
+    {
+      "type": "node",
+      "id": 12777620988,
+      "lat": 11.3751045,
+      "lon": 107.3899319,
+      "tags": {
+        "name": "Ấp 5",
+        "place": "village",
+        "place:VI": "Ấp"
+      }
+    },
+    {
+      "type": "node",
+      "id": 12777622714,
+      "lat": 11.3954459,
+      "lon": 107.4112064,
+      "tags": {
+        "name": "Núi Tượng",
+        "place": "village",
+        "place:VI": "Ấp"
+      }
+    },
+    {
+      "type": "node",
+      "id": 12777622716,
+      "lat": 11.3692233,
+      "lon": 107.4292735,
+      "tags": {
+        "name": "Ấp 6",
+        "place": "village",
+        "place:VI": "Ấp"
+      }
+    },
+    {
+      "type": "node",
+      "id": 12777622717,
+      "lat": 11.4206457,
+      "lon": 107.4712363,
+      "tags": {
+        "name": "Nam Cát Tiên 2",
+        "place": "village",
+        "place:VI": "Ấp"
+      }
+    },
+    {
+      "type": "node",
+      "id": 12777622721,
+      "lat": 11.4196083,
+      "lon": 107.4368015,
+      "tags": {
+        "name": "Nam Cát Tiên 1",
+        "place": "village",
+        "place:VI": "Ấp"
+      }
+    },
+    {
+      "type": "node",
+      "id": 12777622722,
+      "lat": 11.5527079,
+      "lon": 107.3310732,
+      "tags": {
+        "name": "Ấp 6",
+        "place": "village",
+        "place:VI": "Ấp"
+      }
+    },
+    {
+      "type": "node",
+      "id": 12777622723,
+      "lat": 11.5501298,
+      "lon": 107.3610152,
+      "tags": {
+        "name": "Ấp 5",
+        "place": "village",
+        "place:VI": "Ấp"
+      }
+    },
+    {
+      "type": "node",
+      "id": 12777622724,
+      "lat": 11.5191562,
+      "lon": 107.366259,
+      "tags": {
+        "name": "Ấp 4",
+        "place": "village",
+        "place:VI": "Ấp"
+      }
+    },
+    {
+      "type": "node",
+      "id": 12777622725,
+      "lat": 11.5400345,
+      "lon": 107.3497189,
+      "tags": {
+        "name": "Ấp 3",
+        "place": "village",
+        "place:VI": "Ấp"
+      }
+    },
+    {
+      "type": "node",
+      "id": 12777622727,
+      "lat": 11.5439063,
+      "lon": 107.3766531,
+      "tags": {
+        "name": "Ấp 1",
+        "place": "village",
+        "place:VI": "Ấp"
+      }
+    },
+    {
+      "type": "node",
+      "id": 12816987573,
+      "lat": 11.5588485,
+      "lon": 107.3063413,
+      "tags": {
+        "name": "3 Đăng Hà",
+        "place": "village",
+        "place:VI": "Thôn"
+      }
+    },
+    {
+      "type": "node",
+      "id": 12816987574,
+      "lat": 11.5593667,
+      "lon": 107.2929778,
+      "tags": {
+        "name": "2 Đăng Hà",
+        "place": "village",
+        "place:VI": "Thôn"
+      }
+    },
+    {
+      "type": "node",
+      "id": 13238909501,
+      "lat": 11.4205878,
+      "lon": 107.4314311,
+      "tags": {
+        "addr:street": "Nam Cat Tien, Tân Phú District, Dong Nai",
+        "amenity": "restaurant",
+        "cuisine": "vietnamese",
+        "name": "Nhà hàng Tây Bắc",
+        "opening_hours": "Mo-Su 06:00-22:00",
+        "phone": "0979 478 918"
+      }
+    },
+    {
+      "type": "node",
+      "id": 13238913001,
+      "lat": 11.4206823,
+      "lon": 107.4310338,
+      "tags": {
+        "addr:postcode": "76800",
+        "addr:street": "Ấp 1, Tân Phú District, Dong Nai 76800",
+        "amenity": "restaurant",
+        "cuisine": "vietnamese",
+        "name": "Hơi Thở Rừng",
+        "phone": "0373 748 799"
+      }
+    },
+    {
+      "type": "node",
+      "id": 13238919901,
+      "lat": 11.4209196,
+      "lon": 107.4302288,
+      "tags": {
+        "amenity": "cafe",
+        "name": "Cà phê Cát Tiên mơ",
+        "opening_hours": "Mo-Su 06:00-21:00",
+        "phone": "0824 402 345"
+      }
+    },
+    {
+      "type": "node",
+      "id": 13240120201,
+      "lat": 11.4242223,
+      "lon": 107.431957,
+      "tags": {
+        "addr:street": "ấp 1, Tân Phú District, Dong Nai",
+        "internet_access": "wlan",
+        "name": "MINI MART NAM CÁT TIÊN",
+        "opening_hours": "Mo-Su 08:00-21:30",
+        "phone": "0586 283 979",
+        "shop": "convenience"
+      }
+    },
+    {
+      "type": "node",
+      "id": 13242952801,
+      "lat": 11.4232845,
+      "lon": 107.4309016,
+      "tags": {
+        "highway": "bus_stop",
+        "name": "Local bus to Saigon (8:00, 10:00, 13:00, 15:00)"
+      }
+    },
+    {
+      "type": "node",
+      "id": 13584878104,
+      "lat": 11.4207067,
+      "lon": 107.4305415,
+      "tags": {
+        "amenity": "restaurant",
+        "name": "Lava Rock"
+      }
+    },
+    {
+      "type": "node",
+      "id": 13584878212,
+      "lat": 11.4207303,
+      "lon": 107.4304208,
+      "tags": {
+        "amenity": "restaurant",
+        "name": "Bamboo"
+      }
+    },
+    {
+      "type": "node",
+      "id": 13584878214,
+      "lat": 11.4220669,
+      "lon": 107.4363239,
+      "tags": {
+        "amenity": "restaurant",
+        "name": "pho"
+      }
+    },
+    {
+      "type": "node",
+      "id": 13584878708,
+      "lat": 11.4231084,
+      "lon": 107.4369801,
+      "tags": {
+        "addr:floor": "G",
+        "amenity": "restaurant",
+        "check_date": "2026-03-30",
+        "cuisine": "vietnamese",
+        "internet_access": "no",
+        "level": "0",
+        "name": "Quan An Thao Nguyen",
+        "payment:cards": "no",
+        "payment:cash": "yes",
+        "payment:credit_cards": "no",
+        "payment:debit_cards": "no",
+        "wheelchair": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 13584879502,
+      "lat": 11.4248836,
+      "lon": 107.4337147,
+      "tags": {
+        "amenity": "restaurant",
+        "name": "BBQ"
+      }
+    },
+    {
+      "type": "node",
+      "id": 13587216603,
+      "lat": 11.4415798,
+      "lon": 107.4305197,
+      "tags": {
+        "name": "Botanical Garden Area (forest trails with tree species labeled)",
+        "tourism": "attraction"
+      }
+    },
+    {
+      "type": "node",
+      "id": 13683968533,
+      "lat": 11.4268093,
+      "lon": 107.4342199,
+      "tags": {
+        "air_conditioning": "yes",
+        "bar": "no",
+        "check_date": "2026-03-27",
+        "internet_access": "wlan",
+        "internet_access:fee": "customers",
+        "name": "Green Hope Lodge",
+        "payment:cards": "no",
+        "payment:cash": "yes",
+        "payment:credit_cards": "no",
+        "payment:debit_cards": "no",
+        "phone": "+84 972184683",
+        "reservation": "yes",
+        "tourism": "hotel",
+        "website": "https://greenhopelodge.com/",
+        "wheelchair": "no"
+      }
+    },
+    {
+      "type": "node",
+      "id": 13809493948,
+      "lat": 11.4051536,
+      "lon": 107.3857618,
+      "tags": {
+        "name": "Ko Nia Lu Quan",
+        "tourism": "guest_house"
+      }
+    },
+    {
+      "type": "node",
+      "id": 13809493954,
+      "lat": 11.4048667,
+      "lon": 107.374279,
+      "tags": {
+        "name": "Grasslands observation tower (west)",
+        "tourism": "viewpoint"
+      }
+    },
+    {
+      "type": "node",
+      "id": 13980047479,
+      "lat": 11.5571416,
+      "lon": 107.3648144,
+      "tags": {
+        "access": "yes",
+        "direction": "45",
+        "ele": "0",
+        "fee": "no",
+        "name": "trại thỏ cát tiên",
+        "natural": "cave_entrance"
+      }
+    },
+    {
+      "type": "way",
+      "id": 53740554,
+      "center": {
+        "lat": 11.3159979,
+        "lon": 107.4083277
+      },
+      "tags": {
+        "highway": "secondary",
+        "maxspeed": "50",
+        "name": "Tà Lài",
+        "ref": "ĐT.774B",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "type": "way",
+      "id": 53740662,
+      "center": {
+        "lat": 11.4139075,
+        "lon": 107.4269362
+      },
+      "tags": {
+        "highway": "secondary",
+        "name": "Đường tỉnh 774B",
+        "ref": "ĐT.774B",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "type": "way",
+      "id": 138972859,
+      "center": {
+        "lat": 11.5433019,
+        "lon": 107.4613183
+      },
+      "tags": {
+        "name": "Hồ Đạ Hàm",
+        "natural": "water",
+        "water": "reservoir"
+      }
+    },
+    {
+      "type": "way",
+      "id": 138982511,
+      "center": {
+        "lat": 11.4005463,
+        "lon": 107.5011378
+      },
+      "tags": {
+        "admin_level": "4",
+        "boundary": "administrative",
+        "name": "Ranh giới Lâm Đồng - Đồng Nai",
+        "name:en": "Boundary Lâm Đồng - Đồng Nai",
+        "name:vi": "Ranh giới Lâm Đồng - Đồng Nai"
+      }
+    },
+    {
+      "type": "way",
+      "id": 141722682,
+      "center": {
+        "lat": 11.4628857,
+        "lon": 107.3398611
+      },
+      "tags": {
+        "name": "Bàu Sấu",
+        "natural": "water",
+        "water": "lake"
+      }
+    },
+    {
+      "type": "way",
+      "id": 245755026,
+      "center": {
+        "lat": 11.3928273,
+        "lon": 107.4817848
+      },
+      "tags": {
+        "highway": "secondary",
+        "name": "Đường tỉnh 774",
+        "ref": "ĐT.774",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "type": "way",
+      "id": 245920349,
+      "center": {
+        "lat": 11.5286487,
+        "lon": 107.4519036
+      },
+      "tags": {
+        "highway": "primary",
+        "name": "Đường tỉnh 721",
+        "ref": "ĐT.721",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "type": "way",
+      "id": 245920355,
+      "center": {
+        "lat": 11.498365,
+        "lon": 107.4782076
+      },
+      "tags": {
+        "highway": "residential",
+        "name": "Quang Trung"
+      }
+    },
+    {
+      "type": "way",
+      "id": 245920612,
+      "center": {
+        "lat": 11.5136632,
+        "lon": 107.4886144
+      },
+      "tags": {
+        "highway": "residential",
+        "name": "Hùng Vương",
+        "source": "digitalglobe"
+      }
+    },
+    {
+      "type": "way",
+      "id": 318716173,
+      "center": {
+        "lat": 11.4163738,
+        "lon": 107.4817647
+      },
+      "tags": {
+        "alt_name": "Đa Guy",
+        "name": "Suối Đạ Guôi",
+        "waterway": "stream"
+      }
+    },
+    {
+      "type": "way",
+      "id": 319285426,
+      "center": {
+        "lat": 11.5517374,
+        "lon": 107.4777311
+      },
+      "tags": {
+        "name": "Hồ Tố Lan",
+        "natural": "water",
+        "water": "reservoir"
+      }
+    },
+    {
+      "type": "way",
+      "id": 319285442,
+      "center": {
+        "lat": 11.4529495,
+        "lon": 107.4666134
+      },
+      "tags": {
+        "highway": "secondary",
+        "name": "Đường tỉnh 725",
+        "ref": "ĐT.725"
+      }
+    },
+    {
+      "type": "way",
+      "id": 319285506,
+      "center": {
+        "lat": 11.5073516,
+        "lon": 107.4823586
+      },
+      "tags": {
+        "highway": "residential",
+        "name": "Ngô Quyền",
+        "source": "digitalglobe"
+      }
+    },
+    {
+      "type": "way",
+      "id": 319285536,
+      "center": {
+        "lat": 11.4952917,
+        "lon": 107.3717399
+      },
+      "tags": {
+        "alt_name": "Suối Đắk Lua;Đa Kluo",
+        "intermittent": "no",
+        "name": "Suối Đắc Lua",
+        "waterway": "stream"
+      }
+    },
+    {
+      "type": "way",
+      "id": 321808121,
+      "center": {
+        "lat": 11.5632298,
+        "lon": 107.3341136
+      },
+      "tags": {
+        "highway": "primary",
+        "name": "Đường tỉnh 721",
+        "ref": "ĐT.721",
+        "source": "Bing, GPS"
+      }
+    },
+    {
+      "type": "way",
+      "id": 321808124,
+      "center": {
+        "lat": 11.5574178,
+        "lon": 107.3644095
+      },
+      "tags": {
+        "highway": "unclassified",
+        "name": "Bùi Thị Xuân"
+      }
+    },
+    {
+      "type": "way",
+      "id": 321808167,
+      "center": {
+        "lat": 11.5732254,
+        "lon": 107.3867584
+      },
+      "tags": {
+        "alt_name": "Suối Đạ R'Si",
+        "name": "Suối Đạ Sị",
+        "waterway": "stream"
+      }
+    },
+    {
+      "type": "way",
+      "id": 352922136,
+      "center": {
+        "lat": 11.4370369,
+        "lon": 107.508211
+      },
+      "tags": {
+        "alt_name": "Sông Đạ Quay",
+        "name": "Sông Đạ Huoai",
+        "waterway": "river"
+      }
+    },
+    {
+      "type": "way",
+      "id": 407475254,
+      "center": {
+        "lat": 11.5470118,
+        "lon": 107.3784071
+      },
+      "tags": {
+        "highway": "primary",
+        "name": "Đường tỉnh 721",
+        "ref": "ĐT.721"
+      }
+    },
+    {
+      "type": "way",
+      "id": 407475255,
+      "center": {
+        "lat": 11.5466013,
+        "lon": 107.3792375
+      },
+      "tags": {
+        "bridge": "yes",
+        "highway": "primary",
+        "layer": "1",
+        "name": "Cầu Đạ Sị",
+        "ref": "ĐT.721"
+      }
+    },
+    {
+      "type": "way",
+      "id": 407475259,
+      "center": {
+        "lat": 11.571266,
+        "lon": 107.365505
+      },
+      "tags": {
+        "highway": "primary",
+        "name": "Đường Phạm Văn Đồng",
+        "ref": "ĐT.721"
+      }
+    },
+    {
+      "type": "way",
+      "id": 407475260,
+      "center": {
+        "lat": 11.5462172,
+        "lon": 107.3798472
+      },
+      "tags": {
+        "highway": "primary",
+        "name": "Đường tỉnh 721",
+        "ref": "ĐT.721"
+      }
+    },
+    {
+      "type": "way",
+      "id": 407475663,
+      "center": {
+        "lat": 11.5394872,
+        "lon": 107.3792853
+      },
+      "tags": {
+        "highway": "primary",
+        "name": "Đường tỉnh 721",
+        "ref": "ĐT.721"
+      }
+    },
+    {
+      "type": "way",
+      "id": 465200827,
+      "center": {
+        "lat": 11.4542627,
+        "lon": 107.3611092
+      },
+      "tags": {
+        "bicycle": "no",
+        "fee": "yes",
+        "foot": "designated",
+        "highway": "path",
+        "horse": "no",
+        "name": "Crocodile Lake Trek",
+        "note": "Entrance Fee of 250.000 VND, payable at park entrance HQ",
+        "surface": "stone"
+      }
+    },
+    {
+      "type": "way",
+      "id": 465202577,
+      "center": {
+        "lat": 11.4428164,
+        "lon": 107.4327133
+      },
+      "tags": {
+        "highway": "path",
+        "name": "Botanical Garden Trail 5"
+      }
+    },
+    {
+      "type": "way",
+      "id": 481419731,
+      "center": {
+        "lat": 11.3094442,
+        "lon": 107.3420688
+      },
+      "tags": {
+        "name": "Sông Đồng Nai",
+        "name:vi-Hani": "瀧垌狔",
+        "waterway": "river",
+        "width": "1"
+      }
+    },
+    {
+      "type": "way",
+      "id": 481419743,
+      "center": {
+        "lat": 11.5686492,
+        "lon": 107.3614045
+      },
+      "tags": {
+        "name": "Sông Đồng Nai",
+        "name:vi-Hani": "瀧垌狔",
+        "waterway": "river"
+      }
+    },
+    {
+      "type": "way",
+      "id": 497543904,
+      "center": {
+        "lat": 11.372043,
+        "lon": 107.3751527
+      },
+      "tags": {
+        "highway": "tertiary",
+        "name": "Tà Lài"
+      }
+    },
+    {
+      "type": "way",
+      "id": 505724241,
+      "center": {
+        "lat": 11.5199346,
+        "lon": 107.4476663
+      },
+      "tags": {
+        "barrier": "fence",
+        "frequency": "50",
+        "location": "outdoor",
+        "name": "Trạm biến áp 110kV Đạ Tẻh",
+        "power": "substation",
+        "substation": "minor_distribution",
+        "voltage": "110000"
+      }
+    },
+    {
+      "type": "way",
+      "id": 791583589,
+      "center": {
+        "lat": 11.4994662,
+        "lon": 107.4863025
+      },
+      "tags": {
+        "name": "Sông Đạ Tẻh",
+        "waterway": "river"
+      }
+    },
+    {
+      "type": "way",
+      "id": 793662897,
+      "center": {
+        "lat": 11.5262439,
+        "lon": 107.4710161
+      },
+      "tags": {
+        "bridge": "yes",
+        "highway": "primary",
+        "layer": "1",
+        "name": "Cầu Đạ Mí",
+        "ref": "ĐT.721",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "type": "way",
+      "id": 793662898,
+      "center": {
+        "lat": 11.5154183,
+        "lon": 107.4761706
+      },
+      "tags": {
+        "alt_name": "Đường tỉnh 721",
+        "highway": "primary",
+        "name": "Phạm Ngọc Thạch",
+        "ref": "ĐT.721",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "type": "way",
+      "id": 797783147,
+      "center": {
+        "lat": 11.5354737,
+        "lon": 107.4326111
+      },
+      "tags": {
+        "bridge": "yes",
+        "highway": "primary",
+        "layer": "1",
+        "name": "Cầu Đạ Lây",
+        "ref": "ĐT.721",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "type": "way",
+      "id": 797783148,
+      "center": {
+        "lat": 11.5355945,
+        "lon": 107.4193676
+      },
+      "tags": {
+        "highway": "primary",
+        "name": "Đường tỉnh 721",
+        "ref": "ĐT.721",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "type": "way",
+      "id": 826327482,
+      "center": {
+        "lat": 11.5320822,
+        "lon": 107.3751549
+      },
+      "tags": {
+        "bridge": "yes",
+        "highway": "tertiary",
+        "layer": "1",
+        "name": "Cầu Đắc Lua",
+        "source": "digitalglobe"
+      }
+    },
+    {
+      "type": "way",
+      "id": 846359293,
+      "center": {
+        "lat": 11.5282006,
+        "lon": 107.3912864
+      },
+      "tags": {
+        "bridge": "yes",
+        "highway": "primary",
+        "layer": "1",
+        "name": "Đường tỉnh 721",
+        "ref": "ĐT.721"
+      }
+    },
+    {
+      "type": "way",
+      "id": 846359294,
+      "center": {
+        "lat": 11.5308368,
+        "lon": 107.3988527
+      },
+      "tags": {
+        "highway": "primary",
+        "name": "Đường tỉnh 721",
+        "ref": "ĐT.721"
+      }
+    },
+    {
+      "type": "way",
+      "id": 856251770,
+      "center": {
+        "lat": 11.4040804,
+        "lon": 107.4163257
+      },
+      "tags": {
+        "bridge": "yes",
+        "highway": "secondary",
+        "layer": "1",
+        "name": "Đường tỉnh 774B",
+        "ref": "ĐT.774B",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "type": "way",
+      "id": 952587112,
+      "center": {
+        "lat": 11.3719841,
+        "lon": 107.4959176
+      },
+      "tags": {
+        "construction": "motorway",
+        "highway": "construction",
+        "maxspeed": "120",
+        "minspeed": "60",
+        "name": "Đường cao tốc Tân Phú – Bảo Lộc",
+        "name:en": "Tan Phu - Bao Loc Expressway",
+        "oneway": "yes",
+        "ref": "CT.27",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1009328230,
+      "center": {
+        "lat": 11.5234185,
+        "lon": 107.3892328
+      },
+      "tags": {
+        "admin_level": "4",
+        "boundary": "administrative",
+        "name": "Ranh giới Lâm Đồng - Đồng Nai",
+        "name:en": "Boundary Lâm Đồng - Đồng Nai",
+        "name:vi": "Ranh giới Lâm Đồng - Đồng Nai"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1060495961,
+      "center": {
+        "lat": 11.4906453,
+        "lon": 107.4699811
+      },
+      "tags": {
+        "highway": "residential",
+        "name": "Quang Trung",
+        "source": "digitalglobe",
+        "surface": "unpaved"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1115820684,
+      "center": {
+        "lat": 11.3719763,
+        "lon": 107.4960764
+      },
+      "tags": {
+        "construction": "motorway",
+        "highway": "construction",
+        "maxspeed": "120",
+        "minspeed": "60",
+        "name": "Đường cao tốc Tân Phú – Bảo Lộc",
+        "name:en": "Tan Phu - Bao Loc Expressway",
+        "oneway": "yes",
+        "ref": "CT.27",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1153635335,
+      "center": {
+        "lat": 11.5649034,
+        "lon": 107.4282155
+      },
+      "tags": {
+        "alt_name": "Suối Đạ Lêh",
+        "name": "Suối Đạ Lây",
+        "waterway": "river"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1202837114,
+      "center": {
+        "lat": 11.5484213,
+        "lon": 107.368209
+      },
+      "tags": {
+        "admin_level": "4",
+        "boundary": "administrative",
+        "name": "Ranh giới Lâm Đồng - Đồng Nai",
+        "name:en": "Boundary Lâm Đồng - Đồng Nai",
+        "name:vi": "Ranh giới Lâm Đồng - Đồng Nai"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1202837117,
+      "center": {
+        "lat": 11.5492275,
+        "lon": 107.3424795
+      },
+      "tags": {
+        "admin_level": "4",
+        "boundary": "administrative",
+        "name": "Ranh giới Lâm Đồng - Đồng Nai",
+        "name:en": "Boundary Lâm Đồng - Đồng Nai",
+        "name:vi": "Ranh giới Lâm Đồng - Đồng Nai"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1202843064,
+      "center": {
+        "lat": 11.4593854,
+        "lon": 107.4509308
+      },
+      "tags": {
+        "admin_level": "4",
+        "boundary": "administrative",
+        "name": "Ranh giới Lâm Đồng - Đồng Nai",
+        "name:en": "Boundary Lâm Đồng - Đồng Nai",
+        "name:vi": "Ranh giới Lâm Đồng - Đồng Nai"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1204352127,
+      "center": {
+        "lat": 11.4278505,
+        "lon": 107.4526077
+      },
+      "tags": {
+        "admin_level": "4",
+        "boundary": "administrative",
+        "name": "Ranh giới Lâm Đồng - Đồng Nai",
+        "name:en": "Boundary Lâm Đồng - Đồng Nai",
+        "name:vi": "Ranh giới Lâm Đồng - Đồng Nai"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1204352136,
+      "center": {
+        "lat": 11.5201928,
+        "lon": 107.4160349
+      },
+      "tags": {
+        "admin_level": "4",
+        "boundary": "administrative",
+        "name": "Ranh giới Lâm Đồng - Đồng Nai",
+        "name:en": "Boundary Lâm Đồng - Đồng Nai",
+        "name:vi": "Ranh giới Lâm Đồng - Đồng Nai"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1207431376,
+      "center": {
+        "lat": 11.5094945,
+        "lon": 107.3739322
+      },
+      "tags": {
+        "alt_name": "Suối Đắk Lua;Đa Kluo",
+        "intermittent": "no",
+        "name": "Suối Đắc Lua",
+        "waterway": "stream"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1207431379,
+      "center": {
+        "lat": 11.5169403,
+        "lon": 107.3766173
+      },
+      "tags": {
+        "alt_name": "Suối Đắc Lua",
+        "intermittent": "no",
+        "name": "Đa Kluo",
+        "waterway": "stream"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1215089873,
+      "center": {
+        "lat": 11.3880707,
+        "lon": 107.3510811
+      },
+      "tags": {
+        "name": "Đập Vàm Hô",
+        "waterway": "dam"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1226363140,
+      "center": {
+        "lat": 11.373688,
+        "lon": 107.368763
+      },
+      "tags": {
+        "building": "yes",
+        "name": "Trạm Khí tượng Tà Lài",
+        "office": "government"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1238304954,
+      "center": {
+        "lat": 11.431921,
+        "lon": 107.4301719
+      },
+      "tags": {
+        "admin_level": "4",
+        "boundary": "administrative",
+        "name": "Ranh giới Lâm Đồng - Đồng Nai",
+        "name:en": "Boundary Lâm Đồng - Đồng Nai",
+        "name:vi": "Ranh giới Lâm Đồng - Đồng Nai"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1292840275,
+      "center": {
+        "lat": 11.5439802,
+        "lon": 107.3797332
+      },
+      "tags": {
+        "amenity": "school",
+        "name": "Trường Trung học cơ sở Quảng Ngãi"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1292840278,
+      "center": {
+        "lat": 11.5296385,
+        "lon": 107.3847285
+      },
+      "tags": {
+        "highway": "primary",
+        "name": "Đường tỉnh 721",
+        "ref": "ĐT.721"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1311796715,
+      "center": {
+        "lat": 11.3779095,
+        "lon": 107.4014877
+      },
+      "tags": {
+        "highway": "secondary",
+        "maxspeed": "50",
+        "name": "Đường tỉnh 774B",
+        "ref": "ĐT.774B",
+        "surface": "asphalt"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1368143583,
+      "center": {
+        "lat": 11.458241,
+        "lon": 107.3470652
+      },
+      "tags": {
+        "bicycle": "no",
+        "bridge": "boardwalk",
+        "fee": "yes",
+        "foot": "designated",
+        "highway": "footway",
+        "horse": "no",
+        "name": "Crocodile Lake Trek",
+        "note": "Entrance Fee of 250.000 VND, payable at park entrance HQ",
+        "surface": "wood"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1368145262,
+      "center": {
+        "lat": 11.4588982,
+        "lon": 107.3459726
+      },
+      "tags": {
+        "bicycle": "no",
+        "fee": "yes",
+        "foot": "designated",
+        "highway": "path",
+        "horse": "no",
+        "name": "Crocodile Lake Trek",
+        "note": "Entrance Fee of 250.000 VND, payable at park entrance HQ",
+        "surface": "stone"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1368146504,
+      "center": {
+        "lat": 11.4418812,
+        "lon": 107.4314705
+      },
+      "tags": {
+        "highway": "path",
+        "name": "Botanical Garden Trail 3"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1376175612,
+      "center": {
+        "lat": 11.4193166,
+        "lon": 107.4506842
+      },
+      "tags": {
+        "highway": "secondary",
+        "name": "Đường tỉnh 725",
+        "ref": "ĐT.725"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1376175613,
+      "center": {
+        "lat": 11.421768,
+        "lon": 107.4504787
+      },
+      "tags": {
+        "highway": "secondary",
+        "name": "Đường tỉnh 725",
+        "ref": "ĐT.725"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1376175614,
+      "center": {
+        "lat": 11.4202636,
+        "lon": 107.4505591
+      },
+      "tags": {
+        "bridge": "yes",
+        "highway": "secondary",
+        "layer": "1",
+        "name": "Cầu Mỏ Vẹt",
+        "ref": "ĐT.725"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1376529583,
+      "center": {
+        "lat": 11.4078637,
+        "lon": 107.4139971
+      },
+      "tags": {
+        "building": "yes",
+        "name": "Free the Bears (Nam Cat Tien Bear Research Center)"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1376529586,
+      "center": {
+        "lat": 11.4062531,
+        "lon": 107.4106662
+      },
+      "tags": {
+        "building": "yes",
+        "name": "Cat Tien Bear Sanctuary Wildlife Hospital"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1377193903,
+      "center": {
+        "lat": 11.4239612,
+        "lon": 107.4320477
+      },
+      "tags": {
+        "building": "yes",
+        "contact:facebook": "CatTienxanh.879",
+        "name": "Thủy Tiên ECO-LODGE",
+        "phone": "0986 939 164",
+        "tourism": "guest_house"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1385738238,
+      "center": {
+        "lat": 11.5324005,
+        "lon": 107.3778337
+      },
+      "tags": {
+        "highway": "primary",
+        "name": "Vòng Xoay Xã Quảng Ngãi",
+        "oneway": "yes",
+        "ref": "ĐT.721"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1385738239,
+      "center": {
+        "lat": 11.5322278,
+        "lon": 107.3781097
+      },
+      "tags": {
+        "highway": "primary",
+        "name": "Đường tỉnh 721",
+        "oneway": "yes",
+        "ref": "ĐT.721"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1385738240,
+      "center": {
+        "lat": 11.5321555,
+        "lon": 107.3780509
+      },
+      "tags": {
+        "highway": "primary",
+        "name": "Đường tỉnh 721",
+        "oneway": "yes",
+        "ref": "ĐT.721"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1385738241,
+      "center": {
+        "lat": 11.532727,
+        "lon": 107.3777453
+      },
+      "tags": {
+        "highway": "primary",
+        "name": "Đường tỉnh 721",
+        "oneway": "yes",
+        "ref": "ĐT.721"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1385738242,
+      "center": {
+        "lat": 11.5327576,
+        "lon": 107.3778517
+      },
+      "tags": {
+        "highway": "primary",
+        "name": "Đường tỉnh 721",
+        "oneway": "yes",
+        "ref": "ĐT.721"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1560988707,
+      "center": {
+        "lat": 11.5536814,
+        "lon": 107.3750845
+      },
+      "tags": {
+        "highway": "primary",
+        "name": "Đường tỉnh 721",
+        "ref": "ĐT.721"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1560988708,
+      "center": {
+        "lat": 11.559955,
+        "lon": 107.3702698
+      },
+      "tags": {
+        "highway": "primary",
+        "name": "Đường Phạm Văn Đồng",
+        "ref": "ĐT.721"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1561877441,
+      "center": {
+        "lat": 11.5011106,
+        "lon": 107.4607746
+      },
+      "tags": {
+        "alt_name": "Suối Đạ R'Miss",
+        "name": "Suối Đạ Mí",
+        "waterway": "stream"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1561877442,
+      "center": {
+        "lat": 11.5173197,
+        "lon": 107.4621556
+      },
+      "tags": {
+        "alt_name": "Suối Đạ R'Miss",
+        "name": "Suối Đạ Mí",
+        "waterway": "stream"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1561877457,
+      "center": {
+        "lat": 11.5285773,
+        "lon": 107.4759863
+      },
+      "tags": {
+        "alt_name": "Suối Đạ R'Miss",
+        "name": "Suối Đạ Mí",
+        "waterway": "stream"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1561877459,
+      "center": {
+        "lat": 11.484865,
+        "lon": 107.4654046
+      },
+      "tags": {
+        "admin_level": "4",
+        "boundary": "administrative",
+        "name": "Ranh giới Lâm Đồng - Đồng Nai",
+        "name:en": "Boundary Lâm Đồng - Đồng Nai",
+        "name:vi": "Ranh giới Lâm Đồng - Đồng Nai"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1561877463,
+      "center": {
+        "lat": 11.5489114,
+        "lon": 107.484277
+      },
+      "tags": {
+        "alt_name": "Suối Đạ R'Miss",
+        "name": "Suối Đạ Mí",
+        "waterway": "stream"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1561877465,
+      "center": {
+        "lat": 11.5246036,
+        "lon": 107.4688264
+      },
+      "tags": {
+        "alt_name": "Suối Đạ R'Miss",
+        "name": "Suối Đạ Mí",
+        "waterway": "stream"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1561877466,
+      "center": {
+        "lat": 11.5001458,
+        "lon": 107.4506923
+      },
+      "tags": {
+        "admin_level": "4",
+        "boundary": "administrative",
+        "name": "Ranh giới Lâm Đồng - Đồng Nai",
+        "name:en": "Boundary Lâm Đồng - Đồng Nai",
+        "name:vi": "Ranh giới Lâm Đồng - Đồng Nai"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1561877472,
+      "center": {
+        "lat": 11.4716174,
+        "lon": 107.4507093
+      },
+      "tags": {
+        "name": "Sông Đồng Nai",
+        "name:vi-Hani": "瀧垌狔",
+        "waterway": "river"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1561877473,
+      "center": {
+        "lat": 11.514405,
+        "lon": 107.4359921
+      },
+      "tags": {
+        "admin_level": "4",
+        "boundary": "administrative",
+        "name": "Ranh giới Lâm Đồng - Đồng Nai",
+        "name:en": "Boundary Lâm Đồng - Đồng Nai",
+        "name:vi": "Ranh giới Lâm Đồng - Đồng Nai"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1561877474,
+      "center": {
+        "lat": 11.5271122,
+        "lon": 107.4328469
+      },
+      "tags": {
+        "alt_name": "Suối Đạ Lêh",
+        "name": "Suối Đạ Lây",
+        "waterway": "river"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1561877476,
+      "center": {
+        "lat": 11.5375832,
+        "lon": 107.431143
+      },
+      "tags": {
+        "alt_name": "Suối Đạ Lêh",
+        "name": "Suối Đạ Lây",
+        "waterway": "river"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1561882145,
+      "center": {
+        "lat": 11.5541342,
+        "lon": 107.3276825
+      },
+      "tags": {
+        "admin_level": "4",
+        "boundary": "administrative",
+        "name": "Ranh giới Lâm Đồng - Đồng Nai",
+        "name:en": "Boundary Lâm Đồng - Đồng Nai",
+        "name:vi": "Ranh giới Lâm Đồng - Đồng Nai"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1561882146,
+      "center": {
+        "lat": 11.5643624,
+        "lon": 107.3545864
+      },
+      "tags": {
+        "admin_level": "4",
+        "boundary": "administrative",
+        "name": "Ranh giới Lâm Đồng - Đồng Nai",
+        "name:en": "Boundary Lâm Đồng - Đồng Nai",
+        "name:vi": "Ranh giới Lâm Đồng - Đồng Nai"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1561882149,
+      "center": {
+        "lat": 11.5565728,
+        "lon": 107.3148228
+      },
+      "tags": {
+        "admin_level": "4",
+        "boundary": "administrative",
+        "name": "Ranh giới Lâm Đồng - Đồng Nai",
+        "name:en": "Boundary Lâm Đồng - Đồng Nai",
+        "name:vi": "Ranh giới Lâm Đồng - Đồng Nai"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1561882155,
+      "center": {
+        "lat": 11.5657563,
+        "lon": 107.3067149
+      },
+      "tags": {
+        "admin_level": "4",
+        "boundary": "administrative",
+        "name": "Ranh giới Lâm Đồng - Đồng Nai",
+        "name:en": "Boundary Lâm Đồng - Đồng Nai",
+        "name:vi": "Ranh giới Lâm Đồng - Đồng Nai"
+      }
+    },
+    {
+      "type": "relation",
+      "id": 1885367,
+      "center": {
+        "lat": 11.0952706,
+        "lon": 108.3040271
+      },
+      "tags": {
+        "ISO3166-2": "VN-35",
+        "admin_level": "4",
+        "boundary": "administrative",
+        "is_in:country_code": "VN",
+        "name": "Tỉnh Lâm Đồng",
+        "name:ar": "محافظة لام دونغ",
+        "name:bg": "Лам Донг",
+        "name:en": "Lâm Đồng Province",
+        "name:fa": "استان لام دونگ",
+        "name:fr": "Province de Lâm Đồng",
+        "name:id": "Provinsi Lam Dong",
+        "name:it": "Provincia di Lam Dong",
+        "name:ja": "ラムドン",
+        "name:ko": "럼동성",
+        "name:pl": "Prowincja Lâm Đồng",
+        "name:pt": "Lam Dong",
+        "name:ro": "Lâm Đồng",
+        "name:ru": "Ламдонг",
+        "name:sr": "Лам Донг",
+        "name:sw": "Mkoa wa Lâm Đồng",
+        "name:tg": "Вилояти Лам Донг",
+        "name:th": "จังหวัดเลิมด่ง",
+        "name:uk": "Ламдонг",
+        "name:ur": "لام دونگ صوبہ",
+        "name:vi-Hani": "省林同",
+        "name:zh": "林同省",
+        "name:zh-Hant": "林同省",
+        "official_name": "Tỉnh Lâm Đồng",
+        "type": "boundary",
+        "wikidata": "Q36721",
+        "wikipedia": "vi:Lâm Đồng"
+      }
+    },
+    {
+      "type": "relation",
+      "id": 1898841,
+      "center": {
+        "lat": 11.8000203,
+        "lon": 106.9193739
+      },
+      "tags": {
+        "ISO3166-2": "VN-58",
+        "boundary": "historic",
+        "end_date": "2025-06-30",
+        "name": "Tỉnh Bình Phước",
+        "name:ar": "محافظة بنه فوك",
+        "name:bg": "Бин Фуок",
+        "name:en": "Bình Phước Province",
+        "name:fa": "استان بین فوک",
+        "name:fr": "Province de Bình Phước",
+        "name:id": "Provinsi Binh Phuoc",
+        "name:it": "Provincia di Binh Phuoc",
+        "name:ja": "ビンフオック",
+        "name:ko": "빈프억성",
+        "name:nl": "Bình Phước",
+        "name:pl": "Prowincja Bình Phước",
+        "name:pt": "Binh Phuoc",
+        "name:ru": "Биньфыок",
+        "name:sr": "Бињ Фиок",
+        "name:sv": "Binh Phuoc",
+        "name:sw": "Mkoa wa Bình Phước",
+        "name:tg": "Вилояти Бин Фуок",
+        "name:th": "จังหวัดบิ่ญเฟื้อก",
+        "name:uk": "Біньфиок",
+        "name:ur": "بنہ فووک صوبہ",
+        "name:vi-Hani": "省平福",
+        "name:zh": "平福省",
+        "name:zh-Hant": "平福省",
+        "official_name": "Tỉnh Bình Phước",
+        "population": "905300",
+        "type": "boundary",
+        "was:admin_level": "4",
+        "was:boundary": "administrative",
+        "wikidata": "Q36672",
+        "wikipedia": "vi:Bình Phước"
+      }
+    },
+    {
+      "type": "relation",
+      "id": 1904421,
+      "center": {
+        "lat": 11.4388314,
+        "lon": 106.9947303
+      },
+      "tags": {
+        "ISO3166-2": "VN-39",
+        "admin_level": "4",
+        "boundary": "administrative",
+        "is_in:country_code": "VN",
+        "name": "Thành phố Đồng Nai",
+        "name:en": "Đồng Nai",
+        "name:id": "Kota Dong Nai",
+        "name:ja": "ドンナイ市",
+        "name:ko": "동나이성",
+        "name:vi": "Thành phố Đồng Nai",
+        "name:vi-Hani": "省垌狔",
+        "name:zh": "同奈市",
+        "official_name": "Thành phố Đồng Nai",
+        "official_name:en": "Dong Nai City",
+        "official_name:vi": "Thành phố Đồng Nai",
+        "official_name:zh": "同奈市",
+        "type": "boundary",
+        "wikidata": "Q33271",
+        "wikipedia": "vi:Đồng Nai"
+      }
+    },
+    {
+      "type": "relation",
+      "id": 3770609,
+      "center": {
+        "lat": 13.3164834,
+        "lon": 108.1009488
+      },
+      "tags": {
+        "admin_level": "3",
+        "boundary": "region",
+        "name": "Tây Nguyên",
+        "name:de": "Zentrales Hochland",
+        "name:en": "Central Highlands",
+        "name:fr": "Montagnes centrales",
+        "name:zh": "西原",
+        "name:zh-Hans": "西原",
+        "name:zh-Hant": "西原",
+        "timezone": "Asia/Ho_Chi_Minh",
+        "type": "boundary",
+        "wikidata": "Q1140648"
+      }
+    },
+    {
+      "type": "relation",
+      "id": 3770621,
+      "center": {
+        "lat": 10.3220713,
+        "lon": 107.1197554
+      },
+      "tags": {
+        "admin_level": "3",
+        "alt_name": "Miền Đông",
+        "alt_name:vi": "Miền Đông",
+        "boundary": "region",
+        "name": "Đông Nam Bộ",
+        "name:de": "Südosten",
+        "name:en": "Southeast",
+        "name:es": "Región Sureste",
+        "name:fr": "Sud-Est",
+        "name:ja": "東南部",
+        "name:ko": "동남부 지방",
+        "name:ru": "Донг Нам Бо",
+        "name:vi": "Đông Nam Bộ",
+        "name:vi-Hani": "東南部",
+        "name:zh": "东南部",
+        "name:zh-Hans": "东南部",
+        "name:zh-Hant": "東南部",
+        "timezone": "Asia/Ho_Chi_Minh",
+        "type": "boundary",
+        "wikidata": "Q1068987"
+      }
+    },
+    {
+      "type": "relation",
+      "id": 7090891,
+      "center": {
+        "lat": 11.5755021,
+        "lon": 107.3606482
+      },
+      "tags": {
+        "boundary": "national_park",
+        "leisure": "nature_reserve",
+        "name": "Vườn quốc gia Cát Tiên",
+        "name:ca": "Parc Nacional de Cat Tien",
+        "name:de": "Nationalpark Cát Tiên",
+        "name:en": "Cat Tien National Park",
+        "name:es": "Parque nacional Cát Tiên",
+        "name:fi": "Cát Tiênin kansallispuisto",
+        "name:fr": "Parc national de Cat Tien",
+        "name:id": "Taman Nasional Cat Tien",
+        "name:it": "Parco nazionale di Cat Tien",
+        "name:ja": "カッティエン国立公園",
+        "name:jv": "Taman Nasional Cat Tien",
+        "name:nl": "Nationaal park Cát Tiên",
+        "name:pl": "Park Narodowy Cát Tiên",
+        "name:pt": "Parque Nacional de Cat Tien",
+        "name:ru": "национальный парк Каттьен",
+        "name:th": "อุทยานแห่งชาติก๊าตเตียน",
+        "name:vi": "Vườn quốc gia Cát Tiên",
+        "name:zh": "吉仙國家公園",
+        "operator": "Vietnam Department of Forestry",
+        "operator:type": "government",
+        "short_name": "VQG Cát Tiên",
+        "type": "boundary",
+        "website": "https://cattiennationalpark.com.vn/",
+        "wikidata": "Q1421202",
+        "wikipedia": "vi:Vườn quốc gia Cát Tiên"
+      }
+    },
+    {
+      "type": "relation",
+      "id": 7153437,
+      "center": {
+        "lat": 11.3290001,
+        "lon": 107.4706435
+      },
+      "tags": {
+        "name": "Hồ Đa Tôn",
+        "name:ko": "다똔호",
+        "name:vi": "Hồ Đa Tôn",
+        "natural": "water",
+        "source:position": "mapbox",
+        "source:tracer": "scanaerial",
+        "source:zoomlevel": "15",
+        "type": "multipolygon",
+        "water": "reservoir"
+      }
+    },
+    {
+      "type": "relation",
+      "id": 11322123,
+      "center": {
+        "lat": 11.3688816,
+        "lon": 107.574065
+      },
+      "tags": {
+        "name": "Sông Đồng Nai",
+        "name:vi-Hani": "瀧垌狔",
+        "type": "waterway",
+        "waterway": "river",
+        "wikidata": "Q2330067",
+        "wikipedia": "vi:Sông Đồng Nai"
+      }
+    },
+    {
+      "type": "relation",
+      "id": 12825974,
+      "center": {
+        "lat": 11.405565,
+        "lon": 107.8176143
+      },
+      "tags": {
+        "distance": "220 km",
+        "from": "Đường cao tốc TP. Hồ Chí Minh - Long Thành - Dầu Giây, Đồng Nai",
+        "highway": "proposed",
+        "name": "Đường cao tốc Dầu Giây – Liên Khương",
+        "name:en": "Dau Giay - Lien Khuong Expressway",
+        "name:vi": "Đường cao tốc Dầu Giây - Liên khương",
+        "network": "VN:expressway",
+        "ref": "CT.27",
+        "route": "road",
+        "symbol": "https://en.wikipedia.org/wiki/Dau_Giay%E2%80%93Dalat_Expressway#/media/File:CT_27,_VNM.svg",
+        "to": "Chân đèo Pren, Đức Trọng, Lâm Đồng",
+        "type": "route",
+        "wikidata": "Q24959146",
+        "wikipedia": "vi:Đường cao tốc Dầu Giây – Liên Khương"
+      }
+    },
+    {
+      "type": "relation",
+      "id": 13489084,
+      "center": {
+        "lat": 11.3107167,
+        "lon": 107.3504948
+      },
+      "tags": {
+        "name": "Sông Đồng Nai",
+        "name:en": "Dong Nai River",
+        "natural": "water",
+        "type": "multipolygon",
+        "water": "river"
+      }
+    },
+    {
+      "type": "relation",
+      "id": 13489085,
+      "center": {
+        "lat": 11.6147859,
+        "lon": 107.4095401
+      },
+      "tags": {
+        "name": "Sông Đồng Nai",
+        "name:en": "Dong Nai River",
+        "natural": "water",
+        "type": "multipolygon",
+        "water": "river"
+      }
+    },
+    {
+      "type": "relation",
+      "id": 14475155,
+      "center": {
+        "lat": 11.2953092,
+        "lon": 107.2583432
+      },
+      "tags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "Xã Thanh Sơn",
+        "postal_code": "76711",
+        "type": "boundary",
+        "wikidata": "Q2000661"
+      }
+    },
+    {
+      "type": "relation",
+      "id": 14484095,
+      "center": {
+        "lat": 11.2766874,
+        "lon": 107.4333699
+      },
+      "tags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "Phường Tân Phú",
+        "postal_code": "76806",
+        "type": "boundary",
+        "wikidata": "Q1887753"
+      }
+    },
+    {
+      "type": "relation",
+      "id": 14484096,
+      "center": {
+        "lat": 11.45829,
+        "lon": 107.3245327
+      },
+      "tags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "Xã Đak Lua",
+        "postal_code": "76814",
+        "type": "boundary",
+        "wikidata": "Q10752943"
+      }
+    },
+    {
+      "type": "relation",
+      "id": 14484097,
+      "center": {
+        "lat": 11.3792449,
+        "lon": 107.4513974
+      },
+      "tags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "Xã Nam Cát Tiên",
+        "postal_code": "76813",
+        "type": "boundary",
+        "wikidata": "Q1995483"
+      }
+    },
+    {
+      "type": "relation",
+      "id": 14488214,
+      "center": {
+        "lat": 11.3009345,
+        "lon": 107.5029711
+      },
+      "tags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "Xã Phú Lâm",
+        "postal_code": "76821",
+        "type": "boundary",
+        "wikidata": "Q3249860"
+      }
+    },
+    {
+      "type": "relation",
+      "id": 14496625,
+      "center": {
+        "lat": 11.3502348,
+        "lon": 107.3917019
+      },
+      "tags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "Xã Tà Lài",
+        "postal_code": "76817",
+        "type": "boundary",
+        "wikidata": "Q10830253"
+      }
+    },
+    {
+      "type": "relation",
+      "id": 16126135,
+      "center": {
+        "lat": 11.6408583,
+        "lon": 107.2217988
+      },
+      "tags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "Xã Phước Sơn",
+        "name:zh": "福山社",
+        "name:zh-Hant": "福山社",
+        "postal_code": "67320",
+        "type": "boundary",
+        "wikidata": "Q10806465"
+      }
+    },
+    {
+      "type": "relation",
+      "id": 16250897,
+      "center": {
+        "lat": 11.6578778,
+        "lon": 107.3353156
+      },
+      "tags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "Xã Cát Tiên 2",
+        "type": "boundary",
+        "wikidata": "Q137291068"
+      }
+    },
+    {
+      "type": "relation",
+      "id": 16250901,
+      "center": {
+        "lat": 11.5876442,
+        "lon": 107.4017668
+      },
+      "tags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "Xã Cát Tiên",
+        "type": "boundary",
+        "wikidata": "Q10805807"
+      }
+    },
+    {
+      "type": "relation",
+      "id": 16269756,
+      "center": {
+        "lat": 11.5319485,
+        "lon": 107.5511905
+      },
+      "tags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "Xã Đạ Tẻh 2",
+        "type": "boundary",
+        "wikidata": "Q137213337"
+      }
+    },
+    {
+      "type": "relation",
+      "id": 16269764,
+      "center": {
+        "lat": 11.5927147,
+        "lon": 107.4559929
+      },
+      "tags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "Xã Đạ Tẻh",
+        "type": "boundary",
+        "wikidata": "Q10841066"
+      }
+    },
+    {
+      "type": "relation",
+      "id": 16371509,
+      "center": {
+        "lat": 11.4333435,
+        "lon": 107.5353135
+      },
+      "tags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "Xã Đạ Huoai",
+        "type": "boundary",
+        "wikidata": "Q10841058"
+      }
+    },
+    {
+      "type": "relation",
+      "id": 16919729,
+      "center": {
+        "lat": 11.4370392,
+        "lon": 107.5094683
+      },
+      "tags": {
+        "alt_name": "Sông Đạ Quay",
+        "name": "Sông Đạ Huoai",
+        "natural": "water",
+        "type": "multipolygon",
+        "water": "river"
+      }
+    },
+    {
+      "type": "relation",
+      "id": 17286366,
+      "center": {
+        "lat": 11.3890517,
+        "lon": 107.3475492
+      },
+      "tags": {
+        "name": "Hồ Vàm Hô",
+        "natural": "water",
+        "type": "multipolygon",
+        "water": "reservoir"
+      }
+    },
+    {
+      "type": "relation",
+      "id": 18896572,
+      "center": {
+        "lat": 12.359118,
+        "lon": 107.8330692
+      },
+      "tags": {
+        "boundary": "religious",
+        "denomination": "roman_catholic",
+        "name": "Giáo phận Ban Mê Thuột",
+        "name:en": "Diocese of Ban Mê Thuột",
+        "name:la": "Dioecesis Banmethuotensis",
+        "religion": "christian",
+        "religious_level": "6",
+        "type": "boundary"
+      }
+    },
+    {
+      "type": "relation",
+      "id": 18896573,
+      "center": {
+        "lat": 11.7663712,
+        "lon": 107.997234
+      },
+      "tags": {
+        "boundary": "religious",
+        "denomination": "roman_catholic",
+        "name": "Giáo phận Đà Lạt",
+        "name:en": "Diocese of Đà Lạt",
+        "name:la": "Dioecesis Dalatnensis",
+        "religion": "christian",
+        "religious_level": "6",
+        "type": "boundary"
+      }
+    },
+    {
+      "type": "relation",
+      "id": 18896576,
+      "center": {
+        "lat": 11.080592,
+        "lon": 107.156013
+      },
+      "tags": {
+        "boundary": "religious",
+        "denomination": "roman_catholic",
+        "name": "Giáo phận Xuân Lộc",
+        "name:en": "Diocese of Xuân Lộc",
+        "name:la": "Dioecesis Xuanlocensis",
+        "religion": "christian",
+        "religious_level": "6",
+        "type": "boundary"
+      }
+    },
+    {
+      "type": "relation",
+      "id": 18898144,
+      "center": {
+        "lat": 10.2482181,
+        "lon": 106.2270841
+      },
+      "tags": {
+        "boundary": "religious",
+        "denomination": "roman_catholic",
+        "name": "Giáo tỉnh Thành phố Hồ Chí Minh",
+        "name:en": "Ecclesiastical Province of Hồ Chí Minh City",
+        "religion": "christian",
+        "religious_level": "4",
+        "type": "boundary"
+      }
+    },
+    {
+      "type": "relation",
+      "id": 18898145,
+      "center": {
+        "lat": 12.6095529,
+        "lon": 110.6857765
+      },
+      "tags": {
+        "boundary": "religious",
+        "denomination": "roman_catholic",
+        "name": "Giáo tỉnh Huế",
+        "name:en": "Ecclesiastical Province of Huế",
+        "religion": "christian",
+        "religious_level": "4",
+        "type": "boundary"
+      }
+    },
+    {
+      "type": "relation",
+      "id": 19274161,
+      "center": {
+        "lat": 11.7702899,
+        "lon": 107.2379636
+      },
+      "tags": {
+        "boundary": "historic",
+        "end_date": "2025-06-30",
+        "name": "Huyện Bù Đăng",
+        "name:en": "Bù Đăng District",
+        "name:fr": "District de Bù Đăng",
+        "name:ko": "부당현",
+        "name:ur": "بؤ دآنگ ضلع",
+        "name:vi": "Huyện Bù Đăng",
+        "name:zh": "蒲㲪縣",
+        "name:zh-Hans": "蒲㲪县",
+        "name:zh-Hant": "蒲㲪縣",
+        "type": "boundary",
+        "was:admin_level": "6",
+        "was:boundary": "administrative",
+        "wikidata": "Q4982057",
+        "wikipedia": "vi:Bù Đăng"
+      }
+    },
+    {
+      "type": "relation",
+      "id": 19274175,
+      "center": {
+        "lat": 11.3793575,
+        "lon": 107.3610542
+      },
+      "tags": {
+        "boundary": "historic",
+        "end_date": "2025-06-30",
+        "name": "Huyện Tân Phú",
+        "name:en": "Tân Phú District",
+        "name:ko": "떤푸현",
+        "name:vi": "Tân Phú",
+        "name:vi-Hani": "新富",
+        "name:zh-Hans": "新富县",
+        "name:zh-Hant": "新富縣",
+        "official_name": "Huyện Tân Phú",
+        "type": "boundary",
+        "was:admin_level": "6",
+        "was:boundary": "administrative",
+        "wikidata": "Q2187886",
+        "wikipedia": "vi:Tân Phú (huyện)"
+      }
+    },
+    {
+      "type": "relation",
+      "id": 19274176,
+      "center": {
+        "lat": 11.2103507,
+        "lon": 107.2878213
+      },
+      "tags": {
+        "boundary": "historic",
+        "end_date": "2025-06-30",
+        "name": "Huyện Định Quán",
+        "name:en": "Định Quán District",
+        "name:ko": "딘꽌현",
+        "name:nl": "Định Quán",
+        "name:ur": "دینہ قوآن ضلع",
+        "name:vi": "Định Quán",
+        "name:zh-Hans": "定贯县",
+        "name:zh-Hant": "定貫縣",
+        "official_name": "Huyện Định Quán",
+        "type": "boundary",
+        "was:admin_level": "6",
+        "was:boundary": "administrative",
+        "wikidata": "Q2902669",
+        "wikipedia": "vi:Định Quán"
+      }
+    },
+    {
+      "type": "relation",
+      "id": 19312412,
+      "center": {
+        "lat": 11.7663712,
+        "lon": 107.997234
+      },
+      "tags": {
+        "ISO3166-2": "VN-35",
+        "boundary": "historic",
+        "end_date": "2025-06-30",
+        "name": "Tỉnh Lâm Đồng cũ",
+        "name:ar": "محافظة لام دونغ",
+        "name:bg": "Лам Донг",
+        "name:en": "Lâm Đồng Province (former)",
+        "name:fa": "استان لام دونگ",
+        "name:fr": "Province de Lâm Đồng",
+        "name:id": "Provinsi Lam Dong",
+        "name:it": "Provincia di Lam Dong",
+        "name:ja": "ラムドン",
+        "name:ko": "럼동성",
+        "name:pl": "Prowincja Lâm Đồng",
+        "name:pt": "Lam Dong",
+        "name:ro": "Lâm Đồng",
+        "name:ru": "Ламдонг",
+        "name:sr": "Лам Донг",
+        "name:sw": "Mkoa wa Lâm Đồng",
+        "name:tg": "Вилояти Лам Донг",
+        "name:th": "จังหวัดเลิมด่ง",
+        "name:uk": "Ламдонг",
+        "name:ur": "لام دونگ صوبہ",
+        "name:vi-Hani": "省林同",
+        "name:zh": "林同省",
+        "name:zh-Hant": "林同省",
+        "official_name": "Tỉnh Lâm Đồng",
+        "type": "boundary",
+        "was:admin_level": "4",
+        "was:boundary": "administrative"
+      }
+    },
+    {
+      "type": "relation",
+      "id": 19312413,
+      "center": {
+        "lat": 11.080592,
+        "lon": 107.1645085
+      },
+      "tags": {
+        "ISO3166-2": "VN-39",
+        "boundary": "historic",
+        "end_date": "2025-06-30",
+        "name": "Tỉnh Đồng Nai cũ",
+        "name:en": "Đồng Nai Province (former)",
+        "name:id": "Provinsi Đồng Nai",
+        "name:ja": "ドンナイ",
+        "name:ko": "동나이성",
+        "name:vi": "Tỉnh Đồng Nai",
+        "name:vi-Hani": "省垌狔",
+        "name:zh": "同奈省",
+        "type": "boundary",
+        "was:admin_level": "4",
+        "was:boundary": "administrative"
+      }
+    },
+    {
+      "type": "relation",
+      "id": 19394117,
+      "center": {
+        "lat": 11.5632136,
+        "lon": 107.532434
+      },
+      "tags": {
+        "boundary": "historic",
+        "end_date": "2025-06-30",
+        "name": "Huyện Đạ Huoai",
+        "name:en": "Đạ Huoai District",
+        "name:ko": "다화이현",
+        "name:vi": "Huyện Đạ Huoai",
+        "name:zh": "達懷縣",
+        "type": "boundary",
+        "was:admin_level": "6",
+        "was:boundary": "administrative",
+        "wikidata": "Q5207252",
+        "wikipedia": "vi:Đạ Huoai (huyện)"
+      }
+    },
+    {
+      "type": "relation",
+      "id": 21376179,
+      "center": {
+        "lat": 11.3233084,
+        "lon": 107.4763784
+      },
+      "tags": {
+        "admin_level": "9",
+        "boundary": "administrative",
+        "name": "Ấp Thanh Sơn",
+        "type": "boundary"
+      }
+    },
+    {
+      "type": "relation",
+      "id": 21376286,
+      "center": {
+        "lat": 11.3387774,
+        "lon": 107.410688
+      },
+      "tags": {
+        "admin_level": "9",
+        "boundary": "administrative",
+        "name": "Ấp 1",
+        "type": "boundary"
+      }
+    },
+    {
+      "type": "relation",
+      "id": 21376287,
+      "center": {
+        "lat": 11.3226558,
+        "lon": 107.3726626
+      },
+      "tags": {
+        "admin_level": "9",
+        "boundary": "administrative",
+        "name": "Ấp 2",
+        "type": "boundary"
+      }
+    },
+    {
+      "type": "relation",
+      "id": 21376288,
+      "center": {
+        "lat": 11.3531955,
+        "lon": 107.3794282
+      },
+      "tags": {
+        "admin_level": "9",
+        "boundary": "administrative",
+        "name": "Ấp 3",
+        "type": "boundary"
+      }
+    },
+    {
+      "type": "relation",
+      "id": 21376289,
+      "center": {
+        "lat": 11.3634101,
+        "lon": 107.3525509
+      },
+      "tags": {
+        "admin_level": "9",
+        "boundary": "administrative",
+        "name": "Ấp 4",
+        "type": "boundary"
+      }
+    },
+    {
+      "type": "relation",
+      "id": 21376290,
+      "center": {
+        "lat": 11.3789749,
+        "lon": 107.3882807
+      },
+      "tags": {
+        "admin_level": "9",
+        "boundary": "administrative",
+        "name": "Ấp 5",
+        "type": "boundary"
+      }
+    },
+    {
+      "type": "relation",
+      "id": 21376291,
+      "center": {
+        "lat": 11.3676642,
+        "lon": 107.4289323
+      },
+      "tags": {
+        "admin_level": "9",
+        "boundary": "administrative",
+        "name": "Ấp 6",
+        "type": "boundary"
+      }
+    },
+    {
+      "type": "relation",
+      "id": 21434154,
+      "center": {
+        "lat": 11.5092904,
+        "lon": 107.4724326
+      },
+      "tags": {
+        "admin_level": "9",
+        "boundary": "administrative",
+        "name": "Thôn 3",
+        "type": "boundary"
+      }
+    },
+    {
+      "type": "relation",
+      "id": 21434158,
+      "center": {
+        "lat": 11.5083875,
+        "lon": 107.4829438
+      },
+      "tags": {
+        "admin_level": "9",
+        "boundary": "administrative",
+        "name": "Thôn 6A",
+        "type": "boundary"
+      }
+    },
+    {
+      "type": "relation",
+      "id": 21434159,
+      "center": {
+        "lat": 11.5205174,
+        "lon": 107.4818883
+      },
+      "tags": {
+        "admin_level": "9",
+        "boundary": "administrative",
+        "name": "Thôn 6B",
+        "type": "boundary"
+      }
+    },
+    {
+      "type": "relation",
+      "id": 21434160,
+      "center": {
+        "lat": 11.4957162,
+        "lon": 107.4712309
+      },
+      "tags": {
+        "admin_level": "9",
+        "boundary": "administrative",
+        "name": "Thôn 7",
+        "type": "boundary"
+      }
+    },
+    {
+      "type": "relation",
+      "id": 21434161,
+      "center": {
+        "lat": 11.546044,
+        "lon": 107.4917032
+      },
+      "tags": {
+        "admin_level": "9",
+        "boundary": "administrative",
+        "name": "Thôn 8",
+        "type": "boundary"
+      }
+    },
+    {
+      "type": "relation",
+      "id": 21434163,
+      "center": {
+        "lat": 11.5093628,
+        "lon": 107.4540061
+      },
+      "tags": {
+        "admin_level": "9",
+        "boundary": "administrative",
+        "name": "Thôn An Nhơn",
+        "type": "boundary"
+      }
+    },
+    {
+      "type": "relation",
+      "id": 21434164,
+      "center": {
+        "lat": 11.5377248,
+        "lon": 107.4625796
+      },
+      "tags": {
+        "admin_level": "9",
+        "boundary": "administrative",
+        "name": "Thôn Đạ Hàm",
+        "type": "boundary"
+      }
+    },
+    {
+      "type": "relation",
+      "id": 21434165,
+      "center": {
+        "lat": 11.5268764,
+        "lon": 107.4380085
+      },
+      "tags": {
+        "admin_level": "9",
+        "boundary": "administrative",
+        "name": "Thôn Hương Lâm",
+        "type": "boundary"
+      }
+    },
+    {
+      "type": "relation",
+      "id": 21434166,
+      "center": {
+        "lat": 11.5240059,
+        "lon": 107.4187027
+      },
+      "tags": {
+        "admin_level": "9",
+        "boundary": "administrative",
+        "name": "Thôn Đạ Lây",
+        "type": "boundary"
+      }
+    },
+    {
+      "type": "relation",
+      "id": 21434167,
+      "center": {
+        "lat": 11.5601555,
+        "lon": 107.4154589
+      },
+      "tags": {
+        "admin_level": "9",
+        "boundary": "administrative",
+        "name": "Thôn Vĩnh Phước",
+        "type": "boundary"
+      }
+    },
+    {
+      "type": "relation",
+      "id": 21434168,
+      "center": {
+        "lat": 11.5939292,
+        "lon": 107.4383704
+      },
+      "tags": {
+        "admin_level": "9",
+        "boundary": "administrative",
+        "name": "Thôn Hương Thanh",
+        "type": "boundary"
+      }
+    },
+    {
+      "type": "relation",
+      "id": 21434169,
+      "center": {
+        "lat": 11.6183195,
+        "lon": 107.4823248
+      },
+      "tags": {
+        "admin_level": "9",
+        "boundary": "administrative",
+        "name": "Thôn Tố Lan",
+        "type": "boundary"
+      }
+    },
+    {
+      "type": "relation",
+      "id": 21434472,
+      "center": {
+        "lat": 11.5540403,
+        "lon": 107.3424795
+      },
+      "tags": {
+        "admin_level": "9",
+        "boundary": "administrative",
+        "name": "Thôn Phổ Vinh",
+        "type": "boundary"
+      }
+    },
+    {
+      "type": "relation",
+      "id": 21434473,
+      "center": {
+        "lat": 11.5611214,
+        "lon": 107.3224541
+      },
+      "tags": {
+        "admin_level": "9",
+        "boundary": "administrative",
+        "name": "Thôn Cát An",
+        "type": "boundary"
+      }
+    },
+    {
+      "type": "relation",
+      "id": 21434474,
+      "center": {
+        "lat": 11.5725253,
+        "lon": 107.3416393
+      },
+      "tags": {
+        "admin_level": "9",
+        "boundary": "administrative",
+        "name": "Thôn Đức Phổ",
+        "type": "boundary"
+      }
+    },
+    {
+      "type": "relation",
+      "id": 21434475,
+      "center": {
+        "lat": 11.5649316,
+        "lon": 107.312626
+      },
+      "tags": {
+        "admin_level": "9",
+        "boundary": "administrative",
+        "name": "Thôn Phước Cát",
+        "type": "boundary"
+      }
+    }
+  ]
+}
