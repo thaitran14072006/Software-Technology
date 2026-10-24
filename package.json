@@ -1,0 +1,34 @@
+{
+  "name": "smart-audio-guide",
+  "version": "0.2.0",
+  "private": true,
+  "scripts": {
+    "dev": "node web/build.mjs && node web/server.mjs",
+    "start": "node web/build.mjs && node web/server.mjs",
+    "dev:full": "node scripts/dev-full.mjs",
+    "token": "node scripts/print-dev-token.mjs",
+    "infra:stop": "docker compose -f backend/docker/docker-compose.yml --profile \"*\" stop",
+    "build": "node web/build.mjs",
+    "pretest": "node web/build.mjs",
+    "test": "node --test web/tests/*.test.mjs",
+    "test:integration": "node scripts/smoke-api.mjs",
+    "test:analytics": "node scripts/smoke-analytics.mjs",
+    "test:complete": "node scripts/smoke-complete.mjs",
+    "backup": "node scripts/backup.mjs",
+    "dev:local-tts": "node scripts/dev-full.mjs --local-tts",
+    "dev:lan": "node scripts/dev-full.mjs --local-tts --lan",
+    "dev:gemini": "node scripts/dev-full.mjs --gemini",
+    "dev:gemini:lan": "node scripts/dev-full.mjs --gemini --lan",
+    "audio:generate": "node scripts/generate-audio.mjs",
+    "audio:gemini": "node scripts/generate-audio.mjs --gemini",
+    "offline:archive": "node scripts/build-offline-archive.mjs",
+    "content:document": "node scripts/import-tts-document.mjs",
+    "content:seed": "node scripts/seed-shared-content.mjs",
+    "content:export": "node scripts/export-shared-content.mjs",
+    "test:shared-content": "node scripts/test-shared-content.mjs",
+    "test:local-tts": "node scripts/smoke-local-tts.mjs"
+  },
+  "engines": {
+    "node": ">=24"
+  }
+}
