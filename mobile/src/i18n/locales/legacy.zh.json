@@ -1,0 +1,29 @@
+{
+  "label": "中文",
+  "locale": "zh-CN",
+  "head": {
+    "title": "Nam Cat Tien 国家公园",
+    "subtitle": "游览地图",
+    "hours": "8:00 – 16:00",
+    "reset": "重置视图",
+    "ferry": "渡口",
+    "water": "补水站",
+    "visitor": "游客中心"
+  },
+  "ui": {
+    "open": "开放",
+    "stops": "15个景点",
+    "road": "主干道",
+    "trail": "步行小径",
+    "trees": "树木 / 森林",
+    "water": "水域 / 急流",
+    "facilities": "设施",
+    "unique": "夜间观赏野生动物",
+    "night": "需提前预约",
+    "services": "酒店、汽车、快艇、自行车及夜游服务",
+    "play": "播放",
+    "stop": "停止",
+    "auto": "自动",
+    "hint": "点击地图上的编号收听讲解"
+  }
+}

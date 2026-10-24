@@ -1,0 +1,29 @@
+{
+  "label": "한국어",
+  "locale": "ko-KR",
+  "head": {
+    "title": "Nam Cat Tien 국립공원",
+    "subtitle": "관광 지도",
+    "hours": "8:00 – 16:00",
+    "reset": "지도 초기화",
+    "ferry": "선착장",
+    "water": "식수 보급소",
+    "visitor": "방문자 센터"
+  },
+  "ui": {
+    "open": "운영",
+    "stops": "15개 지점",
+    "road": "주도로",
+    "trail": "도보길",
+    "trees": "나무 / 숲",
+    "water": "물 / 급류",
+    "facilities": "시설",
+    "unique": "야생동물 야간 관찰",
+    "night": "사전 예약 필수",
+    "services": "호텔, 자동차, 보트, 자전거, 야간 사파리",
+    "play": "재생",
+    "stop": "정지",
+    "auto": "자동",
+    "hint": "지도의 번호를 눌러 해설을 들으세요"
+  }
+}

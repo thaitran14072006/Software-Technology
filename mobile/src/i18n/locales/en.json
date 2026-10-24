@@ -1,0 +1,49 @@
+{
+  "app": {
+    "title": "NAM CAT TIEN NATIONAL PARK",
+    "subtitle": "TOURIST MAP"
+  },
+  "splash": {
+    "welcome": "Welcome to",
+    "choose": "Choose your language",
+    "start": "Start exploring"
+  },
+  "map": {
+    "navigate": "Directions",
+    "route": "Route",
+    "distance": "From you",
+    "approx": "Straight line (approx.)",
+    "scanQr": "Scan the QR code at the exhibit",
+    "near": "You are near stop"
+  },
+  "errors": {
+    "noLocation": "Cannot determine your location. Please check location permission or network connection",
+    "denied": "Location permission denied",
+    "loadPois": "Could not load points of interest. Please try again",
+    "retry": "Retry",
+    "cameraDenied": "Camera permission is required to scan QR codes.",
+    "qrInvalid": "Invalid QR code or not part of this system. Please try again",
+    "googleAudio": "Google audio is missing or unavailable. Download the pack while online; device speech will not be substituted."
+  },
+  "offline": {
+    "title": "Offline pack",
+    "desc": "Download guide audio and content for use without network inside the park.",
+    "downloaded": "Downloaded",
+    "none": "Not downloaded",
+    "toDownload": "{{size}} to download",
+    "download": "Download / Update",
+    "cancel": "Cancel",
+    "continue": "Continue",
+    "delete": "Delete",
+    "needNet": "A network connection is required to download.",
+    "cellular": "You are on mobile data. Continue downloading?",
+    "noSpace": "Not enough free storage.",
+    "failed": "Download failed. Please try again.",
+    "partial": "{{n}} files could not be downloaded. Tap download again to finish.",
+    "mapTitle": "MapLibre map (optional)",
+    "mapDesc": "About {{tiles}} map tiles. The park schematic map is already built into the app.",
+    "downloadMap": "Download map",
+    "entry": "Offline pack",
+    "languageMissing": "No offline pack for this language. Connect and download the selected language."
+  }
+}

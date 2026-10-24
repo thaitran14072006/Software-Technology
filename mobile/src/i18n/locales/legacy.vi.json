@@ -1,0 +1,29 @@
+{
+  "label": "VI",
+  "locale": "vi-VN",
+  "head": {
+    "title": "VƯỜN QUỐC GIA NAM CÁT TIÊN",
+    "subtitle": "SƠ ĐỒ THAM QUAN",
+    "hours": "8h00 – 16h00",
+    "reset": "Về toàn cảnh",
+    "ferry": "Bến phà",
+    "water": "Trạm tiếp nước",
+    "visitor": "Trung tâm Du khách"
+  },
+  "ui": {
+    "open": "MỞ CỬA",
+    "stops": "15 ĐIỂM THAM QUAN",
+    "road": "Đường lớn",
+    "trail": "Đường mòn",
+    "trees": "Cây / Rừng",
+    "water": "Nước / Thác",
+    "facilities": "Khu chức năng",
+    "unique": "Độc lạ – Chỉ có tại Cát Tiên",
+    "night": "Xem thú hoang dã về đêm · vui lòng đăng ký trước",
+    "services": "Khách sạn, ô tô, xuồng máy, xe đạp, safari đêm",
+    "play": "Nghe",
+    "stop": "Dừng",
+    "auto": "Tự động",
+    "hint": "Chạm vào số trên bản đồ để nghe thuyết minh"
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "app": {
+    "title": "NAM CAT TIEN NATIONAL PARK",
+    "subtitle": "旅游地图"
+  },
+  "splash": {
+    "welcome": "欢迎来到",
+    "choose": "选择您的语言",
+    "start": "开始探索"
+  },
+  "map": {
+    "navigate": "导航",
+    "route": "路线",
+    "distance": "距离您",
+    "approx": "直线距离（大约）",
+    "scanQr": "扫描展品处的二维码",
+    "near": "您已接近站点"
+  },
+  "errors": {
+    "noLocation": "无法确定您的位置。请检查定位权限或网络连接",
+    "denied": "定位权限被拒绝",
+    "loadPois": "无法加载兴趣点。请重试",
+    "retry": "重试",
+    "cameraDenied": "扫描二维码需要相机权限。",
+    "qrInvalid": "无效的二维码或不属于本系统。请重试",
+    "googleAudio": "Google音频尚未就绪或无法加载，请联网重新下载，不会自动切换机器语音。"
+  },
+  "offline": {
+    "title": "离线包",
+    "desc": "下载导览音频和内容，以便在公园内无网络时使用。",
+    "downloaded": "已下载",
+    "none": "未下载",
+    "toDownload": "大小 {{size}} 可供下载",
+    "download": "下载 / 更新",
+    "cancel": "取消",
+    "continue": "继续",
+    "delete": "删除",
+    "needNet": "下载需要网络连接。",
+    "cellular": "您正在使用移动数据。是否继续下载？",
+    "noSpace": "可用存储空间不足。",
+    "failed": "下载失败。请重试。",
+    "partial": "{{n}} 个文件无法下载。轻触再次下载以完成。",
+    "mapTitle": "MapLibre 地图（可选）",
+    "mapDesc": "约 {{tiles}} 个地图瓦片。公园示意图已内置于应用中。",
+    "downloadMap": "下载地图",
+    "entry": "离线包",
+    "languageMissing": "尚未下载此语言的离线包，请联网下载所选语言。"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "label": "EN",
+  "locale": "en-US",
+  "head": {
+    "title": "NAM CAT TIEN NATIONAL PARK",
+    "subtitle": "TOURIST MAP",
+    "hours": "8:00 – 16:00",
+    "reset": "Reset view",
+    "ferry": "Ferry Pier",
+    "water": "Water Refill Station",
+    "visitor": "Visitor Center"
+  },
+  "ui": {
+    "open": "OPEN",
+    "stops": "15 STOPS",
+    "road": "Main road",
+    "trail": "Walking trail",
+    "trees": "Trees / Forest",
+    "water": "Water / Rapids",
+    "facilities": "Facilities",
+    "unique": "Only in Cat Tien: night wildlife",
+    "night": "Night wildlife viewing · booking required",
+    "services": "Hotel, car, speedboat, bicycle & night safari",
+    "play": "Play",
+    "stop": "Stop",
+    "auto": "Auto",
+    "hint": "Tap a numbered stop on the map to listen"
+  }
+}

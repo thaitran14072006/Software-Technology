@@ -1,0 +1,71 @@
+{
+  "expo": {
+    "name": "Cát Tiên Audio Guide",
+    "slug": "smart-audio-guide",
+    "scheme": "sag",
+    "version": "0.1.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "dark",
+    "backgroundColor": "#0b2a1f",
+    "android": {
+      "package": "vn.namcattien.audioguide",
+      "permissions": [
+        "ACCESS_FINE_LOCATION",
+        "ACCESS_COARSE_LOCATION",
+        "ACCESS_BACKGROUND_LOCATION",
+        "FOREGROUND_SERVICE",
+        "FOREGROUND_SERVICE_LOCATION",
+        "BLUETOOTH_SCAN",
+        "BLUETOOTH_CONNECT",
+        "CAMERA"
+      ]
+    },
+    "ios": {
+      "bundleIdentifier": "vn.namcattien.audioguide",
+      "infoPlist": {
+        "UIBackgroundModes": [
+          "location",
+          "audio"
+        ]
+      }
+    },
+    "plugins": [
+      "./plugins/with-short-cmake-paths.cjs",
+      [
+        "expo-build-properties",
+        {
+          "android": {
+            "usesCleartextTraffic": true
+          }
+        }
+      ],
+      [
+        "@maplibre/maplibre-react-native",
+        {}
+      ],
+      [
+        "expo-location",
+        {
+          "isAndroidBackgroundLocationEnabled": true,
+          "isAndroidForegroundServiceEnabled": true,
+          "locationAlwaysAndWhenInUsePermission": "Cho phép định vị nền để tự động phát thuyết minh khi bạn đến gần điểm tham quan.",
+          "locationWhenInUsePermission": "Cho phép truy cập vị trí để chỉ đường và tự động phát thuyết minh."
+        }
+      ],
+      [
+        "react-native-ble-plx",
+        {
+          "isBackgroundEnabled": false,
+          "bluetoothAlwaysPermission": "Dùng Bluetooth để nhận diện điểm tham quan khi GPS yếu."
+        }
+      ],
+      [
+        "react-native-vision-camera",
+        {
+          "cameraPermissionText": "Cần camera để quét mã QR tại điểm tham quan.",
+          "enableCodeScanner": true
+        }
+      ]
+    ]
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "app": {
+    "title": "VƯỜN QUỐC GIA NAM CÁT TIÊN",
+    "subtitle": "SƠ ĐỒ THAM QUAN"
+  },
+  "splash": {
+    "welcome": "Chào mừng bạn đến với",
+    "choose": "Chọn ngôn ngữ",
+    "start": "Bắt đầu tham quan"
+  },
+  "map": {
+    "navigate": "Chỉ đường",
+    "route": "Lộ trình",
+    "distance": "Cách bạn",
+    "approx": "Đường chim bay (ước lượng)",
+    "scanQr": "Quét mã QR tại hiện vật",
+    "near": "Bạn đang gần điểm"
+  },
+  "errors": {
+    "noLocation": "Không thể xác định vị trí hiện tại. Vui lòng kiểm tra quyền truy cập vị trí hoặc kết nối mạng",
+    "denied": "Chưa cấp quyền vị trí",
+    "loadPois": "Không tải được danh sách điểm tham quan. Vui lòng thử lại",
+    "retry": "Thử lại",
+    "cameraDenied": "Cần quyền truy cập Camera để quét mã QR.",
+    "qrInvalid": "Mã QR không hợp lệ hoặc không thuộc hệ thống. Vui lòng thử lại",
+    "googleAudio": "Giọng Google chưa có hoặc không tải được. Hãy tải lại gói khi có mạng; không tự đổi giọng máy."
+  },
+  "offline": {
+    "title": "Gói dùng ngoại tuyến",
+    "desc": "Tải trước thuyết minh và nội dung để dùng khi không có mạng trong khu tham quan.",
+    "downloaded": "Đã tải",
+    "none": "Chưa tải",
+    "toDownload": "cần tải {{size}}",
+    "download": "Tải / Cập nhật",
+    "cancel": "Hủy",
+    "continue": "Tiếp tục",
+    "delete": "Xóa",
+    "needNet": "Cần kết nối mạng để tải gói.",
+    "cellular": "Bạn đang dùng dữ liệu di động. Tiếp tục tải?",
+    "noSpace": "Không đủ dung lượng trống.",
+    "failed": "Tải không thành công. Vui lòng thử lại.",
+    "partial": "{{n}} tệp chưa tải được. Bấm tải lại để hoàn tất.",
+    "mapTitle": "Bản đồ MapLibre (tùy chọn)",
+    "mapDesc": "Khoảng {{tiles}} ô bản đồ. Sơ đồ khu tham quan đã có sẵn trong ứng dụng.",
+    "downloadMap": "Tải bản đồ",
+    "entry": "Tải gói ngoại tuyến",
+    "languageMissing": "Chưa tải gói cho ngôn ngữ này. Hãy kết nối mạng và tải đúng ngôn ngữ."
+  }
+}

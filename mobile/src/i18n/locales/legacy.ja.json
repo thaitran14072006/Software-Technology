@@ -1,0 +1,29 @@
+{
+  "label": "日本語",
+  "locale": "ja-JP",
+  "head": {
+    "title": "Nam Cat Tien 国立公園",
+    "subtitle": "観光マップ",
+    "hours": "8:00 – 16:00",
+    "reset": "表示をリセット",
+    "ferry": "フェリー乗り場",
+    "water": "給水所",
+    "visitor": "ビジターセンター"
+  },
+  "ui": {
+    "open": "営業中",
+    "stops": "15スポット",
+    "road": "メイン道路",
+    "trail": "遊歩道",
+    "trees": "樹木 / 森",
+    "water": "水辺 / 急流",
+    "facilities": "施設",
+    "unique": "Cat Tienだけの体験：夜の野生動物",
+    "night": "夜の野生動物観察 · 事前予約制",
+    "services": "ホテル、車、ボート、自転車、ナイトサファリ",
+    "play": "再生",
+    "stop": "停止",
+    "auto": "自動",
+    "hint": "地図上の番号をタップすると解説が流れます"
+  }
+}
