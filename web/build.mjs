@@ -34,6 +34,7 @@ for (const poi of pois) {
   if (fixture) {
     poi.translations = fixture.translations.map(t => ({
       langCode: t.lang_code, name: t.name, summary: t.summary || '', scriptText: t.script_text, textHash: t.text_hash,
+      audioNeedsRefresh: Boolean(t.audio_needs_refresh),
     }));
   }
   poi.audios = [];
@@ -47,16 +48,8 @@ await cp(path.join(root, 'web', 'vendor'), path.join(out, 'vendor'), { recursive
 await mkdir(path.join(out, 'data'), { recursive: true });
 const audioOut = path.join(out, 'audio');
 await mkdir(audioOut, { recursive: true });
-for (const file of await readdir(path.join(root, 'backend', 'fixtures', 'audio'))) {
-  const [code, lang] = file.split('-');
-  const poi = pois.find(p => p.code === code);
-  const translation = poi?.translations.find(t => t.langCode === lang);
-  const sourceTranslation = fixtureByCode.get(code)?.translations.find(t => t.lang_code === lang);
-  if (!translation || translation.scriptText !== sourceTranslation?.script_text) continue;
-  const audioUrl = `/audio/${file}`;
-  await cp(path.join(root, 'backend', 'fixtures', 'audio', file), path.join(audioOut, file));
-  poi.audios.push({ langCode: lang, status: 'READY', audioUrl, provider: 'GEMINI', voiceName: 'Google AI Studio', textHash: translation.textHash });
-}
+// Prefer a generated clip only when it was synthesized from the current exact
+// transcript. This also lets fresh Gemini audio replace older source recordings.
 for (const [key, record] of Object.entries(generatedAudio)) {
   const [code, lang] = key.split(':');
   const poi = pois.find(p => p.code === code);
@@ -65,6 +58,16 @@ for (const [key, record] of Object.entries(generatedAudio)) {
   const file = `${code}-${lang}.mp3`;
   await cp(path.join(generatedAudioDir, file), path.join(audioOut, file));
   poi.audios.push({ langCode: lang, status: 'READY', audioUrl: `/audio/${file}`, provider: record.provider || 'LOCAL', voiceName: record.voiceName, textHash: record.textHash });
+}
+for (const file of await readdir(path.join(root, 'backend', 'fixtures', 'audio'))) {
+  const [code, lang] = file.split('-');
+  const poi = pois.find(p => p.code === code);
+  const translation = poi?.translations.find(t => t.langCode === lang);
+  const sourceTranslation = fixtureByCode.get(code)?.translations.find(t => t.lang_code === lang);
+  if (!translation || translation.audioNeedsRefresh || translation.scriptText !== sourceTranslation?.script_text || poi.audios.some(a => a.langCode === lang)) continue;
+  const audioUrl = `/audio/${file}`;
+  await cp(path.join(root, 'backend', 'fixtures', 'audio', file), path.join(audioOut, file));
+  poi.audios.push({ langCode: lang, status: 'READY', audioUrl, provider: 'GEMINI', voiceName: 'Google AI Studio', textHash: translation.textHash });
 }
 await writeFile(path.join(out, 'data', 'pois.json'), JSON.stringify({
   mapId: '00000000-0000-0000-0000-000000000001',

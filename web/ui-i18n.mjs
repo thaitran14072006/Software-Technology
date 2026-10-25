@@ -93,7 +93,7 @@ export function installUITranslations(getLanguage) {
   const remembered = new WeakMap();
   const attrs = new WeakMap();
   let queued = false;
-  const excluded = '.script-text,.stop-name,.map-label,#translation-fields input,#translation-fields textarea,script,style,textarea';
+  const excluded = '.script-text,.stop-name,.map-label,[data-language-name],#translation-fields input,#translation-fields textarea,script,style,textarea';
   function apply() {
     language = getLanguage();
     const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);

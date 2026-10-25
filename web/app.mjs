@@ -28,7 +28,7 @@ let seed, audio, watchId = null, refreshId = 0, adminRefreshId = 0, toastTimer, 
 let analyticsData = null, analyticsRun = 0, joinBlobUrl, joinLink = '', defaultJoinUrl = new URL('./', location.href).href;
 let audioRun = 0, outdoorVisible = false;
 let voiceMode = ['mp3','browser'].includes(localStorage.getItem('sag:voice-mode-v2')) ? localStorage.getItem('sag:voice-mode-v2') : 'auto';
-const globalLanguage = $('#language').cloneNode(true);globalLanguage.id='global-language';globalLanguage.setAttribute('aria-label','Ngôn ngữ thuyết minh');document.querySelector('.header-actions').prepend(globalLanguage);
+const languageSwitcher = $('#language-switcher');
 const refreshUITranslations = installUITranslations(() => state.lang);
 const outdoorMap = createOutdoorMap({ container: $('#outdoor-map'), note: $('#outdoor-note'), onSelect: id => selectPoi(id) });
 function updateOutdoor() { outdoorMap.update({ pois: filtered(), selectedId: state.selected, gps: state.gps }); }
@@ -41,8 +41,11 @@ function selected() { return state.pois.find(p => p.id === state.selected); }
 function safeURL(url) { try { const u = new URL(url, location.href); return ['http:', 'https:'].includes(u.protocol) ? u.href : null; } catch { return null; } }
 function updateLanguage() {
   document.documentElement.lang = state.lang;
-  $('#language').value = state.lang;
-  globalLanguage.value = state.lang;
+  languageSwitcher.querySelectorAll('[data-lang]').forEach(button => {
+    const active = button.dataset.lang === state.lang;
+    button.classList.toggle('active', active);
+    button.setAttribute('aria-pressed', String(active));
+  });
   $('#search').placeholder = t('search');
   const keys = ['all', 'tree', 'water', 'facility'];
   $$('#filters button').forEach((b, i) => b.textContent = t(keys[i]));
@@ -318,8 +321,8 @@ $('#visitor-tab').onclick = () => { state.tab = 'visitor'; $('#visitor').hidden 
 $('#admin-tab').onclick = async () => { if(settings.mode!=='api'||!token()){$('#settings').click();$('#login-status').textContent='Khách sử dụng không cần đăng nhập. Chỉ admin đăng nhập để quản lý.';return;}try{await api('auth/me');}catch(error){$('#settings').click();$('#login-status').textContent=error.message;return;} stopAudio(); state.tab = 'admin'; usage.presence(false); $('#visitor').hidden = true; $('#admin').hidden = false; $('#admin-tab').classList.add('active'); $('#visitor-tab').classList.remove('active'); $('#visitor-tab').ariaPressed = 'false'; $('#admin-tab').ariaPressed = 'true'; showAdmin(); };
 $('#search').oninput = event => { state.query = event.target.value; renderMap(); renderList(); };
 $('#filters').onclick = event => { const b = event.target.closest('[data-category]'); if (!b) return; state.category = Number(b.dataset.category); $$('#filters button').forEach(x => { const active = x === b; x.classList.toggle('active', active); x.ariaPressed = String(active); }); renderMap(); renderList(); };
-const changeLanguage = async event => { stopAudio(); state.lang = event.target.value; localStorage.setItem('sag:lang', state.lang); await refresh();if(state.tab==='admin')await showAdmin(); };
-$('#language').onchange = changeLanguage;globalLanguage.onchange=changeLanguage;
+const changeLanguage = async lang => { if(!LANGS[lang]||lang===state.lang)return; stopAudio(); state.lang = lang; localStorage.setItem('sag:lang', state.lang); await refresh();if(state.tab==='admin')await showAdmin(); };
+languageSwitcher.onclick = event => { const button=event.target.closest('[data-lang]');if(button)changeLanguage(button.dataset.lang); };
 $('#stop-list').onclick = event => { const b = event.target.closest('[data-id]'); if (b) selectPoi(b.dataset.id); };
 $('#map').onclick = event => { const b = event.target.closest('[data-id]'); if (b) selectPoi(b.dataset.id); };
 $('#map').onkeydown = event => { if (['Enter', ' '].includes(event.key) && event.target.matches('[data-id]')) { event.preventDefault(); selectPoi(event.target.dataset.id); } };
