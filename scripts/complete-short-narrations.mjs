@@ -63,6 +63,7 @@ for (const [code, localized] of Object.entries(scripts)) {
     if (!translation || !localized[lang]) throw new Error(`Missing ${code}:${lang}`);
     translation.script_text = localized[lang];
     translation.text_hash = createHash('sha256').update(translation.script_text.trim()).digest('hex');
+    translation.audio_needs_refresh = true;
   }
 }
 

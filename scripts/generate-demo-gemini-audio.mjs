@@ -15,6 +15,10 @@ const langs = {
   vi: 'Vietnamese', en: 'English', ja: 'Japanese', ko: 'Korean', zh: 'Mandarin Chinese',
 };
 const only = process.argv.find(a => a.startsWith('--only='))?.slice(7);
+const dryRun = process.argv.includes('--dry-run');
+const maxArg = process.argv.find(a => a.startsWith('--max='))?.slice(6);
+const maxTasks = maxArg ? Number(maxArg) : Infinity;
+if (!(maxTasks > 0)) throw new Error(`Invalid --max value: ${maxArg}`);
 class RateLimitError extends Error { constructor(message, waitMs) { super(message); this.waitMs = waitMs; } }
 const wait = ms => new Promise(resolve => setTimeout(resolve, ms));
 const fixture = JSON.parse(await readFile(path.join(root, 'backend/fixtures/content.json'), 'utf8'));
@@ -35,12 +39,17 @@ for (const poi of pois) for (const [lang, language] of Object.entries(langs)) {
   const tr = poi.translations.find(t => t.lang_code === lang);
   if (only && only !== `${poi.code}:${lang}`) continue;
   if (!tr?.script_text?.trim()) throw new Error(`Missing script ${poi.code}:${lang}`);
-  if ([...sourceAudio].some(f => f.startsWith(`${poi.code}-${lang}-`) && f.endsWith('.mp3'))) continue;
   const hash = tr.text_hash || createHash('sha256').update(tr.script_text).digest('hex');
   const old = manifest[`${poi.code}:${lang}`];
   if (old?.provider === 'GEMINI' && old.textHash === hash && old.model === model && old.voice === voice) continue;
+  // Some older source MP3s do not record the transcript they were synthesized
+  // from. Only reuse them for unchanged scripts; revised scripts require fresh TTS.
+  if (!tr.audio_needs_refresh && [...sourceAudio].some(f => f.startsWith(`${poi.code}-${lang}-`) && f.endsWith('.mp3'))) continue;
   tasks.push({ code: poi.code, lang, language, text: tr.script_text, textHash: hash });
 }
+const languageOrder = Object.keys(langs);
+tasks.sort((a, b) => languageOrder.indexOf(a.lang) - languageOrder.indexOf(b.lang) || Number(a.code) - Number(b.code));
+const batchTasks = tasks.splice(0, maxTasks);
 
 function convertToMp3(wav) {
   return new Promise((resolve, reject) => {
@@ -104,11 +113,15 @@ async function synthesize(task) {
   console.log(`Generated Gemini audio ${task.code}:${task.lang} (${mp3.length} bytes)`);
 }
 
-console.log(`Generating ${tasks.length} missing clips with ${model}/${voice}; existing Google recordings remain unchanged.`);
-for (let i = 0; i < tasks.length; i += 3) {
+console.log(`Generating ${batchTasks.length} of ${batchTasks.length + tasks.length} missing clips with ${model}/${voice}.`);
+if (dryRun) {
+  console.log(batchTasks.map(task => `${task.code}:${task.lang}`).join(', '));
+  process.exit(0);
+}
+for (let i = 0; i < batchTasks.length; i += 3) {
   // The Free tier currently allows only three generateContent requests per minute.
   await wait(61000);
-  const batch = tasks.slice(i, i + 3);
+  const batch = batchTasks.slice(i, i + 3);
   await Promise.all(batch.map(async task => {
     let retries = 0;
     while (true) {
@@ -122,4 +135,4 @@ for (let i = 0; i < tasks.length; i += 3) {
     }
   }));
 }
-console.log(`Finished ${tasks.length} Gemini clips.`);
+console.log(`Finished ${batchTasks.length} Gemini clips.`);

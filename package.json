@@ -22,6 +22,7 @@
     "audio:generate": "node scripts/generate-audio.mjs",
     "audio:demo-local": "node scripts/generate-demo-local-audio.mjs",
     "audio:demo-gemini": "node scripts/generate-demo-gemini-audio.mjs",
+    "audio:demo-gemini-until-done": "node scripts/generate-demo-gemini-until-done.mjs",
     "content:narrations": "node scripts/build-narrations-doc.mjs",
     "audio:gemini": "node scripts/generate-audio.mjs --gemini",
     "offline:archive": "node scripts/build-offline-archive.mjs",
