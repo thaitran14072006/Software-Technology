@@ -1,5 +1,5 @@
-import { LANGS, LOCALES, CENTER, localize, routeTo, haversine, qrValue, validatePoi } from './core.mjs';
-import { settings, saveSettings, token, loadSeed, getPois, getAdminPois, savePoi, deletePoi, saveOffline, api } from './store.mjs';
+import { LANGS, LOCALES, CENTER, localize, routeTo, haversine, qrValue, validatePoi, matchesPoiQuery } from './core.mjs';
+import { settings, saveSettings, token, loadSeed, getPois, getAdminPois, savePoi, deletePoi, saveOffline, api, packKey } from './store.mjs';
 import { VisitorAnalytics, playbackCounter, getAnalytics } from './analytics.mjs';
 import { joinURL, isLoopback, qrSVG } from './join-qr.mjs';
 import { setupAdminTools } from './admin-tools.mjs';
@@ -16,13 +16,13 @@ const $$ = s => [...document.querySelectorAll(s)];
 const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 const group = id => copy[state.lang][{ 1: 'facility', 2: 'tree', 3: 'water' }[id] || 'all'].replace(/^[♧≈⌂] /, '');
 const copy = {
-  vi: { play: '▶ Nghe thuyết minh', stop: '■ Dừng phát', auto: 'Tự phát theo GPS', route: 'Tìm đường', center: 'Trung tâm Du khách', search: 'Tìm một điểm đến…', empty: 'Không có điểm phù hợp.', choose: 'Chọn một điểm trên sơ đồ để khám phá câu chuyện.', all: 'Tất cả', tree: '♧ Cây & rừng', water: '≈ Nước & thác', facility: '⌂ Khu chức năng', from: 'Đi từ', distance: 'km · khoảng', minute: 'phút đi bộ', verified: 'GPS đã xác thực', schematic: 'Vị trí trên sơ đồ', share: 'Sao chép liên kết', point: 'điểm dừng', narration: 'Lời thuyết minh', map: 'Chỉ tuyến trên sơ đồ, khoảng cách ước lượng.', noRoute: 'Điểm này chưa có trong đồ thị đường đi.', autoHint: 'Tự phát chỉ áp dụng cho điểm có GPS đã xác thực.' },
-  en: { play: '▶ Play audio guide', stop: '■ Stop playback', auto: 'GPS autoplay', route: 'Find route', center: 'Visitor Center', search: 'Find a destination…', empty: 'No matching stops.', choose: 'Choose a stop on the map to discover its story.', all: 'All stops', tree: '♧ Trees & forest', water: '≈ Water & rapids', facility: '⌂ Facilities', from: 'Start from', distance: 'km · about', minute: 'min walking', verified: 'Verified GPS', schematic: 'Schematic location', share: 'Copy link', point: 'stops', narration: 'Audio guide', map: 'Schematic route; distances are approximate.', noRoute: 'This stop has no mapped route yet.', autoHint: 'Autoplay is available only for stops with verified GPS.' },
-  ja: { play: '▶ 音声ガイド', stop: '■ 停止', auto: 'GPS自動再生', route: 'ルート検索', center: 'ビジターセンター', search: 'スポットを検索…', empty: '該当するスポットがありません。', choose: '地図からスポットを選んでください。', all: 'すべて', tree: '♧ 樹木・森', water: '≈ 水辺・急流', facility: '⌂ 施設', from: '出発点', distance: 'km · 約', minute: '分（徒歩）', verified: 'GPS確認済み', schematic: '概略位置', share: 'リンクをコピー', point: 'スポット', narration: '音声ガイド', map: '概略ルートと推定距離です。', noRoute: 'このスポットのルートは未登録です。', autoHint: 'GPS確認済みのスポットでのみ自動再生します。' },
-  ko: { play: '▶ 음성 안내', stop: '■ 정지', auto: 'GPS 자동 재생', route: '경로 찾기', center: '방문자 센터', search: '방문지 검색…', empty: '검색 결과가 없습니다.', choose: '지도에서 방문지를 선택하세요.', all: '전체', tree: '♧ 나무 / 숲', water: '≈ 물 / 급류', facility: '⌂ 시설', from: '출발지', distance: 'km · 약', minute: '분 도보', verified: 'GPS 확인됨', schematic: '개략적 위치', share: '링크 복사', point: '개 지점', narration: '음성 안내', map: '개략 경로이며 거리는 추정치입니다.', noRoute: '이 지점의 경로가 등록되지 않았습니다.', autoHint: '확인된 GPS 지점에서만 자동 재생됩니다.' },
-  zh: { play: '▶ 播放讲解', stop: '■ 停止', auto: 'GPS自动播放', route: '查找路线', center: '游客中心', search: '搜索景点…', empty: '没有符合条件的景点。', choose: '在地图上选择景点，聆听故事。', all: '全部', tree: '♧ 树木 / 森林', water: '≈ 水域 / 急流', facility: '⌂ 设施', from: '出发点', distance: 'km · 约', minute: '分钟步行', verified: 'GPS已验证', schematic: '示意图位置', share: '复制链接', point: '个景点', narration: '语音导览', map: '示意路线，距离为估算。', noRoute: '此景点暂无路线数据。', autoHint: '仅在GPS已验证的景点自动播放。' },
+  vi: { play: '▶ Nghe thuyết minh', stop: '■ Dừng phát', auto: 'Tự phát theo GPS', route: 'Tìm đường', center: 'Trung tâm Du khách', search: 'Tìm điểm đến theo tên, mã hoặc nội dung…', clearSearch: 'Xóa nội dung tìm kiếm', empty: 'Không có điểm phù hợp.', choose: 'Chọn một điểm trên sơ đồ để khám phá câu chuyện.', all: 'Tất cả', tree: '♧ Cây & rừng', water: '≈ Nước & thác', facility: '⌂ Khu chức năng', from: 'Đi từ', distance: 'km · khoảng', minute: 'phút đi bộ', verified: 'GPS đã xác thực', schematic: 'Vị trí trên sơ đồ', share: 'Sao chép liên kết', point: 'điểm dừng', narration: 'Lời thuyết minh', map: 'Chỉ tuyến trên sơ đồ, khoảng cách ước lượng.', noRoute: 'Điểm này chưa có trong đồ thị đường đi.', autoHint: 'Tự phát chỉ áp dụng cho điểm có GPS đã xác thực.' },
+  en: { play: '▶ Play audio guide', stop: '■ Stop playback', auto: 'GPS autoplay', route: 'Find route', center: 'Visitor Center', search: 'Search by name, code, or story…', clearSearch: 'Clear search', empty: 'No matching stops.', choose: 'Choose a stop on the map to discover its story.', all: 'All stops', tree: '♧ Trees & forest', water: '≈ Water & rapids', facility: '⌂ Facilities', from: 'Start from', distance: 'km · about', minute: 'min walking', verified: 'Verified GPS', schematic: 'Schematic location', share: 'Copy link', point: 'stops', narration: 'Audio guide', map: 'Schematic route; distances are approximate.', noRoute: 'This stop has no mapped route yet.', autoHint: 'Autoplay is available only for stops with verified GPS.' },
+  ja: { play: '▶ 音声ガイド', stop: '■ 停止', auto: 'GPS自動再生', route: 'ルート検索', center: 'ビジターセンター', search: '名前・番号・案内文で検索…', clearSearch: '検索をクリア', empty: '該当するスポットがありません。', choose: '地図からスポットを選んでください。', all: 'すべて', tree: '♧ 樹木・森', water: '≈ 水辺・急流', facility: '⌂ 施設', from: '出発点', distance: 'km · 約', minute: '分（徒歩）', verified: 'GPS確認済み', schematic: '概略位置', share: 'リンクをコピー', point: 'スポット', narration: '音声ガイド', map: '概略ルートと推定距離です。', noRoute: 'このスポットのルートは未登録です。', autoHint: 'GPS確認済みのスポットでのみ自動再生します。' },
+  ko: { play: '▶ 음성 안내', stop: '■ 정지', auto: 'GPS 자동 재생', route: '경로 찾기', center: '방문자 센터', search: '이름·코드·안내 내용 검색…', clearSearch: '검색 지우기', empty: '검색 결과가 없습니다.', choose: '지도에서 방문지를 선택하세요.', all: '전체', tree: '♧ 나무 / 숲', water: '≈ 물 / 급류', facility: '⌂ 시설', from: '출발지', distance: 'km · 약', minute: '분 도보', verified: 'GPS 확인됨', schematic: '개략적 위치', share: '링크 복사', point: '개 지점', narration: '음성 안내', map: '개략 경로이며 거리는 추정치입니다.', noRoute: '이 지점의 경로가 등록되지 않았습니다.', autoHint: '확인된 GPS 지점에서만 자동 재생됩니다.' },
+  zh: { play: '▶ 播放讲解', stop: '■ 停止', auto: 'GPS自动播放', route: '查找路线', center: '游客中心', search: '按名称、编号或讲解内容搜索…', clearSearch: '清除搜索', empty: '没有符合条件的景点。', choose: '在地图上选择景点，聆听故事。', all: '全部', tree: '♧ 树木 / 森林', water: '≈ 水域 / 急流', facility: '⌂ 设施', from: '出发点', distance: 'km · 约', minute: '分钟步行', verified: 'GPS已验证', schematic: '示意图位置', share: '复制链接', point: '个景点', narration: '语音导览', map: '示意路线，距离为估算。', noRoute: '此景点暂无路线数据。', autoHint: '仅在GPS已验证的景点自动播放。' },
 };
-const state = { lang: localStorage.getItem('sag:lang') || 'vi', pois: [], selected: null, category: 0, query: '', route: null, from: '0', source: '', admin: [], editing: null, isNew: false, tab: 'visitor', playing: false, auto: false, gps: null, hits: new Map(), cooldown: new Map() };
+const state = { lang: localStorage.getItem('sag:lang') || 'vi', pois: [], searchIndex: new Map(), selected: null, category: 0, query: '', route: null, from: '0', source: '', admin: [], editing: null, isNew: false, tab: 'visitor', playing: false, auto: false, gps: null, hits: new Map(), cooldown: new Map() };
 if (!LANGS[state.lang]) state.lang = 'vi';
 let seed, audio, watchId = null, refreshId = 0, adminRefreshId = 0, toastTimer, cameraStream, scanFrame, zoom = 1;
 let analyticsData = null, analyticsRun = 0, joinBlobUrl, joinLink = '', defaultJoinUrl = new URL('./', location.href).href;
@@ -36,7 +36,33 @@ const usage = new VisitorAnalytics();
 const counter = playbackCounter((poi, mode) => { try { usage.record(poi, mode); } catch { toast('Không lưu được lượt nghe. Bộ nhớ trình duyệt có thể đã đầy.', true); } });
 const t = key => copy[state.lang][key];
 function toast(message, error = false) { $('#toast').textContent = message; $('#toast').classList.toggle('error', error); $('#toast').hidden = false; clearTimeout(toastTimer); toastTimer = setTimeout(() => $('#toast').hidden = true, 6500); }
-function filtered() { const norm = s => s.toLocaleLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replaceAll('đ', 'd'); return state.pois.filter(p => (!state.category || p.categoryId === state.category) && norm(`${p.code} ${p.name}`).includes(norm(state.query))); }
+function filtered() { return state.pois.filter(p => (!state.category || p.categoryId === state.category) && matchesPoiQuery(p, state.query, state.searchIndex.get(p.id) || '')); }
+function makeSearchIndex(items) {
+  const index = new Map();
+  for (const poi of items) {
+    const terms = [poi.code, poi.name, poi.summary, poi.scriptText].filter(Boolean).join(' ');
+    index.set(poi.id, `${index.get(poi.id) || ''} ${terms}`.trim());
+  }
+  return index;
+}
+async function refreshSearchIndex(run, source, currentItems) {
+  const items = [...currentItems];
+  if (source === 'api') {
+    const otherLanguages = Object.keys(LANGS).filter(lang => lang !== state.lang);
+    const results = await Promise.allSettled(otherLanguages.map(lang => getPois(lang)));
+    for (const result of results) if (result.status === 'fulfilled') items.push(...result.value.items);
+  } else if (source === 'offline') {
+    for (const lang of Object.keys(LANGS)) {
+      try {
+        const pack = localStorage.getItem(packKey(lang));
+        if (pack) items.push(...JSON.parse(pack).items);
+      } catch { /* Skip an unreadable language pack; current language remains searchable. */ }
+    }
+  }
+  if (run !== refreshId) return;
+  state.searchIndex = makeSearchIndex(items);
+  renderMap(); renderList();
+}
 function selected() { return state.pois.find(p => p.id === state.selected); }
 function safeURL(url) { try { const u = new URL(url, location.href); return ['http:', 'https:'].includes(u.protocol) ? u.href : null; } catch { return null; } }
 function updateLanguage() {
@@ -47,6 +73,10 @@ function updateLanguage() {
     button.setAttribute('aria-pressed', String(active));
   });
   $('#search').placeholder = t('search');
+  $('#search').setAttribute('aria-label', t('search'));
+  $('#search-clear').setAttribute('aria-label', t('clearSearch'));
+  $('#search-clear').title = t('clearSearch');
+  $('#search-clear').hidden = !state.query;
   const keys = ['all', 'tree', 'water', 'facility'];
   $$('#filters button').forEach((b, i) => b.textContent = t(keys[i]));
   refreshUITranslations();
@@ -73,6 +103,7 @@ async function refresh() {
   }
   if (run !== refreshId) return;
   render(); updateOfflineStatus();
+  void refreshSearchIndex(run, state.source, [...state.pois]);
   usage.presence(visitorVisible()); usage.flush();
 }
 function render() { updateLanguage(); renderMap(); renderDetail(); renderList(); $('#stop-count').textContent = String(state.pois.length).padStart(2, '0'); }
@@ -319,7 +350,8 @@ function updateOfflineStatus() {
 
 $('#visitor-tab').onclick = () => { state.tab = 'visitor'; $('#visitor').hidden = false; $('#admin').hidden = true; $('#visitor-tab').classList.add('active'); $('#admin-tab').classList.remove('active'); $('#visitor-tab').ariaPressed = 'true'; $('#admin-tab').ariaPressed = 'false'; usage.presence(visitorVisible()); };
 $('#admin-tab').onclick = async () => { if(settings.mode!=='api'||!token()){$('#settings').click();$('#login-status').textContent='Khách sử dụng không cần đăng nhập. Chỉ admin đăng nhập để quản lý.';return;}try{await api('auth/me');}catch(error){$('#settings').click();$('#login-status').textContent=error.message;return;} stopAudio(); state.tab = 'admin'; usage.presence(false); $('#visitor').hidden = true; $('#admin').hidden = false; $('#admin-tab').classList.add('active'); $('#visitor-tab').classList.remove('active'); $('#visitor-tab').ariaPressed = 'false'; $('#admin-tab').ariaPressed = 'true'; showAdmin(); };
-$('#search').oninput = event => { state.query = event.target.value; renderMap(); renderList(); };
+$('#search').oninput = event => { state.query = event.target.value; $('#search-clear').hidden = !state.query; renderMap(); renderList(); };
+$('#search-clear').onclick = () => { $('#search').value = ''; state.query = ''; $('#search-clear').hidden = true; renderMap(); renderList(); $('#search').focus(); };
 $('#filters').onclick = event => { const b = event.target.closest('[data-category]'); if (!b) return; state.category = Number(b.dataset.category); $$('#filters button').forEach(x => { const active = x === b; x.classList.toggle('active', active); x.ariaPressed = String(active); }); renderMap(); renderList(); };
 const changeLanguage = async lang => { if(!LANGS[lang]||lang===state.lang)return; stopAudio(); state.lang = lang; localStorage.setItem('sag:lang', state.lang); await refresh();if(state.tab==='admin')await showAdmin(); };
 languageSwitcher.onclick = event => { const button=event.target.closest('[data-lang]');if(button)changeLanguage(button.dataset.lang); };

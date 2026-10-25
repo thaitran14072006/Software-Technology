@@ -1,7 +1,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
-import { LANGS, localize, routeTo, haversine, qrValue, validatePoi, toDto, MAP_ID } from '../core.mjs';
+import { LANGS, localize, routeTo, haversine, qrValue, validatePoi, toDto, MAP_ID, matchesPoiQuery } from '../core.mjs';
 const seed = JSON.parse(await readFile(new URL('../dist/data/pois.json', import.meta.url)));
 
 test('all 15 stops have five complete translations and no fabricated GPS', () => {
@@ -25,6 +25,24 @@ test('localization never reuses another language transcript or audio', () => {
   assert.equal(item.translationMissing, true);
   assert.equal(item.scriptText, '');
   assert.equal(item.audio, null);
+});
+test('POI search matches codes, all-language titles and narration without Vietnamese tone marks', () => {
+  const poi = {
+    code: '9', name: 'Bàu Sấu', summary: 'Vùng đất ngập nước giữa rừng.', scriptText: 'Lắng nghe câu chuyện về cá sấu.',
+    translations: [
+      { langCode: 'en', name: 'Crocodile Lake', summary: 'Wetlands in the forest.', scriptText: 'Listen to the forest at night.' },
+      { langCode: 'zh', name: '鳄鱼湖', summary: '森林湿地。', scriptText: '听听森林的故事。' },
+    ],
+  };
+  assert.equal(matchesPoiQuery(poi, 'bau sau'), true);
+  assert.equal(matchesPoiQuery(poi, 'crocodile lake'), true);
+  assert.equal(matchesPoiQuery(poi, 'wetlands forest'), true);
+  assert.equal(matchesPoiQuery(poi, 'forest night'), true);
+  assert.equal(matchesPoiQuery(poi, '鳄鱼湖'), true);
+  assert.equal(matchesPoiQuery(poi, '9'), true);
+  assert.equal(matchesPoiQuery(poi, ''), true);
+  assert.equal(matchesPoiQuery(poi, 'crocodile volcano'), false);
+  assert.equal(matchesPoiQuery({ ...poi, translations: [] }, 'crocodile', 'Crocodile Lake'), true);
 });
 test('shortest paths cover all pairs, preserve distances and reverse symmetrically', () => {
   const codes = ['0', ...seed.pois.map(p => p.code)];

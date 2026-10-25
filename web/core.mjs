@@ -2,6 +2,19 @@ export const LANGS = { vi: 'Tiếng Việt', en: 'English', ja: '日本語', ko:
 export const LOCALES = { vi: 'vi-VN', en: 'en-US', ja: 'ja-JP', ko: 'ko-KR', zh: 'zh-CN' };
 export const MAP_ID = '00000000-0000-0000-0000-000000000001';
 export const CENTER = [390, 850];
+export function normalizeSearch(value) {
+  return String(value ?? '').toLocaleLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replaceAll('đ', 'd').trim();
+}
+export function matchesPoiQuery(poi, query, extraText = '') {
+  const tokens = normalizeSearch(query).split(/\s+/).filter(Boolean);
+  if (!tokens.length) return true;
+  const translations = Array.isArray(poi.translations) ? poi.translations : [];
+  const searchable = normalizeSearch([
+    poi.code, poi.name, poi.summary, poi.scriptText,
+    ...translations.flatMap(item => [item.name, item.summary, item.scriptText]), extraText,
+  ].filter(Boolean).join(' '));
+  return tokens.every(token => searchable.includes(token));
+}
 export function newId() {
   if (globalThis.crypto.randomUUID) return globalThis.crypto.randomUUID();
   // getRandomValues also works on HTTP LAN pages, where randomUUID may be unavailable.
