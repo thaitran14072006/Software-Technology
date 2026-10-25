@@ -10,11 +10,16 @@ const key = process.env.GEMINI_API_KEY;
 if (!key) throw new Error('GEMINI_API_KEY is empty in backend/.env');
 const model = process.env.GEMINI_TTS_MODEL || 'gemini-3.8-flash-tts';
 if (model !== 'gemini-3.8-flash-tts' && model !== 'gemini-3.8-flash-lite-tts') throw new Error(`Unsupported Gemini TTS model: ${model}`);
-const voice = process.env.GEMINI_VOICE_FEMALE || 'Kore';
+const voice = process.argv.find(a => a.startsWith('--voice='))?.slice(8) || process.env.GEMINI_VOICE_FEMALE || 'Kore';
 const langs = {
   vi: 'Vietnamese', en: 'English', ja: 'Japanese', ko: 'Korean', zh: 'Mandarin Chinese',
 };
 const only = process.argv.find(a => a.startsWith('--only='))?.slice(7);
+const poiArg = process.argv.find(a => a.startsWith('--poi='))?.slice(6);
+const poiFilter = poiArg ? new Set(poiArg.split(',').map(value => Number(value.trim()))) : null;
+const excludePoiArg = process.argv.find(a => a.startsWith('--exclude-pois='))?.slice(15);
+const excludedPois = excludePoiArg ? new Set(excludePoiArg.split(',').map(value => Number(value.trim()))) : null;
+const force = process.argv.includes('--force');
 const dryRun = process.argv.includes('--dry-run');
 const maxArg = process.argv.find(a => a.startsWith('--max='))?.slice(6);
 const maxTasks = maxArg ? Number(maxArg) : Infinity;
@@ -36,6 +41,8 @@ function saveManifest() {
 const sourceAudio = new Set(await (await import('node:fs/promises')).readdir(path.join(root, 'backend/fixtures/audio')));
 const tasks = [];
 for (const poi of pois) for (const [lang, language] of Object.entries(langs)) {
+  if (poiFilter && !poiFilter.has(Number(poi.code))) continue;
+  if (excludedPois?.has(Number(poi.code))) continue;
   const tr = poi.translations.find(t => t.lang_code === lang);
   if (only && only !== `${poi.code}:${lang}`) continue;
   if (!tr?.script_text?.trim()) throw new Error(`Missing script ${poi.code}:${lang}`);
@@ -44,7 +51,7 @@ for (const poi of pois) for (const [lang, language] of Object.entries(langs)) {
   if (old?.provider === 'GEMINI' && old.textHash === hash && old.model === model && old.voice === voice) continue;
   // Some older source MP3s do not record the transcript they were synthesized
   // from. Only reuse them for unchanged scripts; revised scripts require fresh TTS.
-  if (!tr.audio_needs_refresh && [...sourceAudio].some(f => f.startsWith(`${poi.code}-${lang}-`) && f.endsWith('.mp3'))) continue;
+  if (!force && !tr.audio_needs_refresh && [...sourceAudio].some(f => f.startsWith(`${poi.code}-${lang}-`) && f.endsWith('.mp3'))) continue;
   tasks.push({ code: poi.code, lang, language, text: tr.script_text, textHash: hash });
 }
 const languageOrder = Object.keys(langs);

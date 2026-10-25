@@ -46,12 +46,12 @@
   },
   "11:vi": {
     "file": "11-vi.mp3",
-    "textHash": "8d3472ed502f423b5322af5ed2a44bf35a26e60d92aa0f2470db35b73f49bf82",
+    "textHash": "2e9b467a4bd594e5c1b9c3d7b00c1ac268fc2b7481dde3512d9833402454908a",
     "provider": "GEMINI",
     "model": "gemini-3.8-flash-tts",
     "voice": "Kore",
     "voiceName": "Gemini gemini-3.8-flash-tts · Kore",
-    "bytes": 99500
+    "bytes": 576428
   },
   "12:en": {
     "file": "12-en.mp3",
@@ -182,8 +182,11 @@
   "2:vi": {
     "file": "2-vi.mp3",
     "textHash": "9c9b5a0d91993e577103b931a80764c2245fa423f42524f0455e37d55abf3d9b",
-    "voiceName": "eSpeak NG vi+f3",
-    "bytes": 308497
+    "provider": "GEMINI",
+    "model": "gemini-3.8-flash-tts",
+    "voice": "Kore",
+    "voiceName": "Gemini gemini-3.8-flash-tts · Kore",
+    "bytes": 356012
   },
   "2:ja": {
     "file": "2-ja.mp3",
@@ -229,9 +232,12 @@
   },
   "4:vi": {
     "file": "4-vi.mp3",
-    "textHash": "341062c72098bdafd44014ee12741184b51860a82d6b9250a13091739496418c",
-    "voiceName": "eSpeak NG vi+f3",
-    "bytes": 97428
+    "textHash": "2b945465803ac0aa0858b49f0a3a9ff34ad39fe87c0837ac387e159e73a70a6f",
+    "provider": "GEMINI",
+    "model": "gemini-3.8-flash-tts",
+    "voice": "Kore",
+    "voiceName": "Gemini gemini-3.8-flash-tts · Kore",
+    "bytes": 554540
   },
   "4:en": {
     "file": "4-en.mp3",
@@ -260,8 +266,11 @@
   "5:vi": {
     "file": "5-vi.mp3",
     "textHash": "78080688529a3d0bebf036a0bcdf8f99feabd398def97f0384b705d67d780498",
-    "voiceName": "eSpeak NG vi+f3",
-    "bytes": 319364
+    "provider": "GEMINI",
+    "model": "gemini-3.8-flash-tts",
+    "voice": "Kore",
+    "voiceName": "Gemini gemini-3.8-flash-tts · Kore",
+    "bytes": 330668
   },
   "5:en": {
     "file": "5-en.mp3",
@@ -289,9 +298,12 @@
   },
   "6:vi": {
     "file": "6-vi.mp3",
-    "textHash": "929839e45993fb28e7e7fc4a69765ce3e28b5485a352db0eea4a11b3408393c9",
-    "voiceName": "eSpeak NG vi+f3",
-    "bytes": 185617
+    "textHash": "f2ce2b6f80eabffe1bd8410fcdc5814d800d73c20ddc6a888d2a6edd9596e8db",
+    "provider": "GEMINI",
+    "model": "gemini-3.8-flash-tts",
+    "voice": "Kore",
+    "voiceName": "Gemini gemini-3.8-flash-tts · Kore",
+    "bytes": 559148
   },
   "6:en": {
     "file": "6-en.mp3",
@@ -320,8 +332,11 @@
   "7:vi": {
     "file": "7-vi.mp3",
     "textHash": "59a80b22b16a7b3b2ed76c1068c749d1bdecf2cbce4279e3c0e5405e81c78ba0",
-    "voiceName": "eSpeak NG vi+f3",
-    "bytes": 324380
+    "provider": "GEMINI",
+    "model": "gemini-3.8-flash-tts",
+    "voice": "Kore",
+    "voiceName": "Gemini gemini-3.8-flash-tts · Kore",
+    "bytes": 348332
   },
   "7:en": {
     "file": "7-en.mp3",
@@ -344,8 +359,11 @@
   "8:vi": {
     "file": "8-vi.mp3",
     "textHash": "c281d93a850f2d4c2ff6ac3aaf4c205b441f2bb7a5db932d77f207de4eaa22ed",
-    "voiceName": "eSpeak NG vi+f3",
-    "bytes": 295123
+    "provider": "GEMINI",
+    "model": "gemini-3.8-flash-tts",
+    "voice": "Kore",
+    "voiceName": "Gemini gemini-3.8-flash-tts · Kore",
+    "bytes": 289580
   },
   "7:zh": {
     "file": "7-zh.mp3",
@@ -394,5 +412,32 @@
     "textHash": "88226e9d8fdc94b978283128563b49f7560ce779515362531b5ac68de01f8848",
     "voiceName": "eSpeak NG cmn+f3",
     "bytes": 659583
+  },
+  "3:vi": {
+    "file": "3-vi.mp3",
+    "textHash": "d597029336ee71843bcb5e3e473465460b47e891b2a7a0b5dcfb0736ecea8bc1",
+    "provider": "GEMINI",
+    "model": "gemini-3.8-flash-tts",
+    "voice": "Kore",
+    "voiceName": "Gemini gemini-3.8-flash-tts · Kore",
+    "bytes": 518828
+  },
+  "10:vi": {
+    "file": "10-vi.mp3",
+    "textHash": "9c83c0b98fbea14b14fd6bf55cd6d03b174afe19397a32cbfc3472e2eda5be17",
+    "provider": "GEMINI",
+    "model": "gemini-3.8-flash-tts",
+    "voice": "Kore",
+    "voiceName": "Gemini gemini-3.8-flash-tts · Kore",
+    "bytes": 574892
+  },
+  "12:vi": {
+    "file": "12-vi.mp3",
+    "textHash": "f8fd37b165e63e27181f0e8d1eb07acef6e89d0f6ac66a6165a301d53ea6bbd3",
+    "provider": "GEMINI",
+    "model": "gemini-3.8-flash-tts",
+    "voice": "Kore",
+    "voiceName": "Gemini gemini-3.8-flash-tts · Kore",
+    "bytes": 516908
   }
 }
