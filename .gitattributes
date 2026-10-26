@@ -7,3 +7,5 @@
 *.jpg binary
 *.docx binary
 *.zip binary
+
+web/vendor/leaflet/* -text

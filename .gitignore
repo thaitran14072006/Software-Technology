@@ -30,3 +30,6 @@ __pycache__/
 docs/usecase-work/*
 !docs/usecase-work/cases.json
 !docs/usecase-work/build_usecases.py
+
+# Local Android signing material and notes
+/mobile/AndroidKeys/
