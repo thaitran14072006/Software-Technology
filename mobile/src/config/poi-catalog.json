@@ -1,0 +1,277 @@
+{
+  "version": 1,
+  "source": "User revised 15-POI table supplied in chat on 2026-10-25; supersedes the earlier Word coordinate list.",
+  "sourceSha256": "2ede2f7c00e63638604ebdeb843bb7e94aa1e7829fbd982ede01e5b9f5b8a664",
+  "points": [
+    {
+      "order": 1,
+      "code": "coord-01",
+      "name": "Trung tâm Hành chính VQG",
+      "latitude": 11.4316,
+      "longitude": 107.4323,
+      "categoryId": 1,
+      "note": "Bến phà đi vào vườn, điểm xuất phát của mọi tuyến đi.",
+      "names": {
+        "vi": "Trung tâm Hành chính VQG",
+        "en": "Park Administration Centre",
+        "ja": "国立公園管理センター",
+        "ko": "국립공원 행정센터",
+        "zh": "国家公园行政中心"
+      },
+      "geoSourceUrl": "urn:sha256:2ede2f7c00e63638604ebdeb843bb7e94aa1e7829fbd982ede01e5b9f5b8a664#point-01",
+      "geoVerified": false
+    },
+    {
+      "order": 2,
+      "code": "9",
+      "name": "Bàu Sấu",
+      "latitude": 11.4594,
+      "longitude": 107.3486,
+      "categoryId": 3,
+      "note": "Nằm sâu trong rừng, phải đi xe jeep 9km rồi đi bộ 5km.",
+      "names": {
+        "vi": "Bàu Sấu",
+        "en": "Crocodile Lake",
+        "ja": "クロコダイル湖",
+        "ko": "악어 호수",
+        "zh": "鳄鱼湖"
+      },
+      "geoSourceUrl": "urn:sha256:2ede2f7c00e63638604ebdeb843bb7e94aa1e7829fbd982ede01e5b9f5b8a664#point-02",
+      "geoVerified": false
+    },
+    {
+      "order": 3,
+      "code": "2",
+      "name": "Cây Tùng cổ thụ",
+      "latitude": 11.4428,
+      "longitude": 107.423,
+      "categoryId": 2,
+      "note": "Nằm trên tuyến đi bộ sinh thái gần trung tâm.",
+      "names": {
+        "vi": "Cây Tùng cổ thụ",
+        "en": "Ancient Tung Tree",
+        "ja": "トゥンの巨木",
+        "ko": "오래된 퉁 나무",
+        "zh": "古老的 Tung 树"
+      },
+      "geoSourceUrl": "urn:sha256:2ede2f7c00e63638604ebdeb843bb7e94aa1e7829fbd982ede01e5b9f5b8a664#point-03",
+      "geoVerified": false
+    },
+    {
+      "order": 4,
+      "code": "7",
+      "name": "Cây Gõ Bác Đồng",
+      "latitude": 11.4611,
+      "longitude": 107.414,
+      "categoryId": 2,
+      "note": "Nằm sâu hơn trên tuyến cây cổ thụ.",
+      "names": {
+        "vi": "Cây Gõ Bác Đồng",
+        "en": "Bac Dong Go Tree",
+        "ja": "バックドンのゴーの木",
+        "ko": "박동 고 나무",
+        "zh": "胡伯同纪念红木树"
+      },
+      "geoSourceUrl": "urn:sha256:2ede2f7c00e63638604ebdeb843bb7e94aa1e7829fbd982ede01e5b9f5b8a664#point-04",
+      "geoVerified": false
+    },
+    {
+      "order": 5,
+      "code": "13",
+      "name": "Cây Si trăm thân",
+      "latitude": 11.4725,
+      "longitude": 107.3912,
+      "categoryId": 2,
+      "note": "Nằm trên tuyến đường xe jeep đi hướng về Bàu Sấu.",
+      "names": {
+        "vi": "Cây Si trăm thân",
+        "en": "Hundred-Trunk Banyan",
+        "ja": "百幹のガジュマル",
+        "ko": "백 줄기 반얀나무",
+        "zh": "百干榕树"
+      },
+      "geoSourceUrl": "urn:sha256:2ede2f7c00e63638604ebdeb843bb7e94aa1e7829fbd982ede01e5b9f5b8a664#point-05",
+      "geoVerified": false
+    },
+    {
+      "order": 6,
+      "code": "8",
+      "name": "Cây Đa Lộc Giao",
+      "latitude": 11.4502,
+      "longitude": 107.4195,
+      "categoryId": 2,
+      "note": "Gần tuyến đi bộ tham quan cây Tùng.",
+      "names": {
+        "vi": "Cây Đa Lộc Giao",
+        "en": "Loc Giao Banyan",
+        "ja": "ロックザオのガジュマル",
+        "ko": "록자오 반얀나무",
+        "zh": "鹿交榕树"
+      },
+      "geoSourceUrl": "urn:sha256:2ede2f7c00e63638604ebdeb843bb7e94aa1e7829fbd982ede01e5b9f5b8a664#point-06",
+      "geoVerified": false
+    },
+    {
+      "order": 7,
+      "code": "14",
+      "name": "Thác Trời",
+      "latitude": 11.4361,
+      "longitude": 107.4525,
+      "categoryId": 3,
+      "note": "Nằm phía hạ lưu sông Đồng Nai dọc theo tuyến đường nội bộ.",
+      "names": {
+        "vi": "Thác Trời",
+        "en": "Troi Waterfall",
+        "ja": "チョイ滝",
+        "ko": "쯔어이 폭포",
+        "zh": "Troi 瀑布"
+      },
+      "geoSourceUrl": "urn:sha256:2ede2f7c00e63638604ebdeb843bb7e94aa1e7829fbd982ede01e5b9f5b8a664#point-07",
+      "geoVerified": false
+    },
+    {
+      "order": 8,
+      "code": "coord-12",
+      "name": "Thác Dựng",
+      "latitude": 11.4289,
+      "longitude": 107.461,
+      "categoryId": 3,
+      "note": "Nằm tiếp nối phía dưới trục đường đi Thác Trời.",
+      "names": {
+        "vi": "Thác Dựng",
+        "en": "Dung Waterfall",
+        "ja": "ドゥン滝",
+        "ko": "증 폭포",
+        "zh": "Dung 瀑布"
+      },
+      "geoSourceUrl": "urn:sha256:2ede2f7c00e63638604ebdeb843bb7e94aa1e7829fbd982ede01e5b9f5b8a664#point-08",
+      "geoVerified": false
+    },
+    {
+      "order": 9,
+      "code": "5",
+      "name": "Ghềnh Bến Cự",
+      "latitude": 11.4431,
+      "longitude": 107.4355,
+      "categoryId": 3,
+      "note": "Cách trung tâm vườn khoảng 3km về phía thượng lưu.",
+      "names": {
+        "vi": "Ghềnh Bến Cự",
+        "en": "Ben Cu Rapids",
+        "ja": "ベンクーの急流",
+        "ko": "벤꾸 급류",
+        "zh": "Ben Cu 急流"
+      },
+      "geoSourceUrl": "urn:sha256:2ede2f7c00e63638604ebdeb843bb7e94aa1e7829fbd982ede01e5b9f5b8a664#point-09",
+      "geoVerified": false
+    },
+    {
+      "order": 10,
+      "code": "15",
+      "name": "Rừng Bằng lăng Đà Cộ",
+      "latitude": 11.4552,
+      "longitude": 107.4045,
+      "categoryId": 2,
+      "note": "Khu vực rừng bằng lăng dọc trục đường chính.",
+      "names": {
+        "vi": "Rừng Bằng lăng Đà Cộ",
+        "en": "Da Co Crape Myrtle Forest",
+        "ja": "ダコーのサルスベリ林",
+        "ko": "다꼬 배롱나무 숲",
+        "zh": "Da Co 紫薇林"
+      },
+      "geoSourceUrl": "urn:sha256:2ede2f7c00e63638604ebdeb843bb7e94aa1e7829fbd982ede01e5b9f5b8a664#point-10",
+      "geoVerified": false
+    },
+    {
+      "order": 11,
+      "code": "doc-13",
+      "name": "Đảo Tiên",
+      "latitude": 11.4242,
+      "longitude": 107.429,
+      "categoryId": 1,
+      "note": "Nằm ở phân khu phía Nam, di chuyển bằng thuyền.",
+      "names": {
+        "vi": "Đảo Tiên",
+        "en": "Dao Tien Island",
+        "ja": "ダオティエン島",
+        "ko": "다오띠엔 섬",
+        "zh": "仙岛"
+      },
+      "geoSourceUrl": "urn:sha256:2ede2f7c00e63638604ebdeb843bb7e94aa1e7829fbd982ede01e5b9f5b8a664#point-11",
+      "geoVerified": false
+    },
+    {
+      "order": 12,
+      "code": "1",
+      "name": "Trạm cứu hộ gấu",
+      "latitude": 11.4325,
+      "longitude": 107.4315,
+      "categoryId": 1,
+      "note": "Nằm ngay gần văn phòng trung tâm của Vườn.",
+      "names": {
+        "vi": "Trạm cứu hộ gấu",
+        "en": "Bear Rescue Station",
+        "ja": "クマ救護ステーション",
+        "ko": "곰 구조소",
+        "zh": "熊类救护站"
+      },
+      "geoSourceUrl": "urn:sha256:2ede2f7c00e63638604ebdeb843bb7e94aa1e7829fbd982ede01e5b9f5b8a664#point-12",
+      "geoVerified": false
+    },
+    {
+      "order": 13,
+      "code": "coord-02",
+      "name": "Bảo tàng Thiên nhiên",
+      "latitude": 11.431,
+      "longitude": 107.4328,
+      "categoryId": 1,
+      "note": "Đối diện khu vực nhà hàng trung tâm.",
+      "names": {
+        "vi": "Bảo tàng Thiên nhiên",
+        "en": "Nature Museum",
+        "ja": "自然博物館",
+        "ko": "자연박물관",
+        "zh": "自然博物馆"
+      },
+      "geoSourceUrl": "urn:sha256:2ede2f7c00e63638604ebdeb843bb7e94aa1e7829fbd982ede01e5b9f5b8a664#point-13",
+      "geoVerified": false
+    },
+    {
+      "order": 14,
+      "code": "doc-14",
+      "name": "Di chỉ khảo cổ Cát Tiên",
+      "latitude": 11.5235,
+      "longitude": 107.3385,
+      "categoryId": 1,
+      "note": "Nằm ở huyện Cát Tiên (Lâm Đồng), cách trung tâm vườn khá xa.",
+      "names": {
+        "vi": "Di chỉ khảo cổ Cát Tiên",
+        "en": "Cat Tien Archaeological Site",
+        "ja": "カットティエン考古遺跡",
+        "ko": "깟띠엔 고고학 유적",
+        "zh": "吉仙考古遗址"
+      },
+      "geoSourceUrl": "urn:sha256:2ede2f7c00e63638604ebdeb843bb7e94aa1e7829fbd982ede01e5b9f5b8a664#point-14",
+      "geoVerified": false
+    },
+    {
+      "order": 15,
+      "code": "coord-15",
+      "name": "Bản văn hóa Tà Lài",
+      "latitude": 11.3685,
+      "longitude": 107.382,
+      "categoryId": 1,
+      "note": "Nằm ở vùng đệm phía Tây Nam của vườn quốc gia.",
+      "names": {
+        "vi": "Bản văn hóa Tà Lài",
+        "en": "Ta Lai Cultural Village",
+        "ja": "タライ文化村",
+        "ko": "따라이 문화마을",
+        "zh": "塔莱文化村"
+      },
+      "geoSourceUrl": "urn:sha256:2ede2f7c00e63638604ebdeb843bb7e94aa1e7829fbd982ede01e5b9f5b8a664#point-15",
+      "geoVerified": false
+    }
+  ]
+}
