@@ -1,4 +1,5 @@
 import { localize, MAP_ID, LANGS, toDto, newId } from './core.mjs';
+import {currentCatalogItems} from './poi-catalog.mjs';
 export const settings = JSON.parse(localStorage.getItem('sag:settings') || 'null') || { mode: 'demo' };
 let seed;
 export async function loadSeed() {
@@ -24,17 +25,20 @@ export async function api(path, options = {}, qr = false) {
 }
 export async function demoPois() {
   const data = await loadSeed();
-  return JSON.parse(localStorage.getItem('sag:demo-pois') || 'null') || structuredClone(data.pois);
+  const saved=JSON.parse(localStorage.getItem(demoStorageKey())||'null');
+  return saved ? currentCatalogItems(saved,data) : structuredClone(data.pois);
 }
+const demoStorageKey=()=>seed?.catalogVersion?`sag:demo-pois:${seed.catalogVersion}`:'sag:demo-pois';
 export const packKey = (lang) => `sag:pack:${settings.mode}:${lang}`;
 export async function getPois(lang) {
+  const catalog=seed;
   if (settings.mode === 'demo') return { items: (await demoPois()).filter(p => p.status === 'PUBLISHED').map(p => localize(p, lang)), source: 'demo' };
   try {
     const data = await api(`pois?mapId=${MAP_ID}&lang=${lang}`);
-    return { ...data, source: 'api' };
+    return { ...data, items:currentCatalogItems(data.items,catalog),source: 'api' };
   } catch (error) {
     const saved = localStorage.getItem(packKey(lang));
-    if (saved) return { ...JSON.parse(saved), source: 'offline', warning: error.message };
+    if (saved) {const pack=JSON.parse(saved);return { ...pack,items:currentCatalogItems(pack.items,catalog,{cached:true}), source: 'offline', warning: error.message };}
     throw error;
   }
 }
@@ -51,13 +55,13 @@ export async function savePoi(poi, isNew) {
     const i = pois.findIndex(p => p.id === poi.id);
     if (isNew) pois.push({ ...poi, id: newId(), version: 1 });
     else { if (i < 0) throw new Error('Điểm không tồn tại.'); pois[i] = { ...poi, version: (pois[i].version || 1) + 1 }; }
-    localStorage.setItem('sag:demo-pois', JSON.stringify(pois));
+    localStorage.setItem(demoStorageKey(), JSON.stringify(pois));
     return;
   }
   return api(isNew ? 'admin/pois' : `admin/pois/${encodeURIComponent(poi.id)}`, { method: isNew ? 'POST' : 'PATCH', body: JSON.stringify(toDto(poi)) });
 }
 export async function deletePoi(id) {
-  if (settings.mode === 'demo') localStorage.setItem('sag:demo-pois', JSON.stringify((await demoPois()).filter(p => p.id !== id)));
+  if (settings.mode === 'demo') localStorage.setItem(demoStorageKey(), JSON.stringify((await demoPois()).filter(p => p.id !== id)));
   else await api(`admin/pois/${encodeURIComponent(id)}`, { method: 'DELETE' });
 }
 export async function saveOffline(onProgress, {provider} = {}) {
@@ -86,6 +90,6 @@ export async function saveOffline(onProgress, {provider} = {}) {
   if(provider && !audioCount)throw new Error('Chưa có audio Google AI Studio để tải. Cần tạo audio trên máy chủ trước.');
   for (const [lang, data] of packs) localStorage.setItem(packKey(lang), JSON.stringify(data));
   localStorage.setItem(`sag:pack-date:${settings.mode}`, new Date().toISOString());
-  localStorage.setItem(`sag:pack-meta:${settings.mode}`,JSON.stringify({provider:provider||null,audioCount,audioMissing}));
+  localStorage.setItem(`sag:pack-meta:${settings.mode}`,JSON.stringify({provider:provider||null,audioCount,audioMissing,catalogVersion:seed?.catalogVersion}));
   return { audioCount, audioFailed, audioMissing };
 }

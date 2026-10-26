@@ -1,13 +1,23 @@
+import {stopNumber} from './schematic-map.mjs';
 // Adapted from cat-tien-app/js/map/leaflet-map.js. Never project schematic points to fake GPS.
 export const OSM_TILE_URL = 'https://tile.openstreetmap.org/{z}/{x}/{y}.png';
 export const PARK_CENTER = [11.423368, 107.422042];
+export function documentCoordinates(poi) {
+  return /^urn:sha256:[a-f0-9]{64}#point-\d{2}$/.test(poi.geoSourceUrl || '');
+}
 export function verifiedCoordinates(poi) {
-  return (poi.geoVerified || /^https:\/\//.test(poi.geoSourceUrl || '')) && typeof poi.lat === 'number' && typeof poi.lng === 'number'
+  return (poi.geoVerified || documentCoordinates(poi) || /^https:\/\//.test(poi.geoSourceUrl || '')) && typeof poi.lat === 'number' && typeof poi.lng === 'number'
     && Number.isFinite(poi.lat) && Number.isFinite(poi.lng)
     && Math.abs(poi.lat) <= 90 && Math.abs(poi.lng) <= 180 ? [poi.lat, poi.lng] : null;
 }
 export function createOutdoorMap({ container, note, onSelect }) {
   let map, markers, position, tiles, visible = false, latest, selectedId;
+  function fitPoints() {
+    const points=(latest?.pois||[]).map(verifiedCoordinates).filter(Boolean);
+    map.stop();map.invalidateSize({pan:false});
+    if(points.length)map.fitBounds(points,{padding:[32,32],maxZoom:15,animate:false});
+    else map.setView(PARK_CENTER,13);
+  }
   function init() {
     const L = window.L;
     if (!L) throw new Error('Chưa tải được thư viện bản đồ. Hãy dùng sơ đồ tham quan.');
@@ -29,7 +39,7 @@ export function createOutdoorMap({ container, note, onSelect }) {
     for (const p of data.pois) {
       const ll = verifiedCoordinates(p);
       if (!ll) continue;
-      const label = document.createElement('span'); label.textContent = `${p.code}. ${p.name}`;
+      const label = document.createElement('span'); label.textContent = `${stopNumber(p)}. ${p.name}`;
       L.circleMarker(ll, { radius: p.id === data.selectedId ? 12 : 9, color: '#234d3a', fillColor: '#d8e9ac', fillOpacity: 1 })
         .addTo(markers).bindTooltip(label).on('click', () => onSelect(p.id));
     }
@@ -40,7 +50,7 @@ export function createOutdoorMap({ container, note, onSelect }) {
     }
     const selected = data.pois.find(p => p.id === data.selectedId);
     const ll = selected && verifiedCoordinates(selected);
-    if (ll && selectedId !== data.selectedId) map.panTo(ll);
+    if (ll && selectedId !== data.selectedId) map.panTo(ll,{animate:false});
     selectedId = data.selectedId;
     note.textContent = `OpenStreetMap · ${data.pois.filter(verifiedCoordinates).length}/${data.pois.length} điểm đang lọc có tọa độ đối chiếu nguồn. Tuyến tham quan xem trên sơ đồ.`;
   }
@@ -49,10 +59,11 @@ export function createOutdoorMap({ container, note, onSelect }) {
     show(value) {
       visible = value; container.hidden = !value; note.hidden = !value;
       if (value) {
+        const firstShow=!map;
         if (!map) init();
-        requestAnimationFrame(() => { map.invalidateSize(); if (latest) update(latest); });
+        requestAnimationFrame(() => { map.invalidateSize(); if (latest) update(latest); if(firstShow)fitPoints(); });
       }
     },
-    reset() { if (map) map.setView(PARK_CENTER, 13); },
+    reset() { if (map) fitPoints(); },
   };
 }

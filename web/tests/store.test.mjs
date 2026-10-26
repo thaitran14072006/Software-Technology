@@ -7,7 +7,7 @@ globalThis.localStorage = memoryStorage(); globalThis.sessionStorage = memorySto
 const store = await import('../store.mjs');
 const originalFetch = globalThis.fetch;
 test('demo CRUD persists edits, keeps drafts private and does not mutate source data', async () => {
-  globalThis.fetch = async () => new Response(JSON.stringify(seed));
+  globalThis.fetch = async () => new Response(JSON.stringify({...seed,catalogVersion:undefined}));
   try {
     const poi = { ...structuredClone(seed.pois[0]), id: null, code: 'qa', status: 'DRAFT' };
     await store.savePoi(poi, true);

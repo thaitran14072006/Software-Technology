@@ -17,16 +17,18 @@ vm.createContext(ctx);
 for (const name of ['data.js', 'i18n.js']) {
   vm.runInContext(await readFile(path.join(root, 'scripts', 'legacy', name), 'utf8'), ctx, { filename: name, timeout: 1000 });
 }
-const pois = ctx.P.map(p => ({
-  id: `demo-${p[0]}`, code: String(p[0]), categoryId: { p: 1, t: 2, w: 3 }[p[7]],
-  schematic: [p[1], p[2]], lat: p[0] === 9 ? 11.457891 : null,
-  lng: p[0] === 9 ? 107.34348 : null, geoVerified: p[0] === 9,
-  status: 'PUBLISHED', version: 1, triggerRadiusM: 10, audio: null,
-  translations: ['vi', 'en', 'ja', 'ko', 'zh'].map(lang => {
-    ctx.lang = lang;
-    return { langCode: lang, name: ctx.nm(p), summary: ctx.sb(p), scriptText: ctx.txt(p) };
-  }),
-}));
+const catalog=JSON.parse(await readFile(path.join(root,'scripts','data','active-pois.json'),'utf8'));
+const fixture=sharedContent;
+const pois=catalog.points.map(point=>{
+  const p=fixture.pois.find(row=>row.code===point.code);
+  if(!p)throw new Error(`Missing canonical fixture POI ${point.code}`);
+  return {id:`demo-${p.code}`,code:p.code,categoryId:point.categoryId,sortOrder:point.order,
+    schematic:p.schematic_x==null?null:[+p.schematic_x,+p.schematic_y],lat:point.latitude,lng:point.longitude,
+    geoVerified:false,geoSourceUrl:point.geoSourceUrl,status:'PUBLISHED',version:1,triggerRadiusM:p.trigger_radius_m||10,audio:null,
+    translations:p.translations.map(t=>({langCode:t.lang_code,name:point.names[t.lang_code]||t.name,summary:t.summary||'',scriptText:t.script_text}))};
+});
+const allowed=new Set(['0',...catalog.points.map(p=>p.code)]);
+const edges=[[1,0,.12],...ctx.P.filter(p=>p[0]!==1).map(p=>[p[0],p[6],p[5]])].filter(([a,b])=>allowed.has(String(a))&&allowed.has(String(b)));
 // The visitor demo runs without a backend. Use shared translations for all 15
 // stops and attach only audio generated from the exact matching transcript.
 for (const poi of pois) {
@@ -41,7 +43,7 @@ for (const poi of pois) {
 }
 await mkdir(out, { recursive: true });
 // Only replace generated output inside the fixed web/dist directory.
-for (const name of ['index.html', 'styles.css', 'app.mjs', 'core.mjs', 'store.mjs', 'analytics.mjs', 'join-qr.mjs', 'admin-tools.mjs', 'visitor-config.mjs', 'outdoor-map.mjs', 'browser-tts.mjs', 'ui-i18n.mjs', 'ui-extra.mjs', 'sw.js', 'manifest.webmanifest', 'icon.svg']) {
+for (const name of ['index.html', 'styles.css', 'app.mjs', 'core.mjs', 'store.mjs', 'analytics.mjs', 'join-qr.mjs', 'admin-tools.mjs', 'visitor-config.mjs', 'outdoor-map.mjs', 'poi-catalog.mjs', 'schematic-map.mjs', 'browser-tts.mjs', 'ui-i18n.mjs', 'ui-extra.mjs', 'sw.js', 'manifest.webmanifest', 'icon.svg']) {
   await cp(path.join(root, 'web', name), path.join(out, name));
 }
 await cp(path.join(root, 'web', 'vendor'), path.join(out, 'vendor'), { recursive: true });
@@ -70,7 +72,7 @@ for (const file of await readdir(path.join(root, 'backend', 'fixtures', 'audio')
   poi.audios.push({ langCode: lang, status: 'READY', audioUrl, provider: 'GEMINI', voiceName: 'Google AI Studio', textHash: translation.textHash });
 }
 await writeFile(path.join(out, 'data', 'pois.json'), JSON.stringify({
-  mapId: '00000000-0000-0000-0000-000000000001',
-  pois, edges: [[1, 0, 0.12], ...ctx.P.filter(p => p[0] !== 1).map(p => [p[0], p[6], p[5]])],
+  mapId: '00000000-0000-0000-0000-000000000001',catalogVersion:catalog.sourceSha256,
+  pois, edges,
 }, null, 2));
 console.log(`Built web/dist: ${pois.length} stops, 5 languages. No external dependencies.`);

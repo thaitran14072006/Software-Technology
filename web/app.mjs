@@ -1,11 +1,12 @@
-import { LANGS, LOCALES, CENTER, localize, routeTo, haversine, qrValue, validatePoi, matchesPoiQuery } from './core.mjs';
+import { LANGS, LOCALES, localize, routeTo, haversine, qrValue, validatePoi, matchesPoiQuery } from './core.mjs';
 import { settings, saveSettings, token, loadSeed, getPois, getAdminPois, savePoi, deletePoi, saveOffline, api, packKey } from './store.mjs';
 import { VisitorAnalytics, playbackCounter, getAnalytics } from './analytics.mjs';
 import { joinURL, isLoopback, qrSVG } from './join-qr.mjs';
 import { setupAdminTools } from './admin-tools.mjs';
 import { runtimeConfig, loadRuntimeConfig, sharePosition } from './visitor-config.mjs';
-import { createOutdoorMap } from './outdoor-map.mjs';
+import { createOutdoorMap, documentCoordinates } from './outdoor-map.mjs';
 import { loadVoices, selectVoice, playbackSource } from './browser-tts.mjs';
+import {stopNumber,renderSchematic} from './schematic-map.mjs';
 import {installUITranslations,translateUI,formatUI} from './ui-i18n.mjs';
 
 const requestedSource = new URL(location.href).searchParams.get('source');
@@ -88,7 +89,7 @@ async function refresh() {
     await loadRuntimeConfig();
     const result = await getPois(state.lang);
     if (run !== refreshId) return;
-    state.pois = result.items.sort((a, b) => a.code.localeCompare(b.code, undefined, { numeric: true }));
+    state.pois = result.items.sort((a, b) => (a.sortOrder??0)-(b.sortOrder??0)||a.code.localeCompare(b.code, undefined, { numeric: true }));
     state.source = result.source;
     if (!selected()) state.selected = state.pois.find(p => p.code === new URL(location.href).searchParams.get('poi'))?.id || state.pois.find(p => p.code === '9')?.id || state.pois[0]?.id;
     state.route = null;
@@ -118,39 +119,21 @@ function selectPoi(id, play = false) {
 function renderList() {
   const pois = filtered();
   $('#results-count').textContent = `${pois.length} / ${state.pois.length} ${t('point')}`;
-  $('#stop-list').innerHTML = pois.length ? pois.map(p => `<button class="stop-card ${p.id === state.selected ? 'selected' : ''}" data-id="${esc(p.id)}" aria-pressed="${p.id === state.selected}"><span class="stop-num">${esc(p.code)}</span><span><span class="stop-name">${esc(p.name)}</span><span class="stop-kind">${esc(group(p.categoryId))}</span></span></button>`).join('') : `<p class="empty">${esc(t('empty'))}</p>`;
+  $('#stop-list').innerHTML = pois.length ? pois.map(p => `<button class="stop-card ${p.id === state.selected ? 'selected' : ''}" data-id="${esc(p.id)}" aria-pressed="${p.id === state.selected}"><span class="stop-num">${esc(stopNumber(p))}</span><span><span class="stop-name">${esc(p.name)}</span><span class="stop-kind">${esc(group(p.categoryId))}</span></span></button>`).join('') : `<p class="empty">${esc(t('empty'))}</p>`;
 }
 function renderMap() {
   updateOutdoor();
-  let trees = '';
-  for (let i = 0; i < 105; i++) {
-    const x = (i * 157 + 43) % 1320 + 30, y = (i * 83 + 47) % 740 + 70;
-    trees += `<path class="map-tree" d="M${x} ${y - 9}l-8 15h5l-7 11h20l-7-11h5z"/>`;
-  }
-  const pointFor = code => code === '0' ? CENTER : state.pois.find(p => p.code === code)?.schematic;
-  const line = (a, b) => {
-    const pa = pointFor(String(a))?.map(Number), pb = pointFor(String(b))?.map(Number);
-    if (!pa || !pb) return '';
-    const mx = (pa[0] + pb[0]) / 2;
-    return `M${pa.join(',')} C${mx},${pa[1]} ${mx},${pb[1]} ${pb.join(',')}`;
-  };
-  const roads = seed.edges.map(([a, b]) => `<path d="${line(a, b)}" fill="none" stroke="${[9, 10, 11, 12, 13].includes(a) ? '#9caf83' : '#faf9e8'}" stroke-width="${[9, 10, 11, 12, 13].includes(a) ? 5 : 10}" ${[9, 10, 11, 12, 13].includes(a) ? 'stroke-dasharray="7 6"' : ''} stroke-linecap="round"/>`).join('');
-  const route = state.route ? state.route.codes.slice(1).map((code, i) => `<path class="map-route" d="${line(state.route.codes[i], code)}"/>`).join('') : '';
-  const nodes = filtered().filter(p => p.schematic).map(p => {
-    const [x, y] = p.schematic.map(Number), active = p.id === state.selected;
-    const compact = ['2', '3', '12', '13', '14', '15'].includes(p.code);
-    const labelX = compact ? 0 : x > 1100 ? -28 : 30;
-    const labelY = compact ? (['3', '13', '15'].includes(p.code) ? 42 : -33) : 5;
-    return `<g class="map-stop" tabindex="0" role="button" aria-label="${esc(`${p.code}. ${p.name}`)}" aria-pressed="${active}" data-id="${esc(p.id)}" transform="translate(${x},${y})"><circle r="${active ? 23 : 19}" fill="${active ? '#234d3a' : '#fafbf4'}" stroke="${active ? '#d8e9ac' : '#7b9569'}" stroke-width="${active ? 5 : 2}"/><text text-anchor="middle" dominant-baseline="central" font-family="Georgia,serif" font-size="19" fill="${active ? '#fff' : '#42613c'}">${esc(p.code)}</text><text class="map-label" x="${labelX}" y="${labelY}" text-anchor="${compact ? 'middle' : x > 1100 ? 'end' : 'start'}">${esc(p.name)}</text></g>`;
-  }).join('');
-  const w = 1380 / zoom, h = 960 / zoom;
-  $('#map').innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="${(1380 - w) / 2} ${(960 - h) / 2} ${w} ${h}" role="group" aria-label="Sơ đồ các điểm tham quan"><defs><pattern id="grain" width="42" height="42" patternUnits="userSpaceOnUse"><circle cx="5" cy="13" r="1" fill="#87a172" opacity=".19"/><circle cx="30" cy="36" r="1.3" fill="#87a172" opacity=".15"/></pattern></defs><rect width="1380" height="960" fill="#e6edda"/><path d="M10 70Q250 0 460 90T900 70T1380 50V610Q1090 700 820 610T300 710T0 650Z" fill="#d8e4c9"/><path d="M500 70Q850 180 730 430T1040 800H1380V0Z" fill="#dce8cd"/><path d="M-70 935 Q260 840 480 910 T900 860 Q1040 830 1040 720 T1150 570 Q1260 510 1420 590" class="map-river"/><path d="M-70 935 Q260 840 480 910 T900 860 Q1040 830 1040 720 T1150 570 Q1260 510 1420 590" fill="none" stroke="#bfd4c8" stroke-width="18"/><rect width="1380" height="960" fill="url(#grain)"/>${trees}<text x="710" y="150" class="map-note">NAM CÁT TIÊN</text><text x="730" y="177" class="map-note">${esc(translateUI('VƯỜN QUỐC GIA',state.lang))}</text><text x="1140" y="765" fill="#6d9690" font-size="17" font-family="Georgia,serif" transform="rotate(-10 1140 765)">Sông Đồng Nai</text>${roads}${route}<g transform="translate(390 850)"><rect x="-14" y="-14" width="28" height="28" rx="7" fill="#657e52" stroke="#fff" stroke-width="3"/><text x="24" y="5" class="map-label">${esc(t('center'))}</text></g>${nodes}<g transform="translate(1280 100)" fill="#6e8560"><path d="M0-25 9 10 0 4-9 10Z"/><text text-anchor="middle" y="-34" font-size="14">N</text></g><text x="45" y="930" class="map-note" font-size="10">${esc(translateUI('SƠ ĐỒ · KHÔNG THEO TỈ LỆ',state.lang))}</text></svg>`;
+  $('#map-view-title').textContent = translateUI(outdoorVisible ? 'Bản đồ OpenStreetMap' : 'Sơ đồ tham quan',state.lang);
+  $('#map-caption').textContent = translateUI(outdoorVisible ? 'Bản đồ OpenStreetMap' : 'Sơ đồ tham quan · không theo tỉ lệ địa lý',state.lang);
+  $('#map-legend').hidden = outdoorVisible || !state.route;
+  $('#map').innerHTML = renderSchematic({pois:state.pois,visibleIds:filtered().map(p=>p.id),selectedId:state.selected,routeCodes:state.route?.codes || [],zoom,
+    title:translateUI('Sơ đồ tham quan',state.lang),note:translateUI('SƠ ĐỒ · KHÔNG THEO TỈ LỆ',state.lang)});
 }
 function renderDetail() {
   const p = selected();
   if (!p) { $('#detail').innerHTML = `<div class="empty">↟<br>${esc(t('choose'))}</div>`; return; }
   const kind = p.categoryId === 3 ? 'water' : p.categoryId === 1 ? 'facility' : '';
-  $('#detail').innerHTML = `<div class="detail-art ${kind}"><span class="detail-number">${esc(p.code.padStart(2, '0'))}</span><span class="detail-tag">${esc(LANGS[p.lang] || LANGS[state.lang])}</span></div><div class="detail-body"><p class="detail-category">${esc(group(p.categoryId))}</p><h2>${esc(p.name || p.code)}</h2><p class="script-text">${esc(p.translationMissing ? 'Chưa có lời thuyết minh cho ngôn ngữ này.' : p.scriptText || p.summary)}</p><div class="detail-info"><span>⌖ ${esc(p.geoVerified ? t('verified') : p.geoSourceUrl ? translateUI('Tọa độ đối chiếu nguồn bản đồ',state.lang) : t('schematic'))}</span><span>◎ ${esc(LANGS[p.lang] || LANGS[state.lang])}</span></div><div class="player"><button id="play" class="button primary" ${p.translationMissing ? 'disabled' : ''}>${esc(state.playing ? t('stop') : t('play'))}</button><div class="player-options"><label class="check" title="${esc(t('autoHint'))}"><input id="auto" type="checkbox" ${state.auto ? 'checked' : ''}>${esc(t('auto'))}</label><button id="share" class="button quiet">↗</button></div><p id="player-status" class="player-status" role="status">${esc(state.playing ? t('narration') : p.audio?.url ? 'MP3 · Audio' : 'TTS · Giọng đọc của trình duyệt')}</p><div class="route-controls"><select id="route-from" aria-label="${esc(t('from'))}"><option value="0">${esc(t('center'))}</option>${state.pois.map(x => `<option value="${esc(x.code)}" ${state.from === x.code ? 'selected' : ''}>${esc(x.code)} · ${esc(x.name)}</option>`).join('')}</select><button id="route" class="button">↗ ${esc(t('route'))}</button></div><p class="route-result" id="route-result">${state.route ? esc(`${state.route.km.toFixed(1)} ${t('distance')} ${state.route.minutes} ${t('minute')}. ${t('map')}`) : ''}</p></div></div>`;
+  $('#detail').innerHTML = `<div class="detail-art ${kind}"><span class="detail-number">${esc(stopNumber(p).padStart(2, '0'))}</span><span class="detail-tag">${esc(LANGS[p.lang] || LANGS[state.lang])}</span></div><div class="detail-body"><p class="detail-category">${esc(group(p.categoryId))}</p><h2>${esc(p.name || p.code)}</h2><p class="script-text">${esc(p.translationMissing ? 'Chưa có lời thuyết minh cho ngôn ngữ này.' : p.scriptText || p.summary)}</p><div class="detail-info"><span>⌖ ${esc(p.geoVerified ? t('verified') : documentCoordinates(p) ? translateUI('Tọa độ theo tài liệu',state.lang) : p.geoSourceUrl ? translateUI('Tọa độ đối chiếu nguồn bản đồ',state.lang) : t('schematic'))}</span><span>◎ ${esc(LANGS[p.lang] || LANGS[state.lang])}</span></div><div class="player"><button id="play" class="button primary" ${p.translationMissing ? 'disabled' : ''}>${esc(state.playing ? t('stop') : t('play'))}</button><div class="player-options"><label class="check" title="${esc(t('autoHint'))}"><input id="auto" type="checkbox" ${state.auto ? 'checked' : ''}>${esc(t('auto'))}</label><button id="share" class="button quiet">↗</button></div><p id="player-status" class="player-status" role="status">${esc(state.playing ? t('narration') : p.audio?.url ? 'MP3 · Audio' : 'TTS · Giọng đọc của trình duyệt')}</p><div class="route-controls"><select id="route-from" aria-label="${esc(t('from'))}"><option value="0">${esc(t('center'))}</option>${state.pois.map(x => `<option value="${esc(x.code)}" ${state.from === x.code ? 'selected' : ''}>${esc(stopNumber(x))} · ${esc(x.name)}</option>`).join('')}</select><button id="route" class="button">↗ ${esc(t('route'))}</button></div><p class="route-result" id="route-result">${state.route ? esc(`${state.route.km.toFixed(1)} ${t('distance')} ${state.route.minutes} ${t('minute')}. ${t('map')}`) : ''}</p></div></div>`;
   $('#share').ariaLabel = t('share'); $('#share').title = t('share');
   const sourceControl = document.createElement('label');
   sourceControl.className = 'field';
@@ -345,6 +328,7 @@ async function startCamera() {
 function updateOfflineStatus() {
   const date = localStorage.getItem(`sag:pack-date:${settings.mode}`);
   const meta=JSON.parse(localStorage.getItem(`sag:pack-meta:${settings.mode}`)||'null');
+  if(date&&seed?.catalogVersion&&meta?.catalogVersion!==seed.catalogVersion){$('#offline-status').textContent=translateUI('Danh sách điểm đã thay đổi. Hãy lưu lại gói ngoại tuyến.',state.lang);return;}
   $('#offline-status').textContent = date && meta?.provider==='GEMINI' ? formatUI('Gói ngoại tuyến: {0} audio Google, {1} bản chưa sẵn sàng. Lưu lúc {2}.',[meta.audioCount,meta.audioMissing,new Date(date).toLocaleString(LOCALES[state.lang])],state.lang) : date ? formatUI('Đã lưu gói {0} lúc {1}. Giọng TTS phụ thuộc giọng cài trên thiết bị.',[settings.mode,new Date(date).toLocaleString(LOCALES[state.lang])],state.lang) : translateUI('Lưu nội dung 5 ngôn ngữ và audio MP3 sẵn có. Giọng đọc của trình duyệt có thể cần mạng.',state.lang);
 }
 
@@ -366,9 +350,9 @@ $('#map-mode').onclick = () => {
     $('#map').hidden = outdoorVisible;
     $('#map-mode').textContent = outdoorVisible ? 'Sơ đồ tham quan' : 'Bản đồ OpenStreetMap';
     $('#map-mode').ariaPressed = String(outdoorVisible);
-    updateOutdoor();
+    renderMap();
   } catch (error) {
-    outdoorMap.show(false); $('#map').hidden = false; toast(error.message, true);
+    outdoorVisible = false; outdoorMap.show(false); $('#map').hidden = false; renderMap(); toast(error.message, true);
   }
 };
 $('#gps').onclick = toggleGPS;

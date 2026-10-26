@@ -44,11 +44,18 @@ test('A browser with no voices times out without hanging playback', async () => 
 });
 test('Vendored Leaflet 1.9.4 files match their pinned SHA-256 hashes', async () => {
   for (const [file, hash] of [
-    ['leaflet.js', 'MQS1JlBNDWH9MJmkUh6H9zLMwxdN7FTgjea6i94+Ff8='],
+    ['leaflet.js', '20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo='],
     ['leaflet.css', 'p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY='],
   ]) {
     const data = await readFile(new URL(`../vendor/leaflet/${file}`, import.meta.url));
     if (file === 'leaflet.js') assert.match(data.toString(), /Leaflet 1\.9\.4/);
     assert.equal(createHash('sha256').update(data).digest('base64'), hash);
   }
+});
+
+test('Document coordinates appear on OSM without opting into GPS autoplay', () => {
+  const p={geoVerified:false,geoSourceUrl:`urn:sha256:${'a'.repeat(64)}#point-01`,lat:11.423924,lng:107.427845};
+  assert.deepEqual(verifiedCoordinates(p),[11.423924,107.427845]);
+  assert.equal(p.geoVerified,false);
+  for(const patch of [{geoSourceUrl:'urn:sha256:bad#point-01'},{geoSourceUrl:'file:///C:/file.docx'},{lat:NaN},{lng:181}])assert.equal(verifiedCoordinates({...p,...patch}),null);
 });

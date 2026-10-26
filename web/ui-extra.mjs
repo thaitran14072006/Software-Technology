@@ -1,4 +1,6 @@
 export const EXTRA_ROWS = [
+  ['Danh sách điểm đã thay đổi. Hãy lưu lại gói ngoại tuyến.', 'The stop list has changed. Download the offline pack again.', 'スポット一覧が更新されました。オフラインパックを再保存してください。', '방문지 목록이 변경되었습니다. 오프라인 패키지를 다시 저장하세요.', '景点列表已更新，请重新保存离线包。'],
+  ['Tọa độ theo tài liệu', 'Coordinates from supplied document', '提供資料の座標', '제공 문서의 좌표', '所提供文档中的坐标'],
   [
     "▶ Nghe thuyết minh",
     "▶ Play audio guide",
