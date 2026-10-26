@@ -133,7 +133,7 @@ function renderDetail() {
   const p = selected();
   if (!p) { $('#detail').innerHTML = `<div class="empty">↟<br>${esc(t('choose'))}</div>`; return; }
   const kind = p.categoryId === 3 ? 'water' : p.categoryId === 1 ? 'facility' : '';
-  $('#detail').innerHTML = `<div class="detail-art ${kind}"><span class="detail-number">${esc(stopNumber(p).padStart(2, '0'))}</span><span class="detail-tag">${esc(LANGS[p.lang] || LANGS[state.lang])}</span></div><div class="detail-body"><p class="detail-category">${esc(group(p.categoryId))}</p><h2>${esc(p.name || p.code)}</h2><p class="script-text">${esc(p.translationMissing ? 'Chưa có lời thuyết minh cho ngôn ngữ này.' : p.scriptText || p.summary)}</p><div class="detail-info"><span>⌖ ${esc(p.geoVerified ? t('verified') : documentCoordinates(p) ? translateUI('Tọa độ theo tài liệu',state.lang) : p.geoSourceUrl ? translateUI('Tọa độ đối chiếu nguồn bản đồ',state.lang) : t('schematic'))}</span><span>◎ ${esc(LANGS[p.lang] || LANGS[state.lang])}</span></div><div class="player"><button id="play" class="button primary" ${p.translationMissing ? 'disabled' : ''}>${esc(state.playing ? t('stop') : t('play'))}</button><div class="player-options"><label class="check" title="${esc(t('autoHint'))}"><input id="auto" type="checkbox" ${state.auto ? 'checked' : ''}>${esc(t('auto'))}</label><button id="share" class="button quiet">↗</button></div><p id="player-status" class="player-status" role="status">${esc(state.playing ? t('narration') : p.audio?.url ? 'MP3 · Audio' : 'TTS · Giọng đọc của trình duyệt')}</p><div class="route-controls"><select id="route-from" aria-label="${esc(t('from'))}"><option value="0">${esc(t('center'))}</option>${state.pois.map(x => `<option value="${esc(x.code)}" ${state.from === x.code ? 'selected' : ''}>${esc(stopNumber(x))} · ${esc(x.name)}</option>`).join('')}</select><button id="route" class="button">↗ ${esc(t('route'))}</button></div><p class="route-result" id="route-result">${state.route ? esc(`${state.route.km.toFixed(1)} ${t('distance')} ${state.route.minutes} ${t('minute')}. ${t('map')}`) : ''}</p></div></div>`;
+  $('#detail').innerHTML = `<div class="detail-art ${kind}"><span class="detail-number">${esc(stopNumber(p).padStart(2, '0'))}</span><span class="detail-tag">${esc(LANGS[p.lang] || LANGS[state.lang])}</span></div><div class="detail-body"><p class="detail-category">${esc(group(p.categoryId))}</p><h2>${esc(p.name || p.code)}</h2><p class="script-text">${esc(p.translationMissing ? 'Chưa có lời thuyết minh cho ngôn ngữ này.' : p.scriptText || p.summary)}</p><div class="detail-info"><span>⌖ ${esc(p.geoVerified ? t('verified') : documentCoordinates(p) ? translateUI('Tọa độ theo tài liệu',state.lang) : p.geoSourceUrl ? translateUI('Tọa độ đối chiếu nguồn bản đồ',state.lang) : t('schematic'))}</span><span>◎ ${esc(LANGS[p.lang] || LANGS[state.lang])}</span></div><div class="player"><button id="play" class="button primary" ${p.translationMissing ? 'disabled' : ''}>${esc(state.playing ? t('stop') : t('play'))}</button><div class="player-options"><label class="check" title="${esc(t('autoHint'))}"><input id="auto" type="checkbox" ${state.auto ? 'checked' : ''}>${esc(t('auto'))}</label><button id="share" class="button quiet">${esc(t('share'))}</button></div><p id="player-status" class="player-status" role="status">${esc(state.playing ? t('narration') : p.audio?.url ? 'MP3 · Audio' : 'TTS · Giọng đọc của trình duyệt')}</p><div class="route-controls"><select id="route-from" aria-label="${esc(t('from'))}"><option value="0">${esc(t('center'))}</option>${state.pois.map(x => `<option value="${esc(x.code)}" ${state.from === x.code ? 'selected' : ''}>${esc(stopNumber(x))} · ${esc(x.name)}</option>`).join('')}</select><button id="route" class="button">↗ ${esc(t('route'))}</button></div><p class="route-result" id="route-result">${state.route ? esc(`${state.route.km.toFixed(1)} ${t('distance')} ${state.route.minutes} ${t('minute')}. ${t('map')}`) : ''}</p></div></div>`;
   $('#share').ariaLabel = t('share'); $('#share').title = t('share');
   const sourceControl = document.createElement('label');
   sourceControl.className = 'field';
@@ -342,7 +342,24 @@ languageSwitcher.onclick = event => { const button=event.target.closest('[data-l
 $('#stop-list').onclick = event => { const b = event.target.closest('[data-id]'); if (b) selectPoi(b.dataset.id); };
 $('#map').onclick = event => { const b = event.target.closest('[data-id]'); if (b) selectPoi(b.dataset.id); };
 $('#map').onkeydown = event => { if (['Enter', ' '].includes(event.key) && event.target.matches('[data-id]')) { event.preventDefault(); selectPoi(event.target.dataset.id); } };
-$('#map-reset').onclick = () => { zoom = 1; state.route = null; outdoorMap.reset(); renderMap(); renderDetail(); };
+$('#map-reset').onclick = () => {
+  zoom = 1;
+  state.route = null;
+  state.selected = null;
+  state.query = '';
+  state.category = 0;
+  $('#search').value = '';
+  $('#search-clear').hidden = true;
+  $$('#filters [data-category]').forEach(button => {
+    const active = button.dataset.category === '0';
+    button.classList.toggle('active', active);
+    button.ariaPressed = String(active);
+  });
+  renderMap();
+  renderList();
+  renderDetail();
+  outdoorMap.reset();
+};
 $('#map-mode').onclick = () => {
   try {
     outdoorMap.show(!outdoorVisible);
