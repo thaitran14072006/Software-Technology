@@ -14,11 +14,11 @@ npm run dev:full
 
 Nếu đã clone, mở thư mục đã có và chạy `git pull --ff-only`, không clone chồng vào thư mục đó. `dev:full` tự tạo `backend/.env` từ mẫu, tạo JWT secret riêng, cài backend khi chưa có thư viện, build ba service, khởi tạo PostgreSQL, nhập dữ liệu mẫu và tạo tài khoản admin riêng.
 
-Mở http://127.0.0.1:4169/?source=api. Khách không đăng nhập. Admin vào **Kết nối → Đăng nhập quản trị**, dùng tài khoản trong `backend/.runtime/admin-login.txt` trên máy của mình. Không gửi file này lên Git.
+Mở http://127.0.0.1:4173/?source=api. Khách không đăng nhập. Admin vào **Kết nối → Đăng nhập quản trị**, dùng tài khoản trong `backend/.runtime/admin-login.txt` trên máy của mình. Không gửi file này lên Git.
 
-Dữ liệu đi kèm: 17 POI, 85 bản dịch và 16 MP3 Google AI Studio khớp nội dung. Không cần API key để phát MP3 đã có. Còn 69 bài thiếu Google; nhập mẫu không tự gọi API, không chia sẻ hàng đợi riêng của tác giả. Mỗi máy có database, tài khoản và token QR độc lập. Nhập mẫu chỉ thêm mã POI chưa có, không ghi đè thay đổi cũ.
+Dữ liệu đi kèm: 15 POI, 75 bản dịch và 5 MP3 Google AI Studio khớp nội dung. Không cần API key để phát MP3 đã có. Còn 70 bài thiếu Google; nhập mẫu không tự gọi API, không chia sẻ hàng đợi riêng của tác giả. Mỗi máy có database, tài khoản và token QR độc lập. Nhập mẫu chỉ thêm mã POI chưa có, không ghi đè thay đổi cũ.
 
-Chỉ chạy một phiên hệ thống. Ctrl+C dừng ứng dụng; `npm run infra:stop` dừng container và giữ dữ liệu. Nếu cổng 4169/3001/3002/3003 bị chiếm, xem [STARTUP_PORT_FIX.md](STARTUP_PORT_FIX.md). Không dùng `docker compose down -v` để cập nhật mã.
+Chỉ chạy một phiên hệ thống. Ctrl+C dừng ứng dụng; `npm run infra:stop` dừng container và giữ dữ liệu. Nếu cổng 4173/3001/3002/3003 bị chiếm, xem [STARTUP_PORT_FIX.md](STARTUP_PORT_FIX.md). Không dùng `docker compose down -v` để cập nhật mã.
 
 ## 2. Google AI Studio, LAN và ngoại tuyến
 
@@ -51,7 +51,7 @@ npm ci
 npx expo prebuild --platform android --no-install
 ```
 
-Mẫu mobile dùng `10.0.2.2:4169` cho máy ảo Android qua proxy web. Nếu dùng điện thoại, thay `10.0.2.2` bằng IP LAN của máy chạy backend. Không thêm `/api/v1` sau `/content-api` hoặc `/qr-api`. Nếu đổi cổng web, sửa cả ba URL tương ứng.
+Mẫu mobile dùng `10.0.2.2:4173` cho máy ảo Android qua proxy web. Nếu dùng điện thoại, thay `10.0.2.2` bằng IP LAN của máy chạy backend. Không thêm `/api/v1` sau `/content-api` hoặc `/qr-api`. Nếu đổi cổng web, sửa cả ba URL tương ứng.
 
 Mở thư mục `mobile/android` trong Android Studio, cài SDK/NDK theo [BUILD_ANDROID_STUDIO.md](BUILD_ANDROID_STUDIO.md), chờ Gradle sync. Bật máy ảo rồi chạy `npm run android` trong `mobile`; hoặc giữ `npm start` và bấm Run trong Android Studio sau khi build debug. Không dùng Expo Go vì ứng dụng có native modules.
 
@@ -89,6 +89,22 @@ Máy đã có POI không tự bị ghi đè khi fixture thay đổi. Nhóm cần
 
 ## 6. Phạm vi và việc còn lại
 
-Web/backend và khởi động mobile debug đã được kiểm chứng. Cần tiếp tục tạo 69 bài Google, thử luồng offline và tải lại gói trên thiết bị thật, kiểm chứng GPS/BLE thực địa và build/kiểm tra APK release cho kiến trúc điện thoại. Tọa độ có nguồn chưa đồng nghĩa đã khảo sát; chỉ bật `geoVerified` khi đã xác minh.
+Web/backend và khởi động mobile debug đã được kiểm chứng. Cần tiếp tục tạo 70 bài Google, thử luồng offline và tải lại gói trên thiết bị thật, kiểm chứng GPS/BLE thực địa và build/kiểm tra APK release cho kiến trúc điện thoại. Tọa độ có nguồn chưa đồng nghĩa đã khảo sát; chỉ bật `geoVerified` khi đã xác minh.
 
 Các báo cáo cũ trong `docs/` ghi lại thời điểm kiểm tra trước đây; dùng README, hướng dẫn này và trạng thái thực tế khi đánh giá bản mới.
+
+
+## 7. Cập nhật danh sách 15 POI trên máy đã có database cũ
+
+Không xóa database hoặc volume. Sau khi lưu thay đổi của mình và pull mã mới, chạy `npm run dev:full`, đợi khởi động xong để nhập các POI còn thiếu từ fixture mới, rồi dừng ứng dụng bằng Ctrl+C (Docker giữ chạy).
+
+```powershell
+npm run content:catalog
+npm run content:catalog -- --apply
+```
+
+Lệnh đầu chỉ xem trước. Lệnh `--apply` là thao tác một lần có sao lưu tại `backend/.runtime/catalog-backups`: giữ đúng 15 mã chuẩn, cập nhật tên/tọa độ/thứ tự, lưu trữ mềm tám điểm ngoài danh sách. Không tự thực hiện ở mọi lần khởi động. Nếu máy có điểm bổ sung không thuộc nhóm tám điểm đã biết, công cụ dừng để nhóm xem xét thay vì tự xóa. Giữ transcript và các MP3 khớp nội dung.
+
+Chạy lại `npm run dev:gemini:lan` nếu đã cấu hình khóa riêng, hoặc `npm run dev:full -- --lan` để dùng MP3 sẵn có. Nhấn Ctrl+F5 trên web và lưu lại gói ngoại tuyến. Xem [danh sách hiện hành](ACTIVE_POIS.md) và [bản sửa sơ đồ](MAP_DISPLAY_FIX.md).
+
+Keystore và ghi chú trong `mobile/AndroidKeys/` được bỏ qua toàn bộ. Thành viên tự tạo khóa ký và giữ riêng; không chia sẻ `.env`, mật khẩu quản trị hay khóa AI Studio qua Git. Native project `mobile/android` được tạo trên từng máy bằng Expo prebuild.

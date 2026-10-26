@@ -1,44 +1,49 @@
-# Tiến độ tạo audio Google ngày 24-10-2026
+# Tiến độ hiện tại — danh sách 15 POI, 25/10/2026
 
-**Mốc chia sẻ Git mới lúc 14:07:** quota đã được làm mới và worker tiếp tục tạo audio. Fixture xuất để chia sẻ có **16 MP3 Google / 85 bài**, còn **69 bài thiếu** (vi 5, en 4, ja 2, ko 2, zh 3). Các số 12/73 và thời gian chờ bên dưới là kết quả kiểm tra trước thời điểm quota được làm mới, không phải trạng thái mới nhất. Xem [hướng dẫn cùng tạo audio](COLLABORATIVE_AUDIO.md) và [bàn giao Git](GIT_HANDOFF.md).
+**75 bài cần thiết: 5 Google READY, còn thiếu 70.** Việt 2/15, Anh 2/15, Nhật 0/15, Hàn 0/15, Trung 1/15. Chỉ tạo bài cho các điểm trong `scripts/data/active-pois.json`; không khôi phục điểm đã gỡ.
 
-Tổng fixture hiện có 16 MP3 Google: Việt 5, Anh 4, Nhật 2, Hàn 2, Trung 3. 69 bản còn lại chưa có MP3; ứng dụng hiện thử voice hệ thống đúng ngôn ngữ cho các bài này.
+ZIP hiện có 5 MP3, 3.169.777 byte; CRC, kích thước và SHA-256 đã kiểm tra. Fixture có 15 POI, 75 bản dịch, 5 MP3 hợp lệ. 15 bản thuộc điểm đã loại được giữ riêng trong bản sao lưu. Xem [danh sách hiện hành](ACTIVE_POIS.md).
 
-| Ngôn ngữ | MP3 Google đã sẵn sàng |
-|---|---:|
-| Việt | 5 |
-| Anh | 4 |
-| Nhật | 2 |
-| Hàn | 2 |
-| Trung | 3 |
-| Tổng | 16 |
+Giữ nguyên thời gian tạm dừng Gemini: **2026-10-26T09:15:12.509Z (16:15:12 ngày 26/10 Việt Nam)**. Chưa gọi Google thêm trong lần chỉnh danh sách. Phiên chạy kiểm tra đã được dừng; lịch sau cần kiểm tra dịch vụ thực tế và chỉ tạo bài thuộc danh sách mới.
 
-Đây là số file theo ngôn ngữ, không phải số POI đã có đủ mọi ngôn ngữ. Còn 69/85 bản của 17 POI chưa có Google audio.
+## Lịch sử trước khi đổi danh sách (không dùng làm số liệu hiện tại)
 
-## Lý do chưa tạo hết
+# Tiến độ Google AI Studio — 16:17:24 25/10/26 (giờ Việt Nam)
 
-Một yêu cầu thử đã thành công HTTP 200. Yêu cầu kế tiếp bị Google trả HTTP 429 RESOURCE_EXHAUSTED. Kiểm tra chi tiết xác nhận:
+**Cập nhật POI sau lần tạo audio:** đã nhập tài liệu tọa độ mới, tăng lên 23 POI / 115 bản dịch. Vẫn có 20 MP3 Google; hiện thiếu 95 bản (30 bản của sáu POI mới chưa xếp job). Các số 17 POI / 85 bài / thiếu 65 bên dưới là mốc trước lần nhập này. Xem [báo cáo POI](POI_DOCUMENT_IMPORT.md).
 
-```text
-quotaId: GenerateRequestsPerDayPerProjectPerModel-FreeTier
-model: gemini-3.8-flash-lite-tts
-quotaValue: 10
-retryDelay: 6698s
-```
+Lần chạy theo lịch ngày 25/10 đã khởi động lại các service đang dừng, dùng hàng đợi có sẵn và tạo thêm **4 bản Google**. Hiện có **20/85 MP3 Google hợp lệ**, còn **65 bài**. Không thay giọng thiết bị/eSpeak, không đổi bản dịch hoặc tọa độ.
 
-Đây là hạn mức thực tế Google trả cho project/model hiện tại, không phải cam kết cho mọi tài khoản. Không bật billing, không mua gói và không đổi khóa để né hạn mức. Google quy định quota theo project và hạn mức ngày reset lúc nửa đêm Pacific: https://ai.google.dev/gemini-api/docs/rate-limits.
+| Ngôn ngữ | Google READY | Còn thiếu |
+|---|---:|---:|
+| Việt | 5 | 12 |
+| Anh | 5 | 12 |
+| Nhật | 3 | 14 |
+| Hàn | 3 | 14 |
+| Trung | 4 | 13 |
+| Tổng | 20 | 65 |
 
-## Trạng thái hàng đợi
+## Quota và hàng đợi
 
-- 12 audio GEMINI READY; 73 audio PENDING; không để lỗi quota vừa phát sinh làm mất một bản khỏi hàng đợi.
-- Đã chuyển job bị quota về QUEUED, giữ đúng nội dung và current_job_id; file READY không bị ghi đè.
-- Thời điểm thử tiếp: **14:02 ngày 24/10/2026, giờ Việt Nam**, tương ứng 2026-10-24T07:02:00Z, chừa khoảng đệm sau thời điểm thử lại của Google.
-- Nếu giữ backend ở chế độ GEMINI, worker sẽ tiếp tục khi hết thời gian tạm dừng. Nếu máy/server dừng, chạy lại `npm run dev:gemini:lan` để worker đọc hàng đợi đã lưu.
-- Một ngày quota mới không đủ tạo hết 73 bản khi giới hạn vẫn là 10 yêu cầu/ngày. Nếu chạm quota tiếp, hệ thống sẽ dừng tiếp; không bảo đảm mọi yêu cầu tạo được một file thành công.
-- Script audio:gemini được bổ sung phát hiện thời gian tạm dừng trong lúc theo dõi để không chờ vô ích đến hết một giờ.
+Sau 4 bản mới, worker gặp GEMINI_QUOTA và tự dừng. Thời điểm thử tiếp đang lưu là **16:15:12 26/10/26 giờ Việt Nam**, tương ứng 2026-10-26T09:15:12.509Z. Đây là thời gian tạm dừng do worker ghi, không phải xác nhận thời điểm Google reset. Không gửi yêu cầu thăm dò thêm sau khi gặp quota và không rút ngắn thời gian chờ.
 
-## File tải về
+Đã chuyển đúng một job vừa lỗi quota trở lại QUEUED/PENDING, đặt available_at bằng thời điểm trên, giữ liên kết current_job_id và nội dung khớp text hash. Hiện có 65 job chưa hoàn thành: 64 QUEUED và 1 QUEUED với QUOTA_PAUSED; không còn job current FAILED do quota mới. Các bản READY được giữ nguyên.
 
-Đã tạo lại web/dist/offline-guide.zip: 12 MP3 Google, 3.911.763 byte, có metadata/giọng và mã SHA-256 của từng file. Giải nén toàn bộ rồi mở CatTienGuide/index.html để nghe những bản đã có khi ngoại tuyến. Gói này chưa chứa 73 bản chưa tạo được.
+TTS_LANGUAGES hiện chưa giới hạn (all); chưa có phân công ngôn ngữ cụ thể theo tên. Khi nhóm bắt đầu chia việc, đặt phần việc đã thống nhất rồi khởi động lại backend. Xem [hướng dẫn cùng tạo audio](COLLABORATIVE_AUDIO.md). Không đưa khóa của thành viên lên Git hoặc vào frontend.
 
-Các bản PWA/mobile đã tải trước đó cần tải lại gói để nhận bản tiếng Việt mới. Việc tạo thêm audio nằm ở backend, không yêu cầu build lại APK.
+## Gói nghe ngoại tuyến và fixture
+
+- web/dist/offline-guide.zip: **20 MP3 Google**, **4.863.545 byte**, partial=true vì thiếu 65 bài.
+- Đã kiểm tra CRC ZIP, kích thước và SHA-256 của toàn bộ 20 MP3; các hash trùng đúng những bản trong fixture.
+- backend/fixtures/content.json và các MP3 tham chiếu đã cập nhật local lên 20 bản, giữ các bản nhóm đã chia sẻ.
+- Kiểm tra trên database tạm: nhập 17 POI, 85 bản dịch, 20 MP3; nhập lặp giữ chỉnh sửa; nhận audio bổ sung khớp transcript; từ chối audio của transcript đã đổi. Tất cả đạt. Database chính không bị reset.
+
+Các gói tải trước đó cần tải lại để có 4 bản mới (Anh, Nhật, Hàn, Trung: mỗi tiếng thêm một bản). Giải nén toàn bộ ZIP rồi mở CatTienGuide/index.html. Không cần build lại APK chỉ để nhận audio từ backend.
+
+## Trạng thái chạy và Git
+
+PostgreSQL và local-tts/FFmpeg đã chạy; web/content/audio/QR được khởi động qua launcher GEMINI, web tại http://127.0.0.1:4173. Phiên launcher được giữ chạy để worker tiếp tục khi hết thời gian chờ. Không khởi động trùng service.
+
+Git main đã push trước đó ở b1dd6e4 có snapshot 16 MP3. **4 MP3 mới và báo cáo lần này chỉ cập nhật local, chưa commit/push**; không tự publish trong lịch. Khi muốn chia sẻ, review fixture và commit theo [hướng dẫn nhóm](TEAM_SETUP.md).
+
+Lịch vẫn kiểm tra mỗi ngày lúc 14:10. Nếu thời điểm kiểm tra sớm hơn thời gian tạm dừng, sẽ giữ chờ và không gọi Google. Các mốc 12/73 và 16/69 trong tài liệu lịch sử là số liệu cũ.

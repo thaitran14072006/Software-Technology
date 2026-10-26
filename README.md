@@ -1,3 +1,5 @@
+> Cập nhật 25/10/2026: hệ thống chỉ sử dụng [15 POI theo bảng mới](docs/ACTIVE_POIS.md). Các số liệu danh sách cũ bên dưới là lịch sử.
+
 # Smart Audio Guide — Cát Tiên
 
 **Thành viên vừa clone/pull:** bắt đầu tại [hướng dẫn làm việc nhóm](docs/TEAM_SETUP.md). Cài Node.js 24 và Docker Desktop, chạy `npm run dev:full` tại thư mục có file này. Script tự cài backend, tạo database và tài khoản admin riêng, nhập 17 POI/85 bản dịch cùng 16 MP3 Google đã chia sẻ. Không cần khóa Google để nghe các MP3 này. Sau khi cài lần đầu, dùng `git pull --ff-only` để nhận mã mới; đọc hướng dẫn trước khi cập nhật dữ liệu đã chỉnh sửa.
