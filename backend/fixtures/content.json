@@ -1,491 +1,117 @@
 {
   "formatVersion": 1,
-  "exportedAt": "2026-10-24T07:07:37.287Z",
+  "exportedAt": "2026-10-25T16:24:51.557Z",
   "pois": [
     {
-      "code": "1",
+      "code": "coord-01",
       "map_id": "00000000-0000-0000-0000-000000000001",
       "category_id": 1,
-      "latitude": 11.426335251673603,
-      "longitude": 107.41947589540679,
+      "latitude": 11.4316,
+      "longitude": 107.4323,
       "geo_verified": false,
-      "geo_source_url": null,
-      "schematic_x": "320.00",
-      "schematic_y": "768.00",
+      "geo_source_url": "urn:sha256:2ede2f7c00e63638604ebdeb843bb7e94aa1e7829fbd982ede01e5b9f5b8a664#point-01",
+      "schematic_x": null,
+      "schematic_y": null,
       "trigger_radius_m": null,
       "image_url": null,
       "status": "PUBLISHED",
-      "sort_order": 0,
+      "sort_order": 1,
       "translations": [
         {
           "lang_code": "en",
-          "name": "Wildlife Rescue Center",
-          "summary": "Khu Cuu ho dong vat hoang da",
-          "script_text": "This is the place that receives, provides medical treatment, and gives special care to individual wild animals, especially Asian black bears and sun bears, that have been injured by illegal poaching and trafficking. Here, you will learn humane rescue stories and the work of rehabilitating wild behaviors before releasing the animals back into nature.",
-          "text_hash": "af8cc79611d3d5a184cd53465ab5e45bca0866d672ce67af4881b80657192824"
+          "name": "Park Administration Centre",
+          "summary": "Start your visit here: buy tickets and take the ferry across the Dong Nai River to enter the park.",
+          "script_text": "Start your visit here: buy tickets and take the ferry across the Dong Nai River to enter the park.",
+          "text_hash": "00613c7650998c0f8a8ae5f60eb5b74c52182693a6fdcaa6961753338a03a222"
         },
         {
           "lang_code": "ja",
-          "name": "野生動物救護センター",
-          "summary": "Khu Cuu ho dong vat hoang da",
-          "script_text": "密猟や違法取引の被害に遭い傷ついた野生動物、特にツキノワグマやマレーグマを受け入れ、治療と特別なケアを行う施設です。ここでは、人道的な救護活動の歩みや、動物たちを自然へと戻す前に行われる野生復帰トレーニングの取り組みについて学ぶことができます。",
-          "text_hash": "c5864befd4f568eb7b1ef711f97e8c266995f660656e005393bf6fff5b0b89fa"
+          "name": "国立公園管理センター",
+          "summary": "ここは見学の出発点です。入場券を購入し、渡し船でドンナイ川を渡って公園に入ります。",
+          "script_text": "ここは見学の出発点です。入場券を購入し、渡し船でドンナイ川を渡って公園に入ります。",
+          "text_hash": "92b5de40081b2680b7a1202c6e44d37eb4fff01ee82ed0c0fc8288ba7baa02e1"
         },
         {
           "lang_code": "ko",
-          "name": "야생동물 구조센터",
-          "summary": "Khu Cuu ho dong vat hoang da",
-          "script_text": "이곳은 불법 밀렵과 거래로 부상을 입거나 피해를 본 야생동물, 특히 아시아흑곰(반달가슴곰)과 말레이곰을 인계받아 의학적 치료와 전문적인 보살핌을 제공하는 공간입니다. 이곳에서는 가슴 뭉클한 동물 구조 이야기와 함께, 치료를 마친 동물들을 다시 대자연으로 돌려보내기 위해 진행하는 야생성 회복 훈련 과정을 자세히 살펴보실 수 있습니다.",
-          "text_hash": "987ea326c62e6661bf7b1c2a21a8728d36ea2810567201d9e940b941a524caa0"
+          "name": "국립공원 행정센터",
+          "summary": "탐방을 시작하는 곳입니다. 입장권을 구입한 뒤 배를 타고 동나이강을 건너 공원으로 들어갑니다.",
+          "script_text": "탐방을 시작하는 곳입니다. 입장권을 구입한 뒤 배를 타고 동나이강을 건너 공원으로 들어갑니다.",
+          "text_hash": "096059bbc6d4d44308e7c559cdbd5f60e99b61fec0906d8c8473693e94fe78bc"
         },
         {
           "lang_code": "vi",
-          "name": "Trung tâm cứu hộ động vật hoang dã",
-          "summary": null,
-          "script_text": "Đây là nơi tiếp nhận, chữa trị y tế và chăm sóc đặc biệt cho các cá thể động vật hoang dã, đặc biệt là gấu ngựa và gấu chó, bị tổn thương do nạn săn bắt và buôn bán trái phép. Tại đây, bạn sẽ được tìm hiểu những câu chuyện cứu hộ đầy nhân văn, và công tác phục hồi tập tính hoang dã trước khi thả các loài về với thiên nhiên.",
-          "text_hash": "97ec68a7522f8f2547bc5b504386bf3fca4c171b38713bc4ae6c0df1c466f6a6"
+          "name": "Trung tâm Hành chính VQG",
+          "summary": "Nơi bắt đầu mọi hành trình, mua vé và qua đò vượt sông Đồng Nai để vào ranh giới vườn.",
+          "script_text": "Nơi bắt đầu mọi hành trình, mua vé và qua đò vượt sông Đồng Nai để vào ranh giới vườn.",
+          "text_hash": "1dabac733eb6d3439dd9a14a8ccba1d928d931982882ce092ae29c954f82ddd4"
         },
         {
           "lang_code": "zh",
-          "name": "野生动物救援中心 (Trung tâm cứu hộ động vật hoang dã)",
-          "summary": "Khu Cuu ho dong vat hoang da",
-          "script_text": "这里负责接收、救治并特殊照料因非法盗猎和贩卖而受伤的野生动物个体，特别是亚洲黑熊和马来熊。在这里，您将了解到充满人道关怀的救助故事，并认识帮助动物重获野外生存习性、最终将它们放归自然的相关工作。",
-          "text_hash": "8a185289fbf6ddfc235bbe07d4bfa7faf62c413571106d987ce658ae487c30df"
+          "name": "国家公园行政中心",
+          "summary": "这里是游览的起点。游客在此购票，乘渡船跨越同奈河，进入国家公园。",
+          "script_text": "这里是游览的起点。游客在此购票，乘渡船跨越同奈河，进入国家公园。",
+          "text_hash": "f5fd3fe0d29311ad0bce3dc6f696c4f1166ae467a182a994c361c4b99816bfe0"
         }
       ]
     },
     {
-      "code": "10",
-      "map_id": "00000000-0000-0000-0000-000000000001",
-      "category_id": 2,
-      "latitude": 11.445550015559979,
-      "longitude": 107.41544344533172,
-      "geo_verified": false,
-      "geo_source_url": null,
-      "schematic_x": "210.00",
-      "schematic_y": "237.00",
-      "trigger_radius_m": null,
-      "image_url": null,
-      "status": "PUBLISHED",
-      "sort_order": 0,
-      "translations": [
-        {
-          "lang_code": "en",
-          "name": "Six-pack Tree",
-          "summary": "Cay 6 mui",
-          "script_text": "The name “Six-pack Tree” gives this stop a memorable character. As you arrive, take a close look at the outline of the trunk and the prominent forms around its base; the shape helps explain why the place is known by such a familiar nickname. Each forest tree develops its own profile over time and in its own growing conditions. The visitor map places this stop about 7.5 kilometres from the Loc Giao Banyan Tree. Map distances are for orientation only, so follow the signs on site and take care not to damage the trees around you.",
-          "text_hash": "036d2778cccb06b733c4f44fb915c1178526f6cd6939960bd02d05e0bde4c9fa",
-          "audio": {
-            "file": "audio/10-en-54a13db64e81.mp3",
-            "sha256": "54a13db64e819ddf1024edd0161f6005a26dcac3d16fb4c0665e8f5fa5eb91db",
-            "sizeBytes": 121772,
-            "durationSec": "7.61",
-            "voiceGender": "FEMALE",
-            "voiceName": "gemini-3.8-flash-lite-tts/Kore",
-            "provider": "GEMINI"
-          },
-          "audio_needs_refresh": true
-        },
-        {
-          "lang_code": "ja",
-          "name": "シックスパックの木",
-          "summary": "Cay 6 mui",
-          "script_text": "「シックスパックの木」という親しみやすい名前が、この場所を印象づけています。幹の輪郭や根元の目立つ形を観察すると、なぜこの呼び名が付いたのかを想像できます。森の木は、それぞれの環境の中で時を重ね、異なる姿に育っていきます。案内図では、ダ・ロックザオの木から約七・五キロメートルの場所です。図上の距離は目安ですので、現地の標識に従い、木を傷つけないようにしましょう。",
-          "text_hash": "c9d90f22b12bd22e4cf9a9ddfafb415598b68b8d4fb487bb0c2bccc7bf6d850f",
-          "audio": {
-            "file": "audio/10-ja-0007018d5d92.mp3",
-            "sha256": "0007018d5d92f3613c396ce8d53fce08b328edbd85e3dbd16ebda882229b7fc9",
-            "sizeBytes": 100268,
-            "durationSec": "6.27",
-            "voiceGender": "FEMALE",
-            "voiceName": "gemini-3.8-flash-lite-tts/Kore",
-            "provider": "GEMINI"
-          },
-          "audio_needs_refresh": true
-        },
-        {
-          "lang_code": "ko",
-          "name": "식스팩 나무",
-          "summary": "Cay 6 mui",
-          "script_text": "‘식스팩 나무’라는 이름은 이곳을 기억에 남게 합니다. 나무에 다가가 줄기의 윤곽과 밑동 주변의 도드라진 형태를 살펴보세요. 그 모양을 보면 왜 친근한 별칭이 붙었는지 짐작할 수 있습니다. 숲의 나무는 각기 다른 환경 속에서 저마다의 모습으로 자랍니다. 안내 지도에는 록자오 반얀트리에서 약 7.5킬로미터 떨어진 곳으로 표시되어 있습니다. 지도상의 거리는 참고용이므로 현장 표지판을 따르고 나무를 훼손하지 않도록 주의해 주세요.",
-          "text_hash": "40c785ed5e9f45ee18bdf46394a13ffc6ef8f542a4b28fb8f6843f34e276f289",
-          "audio": {
-            "file": "audio/10-ko-95e5412f3156.mp3",
-            "sha256": "95e5412f31568471851e1cfe6c12d06c60fbcdab1d644affc85c8df8cf25a42d",
-            "sizeBytes": 121388,
-            "durationSec": "7.59",
-            "voiceGender": "FEMALE",
-            "voiceName": "gemini-3.8-flash-lite-tts/Kore",
-            "provider": "GEMINI"
-          },
-          "audio_needs_refresh": true
-        },
-        {
-          "lang_code": "vi",
-          "name": "Cây 6 múi",
-          "summary": null,
-          "script_text": "Cây 6 múi là cái tên gợi nên hình ảnh rất riêng. Khi đứng trước điểm dừng này, bạn hãy thử quan sát đường nét của thân cây và những phần nổi bật quanh gốc; hình dáng ấy giúp ta hiểu vì sao địa điểm được gọi bằng một cái tên gần gũi như vậy. Mỗi cây trong rừng có một cách tạo hình khác nhau, qua thời gian và điều kiện sinh trưởng của riêng mình. Theo sơ đồ tham quan, điểm này cách Cây Đa Lộc Giao khoảng bảy phẩy năm ki-lô-mét. Quãng đường trên sơ đồ chỉ mang tính tham khảo; hãy theo biển chỉ dẫn tại vườn và giữ gìn cây cối quanh bạn.",
-          "text_hash": "9c83c0b98fbea14b14fd6bf55cd6d03b174afe19397a32cbfc3472e2eda5be17",
-          "audio": {
-            "file": "audio/10-vi-9ec4a474be5e.mp3",
-            "sha256": "9ec4a474be5e752cd2257dc38af4f5eb3c7236d0588d52aa0eb501e4c2d44492",
-            "sizeBytes": 95660,
-            "durationSec": "5.98",
-            "voiceGender": "FEMALE",
-            "voiceName": "gemini-3.8-flash-lite-tts/Kore",
-            "provider": "GEMINI"
-          },
-          "audio_needs_refresh": true
-        },
-        {
-          "lang_code": "zh",
-          "name": "六棱树",
-          "summary": "Cay 6 mui",
-          "script_text": "“六块腹肌树”这个名字让人很容易记住这个地点。来到树前，可以观察树干的轮廓和基部突出的形态，想一想它们为何让人联想到这个有趣的称呼。森林里的每棵树都在自己的生长环境中逐渐形成独特的样子。游览示意图显示，这里距离交会榕树约7.5公里。图上距离仅供参考，请以现场标识为准，并爱护周围的树木。",
-          "text_hash": "35b9afd1c623668643ae4ac2d8494ab4e50aed9341f76c01ab7bde880e836a5d",
-          "audio": {
-            "file": "audio/10-zh-1fe10f9cf5fd.mp3",
-            "sha256": "1fe10f9cf5fd6cc3c3e4219ee8d31badb56adce39186f3efd136ce987ab14439",
-            "sizeBytes": 89900,
-            "durationSec": "5.62",
-            "voiceGender": "FEMALE",
-            "voiceName": "gemini-3.8-flash-lite-tts/Kore",
-            "provider": "GEMINI"
-          },
-          "audio_needs_refresh": true
-        }
-      ]
-    },
-    {
-      "code": "11",
-      "map_id": "00000000-0000-0000-0000-000000000001",
-      "category_id": 2,
-      "latitude": 11.44938573113805,
-      "longitude": 107.41555342124286,
-      "geo_verified": false,
-      "geo_source_url": null,
-      "schematic_x": "213.00",
-      "schematic_y": "131.00",
-      "trigger_radius_m": null,
-      "image_url": null,
-      "status": "PUBLISHED",
-      "sort_order": 0,
-      "translations": [
-        {
-          "lang_code": "en",
-          "name": "Vase-shaped Lagerstroemia",
-          "summary": "Bang lang loc binh",
-          "script_text": "The Vase-shaped Lagerstroemia takes its name from a silhouette that recalls a traditional decorative vase. Step back to see the overall balance of the tree, then look more closely at how its branches divide. From a distance and up close, the same tree offers different details to notice. Its appeal is a reminder that a tree’s character comes not only from its size, but also from its distinctive form. The visitor map places this stop about one kilometre from the Six-pack Tree. Please observe from the path and do not carve or write on the trunk.",
-          "text_hash": "fc98a186e37531cf4641ad838c459119f5bfc7fd8fe023045a4be34e3cffb960",
-          "audio": {
-            "file": "audio/11-en-403ac387641f.mp3",
-            "sha256": "403ac387641f2b7cf602258d9f701e6c506de0463e31c57adda81ca974e12782",
-            "sizeBytes": 130220,
-            "durationSec": "8.14",
-            "voiceGender": "FEMALE",
-            "voiceName": "gemini-3.8-flash-lite-tts/Kore",
-            "provider": "GEMINI"
-          },
-          "audio_needs_refresh": true
-        },
-        {
-          "lang_code": "ja",
-          "name": "花瓶形のサルスベリ",
-          "summary": "Bang lang loc binh",
-          "script_text": "「花瓶形のサルスベリ」は、花瓶を思わせる樹形にちなんだ名前です。少し離れて全体のバランスを眺めた後、近くで枝分かれの様子を見てみましょう。同じ木でも、遠くから見る姿と近くで見つける細部は異なります。木の魅力は大きさだけでなく、一株ごとの形にも表れます。案内図では、シックスパックの木から約一キロメートルの場所です。遊歩道から観察し、幹に文字を刻んだり書いたりしないでください。",
-          "text_hash": "75d6f8b6687f7c8612df77ce2a72837c288fdd2642e1a3cda39301a8d91ec2cb",
-          "audio": {
-            "file": "audio/11-ja-0cfac7dd3f56.mp3",
-            "sha256": "0cfac7dd3f5687262ae7a6ca9615da7a98d41483a981df5aa945206f82b7af7b",
-            "sizeBytes": 121772,
-            "durationSec": "7.61",
-            "voiceGender": "FEMALE",
-            "voiceName": "gemini-3.8-flash-lite-tts/Kore",
-            "provider": "GEMINI"
-          },
-          "audio_needs_refresh": true
-        },
-        {
-          "lang_code": "ko",
-          "name": "화병 모양 배롱나무",
-          "summary": "Bang lang loc binh",
-          "script_text": "화병 모양 배롱나무는 나무의 윤곽이 장식용 화병을 떠올리게 해 붙은 이름입니다. 조금 떨어져 전체적인 균형을 살펴본 뒤, 가까이에서 가지가 갈라지는 모습도 관찰해 보세요. 멀리서 볼 때와 가까이에서 볼 때 서로 다른 특징을 발견할 수 있습니다. 나무의 매력은 크기뿐 아니라 저마다 다른 형태에도 있습니다. 안내 지도에는 식스팩 나무에서 약 일 킬로미터 떨어진 곳으로 표시되어 있습니다. 산책로에서 감상하고 나무줄기에 글씨를 새기거나 쓰지 말아 주세요.",
-          "text_hash": "fa104e7489eccaec6fe9dc462a46afff1c82ee11f73c4cddd6a1690b1ad9baa7",
-          "audio": {
-            "file": "audio/11-ko-06780f27c0be.mp3",
-            "sha256": "06780f27c0bec026f7690a407488cf96b09302ea897936f7ba9fe86b72bb6a56",
-            "sizeBytes": 117548,
-            "durationSec": "7.35",
-            "voiceGender": "FEMALE",
-            "voiceName": "gemini-3.8-flash-lite-tts/Kore",
-            "provider": "GEMINI"
-          },
-          "audio_needs_refresh": true
-        },
-        {
-          "lang_code": "vi",
-          "name": "Bằng lăng lộc bình",
-          "summary": null,
-          "script_text": "Bằng lăng lộc bình được gọi tên theo dáng cây gợi liên tưởng đến chiếc lộc bình: phần thân và tán tạo nên một đường nét cân đối, mềm mại. Hãy thử lùi lại một chút để nhìn toàn dáng, rồi quan sát gần hơn cách các cành phân nhánh. Từ xa và từ gần, cây mang lại những ấn tượng khác nhau. Đây là dịp để bạn nhận ra vẻ đẹp không chỉ nằm ở kích thước mà còn ở hình dáng riêng của từng cây. Trên sơ đồ tham quan, điểm này cách Cây 6 múi khoảng một ki-lô-mét. Xin quan sát từ lối đi và không khắc vẽ lên thân cây.",
-          "text_hash": "2e9b467a4bd594e5c1b9c3d7b00c1ac268fc2b7481dde3512d9833402454908a",
-          "audio_needs_refresh": true
-        },
-        {
-          "lang_code": "zh",
-          "name": "花瓶形紫薇树",
-          "summary": "Bang lang loc binh",
-          "script_text": "花瓶形紫薇树的名字来自它令人联想到花瓶的轮廓。可以先退后几步，看看整株树的比例，再走近观察枝条如何分开。同一棵树，远看和近看会呈现不同的细节。树木的魅力不只在于高大，也在于各自独特的形态。游览示意图显示，这里距离六棱树约一公里。请在步道上观赏，不要在树干上刻画或涂写。",
-          "text_hash": "417fcecda9e5165551c4c643c814a17ae7e4a88f5dc84a5b0e126951ffac3a5e",
-          "audio": {
-            "file": "audio/11-zh-498c70ae8a45.mp3",
-            "sha256": "498c70ae8a45d553c5b954b1b8f6ee24795d39d6159fa26d42ddc748582d98ca",
-            "sizeBytes": 107180,
-            "durationSec": "6.70",
-            "voiceGender": "FEMALE",
-            "voiceName": "gemini-3.8-flash-lite-tts/Kore",
-            "provider": "GEMINI"
-          },
-          "audio_needs_refresh": true
-        }
-      ]
-    },
-    {
-      "code": "12",
-      "map_id": "00000000-0000-0000-0000-000000000001",
-      "category_id": 2,
-      "latitude": 11.446780339424643,
-      "longitude": 107.4128040234644,
-      "geo_verified": false,
-      "geo_source_url": null,
-      "schematic_x": "138.00",
-      "schematic_y": "203.00",
-      "trigger_radius_m": null,
-      "image_url": null,
-      "status": "PUBLISHED",
-      "sort_order": 0,
-      "translations": [
-        {
-          "lang_code": "en",
-          "name": "Dai Phong Tu Forest",
-          "summary": "Rung Dai Phong Tu",
-          "script_text": "Dai Phong Tu Forest is a place to slow down and experience the forest with more than just your eyes. Look through the different layers of the canopy, notice the patches of light and shade on the path, and listen to the sounds around you. Instead of hurrying through, pause for a moment and notice how the forest changes from one space to another. The visitor map places this stop about five hundred metres from the Vase-shaped Lagerstroemia. Map distances are for orientation only; follow the marked route and keep your voice low so wildlife is not disturbed.",
-          "text_hash": "4cda061c1b40523e84c0f1535095783ef0877ab9a2d9324d3b3fbe7019367a86",
-          "audio_needs_refresh": true
-        },
-        {
-          "lang_code": "ja",
-          "name": "大風子の森",
-          "summary": "Rung Dai Phong Tu",
-          "script_text": "大風子の森では、歩みをゆるめ、目だけでなく耳でも森を感じてみましょう。樹冠の重なりや遊歩道に落ちる光と影を眺め、周囲の自然の音に耳を傾けてください。急いで通り過ぎず、場所によって森の表情がどう変わるかを少し立ち止まって味わいましょう。案内図では、花瓶形のサルスベリから約五百メートルです。図上の距離は目安です。標識のある道を歩き、野生動物を驚かせないよう静かに過ごしてください。",
-          "text_hash": "19d9cebe0cafd95c3b8c28121f1184e2ebe71db078be2515e38a3d647da574be",
-          "audio_needs_refresh": true
-        },
-        {
-          "lang_code": "ko",
-          "name": "대풍자 숲",
-          "summary": "Rung Dai Phong Tu",
-          "script_text": "대풍자 숲에서는 걸음을 늦추고 눈뿐 아니라 귀로도 숲을 느껴 보세요. 여러 겹으로 이어지는 수관과 산책로 위에 드리운 빛과 그늘을 살펴보고, 주변의 자연 소리에 귀를 기울여 보세요. 서둘러 지나가기보다 잠시 멈춰 공간마다 숲의 모습이 어떻게 달라지는지 느껴 보세요. 안내 지도에는 화병 모양 배롱나무에서 약 오백 미터 떨어진 곳으로 표시되어 있습니다. 지도상의 거리는 참고용입니다. 지정된 길을 따르고 야생동물을 놀라게 하지 않도록 조용히 걸어 주세요.",
-          "text_hash": "40af64c8a6a039beb16d87cd15f657329647655237bfd8904d6616cdad0cdab4",
-          "audio_needs_refresh": true
-        },
-        {
-          "lang_code": "vi",
-          "name": "Rừng Đại Phong Tử",
-          "summary": null,
-          "script_text": "Rừng Đại Phong Tử là điểm dừng để bạn chậm lại và cảm nhận không gian rừng bằng nhiều giác quan. Hãy nhìn lên những tầng cây, để ý những mảng sáng tối trên lối đi và lắng nghe âm thanh tự nhiên quanh mình. Thay vì chỉ bước qua thật nhanh, bạn có thể dành một phút để nhận ra khu rừng thay đổi thế nào theo từng khoảng không gian. Theo sơ đồ tham quan, điểm này cách Bằng lăng lộc bình khoảng năm trăm mét. Khoảng cách trên sơ đồ chỉ để định hướng; hãy theo lối đi được chỉ dẫn và giữ yên tĩnh để không làm phiền sinh vật trong rừng.",
-          "text_hash": "f8fd37b165e63e27181f0e8d1eb07acef6e89d0f6ac66a6165a301d53ea6bbd3",
-          "audio": {
-            "file": "audio/12-vi-83ff466fc621.mp3",
-            "sha256": "83ff466fc6210c04cb7012b5731abbe631fe92d5fcdfd69ab549d93cafd49f3d",
-            "sizeBytes": 112940,
-            "durationSec": "7.06",
-            "voiceGender": "FEMALE",
-            "voiceName": "gemini-3.8-flash-lite-tts/Kore",
-            "provider": "GEMINI"
-          },
-          "audio_needs_refresh": true
-        },
-        {
-          "lang_code": "zh",
-          "name": "大风子林",
-          "summary": "Rung Dai Phong Tu",
-          "script_text": "在大风子林，不妨放慢脚步，用眼睛和耳朵一起感受森林。看看层层树冠如何交叠，留意步道上的光影，也听一听周围的自然声音。与其匆匆经过，不如停留片刻，感受不同位置的森林景致如何变化。游览示意图显示，这里距离花瓶形紫薇树约五百米。图上距离仅供辨认方向，请沿指定路线行走，并保持安静，避免惊扰野生动物。",
-          "text_hash": "96d96eb3e5f84839cdfb931958a563c2557654ac1ecb5f04cf01038a6764c47b",
-          "audio_needs_refresh": true
-        }
-      ]
-    },
-    {
-      "code": "13",
-      "map_id": "00000000-0000-0000-0000-000000000001",
-      "category_id": 2,
-      "latitude": 11.447974477293288,
-      "longitude": 107.41067782251574,
-      "geo_verified": false,
-      "geo_source_url": null,
-      "schematic_x": "80.00",
-      "schematic_y": "170.00",
-      "trigger_radius_m": null,
-      "image_url": null,
-      "status": "PUBLISHED",
-      "sort_order": 0,
-      "translations": [
-        {
-          "lang_code": "en",
-          "name": "Hundred-Trunk Ficus Tree",
-          "summary": "Cay Si Tram Than",
-          "script_text": "This is a cluster of ancient ficus trees growing right beside a cool stream. Over hundreds of years of growth, the branches and aerial roots of the tree have dropped down, penetrating deeply into the ground and the water's surface. They form an intricate, winding, and secluded network of trunks, resembling a mystical labyrinth.",
-          "text_hash": "fafb2d2cd2d4c4901090c1caf274250a6a03d3745b1d124392d67349c2ee956d",
-          "audio": {
-            "file": "audio/13-en-e40673a23e63.mp3",
-            "sha256": "e40673a23e6302a73716d053e0e28740b14f012e44f9ff00579d478e15169c3b",
-            "sizeBytes": 394412,
-            "durationSec": "24.65",
-            "voiceGender": "FEMALE",
-            "voiceName": "gemini-3.8-flash-lite-tts/Kore",
-            "provider": "GEMINI"
-          }
-        },
-        {
-          "lang_code": "ja",
-          "name": "百本の幹を持つシの木",
-          "summary": "Cay Si Tram Than",
-          "script_text": "清らかな小川のほとりに生えるガジュマル類の古木の群落です。数百年に及ぶ成長を経て、無数の枝や気根が垂れ下がり、大地や湖面深くへと突き刺さっています。それらが複雑に入り組んだ静寂な幹のネットワークを形成し、まるで神秘的な迷宮のようです。",
-          "text_hash": "1bf40857673bff138d44790f266dbd03e65a842e99933e7b0c851636909c7b96"
-        },
-        {
-          "lang_code": "ko",
-          "name": "백간 시 나무",
-          "summary": "Cay Si Tram Than",
-          "script_text": "이곳은 맑고 시원한 계곡물 바로 곁에서 자라는 고대 시(Si) 무화과나무 군락입니다. 수백 년 동안 자라나며 나뭇가지와 곁뿌리가 아래로 드리워져 땅속과 호수 바닥에 깊숙이 뿌리를 내렸습니다. 이 뿌리와 줄기들이 어지럽게 얽히고설키며 구불구불 이어져, 마치 신비로운 미로와도 같은 고요한 숲 그늘을 만들어 냅니다.",
-          "text_hash": "5e6014cf0fa73912acdbdf9aa31242aeb50a1dd785e0f48e7d3e3f0c958d9884"
-        },
-        {
-          "lang_code": "vi",
-          "name": "Cây Si Trăm Thân",
-          "summary": null,
-          "script_text": "Đây là quần thể si cổ thụ mọc ngay bên dòng suối mát. Qua hàng trăm năm phát triển, các cành nhánh và rễ phụ của cây buông xuống, cắm sâu vào lòng đất và mặt hồ. Chúng tạo nên một mạng lưới thân cây chằng chịt, uốn lượn u tịch, như một mê cung huyền bí.",
-          "text_hash": "abc469007129d309d3cd64055ee1a2cfec14da8c8106826cd2a2dcde8e0c90f3",
-          "audio": {
-            "file": "audio/13-vi-89df1026a9af.mp3",
-            "sha256": "89df1026a9afa08e4d058e2398eded32d5cb14b218c380a0270f0645c01b4a95",
-            "sizeBytes": 309932,
-            "durationSec": "19.37",
-            "voiceGender": "FEMALE",
-            "voiceName": "gemini-3.8-flash-lite-tts/Kore",
-            "provider": "GEMINI"
-          }
-        },
-        {
-          "lang_code": "zh",
-          "name": "百干聚果榕 (Cây Si Trăm Thân)",
-          "summary": "Cay Si Tram Than",
-          "script_text": "这是一处生长在清凉溪流旁的古榕树群落。历经数百年的生长演变，树枝与不定根垂落下来，深深扎入泥土与水底。它们交织成一片盘根错节、静谧幽深的树干网络，宛如一座神秘莫测的迷宫。",
-          "text_hash": "3b2ba089d92e3af60952a7465a1fbef4f627b31ead113cbd9282c69ec29061ba"
-        }
-      ]
-    },
-    {
-      "code": "14",
+      "code": "9",
       "map_id": "00000000-0000-0000-0000-000000000001",
       "category_id": 3,
-      "latitude": 11.442076159942102,
-      "longitude": 107.44403718222762,
+      "latitude": 11.4594,
+      "longitude": 107.3486,
       "geo_verified": false,
-      "geo_source_url": null,
-      "schematic_x": "990.00",
-      "schematic_y": "333.00",
+      "geo_source_url": "urn:sha256:2ede2f7c00e63638604ebdeb843bb7e94aa1e7829fbd982ede01e5b9f5b8a664#point-02",
+      "schematic_x": "212.00",
+      "schematic_y": "316.00",
       "trigger_radius_m": null,
       "image_url": null,
       "status": "PUBLISHED",
-      "sort_order": 0,
+      "sort_order": 2,
       "translations": [
         {
           "lang_code": "en",
-          "name": "Thac Troi Waterfall",
-          "summary": "Thac Troi",
-          "script_text": "Thac Troi, also known as Thac Dung, is a majestic waterfall winding through undulating basalt rock fields in the midst of the vast green forest. The waterfall cascades down with white frothing spray year-round, creating mystical veils of water mist. On beautiful sunny days, sunlight pierces through the mist, creating vibrant rainbows. That is why this place is called Thac Troi, or Heaven Waterfall.",
-          "text_hash": "cf9918670b97fc20dc9dc4932a9ed366568e2c23731eccad9cdb8c3f97d7f148"
+          "name": "Crocodile Lake",
+          "summary": "Bau Sau",
+          "script_text": "Bau Sau is a wetland of international importance, recognized under the Ramsar Convention. This place is considered the heart of the Nam Cat Tien ecosystem. This vast wetland is the natural home of hundreds of Siamese crocodiles, a rare freshwater crocodile species once believed to be extinct. Visiting here, you will admire pristine scenery reminiscent of an ink wash painting, and experience rowing a boat amidst the wetland where crocodiles live in their natural habitat.",
+          "text_hash": "66c55e508cd56594d7670c33c1ba6779d1dbea8d4f5e94f3ba6e7dd27a64cf15"
         },
         {
           "lang_code": "ja",
-          "name": "タックチョイ（天の滝）",
-          "summary": "Thac Troi",
-          "script_text": "タックズンとも呼ばれるタックチョイは、緑豊かな大自然の中で起伏する玄武岩地帯を縫うように流れる雄大な滝です。滝の水は年中白い水しぶきを上げて流れ落ち、幻想的な水煙を漂わせています。晴れた日には太陽の光が霧を通り抜け、鮮やかな虹の帯を作り出します。そのため、この場所は「天の滝」と名づけられました。",
-          "text_hash": "22edb8ac214134cf8d03e18f7ae65bdf120d9128e4d2babe8a57f7a72dc078e3"
+          "name": "クロコダイル湖",
+          "summary": "Bau Sau",
+          "script_text": "バウサウはラムサール条約に基づき認定された、国際的に重要な湿地帯です。ここはナムカッティエン生態系の心臓部と見なされています。この広大な湿地は、かつて絶滅したと考えられていた希少な淡水性のワニであるシャムワニ数百頭の自然の生息地となっています。ここを訪れると、まるで水墨画のように手つかずの自然の風景を眺めることができ、ワニが自然のまま暮らす湿地の真ん中でボートを漕ぐ体験ができます。",
+          "text_hash": "239bde85d4302f2d5a9e68020838f07cd52fb26fa702e2f5201609928a4f4eab"
         },
         {
           "lang_code": "ko",
-          "name": "탁쩌이 폭포",
-          "summary": "Thac Troi",
-          "script_text": "탁증(Thác Dựng)으로도 불리는 탁쩌이(Thác Trời)는 울창한 원시림 사이로 올록볼록 솟은 현무암 지대를 굽이쳐 흐르는 웅장한 폭포입니다. 일 년 내내 하얀 포말을 뿜어내며 쏟아지는 폭포수는 몽환적인 물안개를 피워 올립니다. 화창한 날이면 햇빛이 물안개를 관통하며 찬란한 무지개를 빚어내어, '하늘의 폭포'라는 뜻의 탁쩌이라는 이름을 얻게 되었습니다.",
-          "text_hash": "98a4ad1dc418f6f9973a23409e16968967d10aca24bf8923bcb993e1184d6b92"
+          "name": "악어 호수",
+          "summary": "Bau Sau",
+          "script_text": "바우서우는 람사르 협약에 따라 국제적 중요성을 인정받은 습지입니다. 이곳은 남깟띠엔 생태계의 심장부로 꼽힙니다. 이 광활한 늪지는 한때 멸종된 것으로 여겨졌던 희귀 민물 악어 종인 샴악어 수백 마리가 살아가는 자연의 보금자리입니다. 이곳에 오시면 수묵화처럼 원시적인 풍경을 감상할 수 있으며, 악어가 자연 그대로 서식하는 습지 한가운데에서 나룻배를 타는 특별한 체험을 즐기실 수 있습니다.",
+          "text_hash": "26e70e645a51326511a23ae2bd0f8a75f1a4f7cc53f142e2886d0b3a709d8020"
         },
         {
           "lang_code": "vi",
-          "name": "Thác Trời",
+          "name": "Bàu Sấu",
           "summary": null,
-          "script_text": "Thác Trời, còn gọi là thác Dựng, là một ngọn thác hùng vĩ uốn lượn qua các bãi đá ba-dan nhấp nhô giữa đại ngàn xanh. Nước thác đổ xuống tung bọt trắng xóa quanh năm, tạo nên những màn sương hơi nước mờ ảo. Vào những ngày nắng đẹp, ánh mặt trời xuyên qua làn sương, tạo nên những dải cầu vồng rực rỡ. Vì vậy, nơi đây có tên gọi là Thác Trời.",
-          "text_hash": "30570274085b8ca49c8e58a79cc6c157e814c5672fe39f92a9294148a232779d"
+          "script_text": "Bàu Sấu là vùng đất ngập nước có tầm quan trọng quốc tế, được công nhận theo công ước Ram-xa. Nơi đây được xem là trái tim của hệ sinh thái Nam Cát Tiên. Đầm lầy rộng lớn này là ngôi nhà tự nhiên của hàng trăm cá thể cá sấu Xiêm, một loài cá sấu nước ngọt quý hiếm, từng được cho là đã tuyệt chủng. Đến đây, bạn sẽ ngắm nhìn cảnh sắc hoang sơ như tranh thủy mặc, và trải nghiệm chèo thuyền giữa đầm nước, nơi cá sấu sinh sống tự nhiên.",
+          "text_hash": "81f5755e0aaa1b50ac0423d3769e6fda14a6baef260a1c2785b3064ebca9d383",
+          "audio": {
+            "file": "audio/9-vi-04db39243e81.mp3",
+            "sha256": "04db39243e8142a3c00b61aaca848e4f9bc66b9da6d12d093be590bd7b00474e",
+            "sizeBytes": 459692,
+            "durationSec": "28.68",
+            "voiceGender": "FEMALE",
+            "voiceName": "gemini-3.8-flash-lite-tts/Kore",
+            "provider": "GEMINI"
+          }
         },
         {
           "lang_code": "zh",
-          "name": "天瀑 (Thác Trời)",
-          "summary": "Thac Troi",
-          "script_text": "天瀑又称立瀑（thác Dựng），是一座雄伟的瀑布，在苍翠森林间起伏的玄武岩石滩中蜿蜒穿行。瀑布终年飞流直下，激起漫天白沫，营造出虚无缥缈的水雾轻纱。在晴好的日子里，阳光穿透薄雾，折射出绚丽多彩的道道彩虹。正因如此，这里才得名“天瀑”。",
-          "text_hash": "3e5fb9c0ece6c323a2567a934675d3725b62d53a658a2d045d23bdbc54b24585"
-        }
-      ]
-    },
-    {
-      "code": "15",
-      "map_id": "00000000-0000-0000-0000-000000000001",
-      "category_id": 2,
-      "latitude": 11.441895229962004,
-      "longitude": 107.45100232326635,
-      "geo_verified": false,
-      "geo_source_url": null,
-      "schematic_x": "1180.00",
-      "schematic_y": "338.00",
-      "trigger_radius_m": null,
-      "image_url": null,
-      "status": "PUBLISHED",
-      "sort_order": 0,
-      "translations": [
-        {
-          "lang_code": "en",
-          "name": "Da Co Crape Myrtle Forest",
-          "summary": "Rung bang lang Da Co",
-          "script_text": "This is a trail filled with the blossoms of the hairy crape myrtle. During the dry season, particularly from March to May every year, the entire forest sheds its leaves simultaneously and dons a brilliant purple cloak. That romantic and poetic scenery is completely different from the year-round lush green of the primeval forest.",
-          "text_hash": "6d3fe5c314e612d6b0f2ab9515485d160dd7a29d356409f1d8c459b1b0703ed1"
-        },
-        {
-          "lang_code": "ja",
-          "name": "ダコーのバンラン（オオバナサルスベリ）林",
-          "summary": "Rung bang lang Da Co",
-          "script_text": "毛氈状の葉を持つバンランの花の色で溢れるトレイルコースです。乾季、特に毎年三月から五月にかけては、森全体が一斉に葉を落とし、鮮やかな紫色に染まります。このロマンチックで詩的な光景は、一年中青々と茂る原生林の緑とはまったく異なる表情を見せてくれます。",
-          "text_hash": "d7e05560253741267515ec14f6f7ae7b58d1c7a918f2d617f3d073db20185031"
-        },
-        {
-          "lang_code": "ko",
-          "name": "다꼬 방랑 숲",
-          "summary": "Rung bang lang Da Co",
-          "script_text": "이곳은 털방랑(대왕배롱나무)의 꽃빛으로 물드는 숲길입니다. 건기, 특히 매년 삼월부터 오월 사이가 되면 온 숲이 일제히 낙엽을 떨구고 화려한 보랏빛으로 갈아입습니다. 그 낭만적이고 서정적인 정경은 사시사철 짙푸른 원시림의 풍경과는 완전히 다른 매력을 선사합니다.",
-          "text_hash": "3f4e228dfc98b938c32690583487cb409647b0a136e716daca8a1753134353ee"
-        },
-        {
-          "lang_code": "vi",
-          "name": "Rừng Bằng Lăng Đà Cộ",
-          "summary": null,
-          "script_text": "Đây là tuyến đường mòn ngập tràn sắc hoa của loài bằng lăng ổi lông. Vào mùa khô, đặc biệt từ tháng ba đến tháng năm hằng năm, cả khu rừng đồng loạt trút lá và khoác lên mình màu tím rực rỡ. Khung cảnh lãng mạn, nên thơ ấy khác hoàn toàn với màu xanh mướt quanh năm của rừng già.",
-          "text_hash": "5d3aba52c0d2dba4c09645447baa2704af88eff59398ad973ee63a5b75844e86"
-        },
-        {
-          "lang_code": "zh",
-          "name": "达扣紫薇林 (Rừng Bằng Lăng Đà Cộ)",
-          "summary": "Rung bang lang Da Co",
-          "script_text": "这是一条开满毛果大花紫薇花朵的林间小径。在旱季，尤其是每年的三月至五月，整片森林几乎同时落叶，并披上绚丽夺目的紫色盛装。这番浪漫诗意的景致，与古老森林一年四季常青的翠绿截然不同。",
-          "text_hash": "0f3f6cd43d259fbea3081181e71f5e8f95b89309dc133b3adf8766cba3a9a0bb"
+          "name": "鳄鱼湖",
+          "summary": "Bau Sau",
+          "script_text": "鳄鱼湖是具有国际重要意义的湿地，已被列入《拉姆萨尔公约》国际重要湿地名录。这里被视为南吉仙生态系统的核心心脏。这片广袤的沼泽湿地是数百只暹罗鳄的自然家园，暹罗鳄是一种珍稀淡水鳄，曾一度被认为已经灭绝。来到这里，您将欣赏到宛如水墨画般的原始风光，并体验在鳄鱼自然栖息的湖水中荡舟。",
+          "text_hash": "88226e9d8fdc94b978283128563b49f7560ce779515362531b5ac68de01f8848"
         }
       ]
     },
@@ -493,16 +119,16 @@
       "code": "2",
       "map_id": "00000000-0000-0000-0000-000000000001",
       "category_id": 2,
-      "latitude": 11.431039431156142,
-      "longitude": 107.4198791404143,
+      "latitude": 11.4428,
+      "longitude": 107.423,
       "geo_verified": false,
-      "geo_source_url": null,
+      "geo_source_url": "urn:sha256:2ede2f7c00e63638604ebdeb843bb7e94aa1e7829fbd982ede01e5b9f5b8a664#point-03",
       "schematic_x": "331.00",
       "schematic_y": "638.00",
       "trigger_radius_m": null,
       "image_url": null,
       "status": "PUBLISHED",
-      "sort_order": 0,
+      "sort_order": 3,
       "translations": [
         {
           "lang_code": "en",
@@ -529,21 +155,21 @@
         },
         {
           "lang_code": "ko",
-          "name": "뚱 고목",
+          "name": "오래된 퉁 나무",
           "summary": "Tung dai thu",
           "script_text": "이 나무는 수령이 사백 년 이상 된 거목으로 하늘 높이 우뚝 솟아 있습니다. 뚱 나무의 가장 두드러진 특징은 땅 위로 거대하게 드러나 사방으로 뻗어 나가며 대지를 단단히 움켜쥐고 있는 판근(판자뿌리)으로, 경이로운 자연의 칸막이 벽을 이룹니다. 이 나무의 밑동을 완전히 둘러싸려면 성인 스무 명가량이 양팔을 이어 벌려야 합니다.",
           "text_hash": "a72f0f4c97ec437e1eb8aebb1b99bc0522778c509eac3d354905ed339d23178c"
         },
         {
           "lang_code": "vi",
-          "name": "Cây Tung cổ thụ",
+          "name": "Cây Tùng cổ thụ",
           "summary": null,
           "script_text": "Đây là cây đại thụ có tuổi đời hơn bốn trăm năm, với chiều cao sừng sững. Điểm đặc sắc nhất của cây Tung là bộ rễ nổi khổng lồ, đồ sộ, lan rộng và bám chặt vào lòng đất, tạo thành những vách ngăn tự nhiên kỳ vĩ. Để ôm trọn gốc cây này, cần vòng tay nối kết của khoảng hai mươi người trưởng thành.",
           "text_hash": "9c9b5a0d91993e577103b931a80764c2245fa423f42524f0455e37d55abf3d9b"
         },
         {
           "lang_code": "zh",
-          "name": "四百年古树栋木 (Cây Tung cổ thụ)",
+          "name": "古老的 Tung 树",
           "summary": "Tung dai thu",
           "script_text": "这是一棵树龄超过四百年的参天大树，身姿高耸挺拔。栋木最引人注目的特点是其巨大壮观的板根系统，这些气生根向四周蔓延并紧紧扎入泥土中，形成了雄伟壮丽的天然屏障隔断。要合抱这棵树的树根，需要大约二十名成年人手拉手连成一圈。",
           "text_hash": "71df9871611d08099350522c7678a541b42a5ecba783f3fa7b025a332900eb36"
@@ -551,269 +177,37 @@
       ]
     },
     {
-      "code": "3",
-      "map_id": "00000000-0000-0000-0000-000000000001",
-      "category_id": 2,
-      "latitude": 11.432414499004885,
-      "longitude": 107.42083226497749,
-      "geo_verified": false,
-      "geo_source_url": null,
-      "schematic_x": "357.00",
-      "schematic_y": "600.00",
-      "trigger_radius_m": null,
-      "image_url": null,
-      "status": "PUBLISHED",
-      "sort_order": 0,
-      "translations": [
-        {
-          "lang_code": "en",
-          "name": "Five-top Lagerstroemia",
-          "summary": "Bang lang 5 ngon",
-          "script_text": "Take a moment to look at the Five-top Lagerstroemia. Its distinctive outline invites you to follow the tree from the base up into the canopy. Several large branches spread in different directions, creating the impression of five separate crowns and inspiring the tree’s name. The shape changes as you view it from another angle. The visitor map places this stop about two hundred metres from the Ancient Cycad. Please stay on the path, take your time observing, and let the tree continue to grow undisturbed.",
-          "text_hash": "9630c1b47d18218e4561c5d725e95cd6579f37950721bd58bee1439acc766b63",
-          "audio_needs_refresh": true
-        },
-        {
-          "lang_code": "ja",
-          "name": "五つ又のサルスベリ",
-          "summary": "Bang lang 5 ngon",
-          "script_text": "ここは「五つ又のサルスベリ」です。幹の根元から樹冠へと視線を向けると、大きな枝がさまざまな方向へ伸び、五つの頂があるような姿を形づくっていることに気づきます。その特徴が、この木の名前の由来です。立つ位置を変えると、幹や枝の重なり方も違って見えます。案内図では、千年ソテツから約二百メートルの場所にあります。遊歩道からゆっくり観察し、木の成長を妨げないようにしましょう。",
-          "text_hash": "0f2b98de9d43ae48592c61a8bcfe3aa80495c3d6a917b1695bfdc461c5ca6c7d",
-          "audio_needs_refresh": true
-        },
-        {
-          "lang_code": "ko",
-          "name": "다섯 갈래 배롱나무",
-          "summary": "Bang lang 5 ngon",
-          "script_text": "이곳은 ‘다섯 갈래 배롱나무’입니다. 줄기 밑동에서 수관까지 천천히 시선을 옮겨 보세요. 굵은 가지들이 여러 방향으로 뻗어 마치 다섯 개의 봉우리가 있는 듯한 모습을 만듭니다. 나무 이름도 이 독특한 형태에서 비롯되었습니다. 서 있는 위치에 따라 줄기와 가지가 겹쳐 보이는 모습이 달라집니다. 안내 지도에는 천년 소철에서 약 이백 미터 떨어진 곳으로 표시되어 있습니다. 산책로에서 천천히 관찰하고 나무가 자연스럽게 자라도록 보호해 주세요.",
-          "text_hash": "5574ee9c159535dbdcb161be96c884077846d23714078729dbf0c44c10bf7b87",
-          "audio_needs_refresh": true
-        },
-        {
-          "lang_code": "vi",
-          "name": "Bằng lăng 5 ngọn",
-          "summary": null,
-          "script_text": "Trước mắt bạn là Bằng lăng 5 ngọn, một dáng cây khiến người ta muốn dừng lại ngắm kỹ. Hãy thử nhìn từ phần gốc lên tán: những nhánh lớn tỏa ra theo nhiều hướng, tạo nên hình dáng gợi liên tưởng đến năm ngọn riêng biệt. Tên gọi của cây cũng bắt nguồn từ nét đặc trưng ấy. Mỗi góc nhìn lại làm đường nét của thân và cành hiện lên khác nhau. Trên sơ đồ tham quan, điểm này cách Thiên tuế khoảng hai trăm mét. Bạn hãy bước chậm, quan sát từ lối đi và để cây được phát triển tự nhiên.",
-          "text_hash": "d597029336ee71843bcb5e3e473465460b47e891b2a7a0b5dcfb0736ecea8bc1",
-          "audio": {
-            "file": "audio/3-vi-b8cd1ca0021b.mp3",
-            "sha256": "b8cd1ca0021b5aa7c34ec2a07c2c154ca39338dbffe922946f5c6a75db3face1",
-            "sizeBytes": 100652,
-            "durationSec": "6.24",
-            "voiceGender": "FEMALE",
-            "voiceName": "gemini-3.8-flash-lite-tts/Kore",
-            "provider": "GEMINI"
-          },
-          "audio_needs_refresh": true
-        },
-        {
-          "lang_code": "zh",
-          "name": "五冠紫薇树",
-          "summary": "Bang lang 5 ngon",
-          "script_text": "这里是“五冠紫薇树”。请从树干基部向上观察树冠：几条粗壮的枝干向不同方向伸展，远看仿佛形成了五个树冠，这正是它名字的由来。换一个角度，枝干交错的轮廓也会随之变化。游览示意图显示，这里距离千年苏铁约两百米。请沿步道慢慢观赏，不触碰或攀爬树木，让它继续自然生长。",
-          "text_hash": "2e2137089ed58898c562ad5e05b76cce9e96d4c9f9a05b750e4d23fb16eae118",
-          "audio_needs_refresh": true
-        }
-      ]
-    },
-    {
-      "code": "4",
-      "map_id": "00000000-0000-0000-0000-000000000001",
-      "category_id": 2,
-      "latitude": 11.429302503347204,
-      "longitude": 107.42233526909638,
-      "geo_verified": false,
-      "geo_source_url": null,
-      "schematic_x": "398.00",
-      "schematic_y": "686.00",
-      "trigger_radius_m": null,
-      "image_url": null,
-      "status": "PUBLISHED",
-      "sort_order": 0,
-      "translations": [
-        {
-          "lang_code": "en",
-          "name": "Ancient Cycad",
-          "summary": "Thien tue",
-          "script_text": "The cycad stands out from the surrounding forest with a form unlike that of most broad-leaved trees. Notice its sturdy trunk and the crown of long, firm leaves spreading above it. The leaves radiate in a ring, giving the plant a distinctive, almost ancient appearance. Its Vietnamese name evokes longevity, but there is no need to guess the age of this individual plant; simply take in its structure and character. The visitor map places this stop about seven hundred metres from the Visitor Centre. Please observe from the path and do not remove any leaves.",
-          "text_hash": "23110ec53becf37e130cfe82612ee44f164af62047b477fb2451d99ddaccd4b8",
-          "audio_needs_refresh": true
-        },
-        {
-          "lang_code": "ja",
-          "name": "千年ソテツ",
-          "summary": "Thien tue",
-          "script_text": "ソテツは、周囲の広葉樹とは異なる姿が印象的な植物です。しっかりとした幹と、その上に輪のように広がる長く硬い葉を観察してみてください。葉の広がりが、どこか太古を思わせる独特の姿をつくっています。ベトナム語の「ティエン・トゥエ」という名は長い時を連想させますが、この株の樹齢を決めつける必要はありません。形や質感をゆっくり味わいましょう。案内図では、ビジターセンターから約七百メートルです。遊歩道から観察し、葉を折らないようにしてください。",
-          "text_hash": "a1b03a20b4325f6ca590e2aaac902cdc24c600c2975a75805278026857f2e89e",
-          "audio_needs_refresh": true
-        },
-        {
-          "lang_code": "ko",
-          "name": "천년 소철",
-          "summary": "Thien tue",
-          "script_text": "소철은 주변의 넓은 잎나무들과 다른 독특한 모습으로 눈길을 끕니다. 단단한 줄기와 그 위로 둥글게 퍼지는 길고 뻣뻣한 잎을 살펴보세요. 잎이 방사형으로 뻗은 모습은 고풍스럽고 개성 있는 인상을 줍니다. 베트남어 이름 ‘티엔뚜에’는 긴 세월을 떠올리게 하지만, 이 나무의 나이를 짐작할 필요는 없습니다. 형태와 질감을 천천히 감상해 보세요. 안내 지도에는 방문자 센터에서 약 칠백 미터 떨어진 곳으로 표시되어 있습니다. 산책로에서 관찰하고 잎을 꺾지 말아 주세요.",
-          "text_hash": "52216ad1816779357a2313ab42d60d4515b4abd643a8a2bc61f8c569bb75cc73",
-          "audio_needs_refresh": true
-        },
-        {
-          "lang_code": "vi",
-          "name": "Thiên tuế",
-          "summary": null,
-          "script_text": "Thiên tuế là một loài cây có dáng vẻ khác biệt giữa những tán cây rừng. Hãy quan sát thân cây chắc khỏe và vòng lá dài, cứng, xòe ra ở phía trên. Những chiếc lá mọc thành vòng khiến cây trông vừa cổ kính vừa mạnh mẽ. Tên gọi “thiên tuế” thường gợi đến sức sống lâu bền, nhưng ở đây chúng ta không cần đoán tuổi của cây; hãy dành thời gian nhận ra cấu trúc và vẻ đẹp riêng của nó. Theo sơ đồ tham quan, điểm này cách Trung tâm Du khách khoảng bảy trăm mét. Xin chỉ quan sát từ lối đi và không bẻ lá.",
-          "text_hash": "2b945465803ac0aa0858b49f0a3a9ff34ad39fe87c0837ac387e159e73a70a6f",
-          "audio_needs_refresh": true
-        },
-        {
-          "lang_code": "zh",
-          "name": "千年苏铁",
-          "summary": "Thien tue",
-          "script_text": "苏铁的形态与周围常见的阔叶树不同，很容易让人停下脚步。请留意它结实的树干，以及顶部向四周展开的一圈长而坚硬的叶片。叶片呈放射状舒展，形成独特而古朴的轮廓。越南语名称“Thiên tuế”让人联想到长寿，但我们不必据此推测眼前这株植物的年龄，不妨专注欣赏它的形态与质感。游览示意图显示，这里距离游客中心约七百米。请在步道上观赏，不要折摘叶片。",
-          "text_hash": "d17635a602ade87c26fb88849d0e8d8e40a10b290fedc0e7da6d6c2085c6b812",
-          "audio_needs_refresh": true
-        }
-      ]
-    },
-    {
-      "code": "5",
-      "map_id": "00000000-0000-0000-0000-000000000001",
-      "category_id": 3,
-      "latitude": 11.4344393,
-      "longitude": 107.4295182,
-      "geo_verified": false,
-      "geo_source_url": "https://www.openstreetmap.org/node/12613087809",
-      "schematic_x": "532.00",
-      "schematic_y": "538.00",
-      "trigger_radius_m": null,
-      "image_url": null,
-      "status": "PUBLISHED",
-      "sort_order": 0,
-      "translations": [
-        {
-          "lang_code": "en",
-          "name": "Ben Cu Rapids",
-          "summary": "Ghenh Ben Cu",
-          "script_text": "Ben Cu Rapids is located not far from the park headquarters. Here, a section of the Dong Nai River narrows, its torrent rushing and weaving through large, undulating rocky rapids. Ben Cu possesses a wild and rustic beauty, serving as an ideal stopover for you to rest and listen to the murmuring sound of flowing water harmonizing with the songs of forest birds.",
-          "text_hash": "a51778f3abfa1be0613a43c71ee5d79342702f27347158073c9539cba6c11981"
-        },
-        {
-          "lang_code": "ja",
-          "name": "ベンクーの浅瀬・急流",
-          "summary": "Ghenh Ben Cu",
-          "script_text": "ベンクーの浅瀬は、国立公園管理本部からそう遠くない場所に位置しています。ここはドンナイ川の川幅が狭まり、起伏のある大きな岩礁地帯を縫って急流が激しく流れる場所です。素朴で手つかずの美しさを持ち、腰を下ろして休憩しながら、森の鳥の声と溶け合うせせらぎの音に耳を傾けるのに理想的な立ち寄りスポットです。",
-          "text_hash": "a5988415847ec7d97ec3f3b39a21da1a9a1e2713810240290c30e13e4a76e91b"
-        },
-        {
-          "lang_code": "ko",
-          "name": "벤끄 급류",
-          "summary": "Ghenh Ben Cu",
-          "script_text": "벤끄 급류는 공원 관리사무소에서 그리 멀지 않은 곳에 있습니다. 이곳은 동나이강의 강폭이 좁아지며 물살이 거세져 올록볼록 솟은 거대한 암초들 사이를 파고들며 흐르는 구간입니다. 원시적이고 소박한 멋을 지닌 벤끄는 잠시 멈추어 서서 숲속 새소리와 어우러지는 청량한 물소리를 들으며 휴식을 취하기에 안성맞춤인 곳입니다.",
-          "text_hash": "15e9260cf9c0090ed6fa1c12ca498b121d59cd991dc646201783f11a86052b93"
-        },
-        {
-          "lang_code": "vi",
-          "name": "Ghềnh thác Bến Cự",
-          "summary": null,
-          "script_text": "Ghềnh thác Bến Cự tọa lạc cách trụ sở vườn không xa. Đây là đoạn sông Đồng Nai co hẹp lại, dòng nước chảy xiết, luồn lách qua những bãi ghềnh đá lớn nhấp nhô. Bến Cự mang vẻ đẹp hoang sơ, mộc mạc, là điểm dừng chân lý tưởng để bạn ngồi nghỉ, lắng nghe tiếng nước chảy rì rào hòa quyện cùng tiếng chim rừng.",
-          "text_hash": "78080688529a3d0bebf036a0bcdf8f99feabd398def97f0384b705d67d780498"
-        },
-        {
-          "lang_code": "zh",
-          "name": "巨滩险滩 (Ghềnh thác Bến Cự)",
-          "summary": "Ghenh Ben Cu",
-          "script_text": "巨滩险滩距离公园管理总部不远。这里是同奈河收窄的河段，水流湍急，穿行在起伏交错的巨石滩之间。巨滩散发着原始质朴之美，是您歇脚小憩的理想去处，您可以坐在这里聆听潺潺流水声与林中鸟鸣交织共鸣。",
-          "text_hash": "c89a0ef0c595e119742582a764b98579a210570cece2a3db3a8e7950be2dc46a"
-        }
-      ]
-    },
-    {
-      "code": "6",
-      "map_id": "00000000-0000-0000-0000-000000000001",
-      "category_id": 1,
-      "latitude": 11.437154864483444,
-      "longitude": 107.42875053057942,
-      "geo_verified": false,
-      "geo_source_url": null,
-      "schematic_x": "573.00",
-      "schematic_y": "469.00",
-      "trigger_radius_m": null,
-      "image_url": null,
-      "status": "PUBLISHED",
-      "sort_order": 0,
-      "translations": [
-        {
-          "lang_code": "en",
-          "name": "Botanical Garden",
-          "summary": "Vuon thuc vat",
-          "script_text": "The Botanical Garden is a good place to pause and look more closely at the variety of plants before continuing into the forest. Notice the shapes and colours of the leaves, and how different layers of vegetation meet the light. Small details like these make the richness of the forest easier to appreciate. This is also an important junction on the visitor route. The map shows about one hundred metres from stop five to here; one direction continues deeper into the forest, while the other leads toward Heaven Rapids, about 3.6 kilometres away on the map. Check the signs on site, stay on marked paths, and do not pick plants.",
-          "text_hash": "3fbe24b17b85d9fb2f390fe75c1a06204ac5e94c762d3e1fc2173c7abe80007d",
-          "audio_needs_refresh": true
-        },
-        {
-          "lang_code": "ja",
-          "name": "植物園",
-          "summary": "Vuon thuc vat",
-          "script_text": "植物園は、森の散策を続ける前に、植物の多様さを近くで感じられる休憩地点です。葉の形や色、木々の層に光が差し込む様子を観察してみましょう。小さな違いに気づくことで、森の豊かさがより身近になります。ここは遊歩道の大切な分岐点でもあります。案内図では、5番から約百メートル。一方は森の奥へ、もう一方は案内図上で約三・六キロメートル先の天の滝へ続きます。出発前に現地の標識を確認し、決められた道を歩き、植物を採らないようにしましょう。",
-          "text_hash": "136a97fe215f52cdd9671106d7825d0cad0c118b76a05cb92160578270a744d9",
-          "audio_needs_refresh": true
-        },
-        {
-          "lang_code": "ko",
-          "name": "식물원",
-          "summary": "Vuon thuc vat",
-          "script_text": "식물원은 숲길을 계속 걷기 전에 다양한 식물을 가까이 살펴볼 수 있는 좋은 쉼터입니다. 잎의 모양과 색, 여러 층의 식생 사이로 빛이 드는 모습을 관찰해 보세요. 작은 차이를 알아차리면 숲의 풍요로움이 더욱 잘 느껴집니다. 이곳은 탐방로의 중요한 갈림길이기도 합니다. 안내 지도에는 5번 지점에서 약 백 미터로 표시되어 있습니다. 한쪽은 숲 깊은 곳으로 이어지고, 다른 쪽은 지도상 약 3.6킬로미터 떨어진 천국 급류 방향으로 이어집니다. 출발 전 현장 표지판을 확인하고, 지정된 길을 이용하며 식물을 꺾지 말아 주세요.",
-          "text_hash": "2df549ddaa33a82080d1776d8d6e71cead865580a0dc045674b8c7961f75eb22",
-          "audio_needs_refresh": true
-        },
-        {
-          "lang_code": "vi",
-          "name": "Vườn thực vật",
-          "summary": null,
-          "script_text": "Vườn thực vật là điểm dừng để bạn nhìn gần hơn sự đa dạng của cây cối trước khi tiếp tục hành trình trong rừng. Hãy dành một phút quan sát hình dáng lá, màu sắc và cách các tầng cây đón ánh sáng; mỗi chi tiết đều giúp ta cảm nhận khu rừng phong phú hơn. Đây cũng là một nút giao quan trọng trên tuyến tham quan. Theo sơ đồ, từ điểm 5 đến đây khoảng một trăm mét; một hướng tiếp tục vào rừng sâu, hướng còn lại dẫn về Thác Trời, cách khoảng ba phẩy sáu ki-lô-mét theo sơ đồ. Hãy xem biển chỉ dẫn thực tế trước khi đi, đi đúng lối và không hái cây.",
-          "text_hash": "f2ce2b6f80eabffe1bd8410fcdc5814d800d73c20ddc6a888d2a6edd9596e8db",
-          "audio_needs_refresh": true
-        },
-        {
-          "lang_code": "zh",
-          "name": "植物园",
-          "summary": "Vuon thuc vat",
-          "script_text": "植物园是继续深入森林前，近距离观察植物多样性的好地方。可以留意叶片的形状与颜色，也看看不同层次的植被如何接收阳光。发现这些细节，会让人更容易感受到森林的丰富。这里也是游览路线上的重要岔路口。示意图显示，从第5站到这里约一百米；一条路继续通往森林深处，另一条通往约3.6公里外的天瀑方向。出发前请查看现场指示牌，沿指定路线行走，不采摘植物。",
-          "text_hash": "e6732c152ff359e891d0f351bf4485524658813720b5d74c80286e8f9963ec96",
-          "audio_needs_refresh": true
-        }
-      ]
-    },
-    {
       "code": "7",
       "map_id": "00000000-0000-0000-0000-000000000001",
       "category_id": 2,
-      "latitude": 11.4374073,
-      "longitude": 107.4234363,
+      "latitude": 11.4611,
+      "longitude": 107.414,
       "geo_verified": false,
-      "geo_source_url": "https://www.openstreetmap.org/node/4746491491",
+      "geo_source_url": "urn:sha256:2ede2f7c00e63638604ebdeb843bb7e94aa1e7829fbd982ede01e5b9f5b8a664#point-04",
       "schematic_x": "447.00",
       "schematic_y": "433.00",
       "trigger_radius_m": null,
       "image_url": null,
       "status": "PUBLISHED",
-      "sort_order": 0,
+      "sort_order": 4,
       "translations": [
         {
           "lang_code": "en",
-          "name": "Uncle Dong's Redwood Tree",
+          "name": "Bac Dong Go Tree",
           "summary": "Cay Go Bac Dong",
           "script_text": "This is an ancient tree belonging to the rare red wood species, more than seven hundred years old. The name Uncle Dong's Redwood Tree was given to commemorate the visit of the late Prime Minister Pham Van Dong to the park and his counsel on the conservation of forest resources in the year nineteen eighty-eight. The trunk is massive, with its canopy shading an entire corner of the pristine primary forest.",
           "text_hash": "c3e020288c1f88c60e0e7b8f6f8a2b41163fb1aaacd25039b743a3d3801e9fb9"
         },
         {
           "lang_code": "ja",
-          "name": "バック・ドン（ドン同志）のゴドーの木",
+          "name": "バックドンのゴーの木",
           "summary": "Cay Go Bac Dong",
           "script_text": "希少な樹種であるゴドー（アフゼリア）の古木で、樹齢は七百年を超えています。「バック・ドンの木」という名称は、千九百八十八年に故ファム・ヴァン・ドン首相が当園を視察し、森林資源の保全を指示された出来事を記念して名づけられました。幹は極めて太く、その木陰は原生林の一角を覆い尽くすほどです。",
           "text_hash": "f10e129f01b3a99e806a4769133b39f77b4a836fb865352709b11805955b99ba"
         },
         {
           "lang_code": "ko",
-          "name": "박동 고목나무",
+          "name": "박동 고 나무",
           "summary": "Cay Go Bac Dong",
           "script_text": "이 나무는 희귀 수종인 적단목(Gõ đỏ)에 속하는 고목으로, 칠백 년 이상의 수명을 자랑합니다. '박동 고목나무'라는 명칭은 천구백팔십팔 년 고(故) 팜반동 총리가 공원을 방문하여 산림 자원 보존을 당부했던 뜻깊은 일을 기리기 위해 붙여졌습니다. 우람한 줄기와 무성한 잎사귀는 원시림의 한구석을 통째로 덮을 만큼 넓은 그늘을 드리웁니다.",
           "text_hash": "89a2c5b66f7f55b1c53e8a1a2c2ff9cdfe47de559134137c99b13bafcab7c2fa"
@@ -827,7 +221,7 @@
         },
         {
           "lang_code": "zh",
-          "name": "同叔红木树 (Cây Gõ Bác Đồng)",
+          "name": "胡伯同纪念红木树",
           "summary": "Cay Go Bac Dong",
           "script_text": "这是一棵珍稀的缅茄（红木）古树，树龄已有七百多年。这棵树被命名为“同叔红木树”，是为了纪念已故政府总理范文同于一千九百八十八年视察国家公园并嘱咐做好森林资源保护工作这一事件。树干粗壮宏伟，枝叶茂盛，树冠遮蔽了整整一片原始古林。",
           "text_hash": "52f96332f23cc081dc9d14e8277197df5ab09973367cde5bab5485c0ba039f8f"
@@ -835,37 +229,107 @@
       ]
     },
     {
+      "code": "13",
+      "map_id": "00000000-0000-0000-0000-000000000001",
+      "category_id": 2,
+      "latitude": 11.4725,
+      "longitude": 107.3912,
+      "geo_verified": false,
+      "geo_source_url": "urn:sha256:2ede2f7c00e63638604ebdeb843bb7e94aa1e7829fbd982ede01e5b9f5b8a664#point-05",
+      "schematic_x": "80.00",
+      "schematic_y": "170.00",
+      "trigger_radius_m": null,
+      "image_url": null,
+      "status": "PUBLISHED",
+      "sort_order": 5,
+      "translations": [
+        {
+          "lang_code": "en",
+          "name": "Hundred-Trunk Banyan",
+          "summary": "Cay Si Tram Than",
+          "script_text": "This is a cluster of ancient ficus trees growing right beside a cool stream. Over hundreds of years of growth, the branches and aerial roots of the tree have dropped down, penetrating deeply into the ground and the water's surface. They form an intricate, winding, and secluded network of trunks, resembling a mystical labyrinth.",
+          "text_hash": "fafb2d2cd2d4c4901090c1caf274250a6a03d3745b1d124392d67349c2ee956d",
+          "audio": {
+            "file": "audio/13-en-e40673a23e63.mp3",
+            "sha256": "e40673a23e6302a73716d053e0e28740b14f012e44f9ff00579d478e15169c3b",
+            "sizeBytes": 394412,
+            "durationSec": "24.65",
+            "voiceGender": "FEMALE",
+            "voiceName": "gemini-3.8-flash-lite-tts/Kore",
+            "provider": "GEMINI"
+          }
+        },
+        {
+          "lang_code": "ja",
+          "name": "百幹のガジュマル",
+          "summary": "Cay Si Tram Than",
+          "script_text": "清らかな小川のほとりに生えるガジュマル類の古木の群落です。数百年に及ぶ成長を経て、無数の枝や気根が垂れ下がり、大地や湖面深くへと突き刺さっています。それらが複雑に入り組んだ静寂な幹のネットワークを形成し、まるで神秘的な迷宮のようです。",
+          "text_hash": "1bf40857673bff138d44790f266dbd03e65a842e99933e7b0c851636909c7b96"
+        },
+        {
+          "lang_code": "ko",
+          "name": "백 줄기 반얀나무",
+          "summary": "Cay Si Tram Than",
+          "script_text": "이곳은 맑고 시원한 계곡물 바로 곁에서 자라는 고대 시(Si) 무화과나무 군락입니다. 수백 년 동안 자라나며 나뭇가지와 곁뿌리가 아래로 드리워져 땅속과 호수 바닥에 깊숙이 뿌리를 내렸습니다. 이 뿌리와 줄기들이 어지럽게 얽히고설키며 구불구불 이어져, 마치 신비로운 미로와도 같은 고요한 숲 그늘을 만들어 냅니다.",
+          "text_hash": "5e6014cf0fa73912acdbdf9aa31242aeb50a1dd785e0f48e7d3e3f0c958d9884"
+        },
+        {
+          "lang_code": "vi",
+          "name": "Cây Si trăm thân",
+          "summary": null,
+          "script_text": "Đây là quần thể si cổ thụ mọc ngay bên dòng suối mát. Qua hàng trăm năm phát triển, các cành nhánh và rễ phụ của cây buông xuống, cắm sâu vào lòng đất và mặt hồ. Chúng tạo nên một mạng lưới thân cây chằng chịt, uốn lượn u tịch, như một mê cung huyền bí.",
+          "text_hash": "abc469007129d309d3cd64055ee1a2cfec14da8c8106826cd2a2dcde8e0c90f3",
+          "audio": {
+            "file": "audio/13-vi-89df1026a9af.mp3",
+            "sha256": "89df1026a9afa08e4d058e2398eded32d5cb14b218c380a0270f0645c01b4a95",
+            "sizeBytes": 309932,
+            "durationSec": "19.37",
+            "voiceGender": "FEMALE",
+            "voiceName": "gemini-3.8-flash-lite-tts/Kore",
+            "provider": "GEMINI"
+          }
+        },
+        {
+          "lang_code": "zh",
+          "name": "百干榕树",
+          "summary": "Cay Si Tram Than",
+          "script_text": "这是一处生长在清凉溪流旁的古榕树群落。历经数百年的生长演变，树枝与不定根垂落下来，深深扎入泥土与水底。它们交织成一片盘根错节、静谧幽深的树干网络，宛如一座神秘莫测的迷宫。",
+          "text_hash": "3b2ba089d92e3af60952a7465a1fbef4f627b31ead113cbd9282c69ec29061ba"
+        }
+      ]
+    },
+    {
       "code": "8",
       "map_id": "00000000-0000-0000-0000-000000000001",
       "category_id": 2,
-      "latitude": 11.439941186176949,
-      "longitude": 107.42112553407385,
+      "latitude": 11.4502,
+      "longitude": 107.4195,
       "geo_verified": false,
-      "geo_source_url": null,
+      "geo_source_url": "urn:sha256:2ede2f7c00e63638604ebdeb843bb7e94aa1e7829fbd982ede01e5b9f5b8a664#point-06",
       "schematic_x": "365.00",
       "schematic_y": "392.00",
       "trigger_radius_m": null,
       "image_url": null,
       "status": "PUBLISHED",
-      "sort_order": 0,
+      "sort_order": 6,
       "translations": [
         {
           "lang_code": "en",
-          "name": "Loc Giao Banyan Tree",
+          "name": "Loc Giao Banyan",
           "summary": "Da Loc Giao",
           "script_text": "This is one of the wondrous masterpieces of nature in Cat Tien. The tree has an extraordinarily unique shape, formed by hundreds of clustered roots and trunks intertwining and clinging tightly around a former host tree. The Loc Giao Banyan Tree symbolizes the fierce, resilient, and enduring vitality of tropical forest vegetation.",
           "text_hash": "cd914112e80ee8b373e38111fdae064e9aeaa40d2175201539752558409a319f"
         },
         {
           "lang_code": "ja",
-          "name": "ダ・ロックザオの木（絞め殺しのガジュマル）",
+          "name": "ロックザオのガジュマル",
           "summary": "Da Loc Giao",
           "script_text": "カッティエンにおける自然の驚異的な傑作の一つです。宿主となった古い木を取り囲み、絡み合いながら密集する何百本もの気根や幹によって、非常に独特な姿をしています。ダ・ロックザオの木は、熱帯雨林の植物が持つ力強く、粘り強く、永続的な生命力を象徴しています。",
           "text_hash": "44ec42fd8f6122706ea7318f710833e3dd63a56312aa8074bdd60d822a6bfba0"
         },
         {
           "lang_code": "ko",
-          "name": "록자오 반얀트리",
+          "name": "록자오 반얀나무",
           "summary": "Da Loc Giao",
           "script_text": "이 나무는 깟띠엔 자연이 빚어낸 경이로운 걸작 중 하나입니다. 수백 가닥의 수염뿌리와 줄기가 기존의 숙주 나무를 칭칭 감고 얽혀 자라면서 매우 독특한 형태를 띠고 있습니다. 록자오 반얀트리는 열대 우림 식생의 강인하고 끈질기며 영원한 생명력을 상징합니다.",
           "text_hash": "34d400b98d8facb7680873427c34c8a00145b3ea39ed1de6d5aa0b2a35b116e6"
@@ -879,7 +343,7 @@
         },
         {
           "lang_code": "zh",
-          "name": "交趾大榕树 (Cây Đa Lộc Giao)",
+          "name": "鹿交榕树",
           "summary": "Da Loc Giao",
           "script_text": "这是吉仙国家公园神奇的自然杰作之一。这棵树拥有极为奇特的形态，数百条气生根须和树干交织缠绕在一棵原宿主树上。交趾大榕树象征着热带雨林植被顽强、坚韧且生生不息的旺盛生命力。",
           "text_hash": "814113b318dbe4fe79c61f6526d71012fff6e6b4732eed4157df4e787a9374fc",
@@ -896,63 +360,210 @@
       ]
     },
     {
-      "code": "9",
+      "code": "14",
       "map_id": "00000000-0000-0000-0000-000000000001",
       "category_id": 3,
-      "latitude": 11.4591271,
-      "longitude": 107.3453414,
+      "latitude": 11.4361,
+      "longitude": 107.4525,
       "geo_verified": false,
-      "geo_source_url": "https://www.openstreetmap.org/node/5072875722",
-      "schematic_x": "212.00",
-      "schematic_y": "316.00",
+      "geo_source_url": "urn:sha256:2ede2f7c00e63638604ebdeb843bb7e94aa1e7829fbd982ede01e5b9f5b8a664#point-07",
+      "schematic_x": "990.00",
+      "schematic_y": "333.00",
       "trigger_radius_m": null,
       "image_url": null,
       "status": "PUBLISHED",
-      "sort_order": 0,
+      "sort_order": 7,
       "translations": [
         {
           "lang_code": "en",
-          "name": "Bau Sau",
-          "summary": "Bau Sau",
-          "script_text": "Bau Sau is a wetland of international importance, recognized under the Ramsar Convention. This place is considered the heart of the Nam Cat Tien ecosystem. This vast wetland is the natural home of hundreds of Siamese crocodiles, a rare freshwater crocodile species once believed to be extinct. Visiting here, you will admire pristine scenery reminiscent of an ink wash painting, and experience rowing a boat amidst the wetland where crocodiles live in their natural habitat.",
-          "text_hash": "66c55e508cd56594d7670c33c1ba6779d1dbea8d4f5e94f3ba6e7dd27a64cf15"
+          "name": "Troi Waterfall",
+          "summary": "Thac Troi",
+          "script_text": "Thac Troi, also known as Thac Dung, is a majestic waterfall winding through undulating basalt rock fields in the midst of the vast green forest. The waterfall cascades down with white frothing spray year-round, creating mystical veils of water mist. On beautiful sunny days, sunlight pierces through the mist, creating vibrant rainbows. That is why this place is called Thac Troi, or Heaven Waterfall.",
+          "text_hash": "cf9918670b97fc20dc9dc4932a9ed366568e2c23731eccad9cdb8c3f97d7f148"
         },
         {
           "lang_code": "ja",
-          "name": "バウサウ（ワニ湖）",
-          "summary": "Bau Sau",
-          "script_text": "バウサウはラムサール条約に基づき認定された、国際的に重要な湿地帯です。ここはナムカッティエン生態系の心臓部と見なされています。この広大な湿地は、かつて絶滅したと考えられていた希少な淡水性のワニであるシャムワニ数百頭の自然の生息地となっています。ここを訪れると、まるで水墨画のように手つかずの自然の風景を眺めることができ、ワニが自然のまま暮らす湿地の真ん中でボートを漕ぐ体験ができます。",
-          "text_hash": "239bde85d4302f2d5a9e68020838f07cd52fb26fa702e2f5201609928a4f4eab"
+          "name": "チョイ滝",
+          "summary": "Thac Troi",
+          "script_text": "タックズンとも呼ばれるタックチョイは、緑豊かな大自然の中で起伏する玄武岩地帯を縫うように流れる雄大な滝です。滝の水は年中白い水しぶきを上げて流れ落ち、幻想的な水煙を漂わせています。晴れた日には太陽の光が霧を通り抜け、鮮やかな虹の帯を作り出します。そのため、この場所は「天の滝」と名づけられました。",
+          "text_hash": "22edb8ac214134cf8d03e18f7ae65bdf120d9128e4d2babe8a57f7a72dc078e3"
         },
         {
           "lang_code": "ko",
-          "name": "바우서우",
-          "summary": "Bau Sau",
-          "script_text": "바우서우는 람사르 협약에 따라 국제적 중요성을 인정받은 습지입니다. 이곳은 남깟띠엔 생태계의 심장부로 꼽힙니다. 이 광활한 늪지는 한때 멸종된 것으로 여겨졌던 희귀 민물 악어 종인 샴악어 수백 마리가 살아가는 자연의 보금자리입니다. 이곳에 오시면 수묵화처럼 원시적인 풍경을 감상할 수 있으며, 악어가 자연 그대로 서식하는 습지 한가운데에서 나룻배를 타는 특별한 체험을 즐기실 수 있습니다.",
-          "text_hash": "26e70e645a51326511a23ae2bd0f8a75f1a4f7cc53f142e2886d0b3a709d8020"
+          "name": "쯔어이 폭포",
+          "summary": "Thac Troi",
+          "script_text": "탁증(Thác Dựng)으로도 불리는 탁쩌이(Thác Trời)는 울창한 원시림 사이로 올록볼록 솟은 현무암 지대를 굽이쳐 흐르는 웅장한 폭포입니다. 일 년 내내 하얀 포말을 뿜어내며 쏟아지는 폭포수는 몽환적인 물안개를 피워 올립니다. 화창한 날이면 햇빛이 물안개를 관통하며 찬란한 무지개를 빚어내어, '하늘의 폭포'라는 뜻의 탁쩌이라는 이름을 얻게 되었습니다.",
+          "text_hash": "98a4ad1dc418f6f9973a23409e16968967d10aca24bf8923bcb993e1184d6b92"
         },
         {
           "lang_code": "vi",
-          "name": "Bàu Sấu",
+          "name": "Thác Trời",
           "summary": null,
-          "script_text": "Bàu Sấu là vùng đất ngập nước có tầm quan trọng quốc tế, được công nhận theo công ước Ram-xa. Nơi đây được xem là trái tim của hệ sinh thái Nam Cát Tiên. Đầm lầy rộng lớn này là ngôi nhà tự nhiên của hàng trăm cá thể cá sấu Xiêm, một loài cá sấu nước ngọt quý hiếm, từng được cho là đã tuyệt chủng. Đến đây, bạn sẽ ngắm nhìn cảnh sắc hoang sơ như tranh thủy mặc, và trải nghiệm chèo thuyền giữa đầm nước, nơi cá sấu sinh sống tự nhiên.",
-          "text_hash": "81f5755e0aaa1b50ac0423d3769e6fda14a6baef260a1c2785b3064ebca9d383",
-          "audio": {
-            "file": "audio/9-vi-04db39243e81.mp3",
-            "sha256": "04db39243e8142a3c00b61aaca848e4f9bc66b9da6d12d093be590bd7b00474e",
-            "sizeBytes": 459692,
-            "durationSec": "28.68",
-            "voiceGender": "FEMALE",
-            "voiceName": "gemini-3.8-flash-lite-tts/Kore",
-            "provider": "GEMINI"
-          }
+          "script_text": "Thác Trời, còn gọi là thác Dựng, là một ngọn thác hùng vĩ uốn lượn qua các bãi đá ba-dan nhấp nhô giữa đại ngàn xanh. Nước thác đổ xuống tung bọt trắng xóa quanh năm, tạo nên những màn sương hơi nước mờ ảo. Vào những ngày nắng đẹp, ánh mặt trời xuyên qua làn sương, tạo nên những dải cầu vồng rực rỡ. Vì vậy, nơi đây có tên gọi là Thác Trời.",
+          "text_hash": "30570274085b8ca49c8e58a79cc6c157e814c5672fe39f92a9294148a232779d"
         },
         {
           "lang_code": "zh",
-          "name": "鳄鱼湖 (Bàu Sấu)",
-          "summary": "Bau Sau",
-          "script_text": "鳄鱼湖是具有国际重要意义的湿地，已被列入《拉姆萨尔公约》国际重要湿地名录。这里被视为南吉仙生态系统的核心心脏。这片广袤的沼泽湿地是数百只暹罗鳄的自然家园，暹罗鳄是一种珍稀淡水鳄，曾一度被认为已经灭绝。来到这里，您将欣赏到宛如水墨画般的原始风光，并体验在鳄鱼自然栖息的湖水中荡舟。",
-          "text_hash": "88226e9d8fdc94b978283128563b49f7560ce779515362531b5ac68de01f8848"
+          "name": "Troi 瀑布",
+          "summary": "Thac Troi",
+          "script_text": "天瀑又称立瀑（thác Dựng），是一座雄伟的瀑布，在苍翠森林间起伏的玄武岩石滩中蜿蜒穿行。瀑布终年飞流直下，激起漫天白沫，营造出虚无缥缈的水雾轻纱。在晴好的日子里，阳光穿透薄雾，折射出绚丽多彩的道道彩虹。正因如此，这里才得名“天瀑”。",
+          "text_hash": "3e5fb9c0ece6c323a2567a934675d3725b62d53a658a2d045d23bdbc54b24585"
+        }
+      ]
+    },
+    {
+      "code": "coord-12",
+      "map_id": "00000000-0000-0000-0000-000000000001",
+      "category_id": 3,
+      "latitude": 11.4289,
+      "longitude": 107.461,
+      "geo_verified": false,
+      "geo_source_url": "urn:sha256:2ede2f7c00e63638604ebdeb843bb7e94aa1e7829fbd982ede01e5b9f5b8a664#point-08",
+      "schematic_x": null,
+      "schematic_y": null,
+      "trigger_radius_m": null,
+      "image_url": null,
+      "status": "PUBLISHED",
+      "sort_order": 8,
+      "translations": [
+        {
+          "lang_code": "en",
+          "name": "Dung Waterfall",
+          "summary": "Located on the same route as Troi Waterfall, this waterfall is distinguished by its steep natural rock steps.",
+          "script_text": "Located on the same route as Troi Waterfall, this waterfall is distinguished by its steep natural rock steps.",
+          "text_hash": "fe0309f9194613ea7a3d1e66b146c8bceeac1f2400e44b31875f33fd3970514b"
+        },
+        {
+          "lang_code": "ja",
+          "name": "ドゥン滝",
+          "summary": "チョイ滝と同じルートにあり、自然がつくった切り立つ岩の段差が特徴です。",
+          "script_text": "チョイ滝と同じルートにあり、自然がつくった切り立つ岩の段差が特徴です。",
+          "text_hash": "c2b118244f8a7d42016de6d1c06f6f8afd4428d31c287de7f699f37758e75c4d"
+        },
+        {
+          "lang_code": "ko",
+          "name": "증 폭포",
+          "summary": "쯔어이 폭포와 같은 탐방로에 있으며 가파른 자연 암석 계단이 특징입니다.",
+          "script_text": "쯔어이 폭포와 같은 탐방로에 있으며 가파른 자연 암석 계단이 특징입니다.",
+          "text_hash": "0b70311f16afa72448062faae2df46d8a91eff31dad336363dbe5c5c73d5f626"
+        },
+        {
+          "lang_code": "vi",
+          "name": "Thác Dựng",
+          "summary": "Nằm cùng tuyến với Thác Trời, nổi bật với các bậc đá dựng đứng tự nhiên.",
+          "script_text": "Nằm cùng tuyến với Thác Trời, nổi bật với các bậc đá dựng đứng tự nhiên.",
+          "text_hash": "21d801fd8233bce17257067ec54d1a8bea46ea5c696ab31f94fcd724b3fa121a"
+        },
+        {
+          "lang_code": "zh",
+          "name": "Dung 瀑布",
+          "summary": "这座瀑布与 Troi 瀑布位于同一条游览线路上，以天然陡峭的岩石台阶为特色。",
+          "script_text": "这座瀑布与 Troi 瀑布位于同一条游览线路上，以天然陡峭的岩石台阶为特色。",
+          "text_hash": "6ea876e51730325ab159b0813c5b94d7c03fd959916fedffb468df87650bf42e"
+        }
+      ]
+    },
+    {
+      "code": "5",
+      "map_id": "00000000-0000-0000-0000-000000000001",
+      "category_id": 3,
+      "latitude": 11.4431,
+      "longitude": 107.4355,
+      "geo_verified": false,
+      "geo_source_url": "urn:sha256:2ede2f7c00e63638604ebdeb843bb7e94aa1e7829fbd982ede01e5b9f5b8a664#point-09",
+      "schematic_x": "532.00",
+      "schematic_y": "538.00",
+      "trigger_radius_m": null,
+      "image_url": null,
+      "status": "PUBLISHED",
+      "sort_order": 9,
+      "translations": [
+        {
+          "lang_code": "en",
+          "name": "Ben Cu Rapids",
+          "summary": "Ghenh Ben Cu",
+          "script_text": "Ben Cu Rapids is located not far from the park headquarters. Here, a section of the Dong Nai River narrows, its torrent rushing and weaving through large, undulating rocky rapids. Ben Cu possesses a wild and rustic beauty, serving as an ideal stopover for you to rest and listen to the murmuring sound of flowing water harmonizing with the songs of forest birds.",
+          "text_hash": "a51778f3abfa1be0613a43c71ee5d79342702f27347158073c9539cba6c11981"
+        },
+        {
+          "lang_code": "ja",
+          "name": "ベンクーの急流",
+          "summary": "Ghenh Ben Cu",
+          "script_text": "ベンクーの浅瀬は、国立公園管理本部からそう遠くない場所に位置しています。ここはドンナイ川の川幅が狭まり、起伏のある大きな岩礁地帯を縫って急流が激しく流れる場所です。素朴で手つかずの美しさを持ち、腰を下ろして休憩しながら、森の鳥の声と溶け合うせせらぎの音に耳を傾けるのに理想的な立ち寄りスポットです。",
+          "text_hash": "a5988415847ec7d97ec3f3b39a21da1a9a1e2713810240290c30e13e4a76e91b"
+        },
+        {
+          "lang_code": "ko",
+          "name": "벤꾸 급류",
+          "summary": "Ghenh Ben Cu",
+          "script_text": "벤끄 급류는 공원 관리사무소에서 그리 멀지 않은 곳에 있습니다. 이곳은 동나이강의 강폭이 좁아지며 물살이 거세져 올록볼록 솟은 거대한 암초들 사이를 파고들며 흐르는 구간입니다. 원시적이고 소박한 멋을 지닌 벤끄는 잠시 멈추어 서서 숲속 새소리와 어우러지는 청량한 물소리를 들으며 휴식을 취하기에 안성맞춤인 곳입니다.",
+          "text_hash": "15e9260cf9c0090ed6fa1c12ca498b121d59cd991dc646201783f11a86052b93"
+        },
+        {
+          "lang_code": "vi",
+          "name": "Ghềnh Bến Cự",
+          "summary": null,
+          "script_text": "Ghềnh thác Bến Cự tọa lạc cách trụ sở vườn không xa. Đây là đoạn sông Đồng Nai co hẹp lại, dòng nước chảy xiết, luồn lách qua những bãi ghềnh đá lớn nhấp nhô. Bến Cự mang vẻ đẹp hoang sơ, mộc mạc, là điểm dừng chân lý tưởng để bạn ngồi nghỉ, lắng nghe tiếng nước chảy rì rào hòa quyện cùng tiếng chim rừng.",
+          "text_hash": "78080688529a3d0bebf036a0bcdf8f99feabd398def97f0384b705d67d780498"
+        },
+        {
+          "lang_code": "zh",
+          "name": "Ben Cu 急流",
+          "summary": "Ghenh Ben Cu",
+          "script_text": "巨滩险滩距离公园管理总部不远。这里是同奈河收窄的河段，水流湍急，穿行在起伏交错的巨石滩之间。巨滩散发着原始质朴之美，是您歇脚小憩的理想去处，您可以坐在这里聆听潺潺流水声与林中鸟鸣交织共鸣。",
+          "text_hash": "c89a0ef0c595e119742582a764b98579a210570cece2a3db3a8e7950be2dc46a"
+        }
+      ]
+    },
+    {
+      "code": "15",
+      "map_id": "00000000-0000-0000-0000-000000000001",
+      "category_id": 2,
+      "latitude": 11.4552,
+      "longitude": 107.4045,
+      "geo_verified": false,
+      "geo_source_url": "urn:sha256:2ede2f7c00e63638604ebdeb843bb7e94aa1e7829fbd982ede01e5b9f5b8a664#point-10",
+      "schematic_x": "1180.00",
+      "schematic_y": "338.00",
+      "trigger_radius_m": null,
+      "image_url": null,
+      "status": "PUBLISHED",
+      "sort_order": 10,
+      "translations": [
+        {
+          "lang_code": "en",
+          "name": "Da Co Crape Myrtle Forest",
+          "summary": "Rung bang lang Da Co",
+          "script_text": "This is a trail filled with the blossoms of the hairy crape myrtle. During the dry season, particularly from March to May every year, the entire forest sheds its leaves simultaneously and dons a brilliant purple cloak. That romantic and poetic scenery is completely different from the year-round lush green of the primeval forest.",
+          "text_hash": "6d3fe5c314e612d6b0f2ab9515485d160dd7a29d356409f1d8c459b1b0703ed1"
+        },
+        {
+          "lang_code": "ja",
+          "name": "ダコーのサルスベリ林",
+          "summary": "Rung bang lang Da Co",
+          "script_text": "毛氈状の葉を持つバンランの花の色で溢れるトレイルコースです。乾季、特に毎年三月から五月にかけては、森全体が一斉に葉を落とし、鮮やかな紫色に染まります。このロマンチックで詩的な光景は、一年中青々と茂る原生林の緑とはまったく異なる表情を見せてくれます。",
+          "text_hash": "d7e05560253741267515ec14f6f7ae7b58d1c7a918f2d617f3d073db20185031"
+        },
+        {
+          "lang_code": "ko",
+          "name": "다꼬 배롱나무 숲",
+          "summary": "Rung bang lang Da Co",
+          "script_text": "이곳은 털방랑(대왕배롱나무)의 꽃빛으로 물드는 숲길입니다. 건기, 특히 매년 삼월부터 오월 사이가 되면 온 숲이 일제히 낙엽을 떨구고 화려한 보랏빛으로 갈아입습니다. 그 낭만적이고 서정적인 정경은 사시사철 짙푸른 원시림의 풍경과는 완전히 다른 매력을 선사합니다.",
+          "text_hash": "3f4e228dfc98b938c32690583487cb409647b0a136e716daca8a1753134353ee"
+        },
+        {
+          "lang_code": "vi",
+          "name": "Rừng Bằng lăng Đà Cộ",
+          "summary": null,
+          "script_text": "Đây là tuyến đường mòn ngập tràn sắc hoa của loài bằng lăng ổi lông. Vào mùa khô, đặc biệt từ tháng ba đến tháng năm hằng năm, cả khu rừng đồng loạt trút lá và khoác lên mình màu tím rực rỡ. Khung cảnh lãng mạn, nên thơ ấy khác hoàn toàn với màu xanh mướt quanh năm của rừng già.",
+          "text_hash": "5d3aba52c0d2dba4c09645447baa2704af88eff59398ad973ee63a5b75844e86"
+        },
+        {
+          "lang_code": "zh",
+          "name": "Da Co 紫薇林",
+          "summary": "Rung bang lang Da Co",
+          "script_text": "这是一条开满毛果大花紫薇花朵的林间小径。在旱季，尤其是每年的三月至五月，整片森林几乎同时落叶，并披上绚丽夺目的紫色盛装。这番浪漫诗意的景致，与古老森林一年四季常青的翠绿截然不同。",
+          "text_hash": "0f3f6cd43d259fbea3081181e71f5e8f95b89309dc133b3adf8766cba3a9a0bb"
         }
       ]
     },
@@ -960,48 +571,48 @@
       "code": "doc-13",
       "map_id": "00000000-0000-0000-0000-000000000001",
       "category_id": 1,
-      "latitude": 11.4333159,
-      "longitude": 107.4332859,
+      "latitude": 11.4242,
+      "longitude": 107.429,
       "geo_verified": false,
-      "geo_source_url": "https://www.openstreetmap.org/node/11675219811",
+      "geo_source_url": "urn:sha256:2ede2f7c00e63638604ebdeb843bb7e94aa1e7829fbd982ede01e5b9f5b8a664#point-11",
       "schematic_x": null,
       "schematic_y": null,
       "trigger_radius_m": null,
       "image_url": null,
       "status": "PUBLISHED",
-      "sort_order": 0,
+      "sort_order": 11,
       "translations": [
         {
           "lang_code": "en",
-          "name": "Dao Tien Primate Rescue Station",
+          "name": "Dao Tien Island",
           "summary": null,
           "script_text": "Dao Tien is an isolated forest island surrounded by the river, dedicated to the conservation of rare primates such as yellow-cheeked gibbons and silvered langurs. A semi-wild environment has been established here to train individual primates to readapt to natural life before being fully released into the deep forest.",
           "text_hash": "f826e490e61b120f479ceedf237fc106dbb1970bf590c0495c92457070dd8a08"
         },
         {
           "lang_code": "ja",
-          "name": "ティエン島（霊長類救護ステーション）",
+          "name": "ダオティエン島",
           "summary": null,
           "script_text": "ティエン島は川に囲まれた孤立した森林で、キペッポロジブカやハイイロラングールなどの希少な霊長類の保護を専門に行っています。ここでは、霊長類が森の奥深奥へと完全に放獣される前に、再び自然の生活に適応できるよう半野生の環境を整えて訓練を行っています。",
           "text_hash": "83e6b0d8930121007548b4c1e002490deac382daffb5fe9676a1331864a01125"
         },
         {
           "lang_code": "ko",
-          "name": "다오띠엔 영장류 구조센터",
+          "name": "다오띠엔 섬",
           "summary": null,
           "script_text": "다오띠엔(요정의 섬)은 강으로 둘러싸인 고립된 숲 지대로, 노랑뺨볏긴팔원숭이와 은색루뚱 등 멸종위기에 처한 희귀 영장류의 보전을 전담하고 있습니다. 이곳에서는 영장류 개체들이 깊은 숲속 야생으로 완전히 돌아가기 전, 자연환경에 원활하게 적응할 수 있도록 반야생 환경을 마련하여 훈련을 진행합니다.",
           "text_hash": "74497f2fc856b2e60bf60ee6bd07aa2302ffa0087444266c85a1f86d4c178464"
         },
         {
           "lang_code": "vi",
-          "name": "Đảo Tiên, trạm cứu hộ linh trưởng",
+          "name": "Đảo Tiên",
           "summary": null,
           "script_text": "Đảo Tiên là một khu rừng biệt lập, được bao quanh bởi dòng sông, chuyên trách bảo tồn các loài linh trưởng quý hiếm như vượn đen má vàng và voọc bạc. Nơi đây thiết lập môi trường bán hoang dã, để huấn luyện các cá thể linh trưởng thích nghi trở lại với cuộc sống tự nhiên, trước khi được trả tự do hoàn toàn vào rừng sâu.",
           "text_hash": "1c1b65094d6ee6ac0f612c9907c6340b247656bed1b0a3f6e71a33befb70de80"
         },
         {
           "lang_code": "zh",
-          "name": "仙岛灵长类救援站 (Đảo Tiên, trạm cứu hộ linh trưởng)",
+          "name": "仙岛",
           "summary": null,
           "script_text": "仙岛是一片被河流环绕的独立林区，专门负责保护黄颊冠长臂猿和银叶猴等珍稀灵长类动物。这里构建了半野化的自然环境，旨在训练灵长类动物个体重新适应野外生活，随后将其彻底放归深山密林。",
           "text_hash": "79a4f2d541f7d9d96fa3057ea134563051987afe13ae8b462a4f506b92a12296"
@@ -1009,19 +620,123 @@
       ]
     },
     {
-      "code": "doc-14",
+      "code": "1",
       "map_id": "00000000-0000-0000-0000-000000000001",
       "category_id": 1,
-      "latitude": 11.5292777778,
-      "longitude": 107.3981666667,
+      "latitude": 11.4325,
+      "longitude": 107.4315,
       "geo_verified": false,
-      "geo_source_url": "https://tmso.baotanglamdong.com.vn/bo-suu-tap/khao-co-cat-tien/di-tich-quoc-gia-dac-biet-khao-co-cat-tien/",
+      "geo_source_url": "urn:sha256:2ede2f7c00e63638604ebdeb843bb7e94aa1e7829fbd982ede01e5b9f5b8a664#point-12",
+      "schematic_x": "320.00",
+      "schematic_y": "768.00",
+      "trigger_radius_m": null,
+      "image_url": null,
+      "status": "PUBLISHED",
+      "sort_order": 12,
+      "translations": [
+        {
+          "lang_code": "en",
+          "name": "Bear Rescue Station",
+          "summary": "Khu Cuu ho dong vat hoang da",
+          "script_text": "This is the place that receives, provides medical treatment, and gives special care to individual wild animals, especially Asian black bears and sun bears, that have been injured by illegal poaching and trafficking. Here, you will learn humane rescue stories and the work of rehabilitating wild behaviors before releasing the animals back into nature.",
+          "text_hash": "af8cc79611d3d5a184cd53465ab5e45bca0866d672ce67af4881b80657192824"
+        },
+        {
+          "lang_code": "ja",
+          "name": "クマ救護ステーション",
+          "summary": "Khu Cuu ho dong vat hoang da",
+          "script_text": "密猟や違法取引の被害に遭い傷ついた野生動物、特にツキノワグマやマレーグマを受け入れ、治療と特別なケアを行う施設です。ここでは、人道的な救護活動の歩みや、動物たちを自然へと戻す前に行われる野生復帰トレーニングの取り組みについて学ぶことができます。",
+          "text_hash": "c5864befd4f568eb7b1ef711f97e8c266995f660656e005393bf6fff5b0b89fa"
+        },
+        {
+          "lang_code": "ko",
+          "name": "곰 구조소",
+          "summary": "Khu Cuu ho dong vat hoang da",
+          "script_text": "이곳은 불법 밀렵과 거래로 부상을 입거나 피해를 본 야생동물, 특히 아시아흑곰(반달가슴곰)과 말레이곰을 인계받아 의학적 치료와 전문적인 보살핌을 제공하는 공간입니다. 이곳에서는 가슴 뭉클한 동물 구조 이야기와 함께, 치료를 마친 동물들을 다시 대자연으로 돌려보내기 위해 진행하는 야생성 회복 훈련 과정을 자세히 살펴보실 수 있습니다.",
+          "text_hash": "987ea326c62e6661bf7b1c2a21a8728d36ea2810567201d9e940b941a524caa0"
+        },
+        {
+          "lang_code": "vi",
+          "name": "Trạm cứu hộ gấu",
+          "summary": null,
+          "script_text": "Đây là nơi tiếp nhận, chữa trị y tế và chăm sóc đặc biệt cho các cá thể động vật hoang dã, đặc biệt là gấu ngựa và gấu chó, bị tổn thương do nạn săn bắt và buôn bán trái phép. Tại đây, bạn sẽ được tìm hiểu những câu chuyện cứu hộ đầy nhân văn, và công tác phục hồi tập tính hoang dã trước khi thả các loài về với thiên nhiên.",
+          "text_hash": "97ec68a7522f8f2547bc5b504386bf3fca4c171b38713bc4ae6c0df1c466f6a6"
+        },
+        {
+          "lang_code": "zh",
+          "name": "熊类救护站",
+          "summary": "Khu Cuu ho dong vat hoang da",
+          "script_text": "这里负责接收、救治并特殊照料因非法盗猎和贩卖而受伤的野生动物个体，特别是亚洲黑熊和马来熊。在这里，您将了解到充满人道关怀的救助故事，并认识帮助动物重获野外生存习性、最终将它们放归自然的相关工作。",
+          "text_hash": "8a185289fbf6ddfc235bbe07d4bfa7faf62c413571106d987ce658ae487c30df"
+        }
+      ]
+    },
+    {
+      "code": "coord-02",
+      "map_id": "00000000-0000-0000-0000-000000000001",
+      "category_id": 1,
+      "latitude": 11.431,
+      "longitude": 107.4328,
+      "geo_verified": false,
+      "geo_source_url": "urn:sha256:2ede2f7c00e63638604ebdeb843bb7e94aa1e7829fbd982ede01e5b9f5b8a664#point-13",
       "schematic_x": null,
       "schematic_y": null,
       "trigger_radius_m": null,
       "image_url": null,
       "status": "PUBLISHED",
-      "sort_order": 0,
+      "sort_order": 13,
+      "translations": [
+        {
+          "lang_code": "en",
+          "name": "Nature Museum",
+          "summary": "The museum displays animal and plant specimens and introduces the park's biodiversity.",
+          "script_text": "The museum displays animal and plant specimens and introduces the park's biodiversity.",
+          "text_hash": "8881866374faaf052fbb13ab9974586bb69b53dff2d79dfb74cd42797edd14d1"
+        },
+        {
+          "lang_code": "ja",
+          "name": "自然博物館",
+          "summary": "動植物の標本を展示し、国立公園の生物多様性を紹介する施設です。",
+          "script_text": "動植物の標本を展示し、国立公園の生物多様性を紹介する施設です。",
+          "text_hash": "6f460f31aa96d501a9f5be22f2ebb0058b2bef2bd3c12f8c2bf8f5ab6f4b9abb"
+        },
+        {
+          "lang_code": "ko",
+          "name": "자연박물관",
+          "summary": "동식물 표본을 전시하며 공원의 생물다양성을 소개하는 곳입니다.",
+          "script_text": "동식물 표본을 전시하며 공원의 생물다양성을 소개하는 곳입니다.",
+          "text_hash": "ed37d6df3e24bf804977a654184837fe7731e045de8f26788f5043ffa37acc37"
+        },
+        {
+          "lang_code": "vi",
+          "name": "Bảo tàng Thiên nhiên",
+          "summary": "Nơi trưng bày tiêu bản động thực vật, tìm hiểu sơ lược về đa dạng sinh học của vườn.",
+          "script_text": "Nơi trưng bày tiêu bản động thực vật, tìm hiểu sơ lược về đa dạng sinh học của vườn.",
+          "text_hash": "9d9a5e90bd2ef4b22b0b3ce3801eb6d9d292afd886dbbeac741fd035aa577a7d"
+        },
+        {
+          "lang_code": "zh",
+          "name": "自然博物馆",
+          "summary": "馆内展示动植物标本，介绍国家公园丰富的生物多样性。",
+          "script_text": "馆内展示动植物标本，介绍国家公园丰富的生物多样性。",
+          "text_hash": "06fb93c8a091d7d55cd05979f23977000638a8e46d624675f1cdf2d7e86f6909"
+        }
+      ]
+    },
+    {
+      "code": "doc-14",
+      "map_id": "00000000-0000-0000-0000-000000000001",
+      "category_id": 1,
+      "latitude": 11.5235,
+      "longitude": 107.3385,
+      "geo_verified": false,
+      "geo_source_url": "urn:sha256:2ede2f7c00e63638604ebdeb843bb7e94aa1e7829fbd982ede01e5b9f5b8a664#point-14",
+      "schematic_x": null,
+      "schematic_y": null,
+      "trigger_radius_m": null,
+      "image_url": null,
+      "status": "PUBLISHED",
+      "sort_order": 14,
       "translations": [
         {
           "lang_code": "en",
@@ -1032,31 +747,83 @@
         },
         {
           "lang_code": "ja",
-          "name": "カッティエン考古学遺跡群",
+          "name": "カットティエン考古遺跡",
           "summary": null,
           "script_text": "ドンナイ川沿いに広がるこの遺跡は、四世紀から八世紀にかけての建築の痕跡を今に残す古代の宗教的聖地です。古代扶南（フナン）王国のヒンドゥー教文化から強い影響を受けています。考古学者たちにより、多数の寺院塔や、石英、金、陶磁器で作られたヨニやリンガなどの儀礼用排水溝が発見されており、計り知れない歴史的価値を有しています。",
           "text_hash": "24907e26f483c0ad30ceab02815c9a753d529310eb439c813032349d9d4e4664"
         },
         {
           "lang_code": "ko",
-          "name": "깟띠엔 고고학 유적지",
+          "name": "깟띠엔 고고학 유적",
           "summary": null,
           "script_text": "동나이강 변을 따라 길게 자리 잡은 이 유적지는 사세기부터 팔세기 사이에 걸친 건축적 흔적이 남아 있는 고대 종교 성지입니다. 고대 부남(푸난) 왕국의 힌두교 문화로부터 짙은 영향을 받았습니다. 고고학자들은 수많은 사원 탑과 더불어 요니와 링가를 포함해 석영, 금, 도자기로 만들어진 제례용 수로 등을 발굴해 냈으며, 이는 값을 매길 수 없을 만큼 귀중한 역사적 가치를 지닙니다.",
           "text_hash": "fb245acc85896959cd67c90538712b33baf55d6c5d11a2d7aaeee8bdd8873dc2"
         },
         {
           "lang_code": "vi",
-          "name": "Khu di tích khảo cổ học Cát Tiên",
+          "name": "Di chỉ khảo cổ Cát Tiên",
           "summary": null,
           "script_text": "Trải dài ven sông Đồng Nai, đây là thánh địa tôn giáo cổ, mang dấu tích kiến trúc từ thế kỷ thứ bốn đến thế kỷ thứ tám. Di tích chịu ảnh hưởng sâu sắc từ văn hóa Ấn Độ giáo của vương quốc Phù Nam cổ đại. Các nhà khảo cổ đã phát hiện nhiều đền tháp, cùng máng nước tế lễ, gồm Yoni và Linga, làm bằng thạch anh, vàng và gốm sứ, có giá trị lịch sử vô giá.",
           "text_hash": "edfd0a669cc4c0a68e7cb6c51cd57a463db3aeb7aafd9606f46a80f60afd01dd"
         },
         {
           "lang_code": "zh",
-          "name": "吉仙考古遗址区 (Khu di tích khảo cổ học Cát Tiên)",
+          "name": "吉仙考古遗址",
           "summary": null,
           "script_text": "遗址绵延于同奈河畔，是一处古老的宗教圣地，保留了四世纪至八世纪的建筑痕迹。该遗址深受古代扶南王国印度教文化的深远影响。考古学家在此发掘出了众多庙塔建筑，以及由石英、黄金和陶瓷制成的祭祀水槽、优尼（Yoni）和林伽（Linga），具有不可估量的历史价值。",
           "text_hash": "7b3b6ae8c85c8a6949647e2f4c7c44c5bcffac8ead8181be3af3ce04ecea878d"
+        }
+      ]
+    },
+    {
+      "code": "coord-15",
+      "map_id": "00000000-0000-0000-0000-000000000001",
+      "category_id": 1,
+      "latitude": 11.3685,
+      "longitude": 107.382,
+      "geo_verified": false,
+      "geo_source_url": "urn:sha256:2ede2f7c00e63638604ebdeb843bb7e94aa1e7829fbd982ede01e5b9f5b8a664#point-15",
+      "schematic_x": null,
+      "schematic_y": null,
+      "trigger_radius_m": null,
+      "image_url": null,
+      "status": "PUBLISHED",
+      "sort_order": 15,
+      "translations": [
+        {
+          "lang_code": "en",
+          "name": "Ta Lai Cultural Village",
+          "summary": "This area is home to Ma, Stieng and Tay communities. The traditional longhouse and local activities offer opportunities to experience their cultures.",
+          "script_text": "This area is home to Ma, Stieng and Tay communities. The traditional longhouse and local activities offer opportunities to experience their cultures.",
+          "text_hash": "627190fb4595668136c92674745fec3ec32f05023fa01e9ad185365d1d47eea0"
+        },
+        {
+          "lang_code": "ja",
+          "name": "タライ文化村",
+          "summary": "マー族、スティエン族、タイ族が暮らす地域です。伝統的な長屋や地域の体験活動を通じて、暮らしや文化に触れられます。",
+          "script_text": "マー族、スティエン族、タイ族が暮らす地域です。伝統的な長屋や地域の体験活動を通じて、暮らしや文化に触れられます。",
+          "text_hash": "ee2d49ddd05846b0641740895918bb1c4d0d5707fd4f153cb7d9ac226071e95f"
+        },
+        {
+          "lang_code": "ko",
+          "name": "따라이 문화마을",
+          "summary": "마족, 스띠엥족, 따이족이 살아가는 지역입니다. 전통 롱하우스와 지역 체험 활동을 통해 문화를 알아볼 수 있습니다.",
+          "script_text": "마족, 스띠엥족, 따이족이 살아가는 지역입니다. 전통 롱하우스와 지역 체험 활동을 통해 문화를 알아볼 수 있습니다.",
+          "text_hash": "aa1538d4a53b144bdb15bc9d58e6591005f44a46533e0c169f82a55f0cb0df39"
+        },
+        {
+          "lang_code": "vi",
+          "name": "Bản văn hóa Tà Lài",
+          "summary": "Nơi sinh sống của đồng bào dân tộc Mạ, S’tiêng và Tày. Tại đây có Nhà dài truyền thống và các dịch vụ trải nghiệm văn hóa bản địa.",
+          "script_text": "Nơi sinh sống của đồng bào dân tộc Mạ, S’tiêng và Tày. Tại đây có Nhà dài truyền thống và các dịch vụ trải nghiệm văn hóa bản địa.",
+          "text_hash": "110e2bdcb67a8f33e6a6f2605a32d09fe5eb2bdc7eee23e56bf97a99f6241a43"
+        },
+        {
+          "lang_code": "zh",
+          "name": "塔莱文化村",
+          "summary": "这里生活着马族、斯丁族和岱依族居民。游客可以通过传统长屋和当地体验活动了解本土文化。",
+          "script_text": "这里生活着马族、斯丁族和岱依族居民。游客可以通过传统长屋和当地体验活动了解本土文化。",
+          "text_hash": "0f0c143ee039c83b1952ae2dded7a3a19b43a84ed47566e13a5553c367e7488f"
         }
       ]
     }

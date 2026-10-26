@@ -1,5 +1,7 @@
 import { ArrayMinSize, ArrayMaxSize, IsBoolean, IsEnum, IsIn, IsInt, IsLatitude, IsLongitude, IsNumber, IsOptional, IsString, IsUUID, IsUrl, Matches, Max, MaxLength, Min, ValidateNested } from 'class-validator';
 import { Type } from 'class-transformer';
+import { ValidateBy } from 'class-validator';
+import { isCoordinateSource } from '@app/common/coordinate-source';
 
 export class PoiTranslationDto {
   @IsIn(['vi','en','ja','zh','ko']) langCode: string;
@@ -18,7 +20,7 @@ export class CreatePoiDto {
   @IsLatitude({ message: 'Tọa độ GPS (latitude) bắt buộc và hợp lệ' }) latitude: number;
   @IsLongitude({ message: 'Tọa độ GPS (longitude) bắt buộc và hợp lệ' }) longitude: number;
   @IsOptional() @IsBoolean() geoVerified?: boolean;
-  @IsOptional() @IsUrl({protocols:['https'],require_protocol:true}) @MaxLength(2000) geoSourceUrl?: string;
+  @IsOptional() @ValidateBy({name:'coordinateSource',validator:{validate:isCoordinateSource,defaultMessage:()=> 'Coordinate source must be HTTPS or a document SHA-256 reference.'}}) @MaxLength(2000) geoSourceUrl?: string;
 
   @IsOptional() @IsNumber() schematicX?: number;
   @IsOptional() @IsNumber() schematicY?: number;
