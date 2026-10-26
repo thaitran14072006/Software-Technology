@@ -1,3 +1,5 @@
+import {existsSync} from 'node:fs';
+if(existsSync(new URL('./data/active-pois.json',import.meta.url)))throw Error('Legacy content import is disabled for the revised fifteen-POI catalog. Update the current fixture instead.');
 import {readFile,writeFile,mkdir} from 'node:fs/promises';
 const base='http://127.0.0.1:4173';
 const doc=JSON.parse(await readFile(new URL('./data/tts-document.json',import.meta.url),'utf8'));

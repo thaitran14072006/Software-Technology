@@ -1,0 +1,38 @@
+{
+  "coord-01": {
+    "en": ["Cat Tien National Park Headquarters (Nam Cat Tien Ferry)", "Start your visit here: buy tickets and take the ferry across the Dong Nai River to enter the park."],
+    "ja": ["カットティエン国立公園本部（ナムカットティエン渡船場）", "ここは見学の出発点です。入場券を購入し、渡し船でドンナイ川を渡って公園に入ります。"],
+    "ko": ["깟띠엔 국립공원 본부 (남깟띠엔 나루터)", "탐방을 시작하는 곳입니다. 입장권을 구입한 뒤 배를 타고 동나이강을 건너 공원으로 들어갑니다."],
+    "zh": ["吉仙国家公园总部（南吉仙渡口）", "这里是游览的起点。游客在此购票，乘渡船跨越同奈河，进入国家公园。"]
+  },
+  "coord-02": {
+    "en": ["Cat Tien Nature Museum (Visitor Centre)", "The museum displays animal and plant specimens and introduces the park's biodiversity."],
+    "ja": ["カットティエン自然博物館（ビジターセンター）", "動植物の標本を展示し、国立公園の生物多様性を紹介する施設です。"],
+    "ko": ["깟띠엔 자연박물관 (방문자센터)", "동식물 표본을 전시하며 공원의 생물다양성을 소개하는 곳입니다."],
+    "zh": ["吉仙自然博物馆（游客中心）", "馆内展示动植物标本，介绍国家公园丰富的生物多样性。"]
+  },
+  "coord-08": {
+    "en": ["Night Wildlife Viewing Point (Ta Lai Grassland / Trang Co)", "Visitors travel through this grassland in open vehicles at night to look for deer, wild boar and gaur. This marker identifies the area described in the supplied document, not the entire safari route."],
+    "ja": ["夜間野生動物観察地点（タライ草原／チャンコー）", "夜は屋根のない車で草原を巡り、シカ、イノシシ、ガウルなどを観察します。この地点は資料に示された観察エリアであり、サファリの全行程を表すものではありません。"],
+    "ko": ["야간 야생동물 관찰 지점 (따라이 초원 / 짱꼬)", "밤에 개방형 차량으로 초원을 돌며 사슴, 멧돼지와 가우르를 관찰하는 지역입니다. 이 표시는 제공 문서의 관찰 구역이며 전체 사파리 경로를 나타내지 않습니다."],
+    "zh": ["夜间野生动物观察点（塔莱草地／Trang Co）", "游客夜间乘敞篷车游览草地，寻找鹿、野猪和印度野牛。此标记表示所提供文档中的观察区域，并非完整的夜游路线。"]
+  },
+  "coord-12": {
+    "en": ["Dung Waterfall", "Located on the same route as Troi Waterfall, this waterfall is distinguished by its steep natural rock steps."],
+    "ja": ["ドゥン滝", "チョイ滝と同じルートにあり、自然がつくった切り立つ岩の段差が特徴です。"],
+    "ko": ["증 폭포", "쯔어이 폭포와 같은 탐방로에 있으며 가파른 자연 암석 계단이 특징입니다."],
+    "zh": ["Dung 瀑布", "这座瀑布与 Troi 瀑布位于同一条游览线路上，以天然陡峭的岩石台阶为特色。"]
+  },
+  "coord-13": {
+    "en": ["Re Waterfall", "A wild landscape surrounded by the hanging roots of large, old trees."],
+    "ja": ["レー滝", "大きな古木の根が垂れ下がる、自然の姿を残した景観が広がります。"],
+    "ko": ["레 폭포", "커다란 고목의 뿌리가 늘어진 자연 그대로의 풍경을 볼 수 있습니다."],
+    "zh": ["Re 瀑布", "这里保留着原始自然景观，周围垂挂着古老大树的根系。"]
+  },
+  "coord-15": {
+    "en": ["Ta Lai Community Tourism Village (Ta Lai Longhouse)", "This area is home to Ma, Stieng and Tay communities. The traditional longhouse and local activities offer opportunities to experience their cultures."],
+    "ja": ["タライ地域観光村（タライ・ロングハウス）", "マー族、スティエン族、タイ族が暮らす地域です。伝統的な長屋や地域の体験活動を通じて、暮らしや文化に触れられます。"],
+    "ko": ["따라이 공동체 관광마을 (따라이 롱하우스)", "마족, 스띠엥족, 따이족이 살아가는 지역입니다. 전통 롱하우스와 지역 체험 활동을 통해 문화를 알아볼 수 있습니다."],
+    "zh": ["塔莱社区旅游村（塔莱长屋）", "这里生活着马族、斯丁族和岱依族居民。游客可以通过传统长屋和当地体验活动了解本土文化。"]
+  }
+}

@@ -30,7 +30,9 @@
     "content:seed": "node scripts/seed-shared-content.mjs",
     "content:export": "node scripts/export-shared-content.mjs",
     "test:shared-content": "node scripts/test-shared-content.mjs",
-    "test:local-tts": "node scripts/smoke-local-tts.mjs"
+    "test:local-tts": "node scripts/smoke-local-tts.mjs",
+    "content:coordinates": "node scripts/import-document-coordinates.mjs",
+    "content:catalog": "node scripts/apply-poi-catalog.mjs"
   },
   "engines": {
     "node": ">=24"

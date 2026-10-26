@@ -91,9 +91,11 @@ try {
   const contentUrl = `http://127.0.0.1:${contentPort}`;
   await waitFor(async () => (await fetch(`${contentUrl}/api/v1/pois?mapId=00000000-0000-0000-0000-000000000001&lang=vi`)).ok, 'content API');
   await waitFor(async () => (await fetch(`http://127.0.0.1:${qrPort}/api/v1/qr`)).ok, 'QR API');
+  if(!await exists(path.join(backend,'fixtures','content.json'))){
   const jwt = spawnSync(process.execPath, [path.join(root, 'scripts', 'dev-token.js')], { env: process.env, encoding: 'utf8' });
   if (jwt.status !== 0) throw new Error('Cannot generate local demo JWT');
   await run(process.execPath, [path.join(root, 'scripts', 'seed-from-legacy.js'), `${contentUrl}/api/v1`, '00000000-0000-0000-0000-000000000001'], root, { env: { ...process.env, ADMIN_TOKEN: jwt.stdout.trim() } });
+  }
   await applyDevSql();
   await run(process.execPath, [path.join(root, 'scripts', 'complete-seed.mjs')]);
   process.env.CONTENT_API_URL ||= contentUrl;

@@ -1,3 +1,4 @@
+if(require('node:fs').existsSync(require('node:path').join(__dirname,'data','active-pois.json'))){console.log('Legacy seed disabled: use the current fifteen-POI fixture.');process.exit(0);}
 // Nạp 15 điểm × 5 ngôn ngữ từ data.js/i18n.js gốc qua API Admin (TTS tự chạy).
 // Dùng:  node scripts/seed-from-legacy.js http://localhost:3001/api/v1 <mapId> [--dry]
 //   JWT:  JWT_SECRET=... node scripts/dev-token.js  ->  đặt vào biến ADMIN_TOKEN
