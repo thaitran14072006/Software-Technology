@@ -6,6 +6,16 @@ function memoryStorage() { const values = new Map(); return { getItem: k => valu
 globalThis.localStorage = memoryStorage(); globalThis.sessionStorage = memoryStorage();
 const store = await import('../store.mjs');
 const originalFetch = globalThis.fetch;
+test('API can use a packaged Gemini clip only when its language and exact transcript match', () => {
+  const source=seed.pois.find(p=>p.code==='9'), translation=source.translations.find(t=>t.langCode==='vi');
+  const apiPoi={id:'live-9',code:'9',lang:'vi',scriptText:translation.scriptText,audio:null};
+  const [matched]=store.useExactSeedAudio([apiPoi],seed);
+  assert.equal(matched.audio.provider,'GEMINI'); assert.equal(matched.audio.url,'/audio/9-vi.mp3');
+  assert.equal(store.useExactSeedAudio([{...apiPoi,scriptText:'Nội dung đã thay đổi.'}],seed)[0].audio,null);
+  const apiAudio={url:'/content/audio.mp3',provider:'GEMINI'};
+  assert.equal(store.useExactSeedAudio([{...apiPoi,audio:apiAudio}],seed)[0].audio,apiAudio);
+  assert.equal(store.useExactSeedAudio([{...apiPoi,translationMissing:true}],seed)[0].audio,null);
+});
 test('demo CRUD persists edits, keeps drafts private and does not mutate source data', async () => {
   globalThis.fetch = async () => new Response(JSON.stringify({...seed,catalogVersion:undefined}));
   try {

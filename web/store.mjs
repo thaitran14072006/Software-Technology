@@ -2,6 +2,17 @@ import { localize, MAP_ID, LANGS, toDto, newId } from './core.mjs';
 import {currentCatalogItems} from './poi-catalog.mjs';
 export const settings = JSON.parse(localStorage.getItem('sag:settings') || 'null') || { mode: 'demo' };
 let seed;
+export function useExactSeedAudio(items, catalog) {
+  const byCode = new Map((catalog?.pois || []).map(p => [p.code, p]));
+  return items.map(item => {
+    if (item.audio?.url || item.translationMissing) return item;
+    const source = byCode.get(item.code);
+    const translation = source?.translations?.find(t => t.langCode === item.lang);
+    const audio = source?.audios?.find(a => a.langCode === item.lang && a.status === 'READY' && a.audioUrl && a.textHash === translation?.textHash);
+    if (!translation || !audio || item.scriptText !== translation.scriptText) return item;
+    return { ...item, audio: { url: audio.audioUrl, provider: audio.provider, voiceName: audio.voiceName, durationSec: audio.durationSec ?? null, sizeBytes: audio.sizeBytes ?? null } };
+  });
+}
 export async function loadSeed() {
   if (!seed) { const res = await fetch('./data/pois.json'); if (!res.ok) throw new Error('Không tải được dữ liệu demo.'); seed = await res.json(); }
   return seed;
@@ -35,7 +46,8 @@ export async function getPois(lang) {
   if (settings.mode === 'demo') return { items: (await demoPois()).filter(p => p.status === 'PUBLISHED').map(p => localize(p, lang)), source: 'demo' };
   try {
     const data = await api(`pois?mapId=${MAP_ID}&lang=${lang}`);
-    return { ...data, items:currentCatalogItems(data.items,catalog),source: 'api' };
+    const items=currentCatalogItems(data.items,catalog);
+    return { ...data, items:useExactSeedAudio(items,catalog),source: 'api' };
   } catch (error) {
     const saved = localStorage.getItem(packKey(lang));
     if (saved) {const pack=JSON.parse(saved);return { ...pack,items:currentCatalogItems(pack.items,catalog,{cached:true}), source: 'offline', warning: error.message };}
