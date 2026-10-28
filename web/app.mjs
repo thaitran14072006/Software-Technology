@@ -1,4 +1,4 @@
-import { LANGS, LOCALES, localize, routeTo, haversine, qrValue, validatePoi, matchesPoiQuery } from './core.mjs';
+import { LANGS, LOCALES, localize, routeTo, haversine, qrValue, validatePoi, normalizeSearch, matchesPoiQuery } from './core.mjs';
 import { settings, saveSettings, token, loadSeed, getPois, getAdminPois, savePoi, deletePoi, saveOffline, api, packKey } from './store.mjs';
 import { VisitorAnalytics, playbackCounter, getAnalytics } from './analytics.mjs';
 import { joinURL, isLoopback, qrSVG } from './join-qr.mjs';
@@ -37,12 +37,23 @@ const usage = new VisitorAnalytics();
 const counter = playbackCounter((poi, mode) => { try { usage.record(poi, mode); } catch { toast('Không lưu được lượt nghe. Bộ nhớ trình duyệt có thể đã đầy.', true); } });
 const t = key => copy[state.lang][key];
 function toast(message, error = false) { $('#toast').textContent = message; $('#toast').classList.toggle('error', error); $('#toast').hidden = false; clearTimeout(toastTimer); toastTimer = setTimeout(() => $('#toast').hidden = true, 6500); }
-function filtered() { return state.pois.filter(p => (!state.category || p.categoryId === state.category) && matchesPoiQuery(p, state.query, state.searchIndex.get(p.id) || '')); }
+function filtered() {
+  const query = state.query.trim();
+  const numericQuery = /^\d+$/.test(query) ? Number(query) : null;
+  const candidates = state.pois.filter(p => !state.category || p.categoryId === state.category);
+  if (numericQuery !== null) return candidates.filter(p => Number(stopNumber(p)) === numericQuery);
+  if (!query) return candidates;
+  const tokens = normalizeSearch(query).split(/\s+/).filter(Boolean);
+  const nameMatches = candidates.filter(p => [p.code, p.name, ...(p.translations || []).map(t => t.name)]
+    .filter(Boolean).map(normalizeSearch).some(name => tokens.every(token => name.includes(token))));
+  if (nameMatches.length) return nameMatches;
+  return candidates.filter(p => matchesPoiQuery(p, query, state.searchIndex.get(p.id) || []));
+}
 function makeSearchIndex(items) {
   const index = new Map();
   for (const poi of items) {
-    const terms = [poi.code, poi.name, poi.summary, poi.scriptText].filter(Boolean).join(' ');
-    index.set(poi.id, `${index.get(poi.id) || ''} ${terms}`.trim());
+    const fields = [poi.code, poi.name, poi.summary, poi.scriptText].filter(Boolean);
+    index.set(poi.id, [...(index.get(poi.id) || []), ...fields]);
   }
   return index;
 }
@@ -334,7 +345,21 @@ function updateOfflineStatus() {
 
 $('#visitor-tab').onclick = () => { state.tab = 'visitor'; $('#visitor').hidden = false; $('#admin').hidden = true; $('#visitor-tab').classList.add('active'); $('#admin-tab').classList.remove('active'); $('#visitor-tab').ariaPressed = 'true'; $('#admin-tab').ariaPressed = 'false'; usage.presence(visitorVisible()); };
 $('#admin-tab').onclick = async () => { if(settings.mode!=='api'||!token()){$('#settings').click();$('#login-status').textContent='Khách sử dụng không cần đăng nhập. Chỉ admin đăng nhập để quản lý.';return;}try{await api('auth/me');}catch(error){$('#settings').click();$('#login-status').textContent=error.message;return;} stopAudio(); state.tab = 'admin'; usage.presence(false); $('#visitor').hidden = true; $('#admin').hidden = false; $('#admin-tab').classList.add('active'); $('#visitor-tab').classList.remove('active'); $('#visitor-tab').ariaPressed = 'false'; $('#admin-tab').ariaPressed = 'true'; showAdmin(); };
-$('#search').oninput = event => { state.query = event.target.value; $('#search-clear').hidden = !state.query; renderMap(); renderList(); };
+$('#search').oninput = event => {
+  state.query = event.target.value;
+  $('#search-clear').hidden = !state.query;
+  if (state.query.trim()) {
+    const matches = filtered();
+    const previousSelection = state.selected;
+    state.selected = matches.length === 1
+      ? matches[0].id
+      : matches.some(p => p.id === state.selected) ? state.selected : null;
+    if (state.selected !== previousSelection) state.route = null;
+    renderDetail();
+  }
+  renderMap();
+  renderList();
+};
 $('#search-clear').onclick = () => { $('#search').value = ''; state.query = ''; $('#search-clear').hidden = true; renderMap(); renderList(); $('#search').focus(); };
 $('#filters').onclick = event => { const b = event.target.closest('[data-category]'); if (!b) return; state.category = Number(b.dataset.category); $$('#filters button').forEach(x => { const active = x === b; x.classList.toggle('active', active); x.ariaPressed = String(active); }); renderMap(); renderList(); };
 const changeLanguage = async lang => { if(!LANGS[lang]||lang===state.lang)return; stopAudio(); state.lang = lang; localStorage.setItem('sag:lang', state.lang); await refresh();if(state.tab==='admin')await showAdmin(); };

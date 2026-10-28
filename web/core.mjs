@@ -6,14 +6,19 @@ export function normalizeSearch(value) {
   return String(value ?? '').toLocaleLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replaceAll('đ', 'd').trim();
 }
 export function matchesPoiQuery(poi, query, extraText = '') {
-  const tokens = normalizeSearch(query).split(/\s+/).filter(Boolean);
+  const normalizedQuery = normalizeSearch(query);
+  if (/^\d+$/.test(normalizedQuery) && Number.isInteger(Number(poi.sortOrder)) && Number(poi.sortOrder) > 0) {
+    return Number(poi.sortOrder) === Number(normalizedQuery);
+  }
+  const tokens = normalizedQuery.split(/\s+/).filter(Boolean);
   if (!tokens.length) return true;
   const translations = Array.isArray(poi.translations) ? poi.translations : [];
-  const searchable = normalizeSearch([
-    poi.code, poi.name, poi.summary, poi.scriptText,
-    ...translations.flatMap(item => [item.name, item.summary, item.scriptText]), extraText,
-  ].filter(Boolean).join(' '));
-  return tokens.every(token => searchable.includes(token));
+  const extraFields = Array.isArray(extraText) ? extraText : [extraText];
+  const searchableFields = [
+    poi.code, poi.sortOrder, poi.name, poi.summary, poi.scriptText,
+    ...translations.flatMap(item => [item.name, item.summary, item.scriptText]), ...extraFields,
+  ].filter(Boolean).map(normalizeSearch);
+  return searchableFields.some(field => tokens.every(token => field.includes(token)));
 }
 export function newId() {
   if (globalThis.crypto.randomUUID) return globalThis.crypto.randomUUID();

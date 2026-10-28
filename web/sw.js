@@ -1,4 +1,4 @@
-const SHELL = 'sag-shell-v10';
+const SHELL = 'sag-shell-v14';
 const ASSETS = ['./', './index.html', './styles.css', './app.mjs', './core.mjs', './store.mjs', './analytics.mjs', './join-qr.mjs', './admin-tools.mjs', './visitor-config.mjs', './outdoor-map.mjs', './poi-catalog.mjs', './schematic-map.mjs', './browser-tts.mjs', './ui-i18n.mjs', './ui-extra.mjs', './vendor/fonts/NotoSans.ttf', './vendor/leaflet/leaflet.js', './vendor/leaflet/leaflet.css', './vendor/qrcode.mjs', './data/pois.json', './icon.svg', './manifest.webmanifest'];
 self.addEventListener('install', event => { event.waitUntil(caches.open(SHELL).then(cache => cache.addAll(ASSETS)).then(()=>self.skipWaiting())); });
 self.addEventListener('activate', event => {
