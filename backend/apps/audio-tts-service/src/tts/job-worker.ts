@@ -32,7 +32,8 @@ export class JobWorker implements OnModuleInit,OnModuleDestroy {
    const job=await this.ds.transaction(async m=>{
     await m.query("UPDATE tts_jobs SET status=CASE WHEN attempts>=3 THEN 'FAILED'::tts_job_status ELSE 'QUEUED'::tts_job_status END,available_at=now(),error_message='WORKER_LEASE_EXPIRED' WHERE status='RUNNING' AND lease_until<now()");
     const langs=process.env.TTS_LANGUAGES?.split(',').map(s=>s.trim()).filter(Boolean);
-    const [j]=await m.query("SELECT * FROM tts_jobs WHERE status='QUEUED' AND available_at<=now() AND payload->>'provider'=$1 AND ($2::text[] IS NULL OR payload->>'langCode'=ANY($2::text[])) ORDER BY created_at FOR UPDATE SKIP LOCKED LIMIT 1",[this.tts.name,langs?.length?langs:null]);
+    const codes=process.env.TTS_CODES?.split(',').map(s=>s.trim()).filter(Boolean);
+    const [j]=await m.query("SELECT * FROM tts_jobs WHERE status='QUEUED' AND available_at<=now() AND payload->>'provider'=$1 AND ($2::text[] IS NULL OR payload->>'langCode'=ANY($2::text[])) AND ($3::text[] IS NULL OR payload->>'poiCode'=ANY($3::text[])) ORDER BY created_at FOR UPDATE SKIP LOCKED LIMIT 1",[this.tts.name,langs?.length?langs:null,codes?.length?codes:null]);
     if(!j)return null;
     await m.query("UPDATE tts_jobs SET status='RUNNING',attempts=attempts+1,lease_until=now()+interval '60 seconds' WHERE id=$1",[j.id]);return j;
    });

@@ -3,8 +3,11 @@ import path from 'node:path';
 import { SynthesizeInput, SynthesizeOutput, TtsProvider, TtsQuotaError, TtsTransientError } from './tts-provider.interface';
 
 export function geminiRequest(text: string, locale: string, voice: string) {
+  const style = locale === 'vi-VN'
+    ? 'Warm, conversational Vietnamese nature-guide narration. Gently expressive intonation, relaxed natural rhythm, with small pauses between sentences; avoid a flat announcer cadence.'
+    : `Warm, clear audio-guide narration in ${locale}. Natural pacing, faithful pronunciation, no extra words, no music.`;
   return {
-    contents: [{ role: 'user', parts: [{ text: text.normalize('NFC'), speech_metadata: { style: `Warm, clear national park audio guide in ${locale}. Natural pacing, faithful pronunciation, no extra words, no music.` } }] }],
+    contents: [{ role: 'user', parts: [{ text: text.normalize('NFC'), speech_metadata: { style } }] }],
     generationConfig: { responseModalities: ['AUDIO'], responseFormat: { audio: { mimeType: 'AUDIO_WAV', sampleRate: 24000 } }, speechConfig: { voiceConfig: { voice } } },
   };
 }
@@ -35,7 +38,9 @@ export class GeminiTtsProvider implements TtsProvider {
     if (!input.text.trim() || input.text.length > 10000) throw new Error('Kịch bản Gemini phải dài 1–10000 ký tự');
     const model = process.env.GEMINI_TTS_MODEL || 'gemini-3.8-flash-lite-tts';
     if (!['gemini-3.8-flash-tts','gemini-3.8-flash-lite-tts'].includes(model)) throw new Error('GEMINI_TTS_MODEL phải là model Gemini 3.8 TTS hỗ trợ request schema hiện tại');
-    const voice = (input.gender === 'MALE' ? process.env.GEMINI_VOICE_MALE : process.env.GEMINI_VOICE_FEMALE) || (input.gender === 'MALE' ? 'Charon' : 'Kore');
+    const voice = input.locale === 'vi-VN'
+      ? process.env.GEMINI_VOICE_VI || 'Achird'
+      : (input.gender === 'MALE' ? process.env.GEMINI_VOICE_MALE : process.env.GEMINI_VOICE_FEMALE) || (input.gender === 'MALE' ? 'Charon' : 'Kore');
     const res = await this.request(`https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent`, {
       method: 'POST', headers: { 'content-type': 'application/json', 'x-goog-api-key': key },
       body: JSON.stringify(geminiRequest(input.text, input.locale === 'cmn-CN' ? 'zh-CN' : input.locale, voice)), signal: AbortSignal.timeout(150000),

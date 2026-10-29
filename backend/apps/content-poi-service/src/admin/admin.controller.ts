@@ -10,7 +10,7 @@ import { contentWrite } from '@app/database/content-write';
 import { checkLang,PoiService } from '../poi/poi.service';
 import { mp3DurationSec,validMp3 } from '../../../audio-tts-service/src/util/mp3';
 
-class UploadDto { @IsIn(['vi','en','ja','zh','ko']) langCode:string; @IsOptional() @IsIn(['MALE','FEMALE']) voiceGender:'MALE'|'FEMALE'='FEMALE'; }
+class UploadDto { @IsIn(['vi','en','ja','zh','ko']) langCode:string; @IsOptional() @IsIn(['MALE','FEMALE']) voiceGender:'MALE'|'FEMALE'='FEMALE'; @IsOptional() @IsBoolean() force?:boolean; }
 class QrDto { @IsIn(['POI','GATE']) kind:'POI'|'GATE'; @IsOptional() @IsUUID() poiId?:string; @IsOptional() @IsUrl({require_tld:false,protocols:['http','https'],require_protocol:true}) targetUrl?:string; }
 class ActiveDto { @IsBoolean() isActive:boolean; }
 class BeaconDto { @IsUUID() poiId:string; @IsUUID() uuid:string; @IsInt() @Min(0) @Max(65535) major:number; @IsInt() @Min(0) @Max(65535) minor:number; @IsOptional() @IsInt() @Min(-127) @Max(20) txPower?:number; }
@@ -19,7 +19,7 @@ class ConfigDto { @IsIn(['default_trigger_radius_m','replay_audio_cooldown_min']
 @UseGuards(JwtAuthGuard,RolesGuard) @Roles('ADMIN')
 export class AdminController {
  constructor(private ds:DataSource,private pois:PoiService) {}
- @Post('pois/:id/audios/generate') generate(@Param('id',ParseUUIDPipe) id:string,@Body() body:UploadDto){return this.pois.generateMissing(id,body.langCode,body.voiceGender);}
+ @Post('pois/:id/audios/generate') generate(@Param('id',ParseUUIDPipe) id:string,@Body() body:UploadDto){return this.pois.generateMissing(id,body.langCode,body.voiceGender,body.force===true);}
  @Post('pois/:id/audios/upload')
  @UseInterceptors(FileInterceptor('file',{limits:{fileSize:20*1024*1024,files:1,fields:2,parts:4}}))
  async upload(@Param('id',ParseUUIDPipe) id:string,@Body() body:UploadDto,@UploadedFile() file:any){

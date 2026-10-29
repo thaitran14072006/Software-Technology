@@ -92,15 +92,16 @@ export class PoiService {
      return {value:n,ids:[poiId]};
    }); return {queued};
  }
- async generateMissing(poiId:string,lang:string,gender:'MALE'|'FEMALE') {
+ async generateMissing(poiId:string,lang:string,gender:'MALE'|'FEMALE',force=false) {
   checkLang(lang);
   return contentWrite(this.ds,async m=>{
    const poi=await m.findOne(Poi,{where:{id:poiId}}),tr=await m.findOne(PoiTranslation,{where:{poiId,langCode:lang}});
    if(!poi||!tr)throw new NotFoundException();
    const audios=await m.find(PoiAudio,{where:{translationId:tr.id}});
    const desired=process.env.TTS_PROVIDER??'DEVICE';
-   if(audios.some(a=>a.status==='READY'&&a.textHash===tr.textHash&&a.audioUrl&&(a.source==='UPLOAD'||a.provider===desired)))return {value:{queued:0,reason:'ALREADY_READY'},ids:[]};
-   const old=audios.find(a=>a.voiceGender===gender);
+   const ready=audios.find(a=>a.status==='READY'&&a.textHash===tr.textHash&&a.audioUrl&&(a.source==='UPLOAD'||a.provider===desired));
+   if(ready&&(!force||ready.source==='UPLOAD'))return {value:{queued:0,reason:'ALREADY_READY'},ids:[]};
+   const old=force&&ready?ready:audios.find(a=>a.voiceGender===gender);
    if(old?.currentJobId){const [job]=await m.query("SELECT id FROM tts_jobs WHERE id=$1 AND (status='QUEUED' OR (status='RUNNING' AND lease_until>now()))",[old.currentJobId]);if(job)return {value:{queued:0,reason:'ALREADY_QUEUED'},ids:[]};}
    const a=await m.save(PoiAudio,m.create(PoiAudio,{...(old??{}),poiId,translationId:tr.id,langCode:lang,voiceGender:gender,source:'TTS',status:'PENDING',audioUrl:null,textHash:null,currentJobId:null}));
    await this.queue(m,poi,tr,a);return {value:{queued:1,reason:'QUEUED'},ids:[poiId]};
