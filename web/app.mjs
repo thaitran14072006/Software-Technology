@@ -149,10 +149,11 @@ function renderDetail() {
   $('#share').ariaLabel = t('share'); $('#share').title = t('share');
   const sourceControl = document.createElement('label');
   sourceControl.className = 'field';
-  sourceControl.innerHTML = `<span>Nguồn giọng đọc</span><select id="voice-mode"><option value="auto">Tự động · MP3 đúng ngôn ngữ, thiếu thì dùng giọng thiết bị</option><option value="browser">Giọng trình duyệt · như cat-tien-app</option><option value="mp3">MP3 đã lưu · dùng ngoại tuyến</option></select>`;
+  sourceControl.innerHTML = `<span>Nguồn giọng đọc</span><select id="voice-mode"><option value="auto">Tự động · tiếng Việt dùng TTS trình duyệt, ngôn ngữ khác ưu tiên MP3</option><option value="browser">Giọng trình duyệt · như cat-tien-app</option><option value="mp3">MP3 đã lưu · dùng ngoại tuyến</option></select>`;
   $('#player-status').before(sourceControl);
   $('#voice-mode').value = voiceMode;
-  if (!state.playing) $('#player-status').textContent = p.audio?.url && voiceMode !== 'browser' ? `${p.audio.provider === 'GEMINI' ? 'Google AI Studio' : p.audio.provider || 'MP3'} · ${p.audio.voiceName || 'MP3'}` : voiceMode==='auto' && runtimeConfig.tts_provider==='GEMINI' && !p.audio?.url ? 'MP3 Google chưa sẵn sàng · sẽ thử giọng thiết bị cùng ngôn ngữ' : voiceMode === 'mp3' && p.audio?.url ? 'MP3 · Audio' : 'TTS · Giọng đọc của trình duyệt';
+  const prefersVietnameseTts = state.lang === 'vi' && voiceMode === 'auto' && 'speechSynthesis' in window;
+  if (!state.playing) $('#player-status').textContent = prefersVietnameseTts ? 'TTS · Giọng tiếng Việt của trình duyệt' : p.audio?.url && voiceMode !== 'browser' ? `${p.audio.provider === 'GEMINI' ? 'Google AI Studio' : p.audio.provider || 'MP3'} · ${p.audio.voiceName || 'MP3'}` : voiceMode==='auto' && runtimeConfig.tts_provider==='GEMINI' && !p.audio?.url ? 'MP3 Google chưa sẵn sàng · sẽ thử giọng thiết bị cùng ngôn ngữ' : voiceMode === 'mp3' && p.audio?.url ? 'MP3 · Audio' : 'TTS · Giọng đọc của trình duyệt';
   if(!state.playing && voiceMode==='auto' && p.audio?.provider!=='GEMINI' && runtimeConfig.tts_paused_until)$('#player-status').textContent+=' '+formatUI('Hạn mức Google đã hết. Có thể tiếp tục từ {0}.',[new Date(runtimeConfig.tts_paused_until).toLocaleString(LOCALES[state.lang])],state.lang);
 }
 function stopAudio() {
@@ -192,7 +193,11 @@ async function playAudio() {
   stopAudio(); state.playing = true; $('#play').textContent = t('stop');
   const onStarted = counter.begin(p, settings.mode);
   const url = safeURL(p.audio?.url);
-  const source = playbackSource(voiceMode, Boolean(url), 'speechSynthesis' in window);
+  // In automatic mode Vietnamese uses the device's vi-VN browser voice.
+  // Explicit MP3 mode remains available; all other language/source behavior is unchanged.
+  const source = state.lang === 'vi' && voiceMode === 'auto' && 'speechSynthesis' in window
+    ? 'browser'
+    : playbackSource(voiceMode, Boolean(url), 'speechSynthesis' in window);
   if (!source) { playbackDone(); toast('Trình duyệt chưa hỗ trợ giọng đọc và điểm này chưa có MP3.', true); return; }
   if (source === 'mp3') {
     const current = audio = new Audio(url);
