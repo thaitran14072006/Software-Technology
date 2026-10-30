@@ -11,7 +11,7 @@ export function verifiedCoordinates(poi) {
     && Math.abs(poi.lat) <= 90 && Math.abs(poi.lng) <= 180 ? [poi.lat, poi.lng] : null;
 }
 export function createOutdoorMap({ container, note, onSelect }) {
-  let map, markers, position, tiles, visible = false, latest, selectedId;
+  let map, markers, position, tiles, visible = false, latest;
   function fitPoints() {
     const points=(latest?.pois||[]).map(verifiedCoordinates).filter(Boolean);
     map.stop();map.invalidateSize({pan:false});
@@ -48,10 +48,6 @@ export function createOutdoorMap({ container, note, onSelect }) {
       L.circle(ll, { radius: data.gps.accuracy || 0, color: '#297fc5', weight: 1, fillOpacity: .1 }).addTo(position);
       L.circleMarker(ll, { radius: 7, color: '#fff', fillColor: '#297fc5', fillOpacity: 1 }).addTo(position);
     }
-    const selected = data.pois.find(p => p.id === data.selectedId);
-    const ll = selected && verifiedCoordinates(selected);
-    if (ll && selectedId !== data.selectedId) map.panTo(ll,{animate:false});
-    selectedId = data.selectedId;
     note.textContent = `OpenStreetMap · ${data.pois.filter(verifiedCoordinates).length}/${data.pois.length} điểm đang lọc có tọa độ đối chiếu nguồn. Tuyến tham quan xem trên sơ đồ.`;
   }
   return {
