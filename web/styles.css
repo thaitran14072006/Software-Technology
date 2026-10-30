@@ -23,3 +23,6 @@
 .map-card{height:800px}
 @media(max-width:800px){.map-card{height:680px}}
 @media(max-width:500px){.map-card{height:580px}}
+
+/* SVG groups can keep a browser focus rectangle after pointer/touch selection. */
+svg .map-stop:focus,svg .map-stop:focus-visible{outline:none!important;box-shadow:none!important;-webkit-tap-highlight-color:transparent}
