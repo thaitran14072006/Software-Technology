@@ -27,8 +27,33 @@ const pois=catalog.points.map(point=>{
     geoVerified:false,geoSourceUrl:point.geoSourceUrl,status:'PUBLISHED',version:1,triggerRadiusM:p.trigger_radius_m||10,audio:null,
     translations:p.translations.map(t=>({langCode:t.lang_code,name:point.names[t.lang_code]||t.name,summary:t.summary||'',scriptText:t.script_text}))};
 });
-const allowed=new Set(['0',...catalog.points.map(p=>p.code)]);
-const edges=[[1,0,.12],...ctx.P.filter(p=>p[0]!==1).map(p=>[p[0],p[6],p[5]])].filter(([a,b])=>allowed.has(String(a))&&allowed.has(String(b)));
+// Keep the legacy trail distances as hidden transit nodes when a stop was
+// retired. Contract those nodes into edges between active numbered POIs so
+// routes stay connected without putting retired stops back on the visitor map.
+const routeEdges=[[1,0,.12],...ctx.P.filter(p=>p[0]!==1).map(p=>[p[0],p[6],p[5]])];
+const routeAdj=new Map();
+for(const [a,b,km] of routeEdges){
+  for(const [u,v] of [[String(a),String(b)],[String(b),String(a)]]){
+    if(!routeAdj.has(u))routeAdj.set(u,[]);
+    routeAdj.get(u).push([v,km]);
+  }
+}
+const activeRouteNodes=new Set(['0',...catalog.points.map(p=>String(p.code)).filter(code=>Number.isInteger(Number(code))&&Number(code)>0)]);
+const edges=[];
+for(const source of activeRouteNodes){
+  const walk=(node,previous,distance,seen)=>{
+    for(const [next,km] of routeAdj.get(node)||[]){
+      if(next===previous||seen.has(next))continue;
+      const total=distance+km;
+      if(activeRouteNodes.has(next)){
+        if(Number(source)<Number(next))edges.push([source,next,Number(total.toFixed(3))]);
+        continue;
+      }
+      const branch=new Set(seen);branch.add(next);walk(next,node,total,branch);
+    }
+  };
+  walk(source,null,0,new Set([source]));
+}
 // The visitor demo runs without a backend. Use shared translations for all 15
 // stops and attach only audio generated from the exact matching transcript.
 for (const poi of pois) {

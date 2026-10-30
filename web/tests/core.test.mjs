@@ -17,6 +17,10 @@ test('routes preserve distance and symmetry without reintroducing retired POI no
   const route=routeTo(graph,'a','c');assert.deepEqual(route.codes,['a','b','c']);assert.equal(route.km,3);assert.equal(routeTo(graph,'c','a').km,3);
   const allowed=new Set(['0',...seed.pois.map(p=>p.code)]);for(const [a,b] of seed.edges){assert.ok(allowed.has(String(a)));assert.ok(allowed.has(String(b)));}
   assert.equal(routeTo(seed.edges,'0','missing'),null);
+  const bauSau=routeTo(seed.edges,'0','9');
+  assert.deepEqual(bauSau.codes,['0','5','7','8','9']);
+  assert.equal(bauSau.km,8.9);
+  for(const code of ['1','2','5','7','8','9','13','14','15'])assert.ok(routeTo(seed.edges,'0',code),`Missing route to active POI ${code}`);
 });
 test('localization never reuses another language transcript or audio', () => {
   const item = localize({
