@@ -15,6 +15,9 @@ const langs = {
   vi: 'Vietnamese', en: 'English', ja: 'Japanese', ko: 'Korean', zh: 'Mandarin Chinese',
 };
 const only = process.argv.find(a => a.startsWith('--only='))?.slice(7);
+const onlyTasks = only ? new Set(only.split(',').map(value => value.trim())) : null;
+const codeArg = process.argv.find(a => a.startsWith('--codes='))?.slice(8);
+const codeFilter = codeArg ? new Set(codeArg.split(',').map(value => value.trim())) : null;
 const poiArg = process.argv.find(a => a.startsWith('--poi='))?.slice(6);
 const poiFilter = poiArg ? new Set(poiArg.split(',').map(value => Number(value.trim()))) : null;
 const excludePoiArg = process.argv.find(a => a.startsWith('--exclude-pois='))?.slice(15);
@@ -27,7 +30,7 @@ if (!(maxTasks > 0)) throw new Error(`Invalid --max value: ${maxArg}`);
 class RateLimitError extends Error { constructor(message, waitMs) { super(message); this.waitMs = waitMs; } }
 const wait = ms => new Promise(resolve => setTimeout(resolve, ms));
 const fixture = JSON.parse(await readFile(path.join(root, 'backend/fixtures/content.json'), 'utf8'));
-const pois = fixture.pois.filter(p => Number(p.code) >= 1 && Number(p.code) <= 15);
+const pois = fixture.pois.filter(p => codeFilter ? codeFilter.has(p.code) : Number(p.code) >= 1 && Number(p.code) <= 15);
 const outDir = path.join(root, 'web/narration-audio');
 const manifestPath = path.join(outDir, 'manifest.json');
 await mkdir(outDir, { recursive: true });
@@ -44,7 +47,7 @@ for (const poi of pois) for (const [lang, language] of Object.entries(langs)) {
   if (poiFilter && !poiFilter.has(Number(poi.code))) continue;
   if (excludedPois?.has(Number(poi.code))) continue;
   const tr = poi.translations.find(t => t.lang_code === lang);
-  if (only && only !== `${poi.code}:${lang}`) continue;
+  if (onlyTasks && !onlyTasks.has(`${poi.code}:${lang}`)) continue;
   if (!tr?.script_text?.trim()) throw new Error(`Missing script ${poi.code}:${lang}`);
   const hash = tr.text_hash || createHash('sha256').update(tr.script_text).digest('hex');
   const old = manifest[`${poi.code}:${lang}`];

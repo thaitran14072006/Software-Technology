@@ -481,5 +481,23 @@
     "voice": "Kore",
     "voiceName": "Gemini gemini-3.8-flash-tts · Kore",
     "bytes": 309932
+  },
+  "coord-02:vi": {
+    "file": "coord-02-vi.mp3",
+    "textHash": "9d9a5e90bd2ef4b22b0b3ce3801eb6d9d292afd886dbbeac741fd035aa577a7d",
+    "provider": "GEMINI",
+    "model": "gemini-3.8-flash-tts",
+    "voice": "Kore",
+    "voiceName": "Gemini gemini-3.8-flash-tts · Kore",
+    "bytes": 90668
+  },
+  "coord-01:vi": {
+    "file": "coord-01-vi.mp3",
+    "textHash": "1dabac733eb6d3439dd9a14a8ccba1d928d931982882ce092ae29c954f82ddd4",
+    "provider": "GEMINI",
+    "model": "gemini-3.8-flash-tts",
+    "voice": "Kore",
+    "voiceName": "Gemini gemini-3.8-flash-tts · Kore",
+    "bytes": 106028
   }
 }
