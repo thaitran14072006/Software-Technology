@@ -18,6 +18,7 @@
 .schematic-leader{fill:none;stroke-width:1.5;opacity:.5}.schematic-card{stroke-width:1.5}.map-stop:focus-visible .schematic-card,.map-stop:hover .schematic-card{stroke-width:3}.map-stop:focus-visible{outline:none}.map-stop .schematic-number{font-family:"Guide Noto","Segoe UI",sans-serif;font-size:21px;fill:#234d3a;font-weight:700}.map-label.schematic-label{font-family:"Guide Noto","Segoe UI",sans-serif;font-size:19px;stroke:none;fill:#234d3a}.map-stop[aria-pressed="true"] .schematic-label{fill:#fff}.schematic-title{font-family:"Guide Noto","Segoe UI",sans-serif;font-size:25px;font-weight:600;fill:#234d3a}.schematic-note{font-family:"Guide Noto","Segoe UI",sans-serif;font-size:18px;fill:#607452}
 @media(max-width:800px){.map-stop[aria-pressed="false"] .schematic-label{display:block}}
 .player-options .button{width:auto}
+.gps-auto-hint{font-size:11px;line-height:1.55;color:var(--muted);margin:6px 0 12px}.player-options input:disabled{cursor:not-allowed}.player-options label:has(input:disabled){color:var(--muted)}
 
 /* Keep the map at a stable size, independent of the selected stop details. */
 .map-card{height:800px}
