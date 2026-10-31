@@ -29,7 +29,8 @@ if (!LANGS[state.lang]) state.lang = 'vi';
 let seed, audio, gpsWatch = null, refreshId = 0, adminRefreshId = 0, toastTimer, cameraStream, scanFrame, zoom = 1;
 let analyticsData = null, analyticsRun = 0, joinBlobUrl, joinLink = '', defaultJoinUrl = new URL('./', location.href).href;
 let audioRun = 0, outdoorVisible = false;
-let voiceMode = ['mp3','browser'].includes(localStorage.getItem('sag:voice-mode-v2')) ? localStorage.getItem('sag:voice-mode-v2') : 'auto';
+const voiceModeKey = 'sag:voice-mode-v3';
+let voiceMode = ['mp3','browser'].includes(localStorage.getItem(voiceModeKey)) ? localStorage.getItem(voiceModeKey) : 'auto';
 const languageSwitcher = $('#language-switcher');
 const refreshUITranslations = installUITranslations(() => state.lang);
 const outdoorMap = createOutdoorMap({ container: $('#outdoor-map'), note: $('#outdoor-note'), onSelect: id => selectPoi(id) });
@@ -155,11 +156,10 @@ function renderDetail() {
   $('#share').ariaLabel = t('share'); $('#share').title = t('share');
   const sourceControl = document.createElement('label');
   sourceControl.className = 'field';
-  sourceControl.innerHTML = `<span>Nguồn giọng đọc</span><select id="voice-mode"><option value="auto">Tự động · tiếng Việt dùng TTS trình duyệt, ngôn ngữ khác ưu tiên MP3</option><option value="browser">Giọng trình duyệt · như cat-tien-app</option><option value="mp3">MP3 đã lưu · dùng ngoại tuyến</option></select>`;
+  sourceControl.innerHTML = `<span>${esc(translateUI('Nguồn giọng đọc',state.lang))}</span><select id="voice-mode"><option value="auto">${esc(translateUI('Tự động · MP3 đúng ngôn ngữ, thiếu thì dùng giọng thiết bị',state.lang))}</option><option value="browser">${esc(translateUI('Giọng trình duyệt · như cat-tien-app',state.lang))}</option><option value="mp3">${esc(translateUI('MP3 đã lưu · dùng ngoại tuyến',state.lang))}</option></select>`;
   $('#player-status').before(sourceControl);
   $('#voice-mode').value = voiceMode;
-  const prefersVietnameseTts = state.lang === 'vi' && voiceMode === 'auto' && 'speechSynthesis' in window;
-  if (!state.playing) $('#player-status').textContent = prefersVietnameseTts ? 'TTS · Giọng tiếng Việt của trình duyệt' : p.audio?.url && voiceMode !== 'browser' ? `${p.audio.provider === 'GEMINI' ? 'Google AI Studio' : p.audio.provider || 'MP3'} · ${p.audio.voiceName || 'MP3'}` : voiceMode==='auto' && runtimeConfig.tts_provider==='GEMINI' && !p.audio?.url ? 'MP3 Google chưa sẵn sàng · sẽ thử giọng thiết bị cùng ngôn ngữ' : voiceMode === 'mp3' && p.audio?.url ? 'MP3 · Audio' : 'TTS · Giọng đọc của trình duyệt';
+  if (!state.playing) $('#player-status').textContent = voiceMode === 'browser' ? 'TTS · Giọng đọc của trình duyệt' : p.audio?.url && voiceMode !== 'browser' ? `${p.audio.provider === 'GEMINI' ? 'Google AI Studio' : p.audio.provider || 'MP3'} · ${p.audio.voiceName || 'MP3'}` : voiceMode === 'auto' && runtimeConfig.tts_provider === 'GEMINI' ? 'Chưa có MP3 · sẽ thử giọng thiết bị cùng ngôn ngữ' : voiceMode === 'mp3' ? 'Chưa có MP3 cho ngôn ngữ này' : 'TTS · Giọng đọc của trình duyệt';
   if(!state.playing && voiceMode==='auto' && p.audio?.provider!=='GEMINI' && runtimeConfig.tts_paused_until)$('#player-status').textContent+=' '+formatUI('Hạn mức Google đã hết. Có thể tiếp tục từ {0}.',[new Date(runtimeConfig.tts_paused_until).toLocaleString(LOCALES[state.lang])],state.lang);
 }
 function stopAudio() {
@@ -199,11 +199,9 @@ async function playAudio() {
   stopAudio(); state.playing = true; $('#play').textContent = t('stop');
   const onStarted = counter.begin(p, settings.mode);
   const url = safeURL(p.audio?.url);
-  // In automatic mode Vietnamese uses the device's vi-VN browser voice.
-  // Explicit MP3 mode remains available; all other language/source behavior is unchanged.
-  const source = state.lang === 'vi' && voiceMode === 'auto' && 'speechSynthesis' in window
-    ? 'browser'
-    : playbackSource(voiceMode, Boolean(url), 'speechSynthesis' in window);
+  // Auto uses the MP3 localized for the selected language, then falls back
+  // to a matching browser voice when that translation has no MP3.
+  const source = playbackSource(voiceMode, Boolean(url), 'speechSynthesis' in window);
   if (!source) { playbackDone(); toast('Trình duyệt chưa hỗ trợ giọng đọc và điểm này chưa có MP3.', true); return; }
   if (source === 'mp3') {
     const current = audio = new Audio(url);
@@ -418,7 +416,7 @@ $('#detail').onclick = async event => {
   if (b.id === 'route') { if (outdoorVisible) $('#map-mode').click(); state.from = $('#route-from').value; state.route = routeTo(seed.edges, state.from, routeNode(selected())); if (!state.route) toast(t('noRoute'), true); renderMap(); renderDetail(); }
   if (b.id === 'share') { try { const u = new URL(location.href); u.searchParams.set('poi', selected().code); await navigator.clipboard.writeText(u.href); toast(t('share')); } catch { toast('Không sao chép được. Bạn có thể lấy liên kết trên thanh địa chỉ.', true); } }
 };
-$('#detail').onchange = event => { if (event.target.id === 'voice-mode') { stopAudio(); voiceMode = ['mp3','browser'].includes(event.target.value) ? event.target.value : 'auto'; localStorage.setItem('sag:voice-mode-v2', voiceMode); renderDetail(); } if (event.target.id === 'auto') { state.auto = event.target.checked && state.pois.some(hasVerifiedGps); if (state.auto && !gpsWatch) toggleGPS(); } if (event.target.id === 'route-from') state.from = event.target.value; };
+$('#detail').onchange = event => { if (event.target.id === 'voice-mode') { stopAudio(); voiceMode = ['mp3','browser'].includes(event.target.value) ? event.target.value : 'auto'; localStorage.setItem(voiceModeKey, voiceMode); renderDetail(); } if (event.target.id === 'auto') { state.auto = event.target.checked && state.pois.some(hasVerifiedGps); if (state.auto && !gpsWatch) toggleGPS(); } if (event.target.id === 'route-from') state.from = event.target.value; };
 $('#settings').onclick = () => { $(`#settings-form input[value="${settings.mode}"]`).checked = true; $('#admin-token').value = token(); $('#settings-dialog').showModal(); };
 $('#settings-form').onsubmit = async event => { event.preventDefault(); stopAudio(); const mode = new FormData(event.target).get('mode'); saveSettings(mode); const url = new URL(location.href); if (url.searchParams.has('source')) { url.searchParams.set('source', mode); history.replaceState(null, '', url); } usage.changeMode(); analyticsData = null; renderAnalytics(); sessionStorage.setItem('sag:token', $('#admin-token').value.trim()); state.selected = null; state.hits.clear(); $('#settings-dialog').close(); await refresh(); if (state.tab === 'admin') await showAdmin(); };
 $$('.close-dialog').forEach(b => b.onclick = () => b.closest('dialog').close());
