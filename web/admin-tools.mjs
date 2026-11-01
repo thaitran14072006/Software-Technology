@@ -14,7 +14,13 @@ export function setupAdminTools({refresh,showAdmin,toast}) {
  login.innerHTML=`<h3>Đăng nhập quản trị</h3><label class="field">Email<input id="login-email" type="email" autocomplete="username"></label><label class="field">Mật khẩu<input id="login-password" type="password" autocomplete="current-password"></label><div class="dialog-actions"><button id="login-button" class="button primary" type="button">Đăng nhập</button><button id="logout-button" class="button" type="button">Đăng xuất</button></div><p id="login-status" role="status"></p>`;
  document.querySelector('#settings-form').append(login);
  document.querySelector('#login-button').onclick=async()=>{
-  try{const out=await api('auth/login',{method:'POST',body:JSON.stringify({email:document.querySelector('#login-email').value,password:document.querySelector('#login-password').value})});
+  try{
+   const emailInput=document.querySelector('#login-email'),password=document.querySelector('#login-password').value;
+   const email=emailInput.value.trim();
+   if(!email || !emailInput.validity.valid || email.length>255)throw new Error('Vui lòng nhập địa chỉ email hợp lệ (tối đa 255 ký tự).');
+   if(!password)throw new Error('Vui lòng nhập mật khẩu.');
+   if(password.length>256)throw new Error('Vui lòng nhập mật khẩu từ 1 đến 256 ký tự.');
+   const out=await api('auth/login',{method:'POST',body:JSON.stringify({email,password})});
    sessionStorage.setItem('sag:token',out.accessToken);sessionStorage.setItem('sag:refresh',out.refreshToken);document.querySelector('#admin-token').value=out.accessToken;document.querySelector('#login-password').value='';
    saveSettings('api');const pageUrl=new URL(location.href);pageUrl.searchParams.set('source','api');history.replaceState(null,'',pageUrl);document.querySelector('#settings-form input[value="api"]').checked=true;document.querySelector('#login-status').textContent=`Đã đăng nhập: ${out.user.email}`;await refresh();await showAdmin();document.querySelector('#settings-dialog').close();document.querySelector('#admin-tab').click();
   }catch(e){document.querySelector('#login-status').textContent=e.message;}

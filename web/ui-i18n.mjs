@@ -65,7 +65,13 @@ const rows = [
 ['Giữ nguyên file audio khi ngoại tuyến; không tự đổi sang giọng máy.','Keep the same audio offline; do not switch to a device voice.','オフラインでも同じ音声を再生し、端末音声に切り替えません。','오프라인에서도 같은 음성을 재생하며 기계음으로 전환하지 않습니다.','离线仍播放同一音频，不自动切换机器语音。'],
 ];
 
-rows.push(...EXTRA_ROWS);
+rows.push(
+ ['Vui lòng nhập mật khẩu.','Please enter your password.','パスワードを入力してください。','비밀번호를 입력해 주세요.','请输入密码。'],
+ ['Vui lòng nhập mật khẩu từ 1 đến 256 ký tự.','Please enter a password between 1 and 256 characters.','パスワードは1〜256文字で入力してください。','비밀번호를 1~256자로 입력해 주세요.','请输入1至256个字符的密码。'],
+ ['Vui lòng nhập địa chỉ email hợp lệ (tối đa 255 ký tự).','Please enter a valid email address (up to 255 characters).','有効なメールアドレスを255文字以内で入力してください。','유효한 이메일 주소를 255자 이내로 입력해 주세요.','请输入有效的电子邮箱地址（最多255个字符）。'],
+ ['Vui lòng kiểm tra lại email và mật khẩu.','Please check your email and password.','メールアドレスとパスワードを確認してください。','이메일과 비밀번호를 확인해 주세요.','请检查邮箱和密码。'],
+ ['Email hoặc mật khẩu không đúng.','Incorrect email or password.','メールアドレスまたはパスワードが正しくありません。','이메일 또는 비밀번호가 올바르지 않습니다.','邮箱或密码不正确。'],
+ ...EXTRA_ROWS);
 const index = new Map(rows.map(r => [r[0].normalize('NFC'), r]));
 const langIndex = {vi:0,en:1,ja:2,ko:3,zh:4};
 const escapeRegex = s => s.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
