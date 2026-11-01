@@ -10,6 +10,7 @@ web/test-results/
 *.tsbuildinfo
 .cxx/
 backend/.runtime/
+backend/.jest-cache/
 web/.vendor-build/
 web/.runtime/
 mobile/.expo-config-check.json

@@ -47,3 +47,8 @@ test('admin API includes session JWT and exposes backend field validation errors
   try { await assert.rejects(() => store.api('admin/pois', { method: 'POST' }), /latitude: Invalid GPS/); }
   finally { globalThis.fetch = originalFetch; }
 });
+test('login API exposes credential errors instead of mislabeling them as expired JWTs', async () => {
+  globalThis.fetch = async () => new Response(JSON.stringify({ message: 'Email hoặc mật khẩu không đúng.' }), { status: 401 });
+  try { await assert.rejects(() => store.api('auth/login', { method: 'POST', body: '{}' }), /Email hoặc mật khẩu không đúng/); }
+  finally { globalThis.fetch = originalFetch; }
+});

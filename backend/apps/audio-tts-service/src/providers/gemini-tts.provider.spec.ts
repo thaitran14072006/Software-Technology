@@ -1,20 +1,20 @@
 import {GeminiTtsProvider,geminiRequest} from './gemini-tts.provider';
 import {TtsQuotaError} from './tts-provider.interface';
 describe('Gemini AI Studio provider',()=>{
- const original=process.env.GEMINI_API_KEY, originalViVoice=process.env.GEMINI_VOICE_VI;
- beforeEach(()=>{process.env.GEMINI_API_KEY='test-not-a-real-key';delete process.env.GEMINI_VOICE_VI;});
- afterAll(()=>{if(original)process.env.GEMINI_API_KEY=original;else delete process.env.GEMINI_API_KEY;if(originalViVoice)process.env.GEMINI_VOICE_VI=originalViVoice;else delete process.env.GEMINI_VOICE_VI;});
+ const original=process.env.GEMINI_API_KEY, originalViVoice=process.env.GEMINI_VOICE_VI, originalVoice=process.env.GEMINI_VOICE;
+ beforeEach(()=>{process.env.GEMINI_API_KEY='test-not-a-real-key';delete process.env.GEMINI_VOICE_VI;delete process.env.GEMINI_VOICE;});
+ afterAll(()=>{if(original)process.env.GEMINI_API_KEY=original;else delete process.env.GEMINI_API_KEY;if(originalViVoice)process.env.GEMINI_VOICE_VI=originalViVoice;else delete process.env.GEMINI_VOICE_VI;if(originalVoice)process.env.GEMINI_VOICE=originalVoice;else delete process.env.GEMINI_VOICE;});
  test('Transcript stays verbatim; style is metadata and never inserted into narration',()=>{
   const request=geminiRequest('Bàu Sấu','vi-VN','Kore');
   expect(request.contents[0].parts[0].text).toBe('Bàu Sấu');
   expect(request.generationConfig.speechConfig.voiceConfig.voice).toBe('Kore');
  });
- test('Vietnamese narration uses a friendlier voice and conversational guide direction',()=>{
-  const request=geminiRequest('Câu chuyện giữa rừng xanh.','vi-VN','Achird');
-  const part=request.contents[0].parts[0];
-  expect(part.speech_metadata.style).toMatch(/conversational Vietnamese nature-guide narration/i);
-  expect(part.speech_metadata.style).toMatch(/natural rhythm/i);
-  expect(part.text).toBe('Câu chuyện giữa rừng xanh.');
+ test.each([['vi-VN','Vietnamese'],['en-US','English'],['ja-JP','Japanese'],['ko-KR','Korean'],['cmn-CN','Chinese']])('%s receives natural guide direction in its own language', (locale,language)=>{
+  const part=geminiRequest('Narration text.',''+locale,'Achird').contents[0].parts[0];
+  expect(part.speech_metadata.style).toContain(`natural ${language}`);
+  expect(part.speech_metadata.style).toMatch(/relaxed conversational delivery/i);
+  expect(part.speech_metadata.style).toMatch(/natural pauses/i);
+  expect(part.text).toBe('Narration text.');
  });
  test('Successful WAV is converted to persistent MP3 with Gemini provenance',async()=>{
   const wav=Buffer.alloc(48);wav.write('RIFF',0);wav.write('WAVE',8);

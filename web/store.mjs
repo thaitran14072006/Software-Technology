@@ -31,16 +31,19 @@ export async function api(path, options = {}, qr = false) {
   const body = await res.text();
   let parsed;
   try { parsed = body ? JSON.parse(body) : null; } catch { throw new Error('API trả về dữ liệu không hợp lệ.'); }
-  if (!res.ok && path === 'auth/login') {
-    if (res.status === 401) throw new Error('Email hoặc mật khẩu không đúng.');
-    if (res.status === 400) {
-      const fields = parsed?.fields || {};
-      if (fields.email) throw new Error('Vui lòng nhập địa chỉ email hợp lệ (tối đa 255 ký tự).');
-      if (fields.password) throw new Error('Vui lòng nhập mật khẩu từ 1 đến 256 ký tự.');
-      throw new Error('Vui lòng kiểm tra lại email và mật khẩu.');
+  if (!res.ok) {
+    const serverMessage = String(parsed?.fields ? Object.entries(parsed.fields).map(([k, v]) => `${k}: ${v}`).join('; ') : Array.isArray(parsed?.message) ? parsed.message.join('; ') : parsed?.message || parsed?.code || `HTTP ${res.status}`);
+    if (path === 'auth/login') {
+      if (res.status === 401) throw new Error(serverMessage || 'Email hoặc mật khẩu không đúng.');
+      if (res.status === 400) {
+        const fields = parsed?.fields || {};
+        if (fields.email) throw new Error('Vui lòng nhập địa chỉ email hợp lệ (tối đa 255 ký tự).');
+        if (fields.password) throw new Error('Vui lòng nhập mật khẩu từ 1 đến 256 ký tự.');
+        throw new Error('Vui lòng kiểm tra lại email và mật khẩu.');
+      }
     }
+    throw new Error(res.status === 401 ? 'JWT không hợp lệ hoặc hết hạn. Mở Kết nối để nhập token.' : serverMessage);
   }
-  if (!res.ok) throw new Error(res.status === 401 ? 'JWT không hợp lệ hoặc hết hạn. Mở Kết nối để nhập token.' : String(parsed?.fields ? Object.entries(parsed.fields).map(([k, v]) => `${k}: ${v}`).join('; ') : Array.isArray(parsed?.message) ? parsed.message.join('; ') : parsed?.message || parsed?.code || `HTTP ${res.status}`));
   return parsed;
 }
 export async function demoPois() {
