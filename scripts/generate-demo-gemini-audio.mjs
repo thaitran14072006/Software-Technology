@@ -10,7 +10,16 @@ const key = process.env.GEMINI_API_KEY;
 if (!key) throw new Error('GEMINI_API_KEY is empty in backend/.env');
 const model = process.env.GEMINI_TTS_MODEL || 'gemini-3.8-flash-tts';
 if (model !== 'gemini-3.8-flash-tts' && model !== 'gemini-3.8-flash-lite-tts') throw new Error(`Unsupported Gemini TTS model: ${model}`);
-const voice = process.argv.find(a => a.startsWith('--voice='))?.slice(8) || process.env.GEMINI_VOICE_FEMALE || 'Kore';
+const voices = {
+  vi: process.env.GEMINI_VOICE_VI || 'Achird',
+  en: process.env.GEMINI_VOICE_EN || 'Charon',
+  ja: process.env.GEMINI_VOICE_JA || 'Aoede',
+  ko: process.env.GEMINI_VOICE_KO || 'Iapetus',
+  zh: process.env.GEMINI_VOICE_ZH || 'Sulafat',
+};
+if (process.argv.some(a => a.startsWith('--voice='))) {
+  throw new Error('Set GEMINI_VOICE_<LANG> so every stop in a language uses its assigned narrator voice.');
+}
 const langs = {
   vi: 'Vietnamese', en: 'English', ja: 'Japanese', ko: 'Korean', zh: 'Mandarin Chinese',
 };
@@ -51,11 +60,14 @@ for (const poi of pois) for (const [lang, language] of Object.entries(langs)) {
   if (!tr?.script_text?.trim()) throw new Error(`Missing script ${poi.code}:${lang}`);
   const hash = tr.text_hash || createHash('sha256').update(tr.script_text).digest('hex');
   const old = manifest[`${poi.code}:${lang}`];
+  const voice = voices[lang];
   if (old?.provider === 'GEMINI' && old.textHash === hash && old.model === model && old.voice === voice) continue;
+  const knownGeminiMismatch = old?.provider === 'GEMINI'
+    && (old.textHash !== hash || old.model !== model || old.voice !== voice);
   // Some older source MP3s do not record the transcript they were synthesized
   // from. Only reuse them for unchanged scripts; revised scripts require fresh TTS.
-  if (!force && !tr.audio_needs_refresh && [...sourceAudio].some(f => f.startsWith(`${poi.code}-${lang}-`) && f.endsWith('.mp3'))) continue;
-  tasks.push({ code: poi.code, lang, language, text: tr.script_text, textHash: hash });
+  if (!force && !knownGeminiMismatch && !tr.audio_needs_refresh && [...sourceAudio].some(f => f.startsWith(`${poi.code}-${lang}-`) && f.endsWith('.mp3'))) continue;
+  tasks.push({ code: poi.code, lang, language, text: tr.script_text, textHash: hash, voice });
 }
 const languageOrder = Object.keys(langs);
 tasks.sort((a, b) => languageOrder.indexOf(a.lang) - languageOrder.indexOf(b.lang) || Number(a.code) - Number(b.code));
@@ -90,7 +102,7 @@ async function synthesize(task) {
       generationConfig: {
         responseModalities: ['AUDIO'],
         responseFormat: { audio: { mimeType: 'AUDIO_WAV', sampleRate: 24000 } },
-        speechConfig: { voiceConfig: { voice } },
+        speechConfig: { voiceConfig: { voice: task.voice } },
       },
     }),
     signal: AbortSignal.timeout(150000),
@@ -116,14 +128,14 @@ async function synthesize(task) {
   await writeFile(temp, mp3);
   await rename(temp, path.join(outDir, file));
   manifest[`${task.code}:${task.lang}`] = {
-    file, textHash: task.textHash, provider: 'GEMINI', model, voice,
-    voiceName: `Gemini ${model} · ${voice}`, bytes: mp3.length,
+    file, textHash: task.textHash, provider: 'GEMINI', model, voice: task.voice,
+    voiceName: `Gemini ${model} · ${task.voice}`, bytes: mp3.length,
   };
   await saveManifest();
   console.log(`Generated Gemini audio ${task.code}:${task.lang} (${mp3.length} bytes)`);
 }
 
-console.log(`Generating ${batchTasks.length} of ${batchTasks.length + tasks.length} missing clips with ${model}/${voice}.`);
+console.log(`Generating ${batchTasks.length} of ${batchTasks.length + tasks.length} missing clips with ${model}; narrator by language: ${Object.entries(voices).map(([lang, voice]) => `${lang}=${voice}`).join(', ')}.`);
 if (dryRun) {
   console.log(batchTasks.map(task => `${task.code}:${task.lang}`).join(', '));
   process.exit(0);

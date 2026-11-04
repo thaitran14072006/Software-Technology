@@ -27,6 +27,19 @@ export function encodeMp3(wav: Buffer): Promise<Buffer> {
   });
 }
 
+const LANGUAGE_VOICES: Record<string, { env: string; fallback: string }> = {
+  'vi-VN': { env: 'GEMINI_VOICE_VI', fallback: 'Achird' },
+  'en-US': { env: 'GEMINI_VOICE_EN', fallback: 'Charon' },
+  'ja-JP': { env: 'GEMINI_VOICE_JA', fallback: 'Aoede' },
+  'ko-KR': { env: 'GEMINI_VOICE_KO', fallback: 'Iapetus' },
+  'cmn-CN': { env: 'GEMINI_VOICE_ZH', fallback: 'Sulafat' },
+};
+
+export function voiceForLocale(locale: string): string {
+  const setting = LANGUAGE_VOICES[locale];
+  return setting ? process.env[setting.env] || setting.fallback : process.env.GEMINI_VOICE || 'Achird';
+}
+
 // Google AI Studio / Gemini API, distinct from Google Cloud Text-to-Speech.
 export class GeminiTtsProvider implements TtsProvider {
   readonly name = 'GEMINI' as const;
@@ -37,8 +50,8 @@ export class GeminiTtsProvider implements TtsProvider {
     if (!input.text.trim() || input.text.length > 10000) throw new Error('Kịch bản Gemini phải dài 1–10000 ký tự');
     const model = process.env.GEMINI_TTS_MODEL || 'gemini-3.8-flash-lite-tts';
     if (!['gemini-3.8-flash-tts','gemini-3.8-flash-lite-tts'].includes(model)) throw new Error('GEMINI_TTS_MODEL phải là model Gemini 3.8 TTS hỗ trợ request schema hiện tại');
-    // Keep one friendly narrator identity across all five languages.
-    const voice = process.env.GEMINI_VOICE || process.env.GEMINI_VOICE_VI || 'Achird';
+    // Keep one narrator voice per language across every stop.
+    const voice = voiceForLocale(input.locale);
     const res = await this.request(`https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent`, {
       method: 'POST', headers: { 'content-type': 'application/json', 'x-goog-api-key': key },
       body: JSON.stringify(geminiRequest(input.text, input.locale === 'cmn-CN' ? 'zh-CN' : input.locale, voice)), signal: AbortSignal.timeout(150000),

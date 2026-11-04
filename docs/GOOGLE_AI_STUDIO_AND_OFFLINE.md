@@ -67,8 +67,11 @@ Khóa chỉ lưu trong `backend/.env`, không đưa vào HTML, ZIP, app mobile, 
 ```dotenv
 GEMINI_API_KEY=<tự nhập khóa tại máy>
 GEMINI_TTS_MODEL=gemini-3.8-flash-lite-tts
-GEMINI_VOICE_FEMALE=Kore
-GEMINI_VOICE_MALE=Charon
+GEMINI_VOICE_VI=Achird
+GEMINI_VOICE_EN=Charon
+GEMINI_VOICE_JA=Aoede
+GEMINI_VOICE_KO=Iapetus
+GEMINI_VOICE_ZH=Sulafat
 ```
 
 Không đưa file `.env` lên Git. Provider này khác Google Cloud Text-to-Speech dùng `GOOGLE_TTS_KEY`. Chỉ các model Gemini 3.8 TTS có schema hiện tại được chấp nhận; không tự đổi model khi lỗi quota.

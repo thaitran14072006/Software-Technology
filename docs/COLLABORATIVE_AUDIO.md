@@ -8,13 +8,16 @@ Git chỉ đồng bộ các file đã commit. Sau khi pull bản ghi mới, `npm
 
 ## Dùng AI Studio của từng thành viên
 
-Mỗi người tự lưu khóa của mình trong `backend/.env`, không chia sẻ hay commit khóa. Dùng cùng model và cấu hình giọng để phong cách thống nhất:
+Mỗi người tự lưu khóa của mình trong `backend/.env`, không chia sẻ hay commit khóa. Dùng cùng model và cùng ánh xạ giọng theo ngôn ngữ để mỗi ngôn ngữ giữ một giọng ổn định giữa các điểm:
 
 ```dotenv
 GEMINI_API_KEY=your_own_private_key
 GEMINI_TTS_MODEL=gemini-3.8-flash-lite-tts
-GEMINI_VOICE_FEMALE=Kore
-GEMINI_VOICE_MALE=Charon
+GEMINI_VOICE_VI=Achird
+GEMINI_VOICE_EN=Charon
+GEMINI_VOICE_JA=Aoede
+GEMINI_VOICE_KO=Iapetus
+GEMINI_VOICE_ZH=Sulafat
 TTS_LANGUAGES=en
 ```
 

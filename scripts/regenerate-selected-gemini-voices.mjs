@@ -62,8 +62,8 @@ async function drain(args) {
   }
 }
 
-console.log(`First, regenerate all five languages for POIs ${selectedPois} with the warmer Sulafat voice.`);
-await drain([`--voice=Sulafat`, `--poi=${selectedPois}`, '--force']);
-console.log('Selected voice replacements are complete. Continuing the remaining Gemini narration queue while preserving the selected Sulafat POIs.');
+console.log(`First, replace any mismatched Gemini voices across five languages for POIs ${selectedPois}, using one voice per language.`);
+await drain([`--poi=${selectedPois}`]);
+console.log('Selected POIs are complete. Checking the remaining narrations for a mismatched language voice.');
 await drain([`--exclude-pois=${selectedPois}`]);
-console.log('All current narration transcripts have matching Gemini audio; selected POIs use Sulafat.');
+console.log('All current narration transcripts have Gemini audio with one consistent voice per language.');
