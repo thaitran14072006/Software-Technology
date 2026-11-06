@@ -2,6 +2,7 @@ import { mkdir, readFile, writeFile, cp, readdir } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
 import path from 'node:path';
 import vm from 'node:vm';
+import {REFERENCE_MAP_CSS} from './reference-map.mjs';
 
 const root = fileURLToPath(new URL('../', import.meta.url));
 const out = path.join(root, 'web', 'dist');
@@ -68,9 +69,10 @@ for (const poi of pois) {
 }
 await mkdir(out, { recursive: true });
 // Only replace generated output inside the fixed web/dist directory.
-for (const name of ['index.html', 'styles.css', 'app.mjs', 'core.mjs', 'store.mjs', 'analytics.mjs', 'join-qr.mjs', 'admin-tools.mjs', 'visitor-config.mjs', 'outdoor-map.mjs', 'poi-catalog.mjs', 'schematic-map.mjs', 'browser-tts.mjs', 'gps.mjs', 'ui-i18n.mjs', 'ui-extra.mjs', 'sw.js', 'manifest.webmanifest', 'icon.svg']) {
+for (const name of ['index.html', 'styles.css', 'app.mjs', 'core.mjs', 'store.mjs', 'analytics.mjs', 'join-qr.mjs', 'admin-tools.mjs', 'visitor-config.mjs', 'outdoor-map.mjs', 'poi-catalog.mjs', 'schematic-map.mjs', 'schematic-content.mjs', 'reference-map.mjs', 'map-viewport.mjs', 'browser-tts.mjs', 'gps.mjs', 'ui-i18n.mjs', 'ui-extra.mjs', 'sw.js', 'manifest.webmanifest', 'icon.svg']) {
   await cp(path.join(root, 'web', name), path.join(out, name));
 }
+await writeFile(path.join(out,'reference-map.css'),`@font-face{font-family:"Poster Noto";src:url("./vendor/fonts/NotoSans.ttf");font-weight:100 900}${REFERENCE_MAP_CSS}`);
 await cp(path.join(root, 'web', 'vendor'), path.join(out, 'vendor'), { recursive: true });
 await mkdir(path.join(out, 'data'), { recursive: true });
 const audioOut = path.join(out, 'audio');

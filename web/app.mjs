@@ -6,7 +6,8 @@ import { setupAdminTools } from './admin-tools.mjs';
 import { runtimeConfig, loadRuntimeConfig, sharePosition } from './visitor-config.mjs';
 import { createOutdoorMap, documentCoordinates } from './outdoor-map.mjs';
 import { loadVoices, selectVoice, playbackSource } from './browser-tts.mjs';
-import {stopNumber,renderSchematic} from './schematic-map.mjs';
+import {stopNumber,schematicStops,schematicStopName,renderSchematic} from './schematic-map.mjs';
+import {withSchematicNarration} from './schematic-content.mjs';
 import {installUITranslations,translateUI,formatUI} from './ui-i18n.mjs';
 import {gpsErrorKey,gpsText,hasVerifiedGps,startGpsWatch} from './gps.mjs';
 
@@ -26,7 +27,7 @@ const copy = {
 };
 const state = { lang: localStorage.getItem('sag:lang') || 'vi', pois: [], searchIndex: new Map(), selected: null, category: 0, query: '', route: null, from: '0', source: '', admin: [], editing: null, isNew: false, tab: 'visitor', playing: false, auto: false, gps: null, hits: new Map(), cooldown: new Map() };
 if (!LANGS[state.lang]) state.lang = 'vi';
-let seed, audio, gpsWatch = null, refreshId = 0, adminRefreshId = 0, toastTimer, cameraStream, scanFrame, zoom = 1;
+let seed, audio, gpsWatch = null, refreshId = 0, adminRefreshId = 0, toastTimer, cameraStream, scanFrame;
 let analyticsData = null, analyticsRun = 0, joinBlobUrl, joinLink = '', defaultJoinUrl = new URL('./', location.href).href;
 let audioRun = 0, outdoorVisible = false;
 const voiceModeKey = 'sag:voice-mode-v3';
@@ -46,7 +47,7 @@ function filtered() {
   if (numericQuery !== null) return candidates.filter(p => Number(stopNumber(p)) === numericQuery);
   if (!query) return candidates;
   const tokens = normalizeSearch(query).split(/\s+/).filter(Boolean);
-  const nameMatches = candidates.filter(p => [p.code, p.name, ...(p.translations || []).map(t => t.name)]
+  const nameMatches = candidates.filter(p => [p.code, p.name, schematicStopName(p), ...(p.translations || []).map(t => t.name)]
     .filter(Boolean).map(normalizeSearch).some(name => tokens.every(token => name.includes(token))));
   if (nameMatches.length) return nameMatches;
   return candidates.filter(p => matchesPoiQuery(p, query, state.searchIndex.get(p.id) || []));
@@ -106,7 +107,7 @@ async function refresh() {
     await loadRuntimeConfig();
     const result = await getPois(state.lang);
     if (run !== refreshId) return;
-    state.pois = result.items.sort((a, b) => (a.sortOrder??0)-(b.sortOrder??0)||a.code.localeCompare(b.code, undefined, { numeric: true }));
+    state.pois = withSchematicNarration(result.items,state.lang).sort((a, b) => (a.sortOrder??0)-(b.sortOrder??0)||a.code.localeCompare(b.code, undefined, { numeric: true }));
     state.source = result.source;
     if (!selected()) state.selected = state.pois.find(p => p.code === new URL(location.href).searchParams.get('poi'))?.id || state.pois.find(p => p.code === '9')?.id || state.pois[0]?.id;
     state.route = null;
@@ -124,7 +125,7 @@ async function refresh() {
   void refreshSearchIndex(run, state.source, [...state.pois]);
   usage.presence(visitorVisible()); usage.flush();
 }
-function render() { updateLanguage(); renderMap(); renderDetail(); renderList(); $('#stop-count').textContent = String(state.pois.length).padStart(2, '0'); }
+function render() { updateLanguage(); renderMap(); renderDetail(); renderList(); $('#stop-count').textContent = String(schematicStops(state.pois).length).padStart(2, '0'); }
 function selectPoi(id, play = false) {
   if (state.selected !== id) stopAudio();
   state.selected = id; state.route = null;
@@ -134,8 +135,8 @@ function selectPoi(id, play = false) {
   if (play) playAudio();
 }
 function renderList() {
-  const pois = filtered();
-  $('#results-count').textContent = `${pois.length} / ${state.pois.length} ${t('point')}`;
+  const pois = schematicStops(filtered());
+  $('#results-count').textContent = `${pois.length} / ${schematicStops(state.pois).length} ${t('point')}`;
   $('#stop-list').innerHTML = pois.length ? pois.map(p => `<button class="stop-card ${p.id === state.selected ? 'selected' : ''}" data-id="${esc(p.id)}" aria-pressed="${p.id === state.selected}"><span class="stop-num">${esc(stopNumber(p))}</span><span><span class="stop-name">${esc(p.name)}</span><span class="stop-kind">${esc(group(p.categoryId))}</span></span></button>`).join('') : `<p class="empty">${esc(t('empty'))}</p>`;
 }
 function renderMap() {
@@ -143,8 +144,9 @@ function renderMap() {
   $('#map-view-title').textContent = translateUI(outdoorVisible ? 'Bản đồ OpenStreetMap' : 'Sơ đồ tham quan',state.lang);
   $('#map-caption').textContent = translateUI(outdoorVisible ? 'Bản đồ OpenStreetMap' : 'Sơ đồ tham quan · không theo tỉ lệ địa lý',state.lang);
   $('#map-legend').hidden = outdoorVisible || !state.route;
-  $('#map').innerHTML = renderSchematic({pois:state.pois,visibleIds:filtered().map(p=>p.id),selectedId:state.selected,routeCodes:state.route?.codes || [],zoom,
-    title:translateUI('Sơ đồ tham quan',state.lang),note:translateUI('SƠ ĐỒ · KHÔNG THEO TỈ LỆ',state.lang)});
+  $('#schematic-map-frame').hidden=outdoorVisible;
+  $('#map').innerHTML = renderSchematic({pois:state.pois,visibleIds:filtered().map(p=>p.id),selectedId:state.selected,routeCodes:state.route?.codes || [],
+    title:translateUI('Sơ đồ tham quan',state.lang),note:translateUI('SƠ ĐỒ · KHÔNG THEO TỈ LỆ',state.lang),translate:text=>translateUI(text,state.lang)});
 }
 function renderDetail() {
   const p = selected();
@@ -152,7 +154,7 @@ function renderDetail() {
   const kind = p.categoryId === 3 ? 'water' : p.categoryId === 1 ? 'facility' : '';
   const autoAvailable = state.pois.some(hasVerifiedGps);
   if (!autoAvailable) state.auto = false;
-  $('#detail').innerHTML = `<div class="detail-art ${kind}"><span class="detail-number">${esc(stopNumber(p).padStart(2, '0'))}</span><span class="detail-tag">${esc(LANGS[p.lang] || LANGS[state.lang])}</span></div><div class="detail-body"><p class="detail-category">${esc(group(p.categoryId))}</p><h2>${esc(p.name || p.code)}</h2><p class="script-text">${esc(p.translationMissing ? 'Chưa có lời thuyết minh cho ngôn ngữ này.' : p.scriptText || p.summary)}</p><div class="detail-info"><span>⌖ ${esc(p.geoVerified ? t('verified') : documentCoordinates(p) ? translateUI('Tọa độ theo tài liệu',state.lang) : p.geoSourceUrl ? translateUI('Tọa độ đối chiếu nguồn bản đồ',state.lang) : t('schematic'))}</span><span>◎ ${esc(LANGS[p.lang] || LANGS[state.lang])}</span></div><div class="player"><button id="play" class="button primary" ${p.translationMissing ? 'disabled' : ''}>${esc(state.playing ? t('stop') : t('play'))}</button><div class="player-options"><label class="check" title="${esc(t('autoHint'))}"><input id="auto" type="checkbox" ${state.auto ? 'checked' : ''} ${autoAvailable ? '' : 'disabled'}>${esc(t('auto'))}</label><button id="share" class="button quiet">${esc(t('share'))}</button></div><p class="gps-auto-hint" role="status">${esc(autoAvailable ? t('autoHint') : gpsText('autoUnavailable',state.lang))}</p><p id="player-status" class="player-status" role="status">${esc(state.playing ? t('narration') : p.audio?.url ? 'MP3 · Audio' : 'TTS · Giọng đọc của trình duyệt')}</p><div class="route-controls"><select id="route-from" aria-label="${esc(t('from'))}"><option value="0">${esc(t('center'))}</option>${state.pois.filter(x => Number(x.sortOrder) !== 1).map(x => `<option value="${esc(routeNode(x))}" ${state.from === routeNode(x) ? 'selected' : ''}>${esc(stopNumber(x))} · ${esc(x.name)}</option>`).join('')}</select><button id="route" class="button">↗ ${esc(t('route'))}</button></div><p class="route-result" id="route-result">${state.route ? esc(`${state.route.km.toFixed(1)} ${t('distance')} ${state.route.minutes} ${t('minute')}. ${t('map')}`) : ''}</p></div></div>`;
+  $('#detail').innerHTML = `<div class="detail-art ${kind}"><span class="detail-number">${esc(stopNumber(p))}</span><span class="detail-tag">${esc(LANGS[p.lang] || LANGS[state.lang])}</span></div><div class="detail-body"><p class="detail-category">${esc(group(p.categoryId))}</p><h2>${esc(schematicStopName(p) || p.code)}</h2><p class="script-text">${esc(p.translationMissing ? 'Chưa có lời thuyết minh cho ngôn ngữ này.' : p.scriptText || p.summary)}</p><div class="detail-info"><span>⌖ ${esc(p.geoVerified ? t('verified') : documentCoordinates(p) ? translateUI('Tọa độ theo tài liệu',state.lang) : p.geoSourceUrl ? translateUI('Tọa độ đối chiếu nguồn bản đồ',state.lang) : t('schematic'))}</span><span>◎ ${esc(LANGS[p.lang] || LANGS[state.lang])}</span></div><div class="player"><button id="play" class="button primary" ${p.translationMissing ? 'disabled' : ''}>${esc(state.playing ? t('stop') : t('play'))}</button><div class="player-options"><label class="check" title="${esc(t('autoHint'))}"><input id="auto" type="checkbox" ${state.auto ? 'checked' : ''} ${autoAvailable ? '' : 'disabled'}>${esc(t('auto'))}</label><button id="share" class="button quiet">${esc(t('share'))}</button></div><p class="gps-auto-hint" role="status">${esc(autoAvailable ? t('autoHint') : gpsText('autoUnavailable',state.lang))}</p><p id="player-status" class="player-status" role="status">${esc(state.playing ? t('narration') : p.audio?.url ? 'MP3 · Audio' : 'TTS · Giọng đọc của trình duyệt')}</p><div class="route-controls"><select id="route-from" aria-label="${esc(t('from'))}"><option value="0">${esc(t('center'))}</option>${state.pois.filter(x => Number(x.sortOrder) !== 1).map(x => `<option value="${esc(routeNode(x))}" ${state.from === routeNode(x) ? 'selected' : ''}>${esc(stopNumber(x))} · ${esc(x.name)}</option>`).join('')}</select><button id="route" class="button">↗ ${esc(t('route'))}</button></div><p class="route-result" id="route-result">${state.route ? esc(`${state.route.km.toFixed(1)} ${t('distance')} ${state.route.minutes} ${t('minute')}. ${t('map')}`) : ''}</p></div></div>`;
   $('#share').ariaLabel = t('share'); $('#share').title = t('share');
   const sourceControl = document.createElement('label');
   sourceControl.className = 'field';
@@ -379,7 +381,6 @@ $('#stop-list').onclick = event => { const b = event.target.closest('[data-id]')
 $('#map').onclick = event => { const b = event.target.closest('[data-id]'); if (b) selectPoi(b.dataset.id); };
 $('#map').onkeydown = event => { if (['Enter', ' '].includes(event.key) && event.target.matches('[data-id]')) { event.preventDefault(); selectPoi(event.target.dataset.id); } };
 $('#map-reset').onclick = () => {
-  zoom = 1;
   state.route = null;
   state.selected = null;
   state.query = '';

@@ -15,7 +15,7 @@
 /* Catalog numbers and schematic callouts stay inside their badges. */
 .stop-num{white-space:nowrap;line-height:1;font-variant-numeric:tabular-nums;overflow:hidden}
 .map-view-bar{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:10px 18px;flex-wrap:wrap}.map-view-bar strong{font-size:14px}.map-view-bar #map-mode{margin:0;border:1px solid var(--line);border-radius:8px;background:#fafbf4;font-size:12px}
-.schematic-leader{fill:none;stroke-width:1.5;opacity:.5}.schematic-card{stroke-width:1.5}.map-stop:focus-visible .schematic-card,.map-stop:hover .schematic-card{stroke-width:3}.map-stop:focus-visible{outline:none}.map-stop .schematic-number{font-family:"Guide Noto","Segoe UI",sans-serif;font-size:21px;fill:#234d3a;font-weight:700}.map-label.schematic-label{font-family:"Guide Noto","Segoe UI",sans-serif;font-size:19px;stroke:none;fill:#234d3a}.map-stop[aria-pressed="true"] .schematic-label{fill:#fff}.schematic-title{font-family:"Guide Noto","Segoe UI",sans-serif;font-size:25px;font-weight:600;fill:#234d3a}.schematic-note{font-family:"Guide Noto","Segoe UI",sans-serif;font-size:18px;fill:#607452}
+.schematic-leader{fill:none;stroke:#7d9471;stroke-width:1.7}.schematic-card{stroke:#cbd9bf;stroke-width:1}.map-stop:focus-visible .schematic-card,.map-stop:hover .schematic-card{stroke:#234d3a;stroke-width:3}.map-stop:focus-visible{outline:none}.schematic-number{font-family:"Guide Noto","Segoe UI",sans-serif;font-size:19px;font-weight:700;pointer-events:none}.schematic-mini-number{font-size:10px}.map-label.schematic-label{font-family:"Guide Noto","Segoe UI",sans-serif;font-size:20px;stroke:none;fill:#234d3a}.map-stop[aria-pressed="true"] .schematic-label{fill:#fff}.schematic-title{font-family:"Guide Noto","Segoe UI",sans-serif;font-size:28px;font-weight:650;fill:#234d3a}.schematic-note{font-family:"Guide Noto","Segoe UI",sans-serif;font-size:18px;fill:#607452}.schematic-inset{fill:#f3f6ec;stroke:#bfceb2;stroke-width:1.5}.schematic-panel-title{font-family:"Guide Noto","Segoe UI",sans-serif;font-size:18px;font-weight:600;fill:#637b54}.schematic-focus-area{fill:none;stroke:#81966e;stroke-width:1.5;stroke-dasharray:6 5}
 @media(max-width:800px){.map-stop[aria-pressed="false"] .schematic-label{display:block}}
 .player-options .button{width:auto}
 .gps-auto-hint{font-size:11px;line-height:1.55;color:var(--muted);margin:6px 0 12px}.player-options input:disabled{cursor:not-allowed}.player-options label:has(input:disabled){color:var(--muted)}
@@ -27,3 +27,17 @@
 
 /* SVG groups can keep a browser focus rectangle after pointer/touch selection. */
 svg .map-stop:focus,svg .map-stop:focus-visible{outline:none!important;box-shadow:none!important;-webkit-tap-highlight-color:transparent}
+
+/* Keep the visitor schematic fixed while point selection remains interactive. */
+.map-card:has(.reference-map){height:auto;align-self:start;border-color:#d3e4db;box-shadow:0 10px 30px #164c4009}
+.map-card:has(.reference-map) .map-heading,.map-card:has(.reference-map) .map-view-bar{background:#f5f9f7}
+.map-card:has(.reference-map) .map-view-bar{border-bottom:1px solid #dceae2}
+.map-card:has(.reference-map) .map-bottom{background:#f5f9f7;border-color:#dceae2}
+.map:has(>.reference-map){flex:0 0 auto;min-height:0;background:#edf5f2}
+.map svg.reference-map{height:auto;min-height:0;max-height:none;aspect-ratio:1400/990}
+.map-heading>div:first-child{min-width:0}
+.map-heading-actions{display:flex;gap:6px;flex-shrink:0;margin-left:12px}
+.map-heading-actions .icon-button{background:#fafcf6;border-color:#cfdbc4}
+.map-heading-actions .icon-button:disabled{cursor:default;opacity:.4}
+.map .reference-map{user-select:none;-webkit-user-select:none}
+.schematic-map-frame{position:relative;isolation:isolate}

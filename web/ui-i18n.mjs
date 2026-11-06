@@ -2,6 +2,12 @@
 // Rows: Vietnamese | English | Japanese | Korean | Chinese.
 import {EXTRA_ROWS} from './ui-extra.mjs';
 const rows = [
+['Thu phóng sơ đồ','Map zoom','地図の拡大・縮小','지도 확대/축소','地图缩放'],
+['Phóng to','Zoom in','拡大','확대','放大'],
+['Thu nhỏ','Zoom out','縮小','축소','缩小'],
+['Phóng to khu trung tâm','Centre close-up','中心部の拡大図','중심 구역 확대','中心区域放大图'],
+['Vị trí trong khu vực','Regional overview','周辺の位置図','지역 내 위치','区域位置图'],
+['Khu trung tâm ↖','Centre close-up ↖','中心部の拡大図 ↖','중심 구역 확대 ↖','中心区域放大图 ↖'],
 ['VƯỜN QUỐC GIA','NATIONAL PARK','国立公園','국립공원','国家公园'],
 ['SƠ ĐỒ · KHÔNG THEO TỈ LỆ','SCHEMATIC · NOT TO SCALE','概略図・縮尺なし','개략도 · 실제 축척 아님','示意图 · 非实际比例'],
 ['QR Code','QR Code','QRコード','QR 코드','二维码'],
