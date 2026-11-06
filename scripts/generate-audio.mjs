@@ -13,11 +13,15 @@ try{
  const items=[];let page=1,data;
  do{data=await call(`admin/pois?limit=100&page=${page++}`);items.push(...data.items);}while(items.length<data.total);
  let queued=0;const ids=[];
- const codeFilter=process.argv.find(a=>a.startsWith('--codes='))?.slice(8).split(',');
+ const requestedCodes=process.argv.find(a=>a.startsWith('--codes='))?.slice(8).split(',').map(s=>s.trim());
+ const assignedCodes=process.env.TTS_CODES?.split(',').map(s=>s.trim()).filter(Boolean);
  const assigned=process.env.TTS_LANGUAGES?.split(',').map(s=>s.trim()).filter(Boolean);
  const langFilter=process.argv.find(a=>a.startsWith('--langs='))?.slice(8).split(',')||(assigned?.length?assigned:undefined);
  if(langFilter?.some(l=>!['vi','en','ja','ko','zh'].includes(l)))throw new Error('Use --langs=vi,en,ja,ko,zh with the languages assigned to you.');
  if(assigned?.length&&langFilter?.some(l=>!assigned.includes(l)))throw new Error('Requested language is outside TTS_LANGUAGES; update your assignment and restart the backend first.');
+ if(requestedCodes?.some(code=>!code))throw new Error('Provide non-empty POI codes with --codes.');
+  if(assignedCodes?.length&&requestedCodes?.some(code=>!assignedCodes.includes(code)))throw new Error('Requested POI is outside TTS_CODES; update your assignment and restart the backend first.');
+ const codeFilter=requestedCodes?.length?requestedCodes:assignedCodes?.length?assignedCodes:undefined;
  for(const poi of items.filter(p=>p.status==='PUBLISHED'&&(!codeFilter||codeFilter.includes(p.code)))){ids.push(poi.id);for(const tr of poi.translations.filter(t=>!langFilter||langFilter.includes(t.langCode))){const out=await call(`admin/pois/${poi.id}/audios/generate`,'POST',{langCode:tr.langCode,voiceGender:'FEMALE'});queued+=out.queued;}}
  console.log(`Queued ${queued} missing narrations. Existing READY recordings are preserved.`);
  for(let n=0;n<1800;n++){

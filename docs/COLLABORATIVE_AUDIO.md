@@ -39,7 +39,7 @@ Nhóm thống nhất mỗi ngôn ngữ chỉ có một người phụ trách t�
 | Người phụ trách Hàn | ko | 2 | 15 |
 | Người phụ trách Trung | zh | 3 | 14 |
 
-Nếu ít hơn năm người, một người nhận nhiều tiếng, ví dụ `TTS_LANGUAGES=vi,ja`. Nếu muốn chia nhỏ một tiếng, dùng `--codes=1,2,3` và thống nhất mã POI không trùng. Giới hạn worker hiện theo ngôn ngữ; bộ lọc mã chỉ giới hạn job mới do lệnh tạo, không giới hạn job mã khác đã tồn tại trong hàng đợi. Không dùng chung database đang chạy nhiều worker với các khóa khác nhau: trạng thái dừng quota hiện lưu theo provider trên database đó.
+Nếu ít hơn năm người, một người nhận nhiều tiếng, ví dụ `TTS_LANGUAGES=vi,ja`. Nếu muốn chia nhỏ một tiếng, dùng `--codes=1,2,3` và thống nhất mã POI không trùng. Khi có `TTS_CODES`, lệnh tạo mặc định chỉ chọn các mã được giao và từ chối mã ngoài danh sách; `--codes` chỉ thu hẹp thêm phạm vi đó. Worker vẫn chỉ lấy mã/ngôn ngữ đã khai báo trong env, kể cả database có các job cũ khác. Không dùng chung database đang chạy nhiều worker với các khóa khác nhau: trạng thái dừng quota hiện lưu theo provider trên database đó.
 
 Lịch Codex của tác giả hiện nhằm bổ sung mọi bài thiếu. Trước khi nhóm bắt đầu chia bài, cần giới hạn `TTS_LANGUAGES` của máy tác giả vào phần đã thống nhất và khởi động lại backend để tránh tạo trùng với thành viên khác. Không cần gửi khóa của các thành viên cho tác giả.
 
