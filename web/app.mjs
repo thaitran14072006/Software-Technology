@@ -461,7 +461,7 @@ $('#admin-list').onclick = async event => {
     const dialog = $('#confirm-dialog'); dialog.returnValue = ''; dialog.showModal();
     dialog.addEventListener('close', async () => { if (dialog.returnValue !== 'delete') return; b.disabled = true; try { await deletePoi(poi.id); toast('Đã xóa điểm.'); await refresh(); await showAdmin(); } catch (error) { toast(error.message, true); b.disabled = false; } }, { once: true });
   }
-  if (b.dataset.regen) { b.disabled = true; try { const result = await api(`admin/pois/${b.dataset.regen}/audios/regenerate`, { method: 'POST' }); toast(`Đã đưa ${result.queued} audio lỗi vào hàng đợi tạo lại.`); } catch (error) { toast(error.message, true); } finally { b.disabled = false; } }
+  if (b.dataset.regen) { b.disabled = true; try { const config = await api('configs'); if (config.tts_paused_until && Date.parse(config.tts_paused_until) > Date.now()) throw new Error(`TTS đang tạm dừng do hết hạn mức đến ${new Date(config.tts_paused_until).toLocaleString('vi-VN')}.`); const result = await api(`admin/pois/${b.dataset.regen}/audios/regenerate`, { method: 'POST' }); toast(`Đã đưa ${result.queued} audio lỗi vào hàng đợi tạo lại.`); } catch (error) { toast(error.message, true); } finally { b.disabled = false; } }
 };
 window.addEventListener('offline', () => { $('#connection').textContent = 'Ngoại tuyến'; });
 window.addEventListener('online', () => { refresh(); usage.flush(); });

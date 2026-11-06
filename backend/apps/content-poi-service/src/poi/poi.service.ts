@@ -1,4 +1,4 @@
-import { BadRequestException, ConflictException, Injectable, NotFoundException } from '@nestjs/common';
+import { BadRequestException, ConflictException, HttpException, HttpStatus, Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { DataSource, EntityManager, Repository } from 'typeorm';
 import { randomUUID } from 'crypto';
@@ -11,12 +11,19 @@ import { CreatePoiDto } from '../dto/v1/create-poi.dto';
 import { UpdatePoiDto } from '../dto/v1/update-poi.dto';
 import { PoiCacheService } from '../cache/poi-cache.service';
 import { RevService } from '../sync/rev.service';
+import { isQuotaFailure } from './tts-quota';
 export {sha256} from '@app/common/hash';
 const LOCALE:Record<string,string>={vi:'vi-VN',en:'en-US',ja:'ja-JP',zh:'cmn-CN',ko:'ko-KR'};
 export function checkLang(lang:string) { if(!Object.prototype.hasOwnProperty.call(LOCALE,lang)) throw new BadRequestException('Ngôn ngữ không được hỗ trợ.'); }
 @Injectable()
 export class PoiService {
  constructor(private ds:DataSource,@InjectRepository(Poi) private pois:Repository<Poi>,@InjectRepository(PoiAudio) private audios:Repository<PoiAudio>,private cache:PoiCacheService,private rev:RevService) {}
+ private async ensureTtsNotPaused(m:EntityManager) {
+   const provider=process.env.TTS_PROVIDER??'DEVICE';
+   const [pause]=await m.query('SELECT value FROM app_configs WHERE key=$1',[`tts_pause_${provider}`]);
+   const until=pause?.value?.until;
+   if(until&&Date.parse(until)>Date.now()) throw new HttpException(`TTS đang tạm dừng do hết hạn mức đến ${new Date(until).toLocaleString('vi-VN')}.`,HttpStatus.TOO_MANY_REQUESTS);
+ }
  private validateTranslations(translations:any[] = []) {
    const seen=new Set(); for(const t of translations) { checkLang(t.langCode); if(seen.has(t.langCode)) throw new BadRequestException('Trùng ngôn ngữ.'); seen.add(t.langCode); }
  }
@@ -80,21 +87,24 @@ export class PoiService {
  }
  async regenerateAudio(poiId:string) {
    const queued=await contentWrite(this.ds,async m=>{
+     await this.ensureTtsNotPaused(m);
      const poi=await m.findOne(Poi,{where:{id:poiId}}); if(!poi) throw new NotFoundException();
      const rows=await m.find(PoiAudio,{where:{poiId,source:'TTS'},relations:{translation:true}});
-     let n=0; for(const a of rows) {
+     let n=0,quotaFailures=0; for(const a of rows) {
        if(a.status==='READY') continue;
-       const [active]=await m.query("SELECT id FROM tts_jobs WHERE id=$1 AND (status='QUEUED' OR (status='RUNNING' AND lease_until>now()))",[(a as any).currentJobId??null]);
-       if(active) continue;
+       const [current]=await m.query('SELECT status,error_message,lease_until>now() AS lease_active FROM tts_jobs WHERE id=$1',[(a as any).currentJobId??null]);
+       if(current?.status==='FAILED'&&isQuotaFailure(current.error_message)){quotaFailures++;continue;}
+       if(current?.status==='QUEUED'||(current?.status==='RUNNING'&&current.lease_active)) continue;
        await this.queue(m,poi,a.translation,a); n++;
      }
-     if(!n) throw new BadRequestException('Không có audio lỗi hoặc quá hạn cần tạo lại.');
+     if(!n) throw new BadRequestException(quotaFailures?'Audio lỗi do hết quota được giữ nguyên, không tự thử lại.':'Không có audio lỗi hoặc quá hạn cần tạo lại.');
      return {value:n,ids:[poiId]};
    }); return {queued};
  }
  async generateMissing(poiId:string,lang:string,gender:'MALE'|'FEMALE',force=false) {
   checkLang(lang);
   return contentWrite(this.ds,async m=>{
+   await this.ensureTtsNotPaused(m);
    const poi=await m.findOne(Poi,{where:{id:poiId}}),tr=await m.findOne(PoiTranslation,{where:{poiId,langCode:lang}});
    if(!poi||!tr)throw new NotFoundException();
    const audios=await m.find(PoiAudio,{where:{translationId:tr.id}});
@@ -102,7 +112,7 @@ export class PoiService {
    const ready=audios.find(a=>a.status==='READY'&&a.textHash===tr.textHash&&a.audioUrl&&(a.source==='UPLOAD'||a.provider===desired));
    if(ready&&(!force||ready.source==='UPLOAD'))return {value:{queued:0,reason:'ALREADY_READY'},ids:[]};
    const old=force&&ready?ready:audios.find(a=>a.voiceGender===gender);
-   if(old?.currentJobId){const [job]=await m.query("SELECT id FROM tts_jobs WHERE id=$1 AND (status='QUEUED' OR (status='RUNNING' AND lease_until>now()))",[old.currentJobId]);if(job)return {value:{queued:0,reason:'ALREADY_QUEUED'},ids:[]};}
+   if(old?.currentJobId){const [job]=await m.query('SELECT status,error_message,lease_until>now() AS lease_active FROM tts_jobs WHERE id=$1',[old.currentJobId]);if(job?.status==='FAILED'&&isQuotaFailure(job.error_message))throw new BadRequestException('Audio lỗi do hết quota được giữ nguyên, không tự thử lại.');if(job?.status==='QUEUED'||(job?.status==='RUNNING'&&job.lease_active))return {value:{queued:0,reason:'ALREADY_QUEUED'},ids:[]};}
    const a=await m.save(PoiAudio,m.create(PoiAudio,{...(old??{}),poiId,translationId:tr.id,langCode:lang,voiceGender:gender,source:'TTS',status:'PENDING',audioUrl:null,textHash:null,currentJobId:null}));
    await this.queue(m,poi,tr,a);return {value:{queued:1,reason:'QUEUED'},ids:[poiId]};
   });
