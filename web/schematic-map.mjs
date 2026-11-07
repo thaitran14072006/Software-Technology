@@ -1,16 +1,14 @@
-import {REFERENCE_STOPS,renderReferenceMap} from './reference-map.mjs';
+import {REFERENCE_STOPS,renderReferenceMap,referenceStopName} from './reference-map.mjs';
 
 // Use the poster as the single source for visitor-facing stop numbers.
 // Places outside the schematic stay unnumbered instead of borrowing a catalog order.
 const posterNumbers = new Map(REFERENCE_STOPS.map(([number]) => [String(number), String(number)]));
-const posterStops = new Map(REFERENCE_STOPS.map(stop => [String(stop[0]), stop]));
 export function stopNumber(poi) {
   return posterNumbers.get(String(poi?.code)) || '•';
 }
 
 export function schematicStopName(poi) {
-  const stop = posterStops.get(String(poi.code));
-  return stop && (!poi.lang || poi.lang === 'vi') ? stop[3] : poi.name;
+  return referenceStopName(poi.code,poi.lang || 'vi') || poi.name;
 }
 
 // Cards follow the same fifteen numbered stops and order as the drawing.
@@ -31,5 +29,5 @@ export function schematicLayout(pois) {
 }
 
 export function renderSchematic(options) {
-  return renderReferenceMap({...options,zoom:1,center:undefined});
+  return renderReferenceMap({...options,lang:options.lang || options.pois?.find(p=>p.lang)?.lang || 'vi',zoom:1,center:undefined});
 }

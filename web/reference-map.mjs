@@ -18,6 +18,19 @@ export const REFERENCE_STOPS = [
   [15,1123,339,'Rừng bằng lăng Đà Cộ','Da Co Lagerstroemia Forest','tree',1123,381,'middle'],
 ];
 
+// Names belong to the poster: API names can describe a broader facility at the
+// same stable code. Share these translations with cards and the detail heading.
+const localizedNames = {
+  en:['Wildlife Rescue Station','Tung Giant Tree','Five-topped Lagerstroemia','Cycad','Ben Cu Rapids','Botanical Garden','Bac Dong Go Tree','Loc Giao Banyan','Crocodile Lake','Six-lobed Tree','Vase-shaped Lagerstroemia','Dai Phong Tu Forest','Hundred-trunked Ficus','Troi Waterfall','Da Co Lagerstroemia Forest'],
+  ja:['野生動物救護所','トゥンの巨木','五つ又のサルスベリ','ソテツ','ベンクーの急流','植物園','バックドンのゴーの木','ロックザオのガジュマル','クロコダイル湖','六稜の木','花瓶形のサルスベリ','大風子の森','百幹のガジュマル','チョイ滝','ダコーのサルスベリ林'],
+  ko:['야생동물 구조소','퉁 거목','다섯 갈래 배롱나무','소철','벤꾸 급류','식물원','박동 고 나무','록자오 반얀나무','악어 호수','여섯 골 나무','화병 모양 배롱나무','대풍자 숲','백 줄기 반얀나무','쯔어이 폭포','다꼬 배롱나무 숲'],
+  zh:['野生动物救护站','Tung 巨树','五冠紫薇树','苏铁','Ben Cu 急流','植物园','胡伯同纪念红木树','鹿交榕树','鳄鱼湖','六棱树','花瓶形紫薇树','大风子林','百干榕树','Troi 瀑布','Da Co 紫薇林'],
+};
+export function referenceStopName(code,lang='vi') {
+  const stop=REFERENCE_STOPS.find(([n])=>String(n)===String(code));
+  return stop ? localizedNames[lang]?.[stop[0]-1] || stop[3] : undefined;
+}
+
 export const REFERENCE_MAP_CSS = `
 .reference-map{display:block;width:100%;height:auto;background:#edf5f2;font-family:"Poster Noto","Segoe UI",Arial,sans-serif}
 .reference-map text{font-family:inherit}
@@ -49,11 +62,11 @@ function botanicalArtwork(){
   return `<g class="poster-botanical" aria-hidden="true" opacity=".67">${tree(943,731,.62)}${tree(1041,712,.96)}${tree(1152,746,.59)}<path d="M873 788Q1008 776 1233 790M906 797H976M1086 801H1178M911 783l-4-11m13 10 5-10m227 12-3-12m10 13 6-9" fill="none" stroke="#adcab8" stroke-width="1.4" stroke-linecap="round"/><g transform="translate(1218 114) rotate(-20)" fill="none" stroke="#89b59f" stroke-width="1.6"><path d="M-36 34Q12-4 19-52"/><path d="M-17 18Q-51 7-41-13Q-16-15-12 11M1-4Q-23-26-4-39Q17-32 6-12M13-27Q6-51 24-59Q39-44 19-29M-23 22Q1 35 14 15Q-2 1-19 17M0-2Q29 7 34-15Q16-25 5-7"/></g></g>`;
 }
 
-export function renderReferenceMap({pois,visibleIds=pois?.map(p=>p.id),selectedId,routeCodes=[],zoom=1,center}={}){
+export function renderReferenceMap({pois,visibleIds=pois?.map(p=>p.id),selectedId,routeCodes=[],zoom=1,center,lang='vi',translate=text=>text}={}){
   const viewport=mapViewport(zoom,center);
   const byCode=new Map((pois||[]).map(p=>[p.code,p]));
   const visible=new Set(visibleIds),filtered=pois && visible.size<pois.length;
-  const attributes=(p,name)=>p && visible.has(p.id)?`class="map-stop" role="button" tabindex="0" data-id="${escape(p.id)}" aria-label="${escape(p.name||name)}" aria-pressed="${p.id===selectedId}"`:'';
+  const attributes=(p,name)=>p && visible.has(p.id)?`class="map-stop" role="button" tabindex="0" data-id="${escape(p.id)}" aria-label="${escape(name)}" aria-pressed="${p.id===selectedId}"`:'';
   const positions=new Map(REFERENCE_STOPS.map(([n,x,y])=>[String(n),{x,y}]));
   positions.set('0',{x:385,y:817});positions.set('coord-01',positions.get('0'));
   const route=routeCodes.slice(1).map((code,i)=>{
@@ -65,9 +78,13 @@ export function renderReferenceMap({pois,visibleIds=pois?.map(p=>p.id),selectedI
   const branches='M320 742L396 737M329 619L383 575 416 661M354 585L390 665 418 669M437 428L466 376M361 389L377 323M218 318L279 282M216 245L246 214M149 213L182 173M96 182L134 141';
   const stops=REFERENCE_STOPS.map(([n,x,y,name,,type,tx,ty,anchor])=>{
     const p=byCode.get(String(n)),active=!!p && p.id===selectedId,small=n===1 || n===12;
-    const width=name.length*(small?7.5:9)+24,height=32;
+    const label=referenceStopName(n,lang);
+    const measured=[...label].reduce((sum,char)=>sum+(/[\u3000-\u9fff\uac00-\ud7af]/u.test(char)?18:char===' '?4.5:9),0);
+    const available=anchor==='end'?tx-16:anchor==='start'?MAP_WIDTH-tx-16:2*Math.min(tx-16,MAP_WIDTH-tx-16);
+    const fontSize=Math.min(small?15.5:18,available/Math.max(measured,1)*18);
+    const width=Math.min(measured*fontSize/18,available)+20,height=32;
     const bx=anchor==='end'?tx-width+10:anchor==='middle'?tx-width/2:tx-10;
-    return `<g data-reference-stop="${n}" ${attributes(p,name)}${filtered && !visible.has(p?.id)?' opacity=".2"':''}><title>${n}. ${name}</title><rect class="poster-label-box" x="${bx}" y="${ty-23}" width="${width}" height="${height}" rx="9"/>${active?`<circle class="poster-selected" cx="${x}" cy="${y}" r="27"/>`:''}${number(n,x,y,type,18,active)}<text class="poster-name${small?' poster-name-small':''}" x="${tx}" y="${ty}" text-anchor="${anchor}">${name}</text></g>`;
+    return `<g data-reference-stop="${n}" ${attributes(p,label)}${filtered && !visible.has(p?.id)?' opacity=".2"':''}><title>${n}. ${escape(label)}</title><rect class="poster-label-box" x="${bx}" y="${ty-23}" width="${width}" height="${height}" rx="9"/>${active?`<circle class="poster-selected" cx="${x}" cy="${y}" r="27"/>`:''}${number(n,x,y,type,18,active)}<text class="poster-name${small?' poster-name-small':''}" style="font-size:${fontSize}px" textLength="${width-20}" lengthAdjust="spacingAndGlyphs" x="${tx}" y="${ty}" text-anchor="${anchor}">${escape(label)}</text></g>`;
   }).join('');
   const distances=[[158,130,'2km'],[254,179,'1km'],[205,196,'0,5km'],[300,238,'3km'],[368,287,'4,5km'],[430,328,'2km'],[529,378,'0,5km'],[287,300,'5km'],[707,319,'3,6km'],[1028,277,'0,7km'],[480,492,'0,1km'],[474,596,'0,6km'],[350,644,'0,2km'],[440,716,'0,7km']].map(([x,y,label])=>`<text class="poster-distance" x="${x}" y="${y}">${label}</text>`).join('');
   const centerPoi=byCode.get('coord-01'),centerSelected=!!centerPoi && centerPoi.id===selectedId;
@@ -79,7 +96,7 @@ export function renderReferenceMap({pois,visibleIds=pois?.map(p=>p.id),selectedI
   <circle cx="30" cy="865" r="400" fill="url(#poster-canopy)"/>
   <circle cx="1370" cy="150" r="340" fill="url(#poster-canopy)" opacity=".55"/>
   ${botanicalArtwork()}
-  <g fill="#174f40"><text x="635" y="67" font-size="14" font-weight="600" letter-spacing="3.5">VƯỜN QUỐC GIA</text><text x="630" y="135" font-size="64" font-weight="650" letter-spacing="1">CÁT TIÊN</text><text x="635" y="174" font-size="15" font-weight="450" letter-spacing="2.5" fill="#6c8c7c">SƠ ĐỒ THAM QUAN · TOURIST MAP</text></g>
+  <g fill="#174f40"><text x="635" y="67" font-size="14" font-weight="600" letter-spacing="3.5">VƯỜN QUỐC GIA</text><text x="630" y="135" font-size="64" font-weight="650" letter-spacing="1">CÁT TIÊN</text><text x="635" y="174" font-size="15" font-weight="450" letter-spacing="2.5" fill="#6c8c7c">${escape(translate('Sơ đồ tham quan'))}</text></g>
   <path d="${trail}" fill="none" stroke="#8ca786" stroke-width="3.6" stroke-dasharray="10 9" stroke-linecap="round"/>
   <path d="${branches}" fill="none" stroke="#a5bca0" stroke-width="2" stroke-dasharray="4 6" stroke-linecap="round"/>
   <path d="${road}" fill="none" stroke="#9bbfb0" stroke-opacity=".32" stroke-width="18" stroke-linecap="round"/>
@@ -90,8 +107,8 @@ export function renderReferenceMap({pois,visibleIds=pois?.map(p=>p.id),selectedI
   ${distances}${stopSign(124,88)}${stopSign(1263,296)}
   ${water(124,348,395)}${water(544,287,252)}${water(273,775,823)}${water(1026,343,414)}
   ${route}${stops}
-  <g transform="translate(459 762)"><circle r="23" fill="#f5fcf9" stroke="#9ccbbd" stroke-width="1.7"/><path d="M-13 2H13L8 10H-9Z" fill="#508e84"/><path d="M-4-9H4V3H-4Z" fill="#508e84"/><path d="M-12 13Q-8 10-4 13T4 13T12 13" fill="none" stroke="#508e84" stroke-width="1.6"/></g><text class="poster-name" x="500" y="768">Bến phà</text>
-  <g ${attributes(centerPoi,'Trung tâm Du khách')}><g transform="translate(385 817)">${centerSelected?'<circle class="poster-selected" r="37"/>':''}<circle r="28" fill="#f6fcf8" stroke="#69a387" stroke-width="2.5"/><path d="M-15 0L0-15 15 0H10V15H-9V0Z" fill="#377f60"/><path d="M-3 15V4H4V15" fill="#f6fcf8"/></g><rect class="poster-label-box" x="422" y="800" width="215" height="32" rx="9"/><text class="poster-name" x="433" y="823">Trung tâm Du khách</text></g>
-  <g class="poster-legend"><path d="M68 927H108" stroke="#25826b" stroke-width="5" stroke-linecap="round"/><text x="122" y="932">Đường lớn</text><path d="M252 927H296" stroke="#8ca786" stroke-width="3.4" stroke-dasharray="9 7" stroke-linecap="round"/><text x="312" y="932">Đường mòn đi bộ</text></g>
+  <g transform="translate(459 762)"><circle r="23" fill="#f5fcf9" stroke="#9ccbbd" stroke-width="1.7"/><path d="M-13 2H13L8 10H-9Z" fill="#508e84"/><path d="M-4-9H4V3H-4Z" fill="#508e84"/><path d="M-12 13Q-8 10-4 13T4 13T12 13" fill="none" stroke="#508e84" stroke-width="1.6"/></g><text class="poster-name" x="500" y="768">${escape(translate('Bến phà'))}</text>
+  <g ${attributes(centerPoi,translate('Trung tâm Du khách'))}><g transform="translate(385 817)">${centerSelected?'<circle class="poster-selected" r="37"/>':''}<circle r="28" fill="#f6fcf8" stroke="#69a387" stroke-width="2.5"/><path d="M-15 0L0-15 15 0H10V15H-9V0Z" fill="#377f60"/><path d="M-3 15V4H4V15" fill="#f6fcf8"/></g><rect class="poster-label-box" x="422" y="800" width="215" height="32" rx="9"/><text class="poster-name" x="433" y="823">${escape(translate('Trung tâm Du khách'))}</text></g>
+  <g class="poster-legend"><path d="M68 927H108" stroke="#25826b" stroke-width="5" stroke-linecap="round"/><text x="122" y="932">${escape(translate('Đường lớn'))}</text><path d="M252 927H296" stroke="#8ca786" stroke-width="3.4" stroke-dasharray="9 7" stroke-linecap="round"/><text x="312" y="932">${escape(translate('Đường mòn đi bộ'))}</text></g>
   </svg>`;
 }
