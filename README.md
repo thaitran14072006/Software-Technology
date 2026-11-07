@@ -2,6 +2,8 @@
 
 # Smart Audio Guide — Cát Tiên
 
+**Khởi động để dùng quản trị:** bật Docker Desktop rồi chạy `npm start` tại thư mục dự án. Lệnh này khởi động cả web, backend và database. Giữ terminal chạy trong lúc sử dụng; không cần khởi động lại cho mỗi lần đăng nhập. `npm run dev` chỉ mở web demo, không khởi động backend đăng nhập. Nếu đã có phiên chạy, dùng phiên đó hoặc dừng bằng Ctrl+C trước khi mở phiên mới.
+
 **Thành viên vừa clone/pull:** bắt đầu tại [hướng dẫn làm việc nhóm](docs/TEAM_SETUP.md). Cài Node.js 24 và Docker Desktop, chạy `npm run dev:full` tại thư mục có file này. Script tự cài backend, tạo database và tài khoản admin riêng, nhập 17 POI/85 bản dịch cùng 16 MP3 Google đã chia sẻ. Không cần khóa Google để nghe các MP3 này. Sau khi cài lần đầu, dùng `git pull --ff-only` để nhận mã mới; đọc hướng dẫn trước khi cập nhật dữ liệu đã chỉnh sửa.
 
 **Chia nhau tạo Google audio:** xem [COLLABORATIVE_AUDIO.md](docs/COLLABORATIVE_AUDIO.md). Mỗi thành viên dùng khóa riêng phía backend, nhận một phần ngôn ngữ bằng `TTS_LANGUAGES`, tạo MP3 rồi commit fixture để cả nhóm pull và nhập bằng `npm run content:seed`.

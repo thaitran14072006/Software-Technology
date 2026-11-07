@@ -82,7 +82,8 @@ export function createServer(options = {}) {
       if(!error.status && error.code!=='ENOENT') console.warn('Web upstream error:',error.message,error.cause?.message || '');
       const missing = error.code === 'ENOENT';
       res.writeHead(error.status || (missing ? 404 : 502), { 'content-type': 'application/json' });
-      res.end(JSON.stringify({ message: error.status ? error.message : missing ? 'File not found' : 'Không kết nối được dịch vụ. Kiểm tra máy chủ hoặc backend đang chạy.' }));
+      const backendRequest=req.url.startsWith('/content-api/') || req.url.startsWith('/qr-api/');
+      res.end(JSON.stringify({ message: error.status ? error.message : missing ? 'File not found' : backendRequest ? 'Chưa kết nối được backend. Bật Docker Desktop và chạy npm start để khởi động đầy đủ hệ thống. Nếu terminal đã chạy, kiểm tra nhật ký backend.' : 'Không kết nối được dịch vụ. Kiểm tra máy chủ hoặc backend đang chạy.' }));
     }
   });
 }

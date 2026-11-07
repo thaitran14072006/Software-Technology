@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "node web/build.mjs && node web/server.mjs",
-    "start": "node web/build.mjs && node web/server.mjs",
+    "start": "node scripts/dev-full.mjs",
     "dev:full": "node scripts/dev-full.mjs",
     "token": "node scripts/print-dev-token.mjs",
     "infra:stop": "docker compose -f backend/docker/docker-compose.yml --profile \"*\" stop",

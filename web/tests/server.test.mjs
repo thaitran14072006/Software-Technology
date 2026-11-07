@@ -6,6 +6,7 @@ import { DemoAnalytics } from '../demo-analytics.mjs';
 let upstream, server, origin;
 before(async () => {
   upstream = http.createServer(async (req, res) => {
+    if(req.url==='/api/v1/auth/login'){req.socket.destroy();return;}
     let body = ''; for await (const part of req) body += part;
     res.writeHead(200, { 'content-type': 'application/json' });
     res.end(JSON.stringify({ path: req.url, authorization: req.headers.authorization, method: req.method, body }));
@@ -46,6 +47,17 @@ test('proxies admin bodies and JWT to configured backend without caching', async
 test('QR requests use the separate configured service', async () => {
   const res = await fetch(`${origin}/qr-api/qr/demo-bausau-001`);
   assert.equal((await res.json()).path, '/api/v1/qr/demo-bausau-001');
+});
+
+test('An unavailable login backend explains how to start the full application',async()=>{
+  const response=await fetch(`${origin}/content-api/auth/login`,{
+    method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({email:'test@example.com',password:'private-test-password'}),
+  });
+  assert.equal(response.status,502);
+  const {message}=await response.json();
+  assert.match(message,/Docker Desktop/);
+  assert.match(message,/npm start/);
+  assert.ok(!message.includes('private-test-password'));
 });
 test('demo HTTP analytics aggregate users and listeners with no caching', async () => {
   const visitorId = randomUUID(), sessionId = randomUUID();
