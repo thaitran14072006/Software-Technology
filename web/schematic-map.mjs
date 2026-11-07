@@ -8,7 +8,7 @@ export function stopNumber(poi) {
 }
 
 export function schematicStopName(poi) {
-  return referenceStopName(poi.code,poi.lang || 'vi',poi);
+  return referenceStopName(poi.code,poi.lang || 'vi') || poi.name;
 }
 
 // Cards follow the same fifteen numbered stops and order as the drawing.
@@ -29,5 +29,5 @@ export function schematicLayout(pois) {
 }
 
 export function renderSchematic(options) {
-  return renderReferenceMap({...options,zoom:1,center:undefined});
+  return renderReferenceMap({...options,lang:options.lang || options.pois?.find(p=>p.lang)?.lang || 'vi',zoom:1,center:undefined});
 }

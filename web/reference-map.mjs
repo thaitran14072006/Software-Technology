@@ -19,10 +19,10 @@ export const REFERENCE_STOPS = [
 ];
 
 const names = {
-  en:['Wildlife Rescue Station','Giant Tung Tree','Five-topped Lagerstroemia','Cycad','Ben Cu Rapids','Botanical Garden','Bac Dong Tree','Loc Giao Ficus','Crocodile Lake','Six-lobed Tree','Vase-shaped Lagerstroemia','Dai Phong Tu Forest','Hundred-trunked Ficus','Heaven Rapids','Da Co Lagerstroemia Forest'],
-  ja:['野生動物救護センター','トゥンの巨木','五つ又のサルスベリ','ソテツ','ベンクーの急流','植物園','バックドンの木','ロックザオのガジュマル','クロコダイル湖','六稜の木','花瓶形のサルスベリ','大風子の森','百幹のガジュマル','天国の急流','ダコーのサルスベリ林'],
-  ko:['야생동물 구조센터','거대한 퉁나무','다섯 갈래 배롱나무','소철','벤끄 급류','식물원','박동 나무','록자오 무화과나무','악어 호수','여섯 골 나무','화병 모양 배롱나무','대풍자 숲','백 줄기 반얀나무','천국 급류','다꼬 배롱나무 숲'],
-  zh:['野生动物救护站','巨型 Tung 树','五冠紫薇树','苏铁','Ben Cu 急流','植物园','Bac Dong 树','Loc Giao 榕树','鳄鱼湖','六棱树','花瓶形紫薇树','大风子林','百干榕树','天堂急流','Da Co 紫薇林'],
+  en:['Wildlife Rescue Station','Tung Giant Tree','Five-topped Lagerstroemia','Cycad','Ben Cu Rapids','Botanical Garden','Bac Dong Go Tree','Loc Giao Banyan','Crocodile Lake','Six-lobed Tree','Vase-shaped Lagerstroemia','Dai Phong Tu Forest','Hundred-trunked Ficus','Troi Waterfall','Da Co Lagerstroemia Forest'],
+  ja:['野生動物救護所','トゥンの巨木','五つ又のサルスベリ','ソテツ','ベンクーの急流','植物園','バックドンのゴーの木','ロックザオのガジュマル','クロコダイル湖','六稜の木','花瓶形のサルスベリ','大風子の森','百幹のガジュマル','チョイ滝','ダコーのサルスベリ林'],
+  ko:['야생동물 구조소','퉁 거목','다섯 갈래 배롱나무','소철','벤꾸 급류','식물원','박동 고 나무','록자오 반얀나무','악어 호수','여섯 골 나무','화병 모양 배롱나무','대풍자 숲','백 줄기 반얀나무','쯔어이 폭포','다꼬 배롱나무 숲'],
+  zh:['野生动物救护站','Tung 巨树','五冠紫薇树','苏铁','Ben Cu 急流','植物园','胡伯同纪念红木树','鹿交榕树','鳄鱼湖','六棱树','花瓶形紫薇树','大风子林','百干榕树','Troi 瀑布','Da Co 紫薇林'],
 };
 
 const copy = {
@@ -37,8 +37,8 @@ export function referenceStopName(number,lang='vi',poi) {
   const stop=REFERENCE_STOPS.find(([n])=>String(n)===String(number));
   if(!stop)return poi?.name || '';
   if(!copy[lang] || lang==='vi')return stop[3];
-  return poi?.translations?.find(t=>t.langCode===lang)?.name
-    || (poi?.lang===lang && poi.name) || names[lang]?.[stop[0]-1] || stop[4];
+  // Keep poster identity consistent across map, cards, details and route picker.
+  return names[lang]?.[stop[0]-1] || stop[4];
 }
 
 // Estimate mixed Latin/CJK labels so a longer translation fits its map slot.
@@ -98,7 +98,7 @@ export function renderReferenceMap({pois,visibleIds=pois?.map(p=>p.id),selectedI
     const slot=anchor==='end'?tx-20:anchor==='middle'?2*Math.min(tx-18,MAP_WIDTH-tx-18):MAP_WIDTH-tx-20;
     const available=Math.min(slot,n===14?140:n===15?200:Infinity);
     const labelWidth=Math.min(measured,available),width=labelWidth+24,height=32;
-    const fit=measured>available?` style="font-size:${fontSize*available/measured}px" textLength="${available}" lengthAdjust="spacingAndGlyphs"`:'';
+    const fit=` style="font-size:${Math.min(fontSize,fontSize*available/Math.max(measured,1))}px" textLength="${labelWidth}" lengthAdjust="spacingAndGlyphs"`;
     const bx=anchor==='end'?tx-width+10:anchor==='middle'?tx-width/2:tx-10;
     return `<g data-reference-stop="${n}" ${attributes(p,name)}${filtered && !visible.has(p?.id)?' opacity=".2"':''}><title>${n}. ${escape(name)}</title><rect class="poster-label-box" x="${bx}" y="${ty-23}" width="${width}" height="${height}" rx="9"/>${active?`<circle class="poster-selected" cx="${x}" cy="${y}" r="27"/>`:''}${number(n,x,y,type,18,active)}<text class="poster-name${small?' poster-name-small':''}" x="${tx}" y="${ty}" text-anchor="${anchor}"${fit}>${escape(name)}</text></g>`;
   }).join('');

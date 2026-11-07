@@ -10,6 +10,7 @@ const rows = [
 ['Khu trung tâm ↖','Centre close-up ↖','中心部の拡大図 ↖','중심 구역 확대 ↖','中心区域放大图 ↖'],
 ['VƯỜN QUỐC GIA','NATIONAL PARK','国立公園','국립공원','国家公园'],
 ['SƠ ĐỒ · KHÔNG THEO TỈ LỆ','SCHEMATIC · NOT TO SCALE','概略図・縮尺なし','개략도 · 실제 축척 아님','示意图 · 非实际比例'],
+['Đường lớn','Main road','幹線道路','주요 도로','主路'],['Đường mòn đi bộ','Walking trail','遊歩道','산책로','步行道'],['Bến phà','Ferry landing','渡し場','나루터','渡口'],['Tiếp nước','Water refill','給水所','급수대','补水点'],
 ['QR Code','QR Code','QRコード','QR 코드','二维码'],
 ['Tọa độ đối chiếu nguồn bản đồ','Coordinates checked against a map source','地図資料と照合した座標','지도 출처와 대조한 좌표','已与地图来源核对的坐标'],
 ['Hạn mức Google đã hết. Có thể tiếp tục từ {0}.','Google quota is exhausted. Generation can resume from {0}.','Googleの利用上限に達しました。{0}以降に生成を再開できます。','Google 할당량을 모두 사용했습니다. {0}부터 생성을 재개할 수 있습니다.','Google配额已用完，可从{0}起继续生成。'],

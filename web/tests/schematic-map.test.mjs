@@ -1,8 +1,8 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
-import {schematicLayout,stopNumber,renderSchematic} from '../schematic-map.mjs';
-import {REFERENCE_STOPS,renderReferenceMap} from '../reference-map.mjs';
+import {schematicLayout,stopNumber,renderSchematic,schematicStopName,schematicStops} from '../schematic-map.mjs';
+import {REFERENCE_STOPS,renderReferenceMap,referenceStopName} from '../reference-map.mjs';
 const seed=JSON.parse(await readFile(new URL('../dist/data/pois.json',import.meta.url)));
 const pois=seed.pois.map(p=>({...p,name:p.translations.find(t=>t.langCode==='vi').name}));
 const input={pois,visibleIds:pois.map(p=>p.id)};
@@ -52,11 +52,31 @@ test('Filtering leaves poster geometry fixed and makes only matching current pla
   assert.equal((svg.match(/class="map-stop"/g)||[]).length,1);
   assert.match(svg,new RegExp('data-id="'+tree.id+'"'));
   assert.match(svg,/cx="329" cy="619"/);
-  const malicious={...tree,id:'<bad" id>',lang:'en',translations:[],name:'<img onerror=alert(1)>'};
-  const safe=renderSchematic({lang:'en',pois:[malicious],visibleIds:[malicious.id]});
-  assert.ok(safe.includes('&lt;img'));
+  const malicious={...tree,id:'<bad" id>',name:'<img onerror=alert(1)>'};
+  const safe=renderSchematic({pois:[malicious],visibleIds:[malicious.id]});
+  assert.ok(safe.includes('&lt;bad'));
   assert.ok(!safe.includes('<img'));
   assert.ok(!safe.includes('data-id="<bad'));
+});
+
+test('All 15 map labels, accessible names, cards and detail names use the same language',()=>{
+  for(const lang of ['vi','en','ja','ko','zh']) {
+    // Backend facility names can differ from the original poster names.
+    const items=REFERENCE_STOPS.map(([n])=>({id:`point-${n}`,code:String(n),lang,name:'Unrelated API facility name'}));
+    const svg=renderSchematic({pois:items,visibleIds:items.map(p=>p.id),lang});
+    const cards=schematicStops(items);
+    for(const poi of items) {
+      const name=referenceStopName(poi.code,lang);
+      assert.ok(name);
+      assert.equal(schematicStopName(poi),name);
+      assert.equal(cards.find(p=>p.code===poi.code).name,name);
+      assert.ok(svg.includes(`aria-label="${name}"`));
+      assert.ok(svg.includes(`>${name}</text>`));
+      assert.ok(svg.includes(`<title>${poi.code}. ${name}</title>`));
+      if(lang!=='vi')assert.notEqual(name,referenceStopName(poi.code,'vi'));
+    }
+    assert.ok(!svg.includes('Unrelated API facility name'));
+  }
 });
 
 test('Existing route codes and center links use positions in the poster',()=>{

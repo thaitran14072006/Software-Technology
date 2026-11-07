@@ -49,7 +49,7 @@ test('Standalone maps and missing translations have names for every stop in all 
 });
 
 test('Long translated names fit the map and remain escaped',()=>{
-  const malicious={code:'13',id:'long-name',lang:'en',name:'<script>'+('Very long name '.repeat(30)),translations:[]};
+  const malicious={code:'13',id:'<script>long-name',lang:'en',name:'<script>'+('Very long name '.repeat(30)),translations:[]};
   const svg=renderSchematic({lang:'en',pois:[malicious]});
   assert.ok(svg.includes('textLength="152" lengthAdjust="spacingAndGlyphs"'));
   assert.ok(svg.includes('&lt;script&gt;'));
