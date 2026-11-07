@@ -145,7 +145,7 @@ function renderMap() {
   $('#map-caption').textContent = translateUI(outdoorVisible ? 'Bản đồ OpenStreetMap' : 'Sơ đồ tham quan · không theo tỉ lệ địa lý',state.lang);
   $('#map-legend').hidden = outdoorVisible || !state.route;
   $('#schematic-map-frame').hidden=outdoorVisible;
-  $('#map').innerHTML = renderSchematic({pois:state.pois,visibleIds:filtered().map(p=>p.id),selectedId:state.selected,routeCodes:state.route?.codes || [],
+  $('#map').innerHTML = renderSchematic({lang:state.lang,pois:state.pois,visibleIds:filtered().map(p=>p.id),selectedId:state.selected,routeCodes:state.route?.codes || [],
     title:translateUI('Sơ đồ tham quan',state.lang),note:translateUI('SƠ ĐỒ · KHÔNG THEO TỈ LỆ',state.lang),translate:text=>translateUI(text,state.lang)});
 }
 function renderDetail() {

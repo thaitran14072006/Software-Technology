@@ -52,8 +52,8 @@ test('Filtering leaves poster geometry fixed and makes only matching current pla
   assert.equal((svg.match(/class="map-stop"/g)||[]).length,1);
   assert.match(svg,new RegExp('data-id="'+tree.id+'"'));
   assert.match(svg,/cx="329" cy="619"/);
-  const malicious={...tree,id:'<bad" id>',name:'<img onerror=alert(1)>'};
-  const safe=renderSchematic({pois:[malicious],visibleIds:[malicious.id]});
+  const malicious={...tree,id:'<bad" id>',lang:'en',translations:[],name:'<img onerror=alert(1)>'};
+  const safe=renderSchematic({lang:'en',pois:[malicious],visibleIds:[malicious.id]});
   assert.ok(safe.includes('&lt;img'));
   assert.ok(!safe.includes('<img'));
   assert.ok(!safe.includes('data-id="<bad'));
