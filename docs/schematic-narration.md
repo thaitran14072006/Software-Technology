@@ -5,7 +5,14 @@ Nội dung nằm trong `web/schematic-content.mjs`, gồm tiếng Việt và cá
 Anh, Nhật, Hàn, Trung. Các điểm dùng vị trí trên sơ đồ, không có tọa độ GPS.
 Trang khám phá ghép nội dung này vào danh sách khi tải; nội dung có sẵn cùng mã
 được ưu tiên giữ nguyên. Danh mục GPS và dữ liệu quản trị không bị thay đổi.
-Nút nghe sử dụng cơ chế đọc bằng giọng trình duyệt khi chưa có MP3.
+MP3 của các điểm này được build vào trường `schematicPois` của gói dữ liệu.
+Trang khám phá chỉ gắn audio khi nội dung và mã băm khớp với bản thuyết minh
+hiện tại. Nút nghe sử dụng giọng trình duyệt khi chưa có MP3.
+
+Trình tạo `scripts/generate-demo-gemini-audio.mjs` nhận `--schematic` để đọc
+đúng bài của sáu điểm này, kết hợp `--only=3:vi,4:vi,6:vi,10:vi,11:vi,12:vi`.
+Đặt `GEMINI_VOICE_VI=Sulafat` trong môi trường của tiến trình khi tạo các bài
+tiếng Việt này; không cần đổi giọng của các MP3 đã có ở địa điểm khác.
 
 Nội dung được biên soạn mới, không sao chép lời giới thiệu từ nguồn tham khảo.
 Tên và vị trí điểm giữ theo sơ đồ người dùng cung cấp. Không bổ sung tuổi cây,

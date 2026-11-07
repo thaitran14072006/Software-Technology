@@ -107,7 +107,7 @@ async function refresh() {
     await loadRuntimeConfig();
     const result = await getPois(state.lang);
     if (run !== refreshId) return;
-    state.pois = withSchematicNarration(result.items,state.lang).sort((a, b) => (a.sortOrder??0)-(b.sortOrder??0)||a.code.localeCompare(b.code, undefined, { numeric: true }));
+    state.pois = withSchematicNarration(result.items,state.lang,seed.schematicPois).sort((a, b) => (a.sortOrder??0)-(b.sortOrder??0)||a.code.localeCompare(b.code, undefined, { numeric: true }));
     state.source = result.source;
     if (!selected()) state.selected = state.pois.find(p => p.code === new URL(location.href).searchParams.get('poi'))?.id || state.pois.find(p => p.code === '9')?.id || state.pois[0]?.id;
     state.route = null;

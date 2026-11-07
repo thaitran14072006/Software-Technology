@@ -48,14 +48,20 @@ const stories = {
   },
 };
 
-export function withSchematicNarration(items, lang) {
+export function withSchematicNarration(items, lang, recordings=[]) {
   const codes = new Set(items.map(p => p.code));
   const lastOrder = Math.max(0, ...items.map(p => Number(p.sortOrder) || 0));
   const extra = REFERENCE_STOPS.filter(([n]) => stories[n] && !codes.has(String(n))).map(([n,x,y,,,type], index) => {
     const translations = Object.entries(stories[n]).map(([langCode,[name,scriptText]]) => ({langCode,name,scriptText,summary:''}));
+    const recorded=recordings.find(p=>p.code===String(n));
+    const audios=(recorded?.audios || []).filter(audio=>{
+      const source=recorded.translations?.find(t=>t.langCode===audio.langCode);
+      const current=translations.find(t=>t.langCode===audio.langCode);
+      return source?.textHash && audio.textHash===source.textHash && source.scriptText===current?.scriptText;
+    });
     return localize({id:`schematic-${n}`,code:String(n),sortOrder:lastOrder+index+1,
       categoryId:type==='facility'?1:2,status:'PUBLISHED',schematic:[x,y],
-      lat:null,lng:null,geoVerified:false,geoSourceUrl:null,translations,audios:[]},lang);
+      lat:null,lng:null,geoVerified:false,geoSourceUrl:null,translations,audios},lang);
   });
   return [...items, ...extra];
 }

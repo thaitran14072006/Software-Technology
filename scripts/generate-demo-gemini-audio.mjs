@@ -3,6 +3,7 @@ import { createHash } from 'node:crypto';
 import { mkdir, readFile, rename, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import {withSchematicNarration} from '../web/schematic-content.mjs';
 
 const root = fileURLToPath(new URL('../', import.meta.url));
 process.loadEnvFile(path.join(root, 'backend', '.env'));
@@ -39,7 +40,10 @@ if (!(maxTasks > 0)) throw new Error(`Invalid --max value: ${maxArg}`);
 class RateLimitError extends Error { constructor(message, waitMs) { super(message); this.waitMs = waitMs; } }
 const wait = ms => new Promise(resolve => setTimeout(resolve, ms));
 const fixture = JSON.parse(await readFile(path.join(root, 'backend/fixtures/content.json'), 'utf8'));
-const pois = fixture.pois.filter(p => codeFilter ? codeFilter.has(p.code) : Number(p.code) >= 1 && Number(p.code) <= 15);
+const sourcePois = process.argv.includes('--schematic')
+  ? withSchematicNarration([], 'vi').map(p=>({code:p.code,translations:p.translations.map(t=>({lang_code:t.langCode,script_text:t.scriptText}))}))
+  : fixture.pois;
+const pois = sourcePois.filter(p => codeFilter ? codeFilter.has(p.code) : Number(p.code) >= 1 && Number(p.code) <= 15);
 const outDir = path.join(root, 'web/narration-audio');
 const manifestPath = path.join(outDir, 'manifest.json');
 await mkdir(outDir, { recursive: true });

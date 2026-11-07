@@ -54,3 +54,17 @@ test('Visitor cards match all fifteen poster numbers, names and order',()=>{
   assert.deepEqual(filtered.map(p=>p.code),['14','15']);
   assert.deepEqual(schematicStops([]),[]);
 });
+
+test('Poster-only stops attach MP3s only for the exact current transcript and language',()=>{
+  const poi=withSchematicNarration([], 'vi').find(p=>p.code==='3');
+  const vi=poi.translations.find(t=>t.langCode==='vi');
+  const record={code:'3',translations:[{...vi,textHash:'exact-hash'}],audios:[{
+    langCode:'vi',status:'READY',audioUrl:'/audio/3-vi.mp3',provider:'GEMINI',voiceName:'Sulafat',textHash:'exact-hash',
+  }]};
+  const get=(lang,recording)=>withSchematicNarration([],lang,[recording]).find(p=>p.code==='3');
+  assert.equal(get('vi',record).audio.url,'/audio/3-vi.mp3');
+  assert.equal(get('vi',record).audio.voiceName,'Sulafat');
+  assert.equal(get('en',record).audio,null);
+  assert.equal(get('vi',{...record,translations:[{...vi,scriptText:'Old transcript',textHash:'exact-hash'}]}).audio,null);
+  assert.equal(get('vi',{...record,audios:[{...record.audios[0],textHash:'wrong-hash'}]}).audio,null);
+});

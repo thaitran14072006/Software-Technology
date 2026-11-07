@@ -3,6 +3,8 @@ import { fileURLToPath } from 'node:url';
 import path from 'node:path';
 import vm from 'node:vm';
 import {REFERENCE_MAP_CSS} from './reference-map.mjs';
+import {withSchematicNarration} from './schematic-content.mjs';
+import {createHash} from 'node:crypto';
 
 const root = fileURLToPath(new URL('../', import.meta.url));
 const out = path.join(root, 'web', 'dist');
@@ -79,9 +81,11 @@ const audioOut = path.join(out, 'audio');
 await mkdir(audioOut, { recursive: true });
 // Prefer a generated clip only when it was synthesized from the current exact
 // transcript. This also lets fresh Gemini audio replace older source recordings.
+const schematicPois=withSchematicNarration([], 'vi').map(p=>({...p,
+  translations:p.translations.map(t=>({...t,textHash:createHash('sha256').update(t.scriptText).digest('hex')})),audios:[],audio:null}));
 for (const [key, record] of Object.entries(generatedAudio)) {
   const [code, lang] = key.split(':');
-  const poi = pois.find(p => p.code === code);
+  const poi = [...pois,...schematicPois].find(p => p.code === code);
   const translation = poi?.translations.find(t => t.langCode === lang);
   if (!translation || record.textHash !== translation.textHash || poi.audios.some(a => a.langCode === lang)) continue;
   const file = `${code}-${lang}.mp3`;
@@ -100,6 +104,6 @@ for (const file of await readdir(path.join(root, 'backend', 'fixtures', 'audio')
 }
 await writeFile(path.join(out, 'data', 'pois.json'), JSON.stringify({
   mapId: '00000000-0000-0000-0000-000000000001',catalogVersion:catalog.sourceSha256,
-  pois, edges,
+  pois, schematicPois, edges,
 }, null, 2));
 console.log(`Built web/dist: ${pois.length} stops, 5 languages. No external dependencies.`);

@@ -46,12 +46,12 @@
   },
   "11:vi": {
     "file": "11-vi.mp3",
-    "textHash": "2e9b467a4bd594e5c1b9c3d7b00c1ac268fc2b7481dde3512d9833402454908a",
+    "textHash": "50357c792b139e2d7d47c1585979c8353c380054f5ce7d81677c54c0bef9d362",
     "provider": "GEMINI",
     "model": "gemini-3.8-flash-tts",
-    "voice": "Kore",
-    "voiceName": "Gemini gemini-3.8-flash-tts · Kore",
-    "bytes": 576428
+    "voice": "Sulafat",
+    "voiceName": "Gemini gemini-3.8-flash-tts · Sulafat",
+    "bytes": 452012
   },
   "12:en": {
     "file": "12-en.mp3",
@@ -238,12 +238,12 @@
   },
   "4:vi": {
     "file": "4-vi.mp3",
-    "textHash": "2b945465803ac0aa0858b49f0a3a9ff34ad39fe87c0837ac387e159e73a70a6f",
+    "textHash": "09a98c5f25b910f055d694d2c7ce7c3c87a526d5edd7f3d6143d1b165b943371",
     "provider": "GEMINI",
     "model": "gemini-3.8-flash-tts",
-    "voice": "Kore",
-    "voiceName": "Gemini gemini-3.8-flash-tts · Kore",
-    "bytes": 554540
+    "voice": "Sulafat",
+    "voiceName": "Gemini gemini-3.8-flash-tts · Sulafat",
+    "bytes": 397100
   },
   "4:en": {
     "file": "4-en.mp3",
@@ -307,12 +307,12 @@
   },
   "6:vi": {
     "file": "6-vi.mp3",
-    "textHash": "f2ce2b6f80eabffe1bd8410fcdc5814d800d73c20ddc6a888d2a6edd9596e8db",
+    "textHash": "2ae448a50312facad8fa8c0963c9713ef7b10be59b06c528aba698ee85799606",
     "provider": "GEMINI",
     "model": "gemini-3.8-flash-tts",
-    "voice": "Kore",
-    "voiceName": "Gemini gemini-3.8-flash-tts · Kore",
-    "bytes": 559148
+    "voice": "Sulafat",
+    "voiceName": "Gemini gemini-3.8-flash-tts · Sulafat",
+    "bytes": 489260
   },
   "6:en": {
     "file": "6-en.mp3",
@@ -430,30 +430,30 @@
   },
   "3:vi": {
     "file": "3-vi.mp3",
-    "textHash": "d597029336ee71843bcb5e3e473465460b47e891b2a7a0b5dcfb0736ecea8bc1",
+    "textHash": "9576f1dc3395fada43b79f1e9b5e7406e570a88a31c9564d6db8500ffc934a8c",
     "provider": "GEMINI",
     "model": "gemini-3.8-flash-tts",
-    "voice": "Kore",
-    "voiceName": "Gemini gemini-3.8-flash-tts · Kore",
-    "bytes": 518828
+    "voice": "Sulafat",
+    "voiceName": "Gemini gemini-3.8-flash-tts · Sulafat",
+    "bytes": 433580
   },
   "10:vi": {
     "file": "10-vi.mp3",
-    "textHash": "9c83c0b98fbea14b14fd6bf55cd6d03b174afe19397a32cbfc3472e2eda5be17",
+    "textHash": "ab49da24e92025cb8d5c6dda53fb1355dc7b19f0a22d4859af167138e4c141d2",
     "provider": "GEMINI",
     "model": "gemini-3.8-flash-tts",
-    "voice": "Kore",
-    "voiceName": "Gemini gemini-3.8-flash-tts · Kore",
-    "bytes": 574892
+    "voice": "Sulafat",
+    "voiceName": "Gemini gemini-3.8-flash-tts · Sulafat",
+    "bytes": 438572
   },
   "12:vi": {
     "file": "12-vi.mp3",
-    "textHash": "f8fd37b165e63e27181f0e8d1eb07acef6e89d0f6ac66a6165a301d53ea6bbd3",
+    "textHash": "33d4aaeb4d6bf1a61029bc18ba41546b9e9cda1447792b533a3b6f953f5669eb",
     "provider": "GEMINI",
     "model": "gemini-3.8-flash-tts",
-    "voice": "Kore",
-    "voiceName": "Gemini gemini-3.8-flash-tts · Kore",
-    "bytes": 516908
+    "voice": "Sulafat",
+    "voiceName": "Gemini gemini-3.8-flash-tts · Sulafat",
+    "bytes": 459692
   },
   "2:en": {
     "file": "2-en.mp3",
