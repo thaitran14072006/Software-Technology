@@ -1,6 +1,6 @@
 {
   "formatVersion": 1,
-  "exportedAt": "2026-10-25T16:24:51.557Z",
+  "exportedAt": "2026-11-10T15:03:45.196Z",
   "pois": [
     {
       "code": "coord-01",
@@ -74,7 +74,16 @@
           "name": "Crocodile Lake",
           "summary": "Bau Sau",
           "script_text": "Bau Sau is a wetland of international importance, recognized under the Ramsar Convention. This place is considered the heart of the Nam Cat Tien ecosystem. This vast wetland is the natural home of hundreds of Siamese crocodiles, a rare freshwater crocodile species once believed to be extinct. Visiting here, you will admire pristine scenery reminiscent of an ink wash painting, and experience rowing a boat amidst the wetland where crocodiles live in their natural habitat.",
-          "text_hash": "66c55e508cd56594d7670c33c1ba6779d1dbea8d4f5e94f3ba6e7dd27a64cf15"
+          "text_hash": "66c55e508cd56594d7670c33c1ba6779d1dbea8d4f5e94f3ba6e7dd27a64cf15",
+          "audio": {
+            "file": "audio/9-en-2bef86f1c1e7.mp3",
+            "sha256": "2bef86f1c1e73c5489402f424d45192dbf59ff6234ff654c309590c7b709fcbb",
+            "sizeBytes": 523820,
+            "durationSec": 32.74,
+            "voiceGender": "FEMALE",
+            "voiceName": "gemini-3.8-flash-tts/Charon",
+            "provider": "GEMINI"
+          }
         },
         {
           "lang_code": "ja",
@@ -137,12 +146,12 @@
           "script_text": "This is a giant tree more than four hundred years old, soaring in height. The most distinctive feature of the Tung tree is its massive, exposed buttress root system that spreads wide and grips tightly into the earth, forming magnificent natural buttresses. To completely encircle the base of this tree requires the joined hands of about twenty adults.",
           "text_hash": "374c1a5258f527e076561ffdffdadd59a4e37321b94d65749f817a09ec4ef6a5",
           "audio": {
-            "file": "audio/2-en-d3b5c80aeb4a.mp3",
-            "sha256": "d3b5c80aeb4a4ec362f7ce53326690c18f8009e88ba5dd6aa609f3bfb11dc03b",
-            "sizeBytes": 434732,
-            "durationSec": "27.17",
+            "file": "audio/2-en-958147edc929.mp3",
+            "sha256": "958147edc929db07803b8f9b7a7b780a51a04bf27e413544bb379ac713503886",
+            "sizeBytes": 402092,
+            "durationSec": 25.13,
             "voiceGender": "FEMALE",
-            "voiceName": "gemini-3.8-flash-lite-tts/Kore",
+            "voiceName": "gemini-3.8-flash-tts/Charon",
             "provider": "GEMINI"
           }
         },
@@ -151,14 +160,32 @@
           "name": "トゥンの巨木",
           "summary": "Tung dai thu",
           "script_text": "樹齢四百年を超え、そびえ立つ高さを誇る大樹です。トゥンの木の最大の特徴は、地表に露出した巨大で壮大な板根で、地面に広く張り巡らされ、堅固に根づいて雄大な天然の衝立を形成しています。この木の根元を一回り抱きかかえるには、およそ二十人の大人が手をつなぎ合う必要があります。",
-          "text_hash": "c3ed77fa1f5eab02d85bfc37f235df6de913eb44af8cdbc52e1397f012552bd0"
+          "text_hash": "c3ed77fa1f5eab02d85bfc37f235df6de913eb44af8cdbc52e1397f012552bd0",
+          "audio": {
+            "file": "audio/2-ja-e448a1d029b8.mp3",
+            "sha256": "e448a1d029b81ea271b86121d3f2bd4b85115c71b4eacc16d3920068cc25316e",
+            "sizeBytes": 448940,
+            "durationSec": 28.06,
+            "voiceGender": "FEMALE",
+            "voiceName": "gemini-3.8-flash-tts/Aoede",
+            "provider": "GEMINI"
+          }
         },
         {
           "lang_code": "ko",
           "name": "오래된 퉁 나무",
           "summary": "Tung dai thu",
           "script_text": "이 나무는 수령이 사백 년 이상 된 거목으로 하늘 높이 우뚝 솟아 있습니다. 뚱 나무의 가장 두드러진 특징은 땅 위로 거대하게 드러나 사방으로 뻗어 나가며 대지를 단단히 움켜쥐고 있는 판근(판자뿌리)으로, 경이로운 자연의 칸막이 벽을 이룹니다. 이 나무의 밑동을 완전히 둘러싸려면 성인 스무 명가량이 양팔을 이어 벌려야 합니다.",
-          "text_hash": "a72f0f4c97ec437e1eb8aebb1b99bc0522778c509eac3d354905ed339d23178c"
+          "text_hash": "a72f0f4c97ec437e1eb8aebb1b99bc0522778c509eac3d354905ed339d23178c",
+          "audio": {
+            "file": "audio/2-ko-786e22872e55.mp3",
+            "sha256": "786e22872e552cac1e1a7f2660e935ad0c630c965659612f2fd52e84ea13e2eb",
+            "sizeBytes": 436652,
+            "durationSec": 27.29,
+            "voiceGender": "FEMALE",
+            "voiceName": "gemini-3.8-flash-tts/Iapetus",
+            "provider": "GEMINI"
+          }
         },
         {
           "lang_code": "vi",
@@ -203,7 +230,16 @@
           "name": "バックドンのゴーの木",
           "summary": "Cay Go Bac Dong",
           "script_text": "希少な樹種であるゴドー（アフゼリア）の古木で、樹齢は七百年を超えています。「バック・ドンの木」という名称は、千九百八十八年に故ファム・ヴァン・ドン首相が当園を視察し、森林資源の保全を指示された出来事を記念して名づけられました。幹は極めて太く、その木陰は原生林の一角を覆い尽くすほどです。",
-          "text_hash": "f10e129f01b3a99e806a4769133b39f77b4a836fb865352709b11805955b99ba"
+          "text_hash": "f10e129f01b3a99e806a4769133b39f77b4a836fb865352709b11805955b99ba",
+          "audio": {
+            "file": "audio/7-ja-75ee8f2652c3.mp3",
+            "sha256": "75ee8f2652c386808cb0c9dfb7044e3594f8844ad88b50002f63f974b490d40d",
+            "sizeBytes": 442028,
+            "durationSec": 27.63,
+            "voiceGender": "FEMALE",
+            "voiceName": "gemini-3.8-flash-tts/Aoede",
+            "provider": "GEMINI"
+          }
         },
         {
           "lang_code": "ko",
@@ -224,7 +260,16 @@
           "name": "胡伯同纪念红木树",
           "summary": "Cay Go Bac Dong",
           "script_text": "这是一棵珍稀的缅茄（红木）古树，树龄已有七百多年。这棵树被命名为“同叔红木树”，是为了纪念已故政府总理范文同于一千九百八十八年视察国家公园并嘱咐做好森林资源保护工作这一事件。树干粗壮宏伟，枝叶茂盛，树冠遮蔽了整整一片原始古林。",
-          "text_hash": "52f96332f23cc081dc9d14e8277197df5ab09973367cde5bab5485c0ba039f8f"
+          "text_hash": "52f96332f23cc081dc9d14e8277197df5ab09973367cde5bab5485c0ba039f8f",
+          "audio": {
+            "file": "audio/7-zh-a24d45a7476e.mp3",
+            "sha256": "a24d45a7476e255b4174af21f50ec2312d22b5d87337aa84395b3fb5ce2246ab",
+            "sizeBytes": 406700,
+            "durationSec": 25.42,
+            "voiceGender": "FEMALE",
+            "voiceName": "gemini-3.8-flash-tts/Sulafat",
+            "provider": "GEMINI"
+          }
         }
       ]
     },
@@ -250,12 +295,12 @@
           "script_text": "This is a cluster of ancient ficus trees growing right beside a cool stream. Over hundreds of years of growth, the branches and aerial roots of the tree have dropped down, penetrating deeply into the ground and the water's surface. They form an intricate, winding, and secluded network of trunks, resembling a mystical labyrinth.",
           "text_hash": "fafb2d2cd2d4c4901090c1caf274250a6a03d3745b1d124392d67349c2ee956d",
           "audio": {
-            "file": "audio/13-en-e40673a23e63.mp3",
-            "sha256": "e40673a23e6302a73716d053e0e28740b14f012e44f9ff00579d478e15169c3b",
-            "sizeBytes": 394412,
-            "durationSec": "24.65",
+            "file": "audio/13-en-b2f63aab584e.mp3",
+            "sha256": "b2f63aab584e45cc084ed00e3ef30aeffa630453fee1df1efb1e77ac40b0a644",
+            "sizeBytes": 366380,
+            "durationSec": 22.9,
             "voiceGender": "FEMALE",
-            "voiceName": "gemini-3.8-flash-lite-tts/Kore",
+            "voiceName": "gemini-3.8-flash-tts/Charon",
             "provider": "GEMINI"
           }
         },
@@ -264,14 +309,32 @@
           "name": "百幹のガジュマル",
           "summary": "Cay Si Tram Than",
           "script_text": "清らかな小川のほとりに生えるガジュマル類の古木の群落です。数百年に及ぶ成長を経て、無数の枝や気根が垂れ下がり、大地や湖面深くへと突き刺さっています。それらが複雑に入り組んだ静寂な幹のネットワークを形成し、まるで神秘的な迷宮のようです。",
-          "text_hash": "1bf40857673bff138d44790f266dbd03e65a842e99933e7b0c851636909c7b96"
+          "text_hash": "1bf40857673bff138d44790f266dbd03e65a842e99933e7b0c851636909c7b96",
+          "audio": {
+            "file": "audio/13-ja-453394a8d435.mp3",
+            "sha256": "453394a8d435edca19a998a34f14273186174c7cdebc65d5b7b3cbc4ec2943b7",
+            "sizeBytes": 389420,
+            "durationSec": 24.34,
+            "voiceGender": "FEMALE",
+            "voiceName": "gemini-3.8-flash-tts/Aoede",
+            "provider": "GEMINI"
+          }
         },
         {
           "lang_code": "ko",
           "name": "백 줄기 반얀나무",
           "summary": "Cay Si Tram Than",
           "script_text": "이곳은 맑고 시원한 계곡물 바로 곁에서 자라는 고대 시(Si) 무화과나무 군락입니다. 수백 년 동안 자라나며 나뭇가지와 곁뿌리가 아래로 드리워져 땅속과 호수 바닥에 깊숙이 뿌리를 내렸습니다. 이 뿌리와 줄기들이 어지럽게 얽히고설키며 구불구불 이어져, 마치 신비로운 미로와도 같은 고요한 숲 그늘을 만들어 냅니다.",
-          "text_hash": "5e6014cf0fa73912acdbdf9aa31242aeb50a1dd785e0f48e7d3e3f0c958d9884"
+          "text_hash": "5e6014cf0fa73912acdbdf9aa31242aeb50a1dd785e0f48e7d3e3f0c958d9884",
+          "audio": {
+            "file": "audio/13-ko-4e10f8944617.mp3",
+            "sha256": "4e10f89446170e03f4eeb156e7f2ae2af8f4c74d140ccecce4c92bdef05c0582",
+            "sizeBytes": 430892,
+            "durationSec": 26.93,
+            "voiceGender": "FEMALE",
+            "voiceName": "gemini-3.8-flash-tts/Iapetus",
+            "provider": "GEMINI"
+          }
         },
         {
           "lang_code": "vi",
@@ -280,12 +343,12 @@
           "script_text": "Đây là quần thể si cổ thụ mọc ngay bên dòng suối mát. Qua hàng trăm năm phát triển, các cành nhánh và rễ phụ của cây buông xuống, cắm sâu vào lòng đất và mặt hồ. Chúng tạo nên một mạng lưới thân cây chằng chịt, uốn lượn u tịch, như một mê cung huyền bí.",
           "text_hash": "abc469007129d309d3cd64055ee1a2cfec14da8c8106826cd2a2dcde8e0c90f3",
           "audio": {
-            "file": "audio/13-vi-89df1026a9af.mp3",
-            "sha256": "89df1026a9afa08e4d058e2398eded32d5cb14b218c380a0270f0645c01b4a95",
-            "sizeBytes": 309932,
-            "durationSec": "19.37",
+            "file": "audio/13-vi-e9136907d192.mp3",
+            "sha256": "e9136907d192e372c55336ccd054010f98aae17b2862d3d564db29f59c8ed1ac",
+            "sizeBytes": 271148,
+            "durationSec": 16.95,
             "voiceGender": "FEMALE",
-            "voiceName": "gemini-3.8-flash-lite-tts/Kore",
+            "voiceName": "gemini-3.8-flash-tts/Achird",
             "provider": "GEMINI"
           }
         },
@@ -294,7 +357,16 @@
           "name": "百干榕树",
           "summary": "Cay Si Tram Than",
           "script_text": "这是一处生长在清凉溪流旁的古榕树群落。历经数百年的生长演变，树枝与不定根垂落下来，深深扎入泥土与水底。它们交织成一片盘根错节、静谧幽深的树干网络，宛如一座神秘莫测的迷宫。",
-          "text_hash": "3b2ba089d92e3af60952a7465a1fbef4f627b31ead113cbd9282c69ec29061ba"
+          "text_hash": "3b2ba089d92e3af60952a7465a1fbef4f627b31ead113cbd9282c69ec29061ba",
+          "audio": {
+            "file": "audio/13-zh-c24d5feb8210.mp3",
+            "sha256": "c24d5feb8210a5c58b7d5071827095ae37566938782539f8e57d1b1fcb20d936",
+            "sizeBytes": 326060,
+            "durationSec": 20.38,
+            "voiceGender": "FEMALE",
+            "voiceName": "gemini-3.8-flash-tts/Sulafat",
+            "provider": "GEMINI"
+          }
         }
       ]
     },
@@ -318,28 +390,64 @@
           "name": "Loc Giao Banyan",
           "summary": "Da Loc Giao",
           "script_text": "This is one of the wondrous masterpieces of nature in Cat Tien. The tree has an extraordinarily unique shape, formed by hundreds of clustered roots and trunks intertwining and clinging tightly around a former host tree. The Loc Giao Banyan Tree symbolizes the fierce, resilient, and enduring vitality of tropical forest vegetation.",
-          "text_hash": "cd914112e80ee8b373e38111fdae064e9aeaa40d2175201539752558409a319f"
+          "text_hash": "cd914112e80ee8b373e38111fdae064e9aeaa40d2175201539752558409a319f",
+          "audio": {
+            "file": "audio/8-en-c8986693246d.mp3",
+            "sha256": "c8986693246d36a2f08b15edc1e14b7059a61577a0684f9fcddda194b52f126e",
+            "sizeBytes": 395948,
+            "durationSec": 24.75,
+            "voiceGender": "FEMALE",
+            "voiceName": "gemini-3.8-flash-tts/Charon",
+            "provider": "GEMINI"
+          }
         },
         {
           "lang_code": "ja",
           "name": "ロックザオのガジュマル",
           "summary": "Da Loc Giao",
           "script_text": "カッティエンにおける自然の驚異的な傑作の一つです。宿主となった古い木を取り囲み、絡み合いながら密集する何百本もの気根や幹によって、非常に独特な姿をしています。ダ・ロックザオの木は、熱帯雨林の植物が持つ力強く、粘り強く、永続的な生命力を象徴しています。",
-          "text_hash": "44ec42fd8f6122706ea7318f710833e3dd63a56312aa8074bdd60d822a6bfba0"
+          "text_hash": "44ec42fd8f6122706ea7318f710833e3dd63a56312aa8074bdd60d822a6bfba0",
+          "audio": {
+            "file": "audio/8-ja-650daa074b1d.mp3",
+            "sha256": "650daa074b1db5df11ae9621f96c7745b754b91b31cd6f161535a450b4ddc08f",
+            "sizeBytes": 402860,
+            "durationSec": 25.18,
+            "voiceGender": "FEMALE",
+            "voiceName": "gemini-3.8-flash-tts/Aoede",
+            "provider": "GEMINI"
+          }
         },
         {
           "lang_code": "ko",
           "name": "록자오 반얀나무",
           "summary": "Da Loc Giao",
           "script_text": "이 나무는 깟띠엔 자연이 빚어낸 경이로운 걸작 중 하나입니다. 수백 가닥의 수염뿌리와 줄기가 기존의 숙주 나무를 칭칭 감고 얽혀 자라면서 매우 독특한 형태를 띠고 있습니다. 록자오 반얀트리는 열대 우림 식생의 강인하고 끈질기며 영원한 생명력을 상징합니다.",
-          "text_hash": "34d400b98d8facb7680873427c34c8a00145b3ea39ed1de6d5aa0b2a35b116e6"
+          "text_hash": "34d400b98d8facb7680873427c34c8a00145b3ea39ed1de6d5aa0b2a35b116e6",
+          "audio": {
+            "file": "audio/8-ko-a9bfe9dbdd4e.mp3",
+            "sha256": "a9bfe9dbdd4e8d90eabdf98dd9130965e23b1671ee19eae4fb5c96a9fd97125b",
+            "sizeBytes": 384428,
+            "durationSec": 24.03,
+            "voiceGender": "FEMALE",
+            "voiceName": "gemini-3.8-flash-tts/Iapetus",
+            "provider": "GEMINI"
+          }
         },
         {
           "lang_code": "vi",
           "name": "Cây Đa Lộc Giao",
           "summary": null,
           "script_text": "Đây là một trong những kiệt tác kỳ lạ của thiên nhiên tại Cát Tiên. Cây có hình dáng vô cùng độc đáo, nhờ hàng trăm bộ rễ chùm và thân cây đan xen, quấn quýt quanh một cây chủ cũ. Cây Đa Lộc Giao tượng trưng cho sức sống mãnh liệt, bền bỉ và trường tồn của thảm thực vật rừng nhiệt đới.",
-          "text_hash": "c281d93a850f2d4c2ff6ac3aaf4c205b441f2bb7a5db932d77f207de4eaa22ed"
+          "text_hash": "c281d93a850f2d4c2ff6ac3aaf4c205b441f2bb7a5db932d77f207de4eaa22ed",
+          "audio": {
+            "file": "audio/8-vi-c833f6fd9c7a.mp3",
+            "sha256": "c833f6fd9c7ae653688b306afb4aa56afd4508fd731023e880f69c8c8ebcb60a",
+            "sizeBytes": 274220,
+            "durationSec": 17.14,
+            "voiceGender": "FEMALE",
+            "voiceName": "gemini-3.8-flash-tts/Achird",
+            "provider": "GEMINI"
+          }
         },
         {
           "lang_code": "zh",
@@ -348,12 +456,12 @@
           "script_text": "这是吉仙国家公园神奇的自然杰作之一。这棵树拥有极为奇特的形态，数百条气生根须和树干交织缠绕在一棵原宿主树上。交趾大榕树象征着热带雨林植被顽强、坚韧且生生不息的旺盛生命力。",
           "text_hash": "814113b318dbe4fe79c61f6526d71012fff6e6b4732eed4157df4e787a9374fc",
           "audio": {
-            "file": "audio/8-zh-81b699796768.mp3",
-            "sha256": "81b699796768da94a395440b2c88fe8cccd5e03aeed62be051bfd81a55671b4c",
-            "sizeBytes": 381740,
-            "durationSec": "23.86",
+            "file": "audio/8-zh-21b03286a3a3.mp3",
+            "sha256": "21b03286a3a322f5e78e8ceeb8e198408df5438a082a91f03f9545f666528578",
+            "sizeBytes": 345260,
+            "durationSec": 21.58,
             "voiceGender": "FEMALE",
-            "voiceName": "gemini-3.8-flash-lite-tts/Kore",
+            "voiceName": "gemini-3.8-flash-tts/Sulafat",
             "provider": "GEMINI"
           }
         }
@@ -379,7 +487,16 @@
           "name": "Troi Waterfall",
           "summary": "Thac Troi",
           "script_text": "Thac Troi, also known as Thac Dung, is a majestic waterfall winding through undulating basalt rock fields in the midst of the vast green forest. The waterfall cascades down with white frothing spray year-round, creating mystical veils of water mist. On beautiful sunny days, sunlight pierces through the mist, creating vibrant rainbows. That is why this place is called Thac Troi, or Heaven Waterfall.",
-          "text_hash": "cf9918670b97fc20dc9dc4932a9ed366568e2c23731eccad9cdb8c3f97d7f148"
+          "text_hash": "cf9918670b97fc20dc9dc4932a9ed366568e2c23731eccad9cdb8c3f97d7f148",
+          "audio": {
+            "file": "audio/14-en-176e30b62bea.mp3",
+            "sha256": "176e30b62bea4aefaf023c758b8fb5ef6c72be7c751e00ce4ca5fa7765c91b0e",
+            "sizeBytes": 459692,
+            "durationSec": 28.73,
+            "voiceGender": "FEMALE",
+            "voiceName": "gemini-3.8-flash-tts/Charon",
+            "provider": "GEMINI"
+          }
         },
         {
           "lang_code": "ja",
@@ -400,14 +517,32 @@
           "name": "Thác Trời",
           "summary": null,
           "script_text": "Thác Trời, còn gọi là thác Dựng, là một ngọn thác hùng vĩ uốn lượn qua các bãi đá ba-dan nhấp nhô giữa đại ngàn xanh. Nước thác đổ xuống tung bọt trắng xóa quanh năm, tạo nên những màn sương hơi nước mờ ảo. Vào những ngày nắng đẹp, ánh mặt trời xuyên qua làn sương, tạo nên những dải cầu vồng rực rỡ. Vì vậy, nơi đây có tên gọi là Thác Trời.",
-          "text_hash": "30570274085b8ca49c8e58a79cc6c157e814c5672fe39f92a9294148a232779d"
+          "text_hash": "30570274085b8ca49c8e58a79cc6c157e814c5672fe39f92a9294148a232779d",
+          "audio": {
+            "file": "audio/14-vi-b0142b3e391a.mp3",
+            "sha256": "b0142b3e391a8dc826d458ec060a347d37df5831f17d0ad6f9c26f138fd71eb8",
+            "sizeBytes": 405548,
+            "durationSec": 25.35,
+            "voiceGender": "FEMALE",
+            "voiceName": "gemini-3.8-flash-tts/Achird",
+            "provider": "GEMINI"
+          }
         },
         {
           "lang_code": "zh",
           "name": "Troi 瀑布",
           "summary": "Thac Troi",
           "script_text": "天瀑又称立瀑（thác Dựng），是一座雄伟的瀑布，在苍翠森林间起伏的玄武岩石滩中蜿蜒穿行。瀑布终年飞流直下，激起漫天白沫，营造出虚无缥缈的水雾轻纱。在晴好的日子里，阳光穿透薄雾，折射出绚丽多彩的道道彩虹。正因如此，这里才得名“天瀑”。",
-          "text_hash": "3e5fb9c0ece6c323a2567a934675d3725b62d53a658a2d045d23bdbc54b24585"
+          "text_hash": "3e5fb9c0ece6c323a2567a934675d3725b62d53a658a2d045d23bdbc54b24585",
+          "audio": {
+            "file": "audio/14-zh-2374bee278ba.mp3",
+            "sha256": "2374bee278ba9f9ff82733d2ad1c1f70b83082e238c5ca67eba3c8cc9f775e28",
+            "sizeBytes": 470060,
+            "durationSec": 29.38,
+            "voiceGender": "FEMALE",
+            "voiceName": "gemini-3.8-flash-tts/Sulafat",
+            "provider": "GEMINI"
+          }
         }
       ]
     },
@@ -438,7 +573,16 @@
           "name": "ドゥン滝",
           "summary": "チョイ滝と同じルートにあり、自然がつくった切り立つ岩の段差が特徴です。",
           "script_text": "チョイ滝と同じルートにあり、自然がつくった切り立つ岩の段差が特徴です。",
-          "text_hash": "c2b118244f8a7d42016de6d1c06f6f8afd4428d31c287de7f699f37758e75c4d"
+          "text_hash": "c2b118244f8a7d42016de6d1c06f6f8afd4428d31c287de7f699f37758e75c4d",
+          "audio": {
+            "file": "audio/coord-12-ja-9a0a9310eb4c.mp3",
+            "sha256": "9a0a9310eb4cde389a25b834f8c3a15ca83fd126a8a9c0754285387983ffc42c",
+            "sizeBytes": 100652,
+            "durationSec": 6.29,
+            "voiceGender": "FEMALE",
+            "voiceName": "gemini-3.8-flash-tts/Aoede",
+            "provider": "GEMINI"
+          }
         },
         {
           "lang_code": "ko",
@@ -535,28 +679,64 @@
           "name": "Da Co Crape Myrtle Forest",
           "summary": "Rung bang lang Da Co",
           "script_text": "This is a trail filled with the blossoms of the hairy crape myrtle. During the dry season, particularly from March to May every year, the entire forest sheds its leaves simultaneously and dons a brilliant purple cloak. That romantic and poetic scenery is completely different from the year-round lush green of the primeval forest.",
-          "text_hash": "6d3fe5c314e612d6b0f2ab9515485d160dd7a29d356409f1d8c459b1b0703ed1"
+          "text_hash": "6d3fe5c314e612d6b0f2ab9515485d160dd7a29d356409f1d8c459b1b0703ed1",
+          "audio": {
+            "file": "audio/15-en-ba7e056b0e91.mp3",
+            "sha256": "ba7e056b0e91c6af60183db15cab078868a6a401d0fe63fc4cc5cee1684c6025",
+            "sizeBytes": 366380,
+            "durationSec": 22.9,
+            "voiceGender": "FEMALE",
+            "voiceName": "gemini-3.8-flash-tts/Charon",
+            "provider": "GEMINI"
+          }
         },
         {
           "lang_code": "ja",
           "name": "ダコーのサルスベリ林",
           "summary": "Rung bang lang Da Co",
           "script_text": "毛氈状の葉を持つバンランの花の色で溢れるトレイルコースです。乾季、特に毎年三月から五月にかけては、森全体が一斉に葉を落とし、鮮やかな紫色に染まります。このロマンチックで詩的な光景は、一年中青々と茂る原生林の緑とはまったく異なる表情を見せてくれます。",
-          "text_hash": "d7e05560253741267515ec14f6f7ae7b58d1c7a918f2d617f3d073db20185031"
+          "text_hash": "d7e05560253741267515ec14f6f7ae7b58d1c7a918f2d617f3d073db20185031",
+          "audio": {
+            "file": "audio/15-ja-95b41c5abcf1.mp3",
+            "sha256": "95b41c5abcf1a84758cd92f460262e3998b7e80c2653d642be6da0adb66e0eec",
+            "sizeBytes": 395948,
+            "durationSec": 24.75,
+            "voiceGender": "FEMALE",
+            "voiceName": "gemini-3.8-flash-tts/Aoede",
+            "provider": "GEMINI"
+          }
         },
         {
           "lang_code": "ko",
           "name": "다꼬 배롱나무 숲",
           "summary": "Rung bang lang Da Co",
           "script_text": "이곳은 털방랑(대왕배롱나무)의 꽃빛으로 물드는 숲길입니다. 건기, 특히 매년 삼월부터 오월 사이가 되면 온 숲이 일제히 낙엽을 떨구고 화려한 보랏빛으로 갈아입습니다. 그 낭만적이고 서정적인 정경은 사시사철 짙푸른 원시림의 풍경과는 완전히 다른 매력을 선사합니다.",
-          "text_hash": "3f4e228dfc98b938c32690583487cb409647b0a136e716daca8a1753134353ee"
+          "text_hash": "3f4e228dfc98b938c32690583487cb409647b0a136e716daca8a1753134353ee",
+          "audio": {
+            "file": "audio/15-ko-ba39719a1330.mp3",
+            "sha256": "ba39719a13301da2b3a942d9744adb6c462f2c0cee54792bea8df46b1ef75f3f",
+            "sizeBytes": 440492,
+            "durationSec": 27.53,
+            "voiceGender": "FEMALE",
+            "voiceName": "gemini-3.8-flash-tts/Iapetus",
+            "provider": "GEMINI"
+          }
         },
         {
           "lang_code": "vi",
           "name": "Rừng Bằng lăng Đà Cộ",
           "summary": null,
           "script_text": "Đây là tuyến đường mòn ngập tràn sắc hoa của loài bằng lăng ổi lông. Vào mùa khô, đặc biệt từ tháng ba đến tháng năm hằng năm, cả khu rừng đồng loạt trút lá và khoác lên mình màu tím rực rỡ. Khung cảnh lãng mạn, nên thơ ấy khác hoàn toàn với màu xanh mướt quanh năm của rừng già.",
-          "text_hash": "5d3aba52c0d2dba4c09645447baa2704af88eff59398ad973ee63a5b75844e86"
+          "text_hash": "5d3aba52c0d2dba4c09645447baa2704af88eff59398ad973ee63a5b75844e86",
+          "audio": {
+            "file": "audio/15-vi-bf60b8baa11e.mp3",
+            "sha256": "bf60b8baa11ee39dfe6ba171be26430752b2dba3b2c46f9c53f22dade6c5a1fa",
+            "sizeBytes": 295340,
+            "durationSec": 18.46,
+            "voiceGender": "FEMALE",
+            "voiceName": "gemini-3.8-flash-tts/Achird",
+            "provider": "GEMINI"
+          }
         },
         {
           "lang_code": "zh",
@@ -646,28 +826,64 @@
           "name": "クマ救護ステーション",
           "summary": "Khu Cuu ho dong vat hoang da",
           "script_text": "密猟や違法取引の被害に遭い傷ついた野生動物、特にツキノワグマやマレーグマを受け入れ、治療と特別なケアを行う施設です。ここでは、人道的な救護活動の歩みや、動物たちを自然へと戻す前に行われる野生復帰トレーニングの取り組みについて学ぶことができます。",
-          "text_hash": "c5864befd4f568eb7b1ef711f97e8c266995f660656e005393bf6fff5b0b89fa"
+          "text_hash": "c5864befd4f568eb7b1ef711f97e8c266995f660656e005393bf6fff5b0b89fa",
+          "audio": {
+            "file": "audio/1-ja-94e1d6829784.mp3",
+            "sha256": "94e1d682978426a0032f4c5fecc09d14b80ae8fd9dc848af8f6a0e970f741105",
+            "sizeBytes": 395180,
+            "durationSec": 24.7,
+            "voiceGender": "FEMALE",
+            "voiceName": "gemini-3.8-flash-tts/Aoede",
+            "provider": "GEMINI"
+          }
         },
         {
           "lang_code": "ko",
           "name": "곰 구조소",
           "summary": "Khu Cuu ho dong vat hoang da",
           "script_text": "이곳은 불법 밀렵과 거래로 부상을 입거나 피해를 본 야생동물, 특히 아시아흑곰(반달가슴곰)과 말레이곰을 인계받아 의학적 치료와 전문적인 보살핌을 제공하는 공간입니다. 이곳에서는 가슴 뭉클한 동물 구조 이야기와 함께, 치료를 마친 동물들을 다시 대자연으로 돌려보내기 위해 진행하는 야생성 회복 훈련 과정을 자세히 살펴보실 수 있습니다.",
-          "text_hash": "987ea326c62e6661bf7b1c2a21a8728d36ea2810567201d9e940b941a524caa0"
+          "text_hash": "987ea326c62e6661bf7b1c2a21a8728d36ea2810567201d9e940b941a524caa0",
+          "audio": {
+            "file": "audio/1-ko-4c0140ec2ff0.mp3",
+            "sha256": "4c0140ec2ff0df3fb61f31f860aedd30ced1ac34dafb4a66b467a2ec4341f576",
+            "sizeBytes": 474668,
+            "durationSec": 29.67,
+            "voiceGender": "FEMALE",
+            "voiceName": "gemini-3.8-flash-tts/Iapetus",
+            "provider": "GEMINI"
+          }
         },
         {
           "lang_code": "vi",
           "name": "Trạm cứu hộ gấu",
           "summary": null,
           "script_text": "Đây là nơi tiếp nhận, chữa trị y tế và chăm sóc đặc biệt cho các cá thể động vật hoang dã, đặc biệt là gấu ngựa và gấu chó, bị tổn thương do nạn săn bắt và buôn bán trái phép. Tại đây, bạn sẽ được tìm hiểu những câu chuyện cứu hộ đầy nhân văn, và công tác phục hồi tập tính hoang dã trước khi thả các loài về với thiên nhiên.",
-          "text_hash": "97ec68a7522f8f2547bc5b504386bf3fca4c171b38713bc4ae6c0df1c466f6a6"
+          "text_hash": "97ec68a7522f8f2547bc5b504386bf3fca4c171b38713bc4ae6c0df1c466f6a6",
+          "audio": {
+            "file": "audio/1-vi-152f817ac83c.mp3",
+            "sha256": "152f817ac83cc4cde3b182fcd313d592fbe0ba7b76bf81425c9b7e2b8a74d05d",
+            "sizeBytes": 319532,
+            "durationSec": 19.97,
+            "voiceGender": "FEMALE",
+            "voiceName": "gemini-3.8-flash-tts/Achird",
+            "provider": "GEMINI"
+          }
         },
         {
           "lang_code": "zh",
           "name": "熊类救护站",
           "summary": "Khu Cuu ho dong vat hoang da",
           "script_text": "这里负责接收、救治并特殊照料因非法盗猎和贩卖而受伤的野生动物个体，特别是亚洲黑熊和马来熊。在这里，您将了解到充满人道关怀的救助故事，并认识帮助动物重获野外生存习性、最终将它们放归自然的相关工作。",
-          "text_hash": "8a185289fbf6ddfc235bbe07d4bfa7faf62c413571106d987ce658ae487c30df"
+          "text_hash": "8a185289fbf6ddfc235bbe07d4bfa7faf62c413571106d987ce658ae487c30df",
+          "audio": {
+            "file": "audio/1-zh-e5af4b53cc82.mp3",
+            "sha256": "e5af4b53cc827d5e479394816a5bc91dc1c652f68b209daa893160439eddc63f",
+            "sizeBytes": 352940,
+            "durationSec": 22.06,
+            "voiceGender": "FEMALE",
+            "voiceName": "gemini-3.8-flash-tts/Sulafat",
+            "provider": "GEMINI"
+          }
         }
       ]
     },

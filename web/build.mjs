@@ -1,4 +1,4 @@
-import { mkdir, readFile, writeFile, cp, readdir } from 'node:fs/promises';
+import { mkdir, readFile, writeFile, cp } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
 import path from 'node:path';
 import vm from 'node:vm';
@@ -79,8 +79,20 @@ await cp(path.join(root, 'web', 'vendor'), path.join(out, 'vendor'), { recursive
 await mkdir(path.join(out, 'data'), { recursive: true });
 const audioOut = path.join(out, 'audio');
 await mkdir(audioOut, { recursive: true });
-// Prefer a generated clip only when it was synthesized from the current exact
-// transcript. This also lets fresh Gemini audio replace older source recordings.
+// The fixture manifest identifies the accepted recording, not its directory
+// order or filename segments (POI codes themselves may contain hyphens).
+for(const poi of pois)for(const translation of poi.translations){
+  const source=fixtureByCode.get(poi.code)?.translations.find(t=>t.lang_code===translation.langCode);
+  const audio=source?.audio;
+  if(!audio||translation.audioNeedsRefresh||source.text_hash!==translation.textHash||source.script_text!==translation.scriptText)continue;
+  if(!/^audio\/[a-zA-Z0-9_-]+\.mp3$/.test(audio.file))throw new Error('Invalid fixture audio path');
+  const bytes=await readFile(path.join(root,'backend','fixtures',audio.file));
+  if(bytes.length!==audio.sizeBytes||createHash('sha256').update(bytes).digest('hex')!==audio.sha256)throw new Error('Fixture audio checksum mismatch: '+audio.file);
+  const filename=path.basename(audio.file);
+  await writeFile(path.join(audioOut,filename),bytes);
+  poi.audios.push({langCode:translation.langCode,status:'READY',audioUrl:`/audio/${filename}`,provider:audio.provider,voiceName:audio.voiceName,textHash:translation.textHash,durationSec:audio.durationSec,sizeBytes:audio.sizeBytes});
+}
+// Generated clips only fill missing languages with an exact transcript match.
 const schematicPois=withSchematicNarration([], 'vi').map(p=>({...p,
   translations:p.translations.map(t=>({...t,textHash:createHash('sha256').update(t.scriptText).digest('hex')})),audios:[],audio:null}));
 for (const [key, record] of Object.entries(generatedAudio)) {
@@ -91,16 +103,6 @@ for (const [key, record] of Object.entries(generatedAudio)) {
   const file = `${code}-${lang}.mp3`;
   await cp(path.join(generatedAudioDir, file), path.join(audioOut, file));
   poi.audios.push({ langCode: lang, status: 'READY', audioUrl: `/audio/${file}`, provider: record.provider || 'LOCAL', voiceName: record.voiceName, textHash: record.textHash });
-}
-for (const file of await readdir(path.join(root, 'backend', 'fixtures', 'audio'))) {
-  const [code, lang] = file.split('-');
-  const poi = pois.find(p => p.code === code);
-  const translation = poi?.translations.find(t => t.langCode === lang);
-  const sourceTranslation = fixtureByCode.get(code)?.translations.find(t => t.lang_code === lang);
-  if (!translation || translation.audioNeedsRefresh || translation.scriptText !== sourceTranslation?.script_text || poi.audios.some(a => a.langCode === lang)) continue;
-  const audioUrl = `/audio/${file}`;
-  await cp(path.join(root, 'backend', 'fixtures', 'audio', file), path.join(audioOut, file));
-  poi.audios.push({ langCode: lang, status: 'READY', audioUrl, provider: 'GEMINI', voiceName: 'Google AI Studio', textHash: translation.textHash });
 }
 await writeFile(path.join(out, 'data', 'pois.json'), JSON.stringify({
   mapId: '00000000-0000-0000-0000-000000000001',catalogVersion:catalog.sourceSha256,

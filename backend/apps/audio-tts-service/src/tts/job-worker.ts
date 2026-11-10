@@ -10,6 +10,8 @@ export class JobWorker implements OnModuleInit,OnModuleDestroy {
  private timer:any; private busy=false;private maintenanceAt=0;private log=new Logger('AudioJobs');
  constructor(private ds:DataSource,@Inject(TTS_PROVIDER) private tts:TtsProvider,@Inject(STORAGE) private storage:StorageDriver){}
  onModuleInit(){
+  // Serving stored MP3s must remain possible without running synthesis jobs.
+  if(process.env.TTS_WORKER_ENABLED==='false')return;
   const langs=process.env.TTS_LANGUAGES?.split(',').map(s=>s.trim()).filter(Boolean);
   if(langs?.some(l=>!['vi','en','ja','ko','zh'].includes(l)))throw new Error('TTS_LANGUAGES must contain only vi,en,ja,ko,zh');
   this.timer=setInterval(()=>this.tick().catch(e=>this.log.error(e.message)),1000);
