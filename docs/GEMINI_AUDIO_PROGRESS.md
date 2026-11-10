@@ -1,3 +1,17 @@
+# Tiến độ đã kiểm chứng — 10/11/2026
+
+45/75 bài Google hợp lệ, còn thiếu 30: Việt 9, Anh 8, Nhật 10, Hàn 9, Trung 9. Ghép audio khớp transcript giữa hai thư mục (Git từ 29 lên 40), sau đó tạo thêm 5 bản. Giữ nguyên 15 POI, bản dịch và tọa độ.
+
+Quota tạm dừng đến 2026-11-11T15:34:07.484Z (22:34:07 ngày 11/11 Việt Nam), theo worker. Đã giữ một job quota khớp nội dung về QUEUED/PENDING; database có 45 READY và 30 PENDING.
+
+Docker đã phục hồi sau restart Desktop. Phục hồi 30 file storage từ thư mục cũ theo hash để URL audio/ZIP của repo Git hoạt động. Các bản thu hợp lệ đã có được giữ nguyên; gói cuối được dựng từ fixture tương ứng, vì database có thể chọn bản thu hợp lệ khác cùng nội dung.
+
+ZIP: 19,279,970 byte; SHA-256 ae283b8e2d4e847a850e657b662a556ee15c967a5a93ae6bb6feaf7d5926cff9. Kiểm tra CRC, kích thước và SHA-256 đủ 45 MP3 khớp fixture; MP3 repo Git đã giải mã bằng FFmpeg. Gói còn partial=true.
+
+Phiên dịch vụ tạm đã dừng. Chưa commit/push. Tải lại gói ngoại tuyến để nhận audio bổ sung.
+
+## Lịch sử
+
 # Tiến độ hiện tại — danh sách 15 POI, 25/10/2026
 
 **75 bài cần thiết: 5 Google READY, còn thiếu 70.** Việt 2/15, Anh 2/15, Nhật 0/15, Hàn 0/15, Trung 1/15. Chỉ tạo bài cho các điểm trong `scripts/data/active-pois.json`; không khôi phục điểm đã gỡ.

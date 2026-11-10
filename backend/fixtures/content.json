@@ -1,6 +1,6 @@
 {
   "formatVersion": 1,
-  "exportedAt": "2026-11-10T15:03:45.196Z",
+  "exportedAt": "2026-11-10T15:34:31.607Z",
   "pois": [
     {
       "code": "coord-01",
@@ -90,14 +90,32 @@
           "name": "クロコダイル湖",
           "summary": "Bau Sau",
           "script_text": "バウサウはラムサール条約に基づき認定された、国際的に重要な湿地帯です。ここはナムカッティエン生態系の心臓部と見なされています。この広大な湿地は、かつて絶滅したと考えられていた希少な淡水性のワニであるシャムワニ数百頭の自然の生息地となっています。ここを訪れると、まるで水墨画のように手つかずの自然の風景を眺めることができ、ワニが自然のまま暮らす湿地の真ん中でボートを漕ぐ体験ができます。",
-          "text_hash": "239bde85d4302f2d5a9e68020838f07cd52fb26fa702e2f5201609928a4f4eab"
+          "text_hash": "239bde85d4302f2d5a9e68020838f07cd52fb26fa702e2f5201609928a4f4eab",
+          "audio": {
+            "file": "audio/9-ja-45c145c10daf.mp3",
+            "sha256": "45c145c10daf82f4ac0d013cc12a2c6d94f0af02d59a4a758f71b849afe3e197",
+            "sizeBytes": 610988,
+            "durationSec": "38.19",
+            "voiceGender": "FEMALE",
+            "voiceName": "gemini-3.8-flash-lite-tts/Kore",
+            "provider": "GEMINI"
+          }
         },
         {
           "lang_code": "ko",
           "name": "악어 호수",
           "summary": "Bau Sau",
           "script_text": "바우서우는 람사르 협약에 따라 국제적 중요성을 인정받은 습지입니다. 이곳은 남깟띠엔 생태계의 심장부로 꼽힙니다. 이 광활한 늪지는 한때 멸종된 것으로 여겨졌던 희귀 민물 악어 종인 샴악어 수백 마리가 살아가는 자연의 보금자리입니다. 이곳에 오시면 수묵화처럼 원시적인 풍경을 감상할 수 있으며, 악어가 자연 그대로 서식하는 습지 한가운데에서 나룻배를 타는 특별한 체험을 즐기실 수 있습니다.",
-          "text_hash": "26e70e645a51326511a23ae2bd0f8a75f1a4f7cc53f142e2886d0b3a709d8020"
+          "text_hash": "26e70e645a51326511a23ae2bd0f8a75f1a4f7cc53f142e2886d0b3a709d8020",
+          "audio": {
+            "file": "audio/9-ko-a5b612d833a5.mp3",
+            "sha256": "a5b612d833a502d486b06c7be743a10a5793e51a9365da352799fb269cd9eb68",
+            "sizeBytes": 539948,
+            "durationSec": "33.75",
+            "voiceGender": "FEMALE",
+            "voiceName": "gemini-3.8-flash-lite-tts/Kore",
+            "provider": "GEMINI"
+          }
         },
         {
           "lang_code": "vi",
@@ -120,7 +138,16 @@
           "name": "鳄鱼湖",
           "summary": "Bau Sau",
           "script_text": "鳄鱼湖是具有国际重要意义的湿地，已被列入《拉姆萨尔公约》国际重要湿地名录。这里被视为南吉仙生态系统的核心心脏。这片广袤的沼泽湿地是数百只暹罗鳄的自然家园，暹罗鳄是一种珍稀淡水鳄，曾一度被认为已经灭绝。来到这里，您将欣赏到宛如水墨画般的原始风光，并体验在鳄鱼自然栖息的湖水中荡舟。",
-          "text_hash": "88226e9d8fdc94b978283128563b49f7560ce779515362531b5ac68de01f8848"
+          "text_hash": "88226e9d8fdc94b978283128563b49f7560ce779515362531b5ac68de01f8848",
+          "audio": {
+            "file": "audio/9-zh-29f8224e0a0f.mp3",
+            "sha256": "29f8224e0a0ff8e43b50cd94d6a45fa390d6183eebfcd0e2d6970f6548dc7115",
+            "sizeBytes": 533420,
+            "durationSec": "33.34",
+            "voiceGender": "FEMALE",
+            "voiceName": "gemini-3.8-flash-lite-tts/Kore",
+            "provider": "GEMINI"
+          }
         }
       ]
     },
@@ -192,14 +219,32 @@
           "name": "Cây Tùng cổ thụ",
           "summary": null,
           "script_text": "Đây là cây đại thụ có tuổi đời hơn bốn trăm năm, với chiều cao sừng sững. Điểm đặc sắc nhất của cây Tung là bộ rễ nổi khổng lồ, đồ sộ, lan rộng và bám chặt vào lòng đất, tạo thành những vách ngăn tự nhiên kỳ vĩ. Để ôm trọn gốc cây này, cần vòng tay nối kết của khoảng hai mươi người trưởng thành.",
-          "text_hash": "9c9b5a0d91993e577103b931a80764c2245fa423f42524f0455e37d55abf3d9b"
+          "text_hash": "9c9b5a0d91993e577103b931a80764c2245fa423f42524f0455e37d55abf3d9b",
+          "audio": {
+            "file": "audio/2-vi-3f06ca048086.mp3",
+            "sha256": "3f06ca0480860836048c49815c5472fd5f282d52226810137369ac2850ce2008",
+            "sizeBytes": 343340,
+            "durationSec": "21.46",
+            "voiceGender": "FEMALE",
+            "voiceName": "gemini-3.8-flash-lite-tts/Kore",
+            "provider": "GEMINI"
+          }
         },
         {
           "lang_code": "zh",
           "name": "古老的 Tung 树",
           "summary": "Tung dai thu",
           "script_text": "这是一棵树龄超过四百年的参天大树，身姿高耸挺拔。栋木最引人注目的特点是其巨大壮观的板根系统，这些气生根向四周蔓延并紧紧扎入泥土中，形成了雄伟壮丽的天然屏障隔断。要合抱这棵树的树根，需要大约二十名成年人手拉手连成一圈。",
-          "text_hash": "71df9871611d08099350522c7678a541b42a5ecba783f3fa7b025a332900eb36"
+          "text_hash": "71df9871611d08099350522c7678a541b42a5ecba783f3fa7b025a332900eb36",
+          "audio": {
+            "file": "audio/2-zh-88717d4e152f.mp3",
+            "sha256": "88717d4e152f8b27dc8e4efa7f52c2ef7a6b754463962b924034d97338a5e4d7",
+            "sizeBytes": 469292,
+            "durationSec": "29.33",
+            "voiceGender": "FEMALE",
+            "voiceName": "gemini-3.8-flash-lite-tts/Kore",
+            "provider": "GEMINI"
+          }
         }
       ]
     },
@@ -223,7 +268,16 @@
           "name": "Bac Dong Go Tree",
           "summary": "Cay Go Bac Dong",
           "script_text": "This is an ancient tree belonging to the rare red wood species, more than seven hundred years old. The name Uncle Dong's Redwood Tree was given to commemorate the visit of the late Prime Minister Pham Van Dong to the park and his counsel on the conservation of forest resources in the year nineteen eighty-eight. The trunk is massive, with its canopy shading an entire corner of the pristine primary forest.",
-          "text_hash": "c3e020288c1f88c60e0e7b8f6f8a2b41163fb1aaacd25039b743a3d3801e9fb9"
+          "text_hash": "c3e020288c1f88c60e0e7b8f6f8a2b41163fb1aaacd25039b743a3d3801e9fb9",
+          "audio": {
+            "file": "audio/7-en-869636802777.mp3",
+            "sha256": "86963680277771e467345198a3a72fd1e42e3fdfb223b885e42b8c342f1570ce",
+            "sizeBytes": 486188,
+            "durationSec": "30.39",
+            "voiceGender": "FEMALE",
+            "voiceName": "gemini-3.8-flash-lite-tts/Kore",
+            "provider": "GEMINI"
+          }
         },
         {
           "lang_code": "ja",
@@ -246,14 +300,32 @@
           "name": "박동 고 나무",
           "summary": "Cay Go Bac Dong",
           "script_text": "이 나무는 희귀 수종인 적단목(Gõ đỏ)에 속하는 고목으로, 칠백 년 이상의 수명을 자랑합니다. '박동 고목나무'라는 명칭은 천구백팔십팔 년 고(故) 팜반동 총리가 공원을 방문하여 산림 자원 보존을 당부했던 뜻깊은 일을 기리기 위해 붙여졌습니다. 우람한 줄기와 무성한 잎사귀는 원시림의 한구석을 통째로 덮을 만큼 넓은 그늘을 드리웁니다.",
-          "text_hash": "89a2c5b66f7f55b1c53e8a1a2c2ff9cdfe47de559134137c99b13bafcab7c2fa"
+          "text_hash": "89a2c5b66f7f55b1c53e8a1a2c2ff9cdfe47de559134137c99b13bafcab7c2fa",
+          "audio": {
+            "file": "audio/7-ko-5375ce48ca87.mp3",
+            "sha256": "5375ce48ca8708805e028891dd82013f6c2dc87822b681028400bc856bc9b47b",
+            "sizeBytes": 452012,
+            "durationSec": "28.25",
+            "voiceGender": "FEMALE",
+            "voiceName": "gemini-3.8-flash-lite-tts/Kore",
+            "provider": "GEMINI"
+          }
         },
         {
           "lang_code": "vi",
           "name": "Cây Gõ Bác Đồng",
           "summary": null,
           "script_text": "Đây là cây cổ thụ thuộc loài gõ đỏ quý hiếm, có tuổi thọ hơn bảy trăm năm. Tên gọi Cây Gõ Bác Đồng được đặt để kỷ niệm sự kiện cố Thủ tướng Phạm Văn Đồng đến thăm vườn, và căn dặn việc bảo tồn tài nguyên rừng, vào năm một nghìn chín trăm tám mươi tám. Thân cây to lớn, tán lá che bóng cả một góc rừng già nguyên sinh.",
-          "text_hash": "59a80b22b16a7b3b2ed76c1068c749d1bdecf2cbce4279e3c0e5405e81c78ba0"
+          "text_hash": "59a80b22b16a7b3b2ed76c1068c749d1bdecf2cbce4279e3c0e5405e81c78ba0",
+          "audio": {
+            "file": "audio/7-vi-2a50d137d6a1.mp3",
+            "sha256": "2a50d137d6a12b18c64167eb54f94c430083c0aa83485a56b4a29e38763fb8b1",
+            "sizeBytes": 373292,
+            "durationSec": "23.33",
+            "voiceGender": "FEMALE",
+            "voiceName": "gemini-3.8-flash-lite-tts/Kore",
+            "provider": "GEMINI"
+          }
         },
         {
           "lang_code": "zh",
@@ -503,14 +575,32 @@
           "name": "チョイ滝",
           "summary": "Thac Troi",
           "script_text": "タックズンとも呼ばれるタックチョイは、緑豊かな大自然の中で起伏する玄武岩地帯を縫うように流れる雄大な滝です。滝の水は年中白い水しぶきを上げて流れ落ち、幻想的な水煙を漂わせています。晴れた日には太陽の光が霧を通り抜け、鮮やかな虹の帯を作り出します。そのため、この場所は「天の滝」と名づけられました。",
-          "text_hash": "22edb8ac214134cf8d03e18f7ae65bdf120d9128e4d2babe8a57f7a72dc078e3"
+          "text_hash": "22edb8ac214134cf8d03e18f7ae65bdf120d9128e4d2babe8a57f7a72dc078e3",
+          "audio": {
+            "file": "audio/14-ja-e19be1d1c02f.mp3",
+            "sha256": "e19be1d1c02fb15020406324b45b11933e59fda7404f8b2763798af6ed027e6c",
+            "sizeBytes": 451628,
+            "durationSec": "28.23",
+            "voiceGender": "FEMALE",
+            "voiceName": "gemini-3.8-flash-lite-tts/Kore",
+            "provider": "GEMINI"
+          }
         },
         {
           "lang_code": "ko",
           "name": "쯔어이 폭포",
           "summary": "Thac Troi",
           "script_text": "탁증(Thác Dựng)으로도 불리는 탁쩌이(Thác Trời)는 울창한 원시림 사이로 올록볼록 솟은 현무암 지대를 굽이쳐 흐르는 웅장한 폭포입니다. 일 년 내내 하얀 포말을 뿜어내며 쏟아지는 폭포수는 몽환적인 물안개를 피워 올립니다. 화창한 날이면 햇빛이 물안개를 관통하며 찬란한 무지개를 빚어내어, '하늘의 폭포'라는 뜻의 탁쩌이라는 이름을 얻게 되었습니다.",
-          "text_hash": "98a4ad1dc418f6f9973a23409e16968967d10aca24bf8923bcb993e1184d6b92"
+          "text_hash": "98a4ad1dc418f6f9973a23409e16968967d10aca24bf8923bcb993e1184d6b92",
+          "audio": {
+            "file": "audio/14-ko-15558cee1f73.mp3",
+            "sha256": "15558cee1f730eccdfd72d5e8dfdc95f93e35c5e479543a4184a4aa82cc83011",
+            "sizeBytes": 428972,
+            "durationSec": "26.81",
+            "voiceGender": "FEMALE",
+            "voiceName": "gemini-3.8-flash-lite-tts/Kore",
+            "provider": "GEMINI"
+          }
         },
         {
           "lang_code": "vi",
@@ -627,35 +717,80 @@
           "name": "Ben Cu Rapids",
           "summary": "Ghenh Ben Cu",
           "script_text": "Ben Cu Rapids is located not far from the park headquarters. Here, a section of the Dong Nai River narrows, its torrent rushing and weaving through large, undulating rocky rapids. Ben Cu possesses a wild and rustic beauty, serving as an ideal stopover for you to rest and listen to the murmuring sound of flowing water harmonizing with the songs of forest birds.",
-          "text_hash": "a51778f3abfa1be0613a43c71ee5d79342702f27347158073c9539cba6c11981"
+          "text_hash": "a51778f3abfa1be0613a43c71ee5d79342702f27347158073c9539cba6c11981",
+          "audio": {
+            "file": "audio/5-en-c0cb5d3dccd3.mp3",
+            "sha256": "c0cb5d3dccd3d471c32d3ab97cd05952bd10c5a3980c7aefaea3d3fec20bbc11",
+            "sizeBytes": 436268,
+            "durationSec": "27.27",
+            "voiceGender": "FEMALE",
+            "voiceName": "gemini-3.8-flash-lite-tts/Kore",
+            "provider": "GEMINI"
+          }
         },
         {
           "lang_code": "ja",
           "name": "ベンクーの急流",
           "summary": "Ghenh Ben Cu",
           "script_text": "ベンクーの浅瀬は、国立公園管理本部からそう遠くない場所に位置しています。ここはドンナイ川の川幅が狭まり、起伏のある大きな岩礁地帯を縫って急流が激しく流れる場所です。素朴で手つかずの美しさを持ち、腰を下ろして休憩しながら、森の鳥の声と溶け合うせせらぎの音に耳を傾けるのに理想的な立ち寄りスポットです。",
-          "text_hash": "a5988415847ec7d97ec3f3b39a21da1a9a1e2713810240290c30e13e4a76e91b"
+          "text_hash": "a5988415847ec7d97ec3f3b39a21da1a9a1e2713810240290c30e13e4a76e91b",
+          "audio": {
+            "file": "audio/5-ja-374dd5315d7f.mp3",
+            "sha256": "374dd5315d7fad591665207c264f5ba3da63b5d9f497f5646a1d458f88adae15",
+            "sizeBytes": 411308,
+            "durationSec": "25.71",
+            "voiceGender": "FEMALE",
+            "voiceName": "gemini-3.8-flash-lite-tts/Kore",
+            "provider": "GEMINI"
+          }
         },
         {
           "lang_code": "ko",
           "name": "벤꾸 급류",
           "summary": "Ghenh Ben Cu",
           "script_text": "벤끄 급류는 공원 관리사무소에서 그리 멀지 않은 곳에 있습니다. 이곳은 동나이강의 강폭이 좁아지며 물살이 거세져 올록볼록 솟은 거대한 암초들 사이를 파고들며 흐르는 구간입니다. 원시적이고 소박한 멋을 지닌 벤끄는 잠시 멈추어 서서 숲속 새소리와 어우러지는 청량한 물소리를 들으며 휴식을 취하기에 안성맞춤인 곳입니다.",
-          "text_hash": "15e9260cf9c0090ed6fa1c12ca498b121d59cd991dc646201783f11a86052b93"
+          "text_hash": "15e9260cf9c0090ed6fa1c12ca498b121d59cd991dc646201783f11a86052b93",
+          "audio": {
+            "file": "audio/5-ko-ff3935238924.mp3",
+            "sha256": "ff39352389246a31305dc05d5c8eeb5dc8e3efa0f3ccbad693667ac009999ddf",
+            "sizeBytes": 455852,
+            "durationSec": "28.49",
+            "voiceGender": "FEMALE",
+            "voiceName": "gemini-3.8-flash-lite-tts/Kore",
+            "provider": "GEMINI"
+          }
         },
         {
           "lang_code": "vi",
           "name": "Ghềnh Bến Cự",
           "summary": null,
           "script_text": "Ghềnh thác Bến Cự tọa lạc cách trụ sở vườn không xa. Đây là đoạn sông Đồng Nai co hẹp lại, dòng nước chảy xiết, luồn lách qua những bãi ghềnh đá lớn nhấp nhô. Bến Cự mang vẻ đẹp hoang sơ, mộc mạc, là điểm dừng chân lý tưởng để bạn ngồi nghỉ, lắng nghe tiếng nước chảy rì rào hòa quyện cùng tiếng chim rừng.",
-          "text_hash": "78080688529a3d0bebf036a0bcdf8f99feabd398def97f0384b705d67d780498"
+          "text_hash": "78080688529a3d0bebf036a0bcdf8f99feabd398def97f0384b705d67d780498",
+          "audio": {
+            "file": "audio/5-vi-aa44eb2c1ee1.mp3",
+            "sha256": "aa44eb2c1ee12656e93495aa2f1d44ecb9c819b150d8ef90dd635cd29b99b7fc",
+            "sizeBytes": 346028,
+            "durationSec": "21.63",
+            "voiceGender": "FEMALE",
+            "voiceName": "gemini-3.8-flash-lite-tts/Kore",
+            "provider": "GEMINI"
+          }
         },
         {
           "lang_code": "zh",
           "name": "Ben Cu 急流",
           "summary": "Ghenh Ben Cu",
           "script_text": "巨滩险滩距离公园管理总部不远。这里是同奈河收窄的河段，水流湍急，穿行在起伏交错的巨石滩之间。巨滩散发着原始质朴之美，是您歇脚小憩的理想去处，您可以坐在这里聆听潺潺流水声与林中鸟鸣交织共鸣。",
-          "text_hash": "c89a0ef0c595e119742582a764b98579a210570cece2a3db3a8e7950be2dc46a"
+          "text_hash": "c89a0ef0c595e119742582a764b98579a210570cece2a3db3a8e7950be2dc46a",
+          "audio": {
+            "file": "audio/5-zh-a8fd20a6c58d.mp3",
+            "sha256": "a8fd20a6c58d3299bf26622e05a5acd16a3ded81637a81e52a6aa910449631ff",
+            "sizeBytes": 386732,
+            "durationSec": "24.17",
+            "voiceGender": "FEMALE",
+            "voiceName": "gemini-3.8-flash-lite-tts/Kore",
+            "provider": "GEMINI"
+          }
         }
       ]
     },
@@ -743,7 +878,16 @@
           "name": "Da Co 紫薇林",
           "summary": "Rung bang lang Da Co",
           "script_text": "这是一条开满毛果大花紫薇花朵的林间小径。在旱季，尤其是每年的三月至五月，整片森林几乎同时落叶，并披上绚丽夺目的紫色盛装。这番浪漫诗意的景致，与古老森林一年四季常青的翠绿截然不同。",
-          "text_hash": "0f3f6cd43d259fbea3081181e71f5e8f95b89309dc133b3adf8766cba3a9a0bb"
+          "text_hash": "0f3f6cd43d259fbea3081181e71f5e8f95b89309dc133b3adf8766cba3a9a0bb",
+          "audio": {
+            "file": "audio/15-zh-250db317c94b.mp3",
+            "sha256": "250db317c94b229b78e7fdf269bd0cf8b437dd9fdf4c526cb856695492e67b5b",
+            "sizeBytes": 395948,
+            "durationSec": "24.75",
+            "voiceGender": "FEMALE",
+            "voiceName": "gemini-3.8-flash-lite-tts/Kore",
+            "provider": "GEMINI"
+          }
         }
       ]
     },
