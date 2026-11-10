@@ -22,7 +22,16 @@
           "name": "Park Administration Centre",
           "summary": "Start your visit here: buy tickets and take the ferry across the Dong Nai River to enter the park.",
           "script_text": "Start your visit here: buy tickets and take the ferry across the Dong Nai River to enter the park.",
-          "text_hash": "00613c7650998c0f8a8ae5f60eb5b74c52182693a6fdcaa6961753338a03a222"
+          "text_hash": "00613c7650998c0f8a8ae5f60eb5b74c52182693a6fdcaa6961753338a03a222",
+          "audio": {
+            "file": "audio/coord-01-en-6a794791e49b.mp3",
+            "sha256": "6a794791e49b2651e17b3a419c9aa3b495e61004813a6a14be2178f30fbbabe1",
+            "sizeBytes": 104492,
+            "durationSec": 6.528,
+            "voiceGender": "MALE",
+            "voiceName": "Gemini gemini-3.8-flash-tts · Charon",
+            "provider": "GEMINI"
+          }
         },
         {
           "lang_code": "ja",
@@ -656,7 +665,16 @@
           "name": "Dung Waterfall",
           "summary": "Located on the same route as Troi Waterfall, this waterfall is distinguished by its steep natural rock steps.",
           "script_text": "Located on the same route as Troi Waterfall, this waterfall is distinguished by its steep natural rock steps.",
-          "text_hash": "fe0309f9194613ea7a3d1e66b146c8bceeac1f2400e44b31875f33fd3970514b"
+          "text_hash": "fe0309f9194613ea7a3d1e66b146c8bceeac1f2400e44b31875f33fd3970514b",
+          "audio": {
+            "file": "audio/coord-12-en-a8858accd3df.mp3",
+            "sha256": "a8858accd3dfb77d373f3eb336db1d03445d992e659d6950f4cc4811324f6ddb",
+            "sizeBytes": 127148,
+            "durationSec": 7.944,
+            "voiceGender": "MALE",
+            "voiceName": "Gemini gemini-3.8-flash-tts · Charon",
+            "provider": "GEMINI"
+          }
         },
         {
           "lang_code": "ja",
@@ -911,7 +929,16 @@
           "name": "Dao Tien Island",
           "summary": null,
           "script_text": "Dao Tien is an isolated forest island surrounded by the river, dedicated to the conservation of rare primates such as yellow-cheeked gibbons and silvered langurs. A semi-wild environment has been established here to train individual primates to readapt to natural life before being fully released into the deep forest.",
-          "text_hash": "f826e490e61b120f479ceedf237fc106dbb1970bf590c0495c92457070dd8a08"
+          "text_hash": "f826e490e61b120f479ceedf237fc106dbb1970bf590c0495c92457070dd8a08",
+          "audio": {
+            "file": "audio/doc-13-en-8f58d856e1d7.mp3",
+            "sha256": "8f58d856e1d770453459072248b8aad004c03ea8fd718331c3db4939bc70a8c1",
+            "sizeBytes": 349868,
+            "durationSec": 21.864,
+            "voiceGender": "MALE",
+            "voiceName": "Gemini gemini-3.8-flash-tts · Charon",
+            "provider": "GEMINI"
+          }
         },
         {
           "lang_code": "ja",
@@ -1051,7 +1078,16 @@
           "name": "Nature Museum",
           "summary": "The museum displays animal and plant specimens and introduces the park's biodiversity.",
           "script_text": "The museum displays animal and plant specimens and introduces the park's biodiversity.",
-          "text_hash": "8881866374faaf052fbb13ab9974586bb69b53dff2d79dfb74cd42797edd14d1"
+          "text_hash": "8881866374faaf052fbb13ab9974586bb69b53dff2d79dfb74cd42797edd14d1",
+          "audio": {
+            "file": "audio/coord-02-en-5772e9728ec3.mp3",
+            "sha256": "5772e9728ec33e8a650081d1f7c6dde97b2828e251c8d3879f2c326a9ebcd3be",
+            "sizeBytes": 95660,
+            "durationSec": 5.976,
+            "voiceGender": "FEMALE",
+            "voiceName": "Gemini gemini-3.8-flash-tts · Sulafat",
+            "provider": "GEMINI"
+          }
         },
         {
           "lang_code": "ja",
@@ -1103,7 +1139,16 @@
           "name": "Cat Tien Archaeological Site",
           "summary": null,
           "script_text": "Stretching along the Dong Nai River, this is an ancient religious sanctuary bearing architectural traces dating from the fourth to the eighth century. The relic site was profoundly influenced by the Hindu culture of the ancient kingdom of Funan. Archaeologists have discovered numerous temples and towers, along with ritual ablution spouts, including Yonis and Lingas made of quartz, gold, and ceramics, possessing priceless historical value.",
-          "text_hash": "3986439321832eeeea5c77ad46f8edecc6402594e139d37450db7370468bd50f"
+          "text_hash": "3986439321832eeeea5c77ad46f8edecc6402594e139d37450db7370468bd50f",
+          "audio": {
+            "file": "audio/doc-14-en-4bf6ed51636b.mp3",
+            "sha256": "4bf6ed51636bfb20a0d366da646f1e21c0362603de819320dfb51240bc36e604",
+            "sizeBytes": 457772,
+            "durationSec": 28.608,
+            "voiceGender": "FEMALE",
+            "voiceName": "Gemini gemini-3.8-flash-tts · Sulafat",
+            "provider": "GEMINI"
+          }
         },
         {
           "lang_code": "ja",
@@ -1155,7 +1200,16 @@
           "name": "Ta Lai Cultural Village",
           "summary": "This area is home to Ma, Stieng and Tay communities. The traditional longhouse and local activities offer opportunities to experience their cultures.",
           "script_text": "This area is home to Ma, Stieng and Tay communities. The traditional longhouse and local activities offer opportunities to experience their cultures.",
-          "text_hash": "627190fb4595668136c92674745fec3ec32f05023fa01e9ad185365d1d47eea0"
+          "text_hash": "627190fb4595668136c92674745fec3ec32f05023fa01e9ad185365d1d47eea0",
+          "audio": {
+            "file": "audio/coord-15-en-3dddd980da9c.mp3",
+            "sha256": "3dddd980da9c15e25d71ee4639bab568041b6c0b84ad83b4d86ae557b6c80acc",
+            "sizeBytes": 169772,
+            "durationSec": 10.608,
+            "voiceGender": "FEMALE",
+            "voiceName": "Gemini gemini-3.8-flash-tts · Sulafat",
+            "provider": "GEMINI"
+          }
         },
         {
           "lang_code": "ja",

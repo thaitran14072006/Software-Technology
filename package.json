@@ -28,6 +28,7 @@
     "offline:archive": "node scripts/build-offline-archive.mjs",
     "content:document": "node scripts/import-tts-document.mjs",
     "content:seed": "node scripts/seed-shared-content.mjs",
+    "content:english": "node scripts/sync-english-backend.mjs",
     "content:export": "node scripts/export-shared-content.mjs",
     "test:shared-content": "node scripts/test-shared-content.mjs",
     "test:local-tts": "node scripts/smoke-local-tts.mjs",

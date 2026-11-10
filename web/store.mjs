@@ -55,7 +55,10 @@ const demoStorageKey=()=>seed?.catalogVersion?`sag:demo-pois:${seed.catalogVersi
 export const packKey = (lang) => `sag:pack:${settings.mode}:${lang}`;
 export async function getPois(lang) {
   const catalog=seed;
-  if (settings.mode === 'demo') return { items: (await demoPois()).filter(p => p.status === 'PUBLISHED').map(p => localize(p, lang)), source: 'demo' };
+  if (settings.mode === 'demo') {
+    const items = (await demoPois()).filter(p => p.status === 'PUBLISHED').map(p => localize(p, lang));
+    return { items: useExactSeedAudio(items, seed), source: 'demo' };
+  }
   try {
     const data = await api(`pois?mapId=${MAP_ID}&lang=${lang}`);
     const items=currentCatalogItems(data.items,catalog);

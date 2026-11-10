@@ -10,7 +10,7 @@ test('API can use a packaged Gemini clip only when its language and exact transc
   const source=seed.pois.find(p=>p.code==='9'), translation=source.translations.find(t=>t.langCode==='vi');
   const apiPoi={id:'live-9',code:'9',lang:'vi',scriptText:translation.scriptText,audio:null};
   const [matched]=store.useExactSeedAudio([apiPoi],seed);
-  assert.equal(matched.audio.provider,'GEMINI'); assert.equal(matched.audio.url,'/audio/9-vi.mp3');
+  assert.equal(matched.audio.provider,'GEMINI'); assert.equal(matched.audio.url,source.audios.find(a=>a.langCode==='vi').audioUrl);
   assert.equal(store.useExactSeedAudio([{...apiPoi,scriptText:'Nội dung đã thay đổi.'}],seed)[0].audio,null);
   const apiAudio={url:'/content/audio.mp3',provider:'GEMINI'};
   assert.equal(store.useExactSeedAudio([{...apiPoi,audio:apiAudio}],seed)[0].audio,apiAudio);
@@ -30,6 +30,19 @@ test('demo CRUD persists edits, keeps drafts private and does not mutate source 
     await store.deletePoi(added.id); assert.equal((await store.getAdminPois()).length, 15);
     assert.equal(seed.pois.length, 15);
   } finally { globalThis.fetch = originalFetch; }
+});
+test('saved demo content picks up newly packaged audio without replacing edited scripts', async () => {
+  const saved=structuredClone(seed.pois);
+  for(const p of saved) p.audios=[];
+  const edited=saved.find(p=>p.code==='2');
+  edited.translations.find(t=>t.langCode==='en').scriptText='My edited narration.';
+  localStorage.setItem('sag:demo-pois',JSON.stringify(saved));
+  try {
+    const {items}=await store.getPois('en');
+    assert.ok(items.find(p=>p.code==='coord-01').audio?.url);
+    assert.equal(items.find(p=>p.code==='2').audio,null);
+    assert.equal(items.find(p=>p.code==='2').scriptText,'My edited narration.');
+  } finally { localStorage.removeItem('sag:demo-pois'); }
 });
 test('API offline fallback uses saved public packs and never silently changes to demo', async () => {
   store.saveSettings('api');

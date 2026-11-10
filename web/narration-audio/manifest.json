@@ -55,12 +55,12 @@
   },
   "12:en": {
     "file": "12-en.mp3",
-    "textHash": "0a2fe6b91081af42ed5338d722e60649110a36890de35de8fbc66f32c74c3723",
+    "textHash": "8b993845d1074fd4ba70d027ae1ced406622ff3d19e78e123ff107d16a810c78",
     "provider": "GEMINI",
     "model": "gemini-3.8-flash-tts",
-    "voice": "Kore",
-    "voiceName": "Gemini gemini-3.8-flash-tts · Kore",
-    "bytes": 135212
+    "voice": "Sulafat",
+    "voiceName": "Gemini gemini-3.8-flash-tts · Sulafat",
+    "bytes": 413228
   },
   "12:ja": {
     "file": "12-ja.mp3",
@@ -208,9 +208,12 @@
   },
   "3:en": {
     "file": "3-en.mp3",
-    "textHash": "ba92c3d1dfa85accb7ea366ca5de5a9ddbcf4485b6fa4b3b3332747038c3c52d",
-    "voiceName": "eSpeak NG en-us+f3",
-    "bytes": 124595
+    "textHash": "efbf5fc8cd49fbd41c2f3742f91f704b4c2e1cf406e585ba3b50144266d63b24",
+    "provider": "GEMINI",
+    "model": "gemini-3.8-flash-tts",
+    "voice": "Charon",
+    "voiceName": "Gemini gemini-3.8-flash-tts · Charon",
+    "bytes": 361772
   },
   "2:zh": {
     "file": "2-zh.mp3",
@@ -247,9 +250,12 @@
   },
   "4:en": {
     "file": "4-en.mp3",
-    "textHash": "7590f1644475b8bce6e9a6c07c7d3ac6d76932701334c4d153759c48c2379df8",
-    "voiceName": "eSpeak NG en-us+f3",
-    "bytes": 125431
+    "textHash": "f96ebb5f293637e9a7d8873a6f4bbd8d2e116188918ee3d44824f36a1c3130d5",
+    "provider": "GEMINI",
+    "model": "gemini-3.8-flash-tts",
+    "voice": "Charon",
+    "voiceName": "Gemini gemini-3.8-flash-tts · Charon",
+    "bytes": 354860
   },
   "4:ja": {
     "file": "4-ja.mp3",
@@ -316,9 +322,12 @@
   },
   "6:en": {
     "file": "6-en.mp3",
-    "textHash": "f00c2280893c43fcdd1c66b88d7f0a70f81e7dc2e79e1b52335ee5fd3172a0cb",
-    "voiceName": "eSpeak NG en-us+f3",
-    "bytes": 249147
+    "textHash": "e06c3d14514d942dcf048b0accf0556af09edd4d3e0d731d9465b344a9d16173",
+    "provider": "GEMINI",
+    "model": "gemini-3.8-flash-tts",
+    "voice": "Charon",
+    "voiceName": "Gemini gemini-3.8-flash-tts · Charon",
+    "bytes": 400172
   },
   "6:ja": {
     "file": "6-ja.mp3",
@@ -499,5 +508,77 @@
     "voice": "Kore",
     "voiceName": "Gemini gemini-3.8-flash-tts · Kore",
     "bytes": 106028
+  },
+  "coord-01:en": {
+    "file": "coord-01-en.mp3",
+    "textHash": "00613c7650998c0f8a8ae5f60eb5b74c52182693a6fdcaa6961753338a03a222",
+    "provider": "GEMINI",
+    "model": "gemini-3.8-flash-tts",
+    "voice": "Charon",
+    "voiceName": "Gemini gemini-3.8-flash-tts · Charon",
+    "bytes": 104492
+  },
+  "coord-12:en": {
+    "file": "coord-12-en.mp3",
+    "textHash": "fe0309f9194613ea7a3d1e66b146c8bceeac1f2400e44b31875f33fd3970514b",
+    "provider": "GEMINI",
+    "model": "gemini-3.8-flash-tts",
+    "voice": "Charon",
+    "voiceName": "Gemini gemini-3.8-flash-tts · Charon",
+    "bytes": 127148
+  },
+  "doc-13:en": {
+    "file": "doc-13-en.mp3",
+    "textHash": "f826e490e61b120f479ceedf237fc106dbb1970bf590c0495c92457070dd8a08",
+    "provider": "GEMINI",
+    "model": "gemini-3.8-flash-tts",
+    "voice": "Charon",
+    "voiceName": "Gemini gemini-3.8-flash-tts · Charon",
+    "bytes": 349868
+  },
+  "coord-02:en": {
+    "file": "coord-02-en.mp3",
+    "textHash": "8881866374faaf052fbb13ab9974586bb69b53dff2d79dfb74cd42797edd14d1",
+    "provider": "GEMINI",
+    "model": "gemini-3.8-flash-tts",
+    "voice": "Sulafat",
+    "voiceName": "Gemini gemini-3.8-flash-tts · Sulafat",
+    "bytes": 95660
+  },
+  "coord-15:en": {
+    "file": "coord-15-en.mp3",
+    "textHash": "627190fb4595668136c92674745fec3ec32f05023fa01e9ad185365d1d47eea0",
+    "provider": "GEMINI",
+    "model": "gemini-3.8-flash-tts",
+    "voice": "Sulafat",
+    "voiceName": "Gemini gemini-3.8-flash-tts · Sulafat",
+    "bytes": 169772
+  },
+  "doc-14:en": {
+    "file": "doc-14-en.mp3",
+    "textHash": "3986439321832eeeea5c77ad46f8edecc6402594e139d37450db7370468bd50f",
+    "provider": "GEMINI",
+    "model": "gemini-3.8-flash-tts",
+    "voice": "Sulafat",
+    "voiceName": "Gemini gemini-3.8-flash-tts · Sulafat",
+    "bytes": 457772
+  },
+  "10:en": {
+    "file": "10-en.mp3",
+    "textHash": "e6374c8d53fc4ffe0e83e90541f8ab02885e7bf13dc98f405b8b01c470befc6f",
+    "provider": "GEMINI",
+    "model": "gemini-3.8-flash-tts",
+    "voice": "Sulafat",
+    "voiceName": "Gemini gemini-3.8-flash-tts · Sulafat",
+    "bytes": 334508
+  },
+  "11:en": {
+    "file": "11-en.mp3",
+    "textHash": "766f5be0ba79b18ef38a9ef6336f1abffdec6fd94bcbea61c2cdc9a37b7d8e7b",
+    "provider": "GEMINI",
+    "model": "gemini-3.8-flash-tts",
+    "voice": "Sulafat",
+    "voiceName": "Gemini gemini-3.8-flash-tts · Sulafat",
+    "bytes": 327212
   }
 }
