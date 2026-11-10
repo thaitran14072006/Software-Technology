@@ -1,6 +1,7 @@
 import { spawn } from 'node:child_process';
 import path from 'node:path';
 import { SynthesizeInput, SynthesizeOutput, TtsProvider, TtsQuotaError, TtsTransientError } from './tts-provider.interface';
+import {geminiQuotaPause} from './gemini-quota';
 
 export function geminiRequest(text: string, locale: string, voice: string) {
   const language = ({ 'vi-VN': 'Vietnamese', 'en-US': 'English', 'ja-JP': 'Japanese', 'ko-KR': 'Korean', 'cmn-CN': 'Chinese' } as Record<string, string>)[locale] ?? locale;
@@ -56,7 +57,11 @@ export class GeminiTtsProvider implements TtsProvider {
       method: 'POST', headers: { 'content-type': 'application/json', 'x-goog-api-key': key },
       body: JSON.stringify(geminiRequest(input.text, input.locale === 'cmn-CN' ? 'zh-CN' : input.locale, voice)), signal: AbortSignal.timeout(150000),
     }).catch(() => { throw new TtsTransientError('Không kết nối được Gemini TTS'); });
-    if (res.status === 429) throw new TtsQuotaError('GEMINI_QUOTA: hết hạn mức, không tự chuyển sang engine khác');
+    if (res.status === 429) {
+      const body=await res.json().catch(()=>null);
+      const pause=geminiQuotaPause(body,res.headers.get('retry-after'));
+      throw new TtsQuotaError(`GEMINI_QUOTA: ${pause.reason}; không tự thử lại job lỗi`,pause);
+    }
     if (res.status >= 500) throw new TtsTransientError(`Gemini HTTP ${res.status}`);
     if (!res.ok) throw new Error(`Gemini TTS HTTP ${res.status}; kiểm tra key, model và quyền trong AI Studio`);
     const json: any = await res.json();

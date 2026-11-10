@@ -25,7 +25,7 @@ export class JobWorker implements OnModuleInit,OnModuleDestroy {
     await this.ds.query("DELETE FROM refresh_tokens WHERE expires_at<now()-interval '1 day'");this.maintenanceAt=Date.now();
    }
    const [pause]=await this.ds.query('SELECT value FROM app_configs WHERE key=$1',[`tts_pause_${this.tts.name}`]);
-   if(pause?.value?.until && Date.parse(pause.value.until)>Date.now())return;
+   if(pause?.value?.requiresReview || (pause?.value?.until && Date.parse(pause.value.until)>Date.now()))return;
    await contentWrite(this.ds,async m=>{
     const rows=await m.query("SELECT a.poi_id,a.id AS audio_id,j.id AS job_id FROM tts_jobs j JOIN poi_audios a ON a.current_job_id=j.id WHERE j.status='RUNNING' AND j.lease_until<now() AND j.attempts>=3");
     for(const r of rows){await m.query("UPDATE poi_audios SET status='FAILED',audio_url=NULL WHERE id=$1 AND current_job_id=$2",[r.audio_id,r.job_id]);await m.query("UPDATE tts_jobs SET status='FAILED',error_message='WORKER_LEASE_EXPIRED',finished_at=now() WHERE id=$1",[r.job_id]);}
@@ -53,7 +53,7 @@ export class JobWorker implements OnModuleInit,OnModuleDestroy {
      await m.query("UPDATE tts_jobs SET status='SUCCESS',finished_at=now(),lease_until=NULL,error_message=NULL WHERE id=$1",[job.id]);return {value:null,ids:rows.map((r:any)=>r.poi_id)};
     });
    }catch(e){
-    if(e instanceof TtsQuotaError)await this.ds.query("INSERT INTO app_configs(key,value) VALUES ($1,$2::jsonb) ON CONFLICT(key) DO UPDATE SET value=excluded.value",[`tts_pause_${this.tts.name}`,JSON.stringify({until:new Date(Date.now()+86400000).toISOString(),reason:'QUOTA_EXHAUSTED'})]);
+    if(e instanceof TtsQuotaError)await this.ds.query("INSERT INTO app_configs(key,value) VALUES ($1,$2::jsonb) ON CONFLICT(key) DO UPDATE SET value=excluded.value",[`tts_pause_${this.tts.name}`,JSON.stringify(e.pause??{until:null,requiresReview:true,scope:'unknown',reason:'QUOTA_LIMIT_UNKNOWN'})]);
     const retry=e instanceof TtsTransientError && Number(job.attempts)+1<3;
     await contentWrite(this.ds,async m=>{
      await m.query("UPDATE tts_jobs SET status=$1::text::tts_job_status,error_message=$2,lease_until=NULL,available_at=now()+interval '5 seconds',finished_at=CASE WHEN $1::text='FAILED' THEN now() ELSE NULL END WHERE id=$3",[retry?'QUEUED':'FAILED',String(e.message).slice(0,1000),job.id]);

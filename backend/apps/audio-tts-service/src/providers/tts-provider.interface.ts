@@ -7,5 +7,7 @@ export interface TtsProvider {
 }
 export const TTS_PROVIDER = Symbol('TTS_PROVIDER');
 
-export class TtsQuotaError extends Error {}      // 429 / quota -> không retry
+export class TtsQuotaError extends Error {
+ constructor(message:string,public readonly pause?:import('./gemini-quota').QuotaPause){super(message);}
+} // Never automatically retry a failed quota-limited job.
 export class TtsTransientError extends Error {}  // 5xx / timeout -> retry
