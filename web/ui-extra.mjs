@@ -23,13 +23,6 @@ export const EXTRA_ROWS = [
     "GPS自动播放"
   ],
   [
-    "Tìm đường",
-    "Directions",
-    "道案内",
-    "길찾기",
-    "路线导引"
-  ],
-  [
     "Tìm một điểm đến…",
     "Search for a destination…",
     "目的地を検索…",
