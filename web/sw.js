@@ -1,4 +1,4 @@
-const SHELL = 'sag-shell-v40';
+const SHELL = 'sag-shell-v43';
 const ASSETS = ['./', './index.html', './styles.css', './app.mjs', './core.mjs', './store.mjs', './analytics.mjs', './join-qr.mjs', './admin-tools.mjs', './visitor-config.mjs', './outdoor-map.mjs', './poi-catalog.mjs', './schematic-map.mjs', './schematic-content.mjs', './reference-map.mjs', './map-viewport.mjs', './reference-map.css', './browser-tts.mjs', './ui-i18n.mjs', './ui-extra.mjs', './vendor/fonts/NotoSans.ttf', './vendor/leaflet/leaflet.js', './vendor/leaflet/leaflet.css', './vendor/qrcode.mjs', './data/pois.json', './icon.svg', './manifest.webmanifest'];
 self.addEventListener('install', event => { event.waitUntil(caches.open(SHELL).then(cache => cache.addAll(ASSETS)).then(()=>self.skipWaiting())); });
 self.addEventListener('activate', event => {
@@ -8,7 +8,7 @@ self.addEventListener('fetch', event => {
   if (event.request.method !== 'GET') return;
   const url = new URL(event.request.url);
   // Private/admin responses and live API data are never cached by the service worker.
-  if (url.origin === self.location.origin && (url.pathname.startsWith('/content-api/') || url.pathname.startsWith('/qr-api/') || url.pathname.startsWith('/demo-api/') || url.pathname === '/web-config')) return;
+  if (url.origin === self.location.origin && (url.pathname.startsWith('/content-api/') || url.pathname.startsWith('/qr-api/') || url.pathname === '/web-config')) return;
   if (event.request.destination === 'audio') {
     event.respondWith(caches.open('sag-audio-v1').then(async cache => (await cache.match(event.request.url)) || fetch(event.request)));
     return;

@@ -16,43 +16,33 @@ test('API can use a packaged Gemini clip only when its language and exact transc
   assert.equal(store.useExactSeedAudio([{...apiPoi,audio:apiAudio}],seed)[0].audio,apiAudio);
   assert.equal(store.useExactSeedAudio([{...apiPoi,translationMissing:true}],seed)[0].audio,null);
 });
-test('demo CRUD persists edits, keeps drafts private and does not mutate source data', async () => {
-  globalThis.fetch = async () => new Response(JSON.stringify({...seed,catalogVersion:undefined}));
+test('visitor data always comes from the backend with a legacy demo setting', async () => {
+  localStorage.setItem('sag:settings', JSON.stringify({ mode: 'demo' }));
+  const item = { id: 'live-9', code: '9', lang: 'vi' };
+  globalThis.fetch = async url => {
+    assert.match(url, /^\/content-api\/pois\?mapId=.+&lang=vi$/);
+    return Response.json({ items: [item] });
+  };
   try {
-    const poi = { ...structuredClone(seed.pois[0]), id: null, code: 'qa', status: 'DRAFT' };
-    await store.savePoi(poi, true);
-    let rows = await store.getAdminPois(); assert.equal(rows.length, 16);
-    assert.equal((await store.getPois('vi')).items.some(p => p.code === 'qa'), false);
-    const added = rows.find(p => p.code === 'qa');
-    await store.savePoi({ ...added, status: 'PUBLISHED' }, false);
-    assert.equal((await store.getPois('en')).items.find(p => p.code === 'qa').name, seed.pois[0].translations.find(t => t.langCode === 'en').name);
-    await assert.rejects(() => store.savePoi({ ...poi, code: '1' }, true), /tồn tại/);
-    await store.deletePoi(added.id); assert.equal((await store.getAdminPois()).length, 15);
-    assert.equal(seed.pois.length, 15);
-  } finally { globalThis.fetch = originalFetch; }
-});
-test('saved demo content picks up newly packaged audio without replacing edited scripts', async () => {
-  const saved=structuredClone(seed.pois);
-  for(const p of saved) p.audios=[];
-  const edited=saved.find(p=>p.code==='2');
-  edited.translations.find(t=>t.langCode==='en').scriptText='My edited narration.';
-  localStorage.setItem('sag:demo-pois',JSON.stringify(saved));
-  try {
-    const {items}=await store.getPois('en');
-    assert.ok(items.find(p=>p.code==='coord-01').audio?.url);
-    assert.equal(items.find(p=>p.code==='2').audio,null);
-    assert.equal(items.find(p=>p.code==='2').scriptText,'My edited narration.');
-  } finally { localStorage.removeItem('sag:demo-pois'); }
+    assert.deepEqual(await store.getPois('vi'), { items: [item], source: 'api' });
+  } finally {
+    localStorage.removeItem('sag:settings');
+    globalThis.fetch = originalFetch;
+  }
 });
 test('API offline fallback uses saved public packs and never silently changes to demo', async () => {
-  store.saveSettings('api');
   globalThis.fetch = async () => { throw new Error('Offline'); };
   try {
+    localStorage.setItem('sag:pack:demo:vi', JSON.stringify({ items: [{ id: 'demo-9' }] }));
     await assert.rejects(() => store.getPois('vi'), /Offline/);
-    localStorage.setItem(store.packKey('vi'), JSON.stringify({ items: [{ id: 'cached' }] }));
+    localStorage.setItem('sag:pack:api:vi', JSON.stringify({ items: [{ id: 'cached' }] }));
     const result = await store.getPois('vi'); assert.equal(result.source, 'offline'); assert.equal(result.items[0].id, 'cached');
     await assert.rejects(() => store.getAdminPois(), /Offline/);
-  } finally { globalThis.fetch = originalFetch; store.saveSettings('demo'); }
+  } finally {
+    globalThis.fetch = originalFetch;
+    localStorage.removeItem('sag:pack:demo:vi');
+    localStorage.removeItem('sag:pack:api:vi');
+  }
 });
 test('admin API includes session JWT and exposes backend field validation errors', async () => {
   sessionStorage.setItem('sag:token', 'test-only-token');
@@ -64,4 +54,29 @@ test('login API exposes credential errors instead of mislabeling them as expired
   globalThis.fetch = async () => new Response(JSON.stringify({ message: 'Email hoặc mật khẩu không đúng.' }), { status: 401 });
   try { await assert.rejects(() => store.api('auth/login', { method: 'POST', body: '{}' }), /Email hoặc mật khẩu không đúng/); }
   finally { globalThis.fetch = originalFetch; }
+});
+test('a pending refresh cannot restore a signed-out session', async () => {
+  sessionStorage.setItem('sag:token', 'old-token');
+  sessionStorage.setItem('sag:refresh', 'old-refresh');
+  const refresh = Promise.withResolvers();
+  const started = Promise.withResolvers();
+  globalThis.fetch = async url => {
+    if (url === '/content-api/auth/refresh') {
+      started.resolve();
+      return refresh.promise;
+    }
+    return Response.json({}, { status: 401 });
+  };
+  try {
+    const request = store.api('auth/me');
+    await started.promise;
+    sessionStorage.removeItem('sag:token');
+    sessionStorage.removeItem('sag:refresh');
+    refresh.resolve(Response.json({ accessToken: 'new-token', refreshToken: 'new-refresh' }));
+    await assert.rejects(request, /Vui lòng đăng nhập lại/);
+    assert.equal(store.token(), '');
+    assert.equal(sessionStorage.getItem('sag:refresh'), null);
+  } finally {
+    globalThis.fetch = originalFetch;
+  }
 });

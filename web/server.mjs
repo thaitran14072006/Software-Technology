@@ -2,16 +2,14 @@ import http from 'node:http';
 import { readFile, stat } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { DemoAnalytics } from './demo-analytics.mjs';
 import {buildOfflineArchive} from '../scripts/build-offline-archive.mjs';
 
 const root = path.resolve(fileURLToPath(new URL('./dist/', import.meta.url)));
 const mime = { '.zip': 'application/zip', '.mp3': 'audio/mpeg', '.ttf': 'font/ttf', '.html': 'text/html; charset=utf-8', '.css': 'text/css; charset=utf-8', '.mjs': 'text/javascript; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.json': 'application/json; charset=utf-8', '.webmanifest': 'application/manifest+json', '.svg': 'image/svg+xml' };
 const services = { '/content-api/': process.env.CONTENT_API_URL || 'http://127.0.0.1:3001', '/qr-api/': process.env.QR_API_URL || 'http://127.0.0.1:3003' };
 
-export function createServer(options = {}) {
+export function createServer() {
   let buildingArchive;
-  const analytics = options.analytics || new DemoAnalytics(fileURLToPath(new URL('./.runtime/listens.json', import.meta.url)));
   return http.createServer(async (req, res) => {
     try {
       const url = new URL(req.url, 'http://localhost');
@@ -23,18 +21,6 @@ export function createServer(options = {}) {
       if (url.pathname === '/web-config' && req.method === 'GET') {
         res.writeHead(200, { 'content-type': 'application/json', 'cache-control': 'no-store' });
         res.end(JSON.stringify({ joinUrl: process.env.PUBLIC_WEB_URL || null })); return;
-      }
-      if (url.pathname.startsWith('/demo-api/analytics')) {
-        let result;
-        if (url.pathname === '/demo-api/analytics' && req.method === 'GET') result = await analytics.summary();
-        else if (req.method === 'POST' && ['/demo-api/analytics/presence', '/demo-api/analytics/listens'].includes(url.pathname)) {
-          let body = '', size = 0;
-          for await (const chunk of req) { size += chunk.length; if (size > 8192) throw Object.assign(new Error('Request too large'), { status: 413 }); body += chunk; }
-          let dto; try { dto = JSON.parse(body); } catch { throw Object.assign(new Error('Invalid JSON'), { status: 400 }); }
-          if (!dto || typeof dto !== 'object') throw Object.assign(new Error('Invalid JSON'), { status: 400 });
-          result = url.pathname.endsWith('/presence') ? analytics.presence(dto) : await analytics.listen(dto);
-        } else { res.writeHead(405); res.end(); return; }
-        res.writeHead(200, { 'content-type': 'application/json', 'cache-control': 'no-store' }); res.end(JSON.stringify(result)); return;
       }
       const prefix = Object.keys(services).find(p => url.pathname.startsWith(p));
       if (url.pathname.startsWith('/audio-assets/') && ['GET','HEAD'].includes(req.method)) {

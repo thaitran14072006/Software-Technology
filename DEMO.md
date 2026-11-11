@@ -4,7 +4,7 @@
 
 ## Web: chạy nhanh
 
-Từ thư mục gốc, chạy `npm run dev`, mở **http://127.0.0.1:4173**. Không cần Docker cho chế độ demo cục bộ. Để dùng backend thật, bật Docker Desktop rồi chạy `npm run dev:full`, chọn Kết nối → Backend NestJS trên giao diện. Xem **[WEB_DEMO.md](WEB_DEMO.md)** để chạy quản trị, ngoại tuyến và kiểm thử. Các bước dưới đây dành cho backend thủ công và ứng dụng Android.
+Bật Docker Desktop và chạy `npm start` tại thư mục gốc để mở web cùng Backend NestJS. Xem [README.md](README.md) để biết địa chỉ và cách đăng nhập quản trị. Các bước dưới đây dành cho backend thủ công và ứng dụng Android.
 
 Yêu cầu: Docker Desktop, Node.js ≥ 20.12 (khuyên dùng 22), JDK 17 + Android Studio (SDK + emulator) hoặc điện thoại Android bật USB debugging, tài khoản Mapbox miễn phí (2 token). Google TTS key là tùy chọn.
 

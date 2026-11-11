@@ -14,7 +14,7 @@ npm run dev:full
 
 Nếu đã clone, mở thư mục đã có và chạy `git pull --ff-only`, không clone chồng vào thư mục đó. `dev:full` tự tạo `backend/.env` từ mẫu, tạo JWT secret riêng, cài backend khi chưa có thư viện, build ba service, khởi tạo PostgreSQL, nhập dữ liệu mẫu và tạo tài khoản admin riêng.
 
-Mở http://127.0.0.1:4173/?source=api. Khách không đăng nhập. Admin vào **Kết nối → Đăng nhập quản trị**, dùng tài khoản trong `backend/.runtime/admin-login.txt` trên máy của mình. Không gửi file này lên Git.
+Mở http://127.0.0.1:4173/?source=api. Khách không đăng nhập. Admin vào **Quản trị → Đăng nhập**, dùng tài khoản trong `backend/.runtime/admin-login.txt` trên máy của mình. Không gửi file này lên Git.
 
 Dữ liệu đi kèm: 15 POI, 75 bản dịch và 5 MP3 Google AI Studio khớp nội dung. Không cần API key để phát MP3 đã có. Còn 70 bài thiếu Google; nhập mẫu không tự gọi API, không chia sẻ hàng đợi riêng của tác giả. Mỗi máy có database, tài khoản và token QR độc lập. Nhập mẫu chỉ thêm mã POI chưa có, không ghi đè thay đổi cũ.
 

@@ -57,8 +57,7 @@ for(const source of activeRouteNodes){
   };
   walk(source,null,0,new Set([source]));
 }
-// The visitor demo runs without a backend. Use shared translations for all 15
-// stops and attach only audio generated from the exact matching transcript.
+// Package catalog metadata and audio fallbacks for matching backend transcripts.
 for (const poi of pois) {
   const fixture = fixtureByCode.get(poi.code);
   if (fixture) {

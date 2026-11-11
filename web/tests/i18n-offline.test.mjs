@@ -21,7 +21,7 @@ const memory=()=>{const data=new Map();return {getItem:k=>data.get(k)??null,setI
 globalThis.localStorage=memory();globalThis.sessionStorage=memory();globalThis.window=globalThis;globalThis.location={href:'http://127.0.0.1:4173/'};
 const store=await import('../store.mjs');
 test('Google offline downloads reject truncated files and preserve the old saved pack',async()=>{
- const original=globalThis.fetch;store.saveSettings('api');const key=store.packKey('vi');localStorage.setItem(key,'{"old":true}');
+ const original=globalThis.fetch;const key=store.packKey('vi');localStorage.setItem(key,'{"old":true}');
  globalThis.caches={open:async()=>({put:async()=>{}})};
  globalThis.fetch=async url=>String(url).includes('/pois?')?new Response(JSON.stringify({items:[{id:'p',audio:{provider:'GEMINI',url:'/audio-assets/a.mp3',sizeBytes:9}}]})):new Response(new Uint8Array([1,2,3]),{headers:{'content-type':'audio/mpeg'}});
  try{await assert.rejects(()=>store.saveOffline(()=>{},{provider:'GEMINI'}),/chưa tải đủ/);assert.equal(localStorage.getItem(key),'{"old":true}');}finally{globalThis.fetch=original;}

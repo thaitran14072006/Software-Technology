@@ -1,9 +1,9 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { joinURL, isLoopback, qrSVG } from '../join-qr.mjs';
-test('join URLs retain only the data source, never a JWT or selected stop', () => {
-  assert.equal(joinURL('https://example.com/?poi=9&token=secret&source=api#admin'), 'https://example.com/?source=api');
-  assert.equal(joinURL('http://192.168.1.12:4173/?source=demo'), 'http://192.168.1.12:4173/?source=demo');
+test('join URLs strip source parameters, credentials in queries and selected stops', () => {
+  assert.equal(joinURL('https://example.com/?poi=9&token=secret&source=api#admin'), 'https://example.com/');
+  assert.equal(joinURL('http://192.168.1.12:4173/?source=demo'), 'http://192.168.1.12:4173/');
   for (const input of ['javascript:alert(1)', 'https://user:password@example.com/', 'not a url']) assert.throws(() => joinURL(input));
   assert.equal(isLoopback('http://127.0.0.1:4173'), true); assert.equal(isLoopback('http://192.168.1.12:4173'), false);
 });

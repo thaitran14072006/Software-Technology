@@ -660,13 +660,6 @@ export const EXTRA_ROWS = [
     "查看访问区域"
   ],
   [
-    "Chọn Backend NestJS và đăng nhập trước.",
-    "Select NestJS Backend and log in first.",
-    "NestJSバックエンドを選択して先にログインしてください。",
-    "NestJS 백엔드를 선택하고 먼저 로그인하세요.",
-    "请先选择 NestJS 后端并登录。"
-  ],
-  [
     "Cổng",
     "Port",
     "ポート",
@@ -723,13 +716,6 @@ export const EXTRA_ROWS = [
     "无法加载 OpenStreetMap 背景。请检查网络或切换至平面图。"
   ],
   [
-    "Không tải được dữ liệu demo.",
-    "Failed to load demo data.",
-    "デモデータの読み込みに失敗しました。",
-    "无法加载演示数据。",
-    "未能加载演示数据。"
-  ],
-  [
     "API trả về dữ liệu không hợp lệ.",
     "API returned invalid data.",
     "APIが無効なデータを返しました。",
@@ -737,11 +723,11 @@ export const EXTRA_ROWS = [
     "API 返回的数据无效。"
   ],
   [
-    "JWT không hợp lệ hoặc hết hạn. Mở Kết nối để nhập token.",
-    "Invalid or expired JWT. Open Connection to enter token.",
-    "JWTが無効または期限切れです。接続を開いてトークンを入力してください。",
-    "JWT 无效或已过期。打开连接以输入令牌。",
-    "JWT 无效或已过期。打开连接以输入令牌。"
+    "Phiên quản trị đã hết hạn. Vui lòng đăng nhập lại.",
+    "Your admin session has expired. Please sign in again.",
+    "管理者セッションの有効期限が切れました。再度ログインしてください。",
+    "관리자 세션이 만료되었습니다. 다시 로그인해 주세요.",
+    "管理员会话已过期，请重新登录。"
   ],
   [
     "Mã điểm đã tồn tại.",
@@ -819,13 +805,6 @@ export const EXTRA_ROWS = [
     "マップ座標は1380×900のフレーム内である必要があります。",
     "地图坐标必须在 1380 × 900 框架内。",
     "平面图坐标必须在 1380 × 900 框架内。"
-  ],
-  [
-    "{0} Mở Kết nối để kiểm tra chế độ hoặc chọn demo cục bộ.",
-    "{0} Open Connection to check mode or select local demo.",
-    "{0} 接続を開いてモードを確認するか、ローカルデモを選択してください。",
-    "{0} 打开连接以检查模式或选择本地演示。",
-    "{0} 打开连接以检查模式或选择本地演示。"
   ],
   [
     "NAM CÁT TIÊN",

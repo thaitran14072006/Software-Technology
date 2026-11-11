@@ -110,5 +110,5 @@ try {
   launch('web', path.join(root, 'web', 'server.mjs'), root);
   await waitFor(async ()=>(await fetch(`http://127.0.0.1:${process.env.PORT||4173}/`)).ok,'web server');
   await waitFor(async ()=>(await fetch(`http://127.0.0.1:${process.env.AUDIO_PORT||3002}/health/ready`)).ok,'audio readiness');
-  console.log(`\nWeb: http://127.0.0.1:${process.env.PORT || 4173}\nVisitors do not sign in. Admin: Kết nối → Đăng nhập quản trị. Credentials: backend/.runtime/admin-login.txt\nLogs: backend/.runtime/ · Ctrl+C stops app processes.`);
+  console.log(`\nWeb: http://127.0.0.1:${process.env.PORT || 4173}\nVisitors do not sign in. Admin: Quản trị → Đăng nhập. Credentials: backend/.runtime/admin-login.txt\nLogs: backend/.runtime/ · Ctrl+C stops app processes.`);
 } catch (error) { console.error(error.message); stop(1); }

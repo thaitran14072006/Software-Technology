@@ -2,15 +2,15 @@
 
 # Smart Audio Guide — Cát Tiên
 
-**Khởi động để dùng quản trị:** bật Docker Desktop rồi chạy `npm start` tại thư mục dự án. Lệnh này khởi động cả web, backend và database. Giữ terminal chạy trong lúc sử dụng; không cần khởi động lại cho mỗi lần đăng nhập. `npm run dev` chỉ mở web demo, không khởi động backend đăng nhập. Nếu đã có phiên chạy, dùng phiên đó hoặc dừng bằng Ctrl+C trước khi mở phiên mới.
+**Khởi động để dùng quản trị:** bật Docker Desktop rồi chạy `npm start` tại thư mục dự án. Lệnh này khởi động cả web, backend và database. Giữ terminal chạy trong lúc sử dụng; không cần khởi động lại cho mỗi lần đăng nhập. `npm run dev` cũng khởi động đầy đủ hệ thống. Nếu đã có phiên chạy, dùng phiên đó hoặc dừng bằng Ctrl+C trước khi mở phiên mới.
 
 **Thành viên vừa clone/pull:** bắt đầu tại [hướng dẫn làm việc nhóm](docs/TEAM_SETUP.md). Cài Node.js 24 và Docker Desktop, chạy `npm run dev:full` tại thư mục có file này. Script tự cài backend, tạo database và tài khoản admin riêng, nhập 17 POI/85 bản dịch cùng 16 MP3 Google đã chia sẻ. Không cần khóa Google để nghe các MP3 này. Sau khi cài lần đầu, dùng `git pull --ff-only` để nhận mã mới; đọc hướng dẫn trước khi cập nhật dữ liệu đã chỉnh sửa.
 
 **Chia nhau tạo Google audio:** xem [COLLABORATIVE_AUDIO.md](docs/COLLABORATIVE_AUDIO.md). Mỗi thành viên dùng khóa riêng phía backend, nhận một phần ngôn ngữ bằng `TTS_LANGUAGES`, tạo MP3 rồi commit fixture để cả nhóm pull và nhập bằng `npm run content:seed`.
 
-**Cập nhật Google AI Studio:** đã tích hợp Gemini TTS, kịch bản Word, gói audio tải về, font tiếng Việt và bộ dịch giao diện 5 ngôn ngữ. Hiện có 17 POI và 16 MP3 Google thật; còn 69 bản chưa có MP3. Khi thiếu hoặc MP3 lỗi, web/mobile thử voice hệ thống đúng ngôn ngữ; nếu thiết bị không có voice đó thì báo rõ, không đọc bằng tiếng khác. Xem [tiến độ tạo audio ngày 24/10](docs/GEMINI_AUDIO_PROGRESS.md) và [hướng dẫn Google/ngoại tuyến](docs/GOOGLE_AI_STUDIO_AND_OFFLINE.md). Chạy `npm run dev:gemini:lan` và dùng `?source=api`; các hướng dẫn eSpeak bên dưới là chế độ thay thế.
+**Cập nhật Google AI Studio:** đã tích hợp Gemini TTS, kịch bản Word, gói audio tải về, font tiếng Việt và bộ dịch giao diện 5 ngôn ngữ. Hiện có 17 POI và 16 MP3 Google thật; còn 69 bản chưa có MP3. Khi thiếu hoặc MP3 lỗi, web/mobile thử voice hệ thống đúng ngôn ngữ; nếu thiết bị không có voice đó thì báo rõ, không đọc bằng tiếng khác. Xem [tiến độ tạo audio ngày 24/10](docs/GEMINI_AUDIO_PROGRESS.md) và [hướng dẫn Google/ngoại tuyến](docs/GOOGLE_AI_STUDIO_AND_OFFLINE.md). Chạy `npm run dev:gemini:lan`; các hướng dẫn eSpeak bên dưới là chế độ thay thế.
 
-Hệ thống tham quan gồm web/PWA, backend NestJS/PostgreSQL và mobile Expo. Backend hiện có 17 điểm (demo riêng vẫn 15), 5 ngôn ngữ, sơ đồ, nghe thuyết minh, GPS/QR, gói ngoại tuyến và quản trị.
+Hệ thống tham quan gồm web/PWA, backend NestJS/PostgreSQL và mobile Expo. Backend hiện có 17 điểm, 5 ngôn ngữ, sơ đồ, nghe thuyết minh, GPS/QR, gói ngoại tuyến và quản trị.
 
 Đã áp dụng Leaflet/OpenStreetMap và cải thiện giọng trình duyệt từ bản tham chiếu `cat-tien-app`. Trên web, bấm **Bản đồ OpenStreetMap** để đổi từ sơ đồ sang nền địa lý. Xem [chi tiết tích hợp, API, cách dùng và kiểm thử](docs/CAT_TIEN_INTEGRATION.md).
 
@@ -28,7 +28,7 @@ npm run dev:local-tts
 
 Bản này chạy PostgreSQL và engine tạo MP3 miễn phí trên máy; lần đầu cần tải/build Docker image. Nếu chỉ cần MP3 đã có/giọng thiết bị, dùng npm run dev:full nhẹ hơn.
 
-Mở **http://127.0.0.1:4169/?source=api**. Nếu đang ở demo, chọn Kết nối → Backend NestJS → Áp dụng kết nối. Khách xem nội dung, nghe, QR và tải gói không cần tài khoản.
+Mở địa chỉ ở dòng **Web** trong terminal (mặc định **http://127.0.0.1:4173/**). Web tự kết nối với Backend NestJS. Khách xem nội dung, nghe, QR và tải gói không cần tài khoản.
 
 ### Quét QR bằng điện thoại cùng Wi-Fi
 
@@ -44,9 +44,9 @@ Nếu chủ động muốn dùng eSpeak miễn phí hoàn toàn thay Google, ch�
 npm run dev:lan
 ```
 
-Chỉ chạy một phiên hệ thống. Nếu báo cổng `4169`, `3001`, `3002` hoặc `3003` đang được sử dụng, dừng phiên tại terminal cũ rồi chạy lại. Bộ khởi động kiểm tra các cổng trước khi build và áp dụng database. Xem [cách sửa lỗi khởi động](docs/STARTUP_PORT_FIX.md).
+Chỉ chạy một phiên hệ thống. Nếu báo cổng web hoặc cổng `3001`, `3002`, `3003` đang được sử dụng, dừng phiên tại terminal cũ rồi chạy lại. Bộ khởi động kiểm tra các cổng trước khi build và áp dụng database. Xem [cách sửa lỗi khởi động](docs/STARTUP_PORT_FIX.md).
 
-Chế độ này chạy toàn hệ thống với TTS cục bộ và cho phép truy cập web từ mạng nội bộ trong lúc chương trình chạy. Màn hình sẽ in **Điện thoại cùng Wi-Fi: http://<IP-máy-tính>:4169/?source=api**; mở địa chỉ này trên máy tính, bấm **QR Code**, rồi quét bằng điện thoại cùng Wi-Fi. Mã sẽ dùng IP LAN thay vì localhost; địa chỉ có thể thay đổi khi đổi mạng. Nếu Windows hỏi quyền mạng cho Node.js, cho phép trên mạng Private đang dùng. Không cần mở cổng router hoặc tắt tường lửa. Nhấn Ctrl+C để dừng.
+Mở địa chỉ ở dòng **Điện thoại cùng Wi-Fi** trên máy tính, bấm **QR Code**, rồi quét bằng điện thoại cùng Wi-Fi. Mã dùng IP LAN, địa chỉ có thể thay đổi khi đổi mạng. Nếu Windows hỏi quyền mạng cho Node.js, cho phép trên mạng Private đang dùng. Nhấn Ctrl+C để dừng.
 
 Nếu có nhiều card mạng hoặc đã lưu một URL QR khác, kiểm tra ô **Địa chỉ web tham gia**, nhập đúng địa chỉ cùng mạng điện thoại rồi bấm **Cập nhật mã QR**. `PUBLIC_WEB_URL` có thể dùng để chỉ định URL cần in vào QR. Chế độ thông thường `dev:local-tts` vẫn chỉ nghe trên localhost nếu không đặt HOST riêng.
 
@@ -56,7 +56,7 @@ Trên điện thoại qua HTTP LAN, trang, MP3 và QR tham gia có thể dùng; 
 
 Lần đầu cần mạng tải image PostgreSQL/thư viện. Script tự build, áp dụng migration bổ sung, seed các POI chưa có, tạo QR và chuẩn bị admin local. Không xóa hoặc ghi đè nội dung POI đã chỉnh sửa.
 
-Admin: mở **Kết nối → Đăng nhập quản trị**, nhập tài khoản được tạo ở:
+Admin: mở **Quản trị → Đăng nhập**, nhập tài khoản được tạo ở:
 
 ```text
 backend/.runtime/admin-login.txt
@@ -71,14 +71,6 @@ npm run infra:stop
 ```
 
 Không dùng `down -v` để sửa lỗi thông thường vì sẽ xóa volume database.
-
-Để chỉ xem demo không cần database:
-
-```powershell
-npm run dev
-```
-
-Demo chỉ là dữ liệu trải nghiệm trong trình duyệt. Giao diện quản trị thật yêu cầu backend và đăng nhập admin.
 
 ## 2. Cách hệ thống hoạt động
 

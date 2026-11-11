@@ -1,8 +1,6 @@
 import { test, before, after } from 'node:test';
 import assert from 'node:assert/strict';
 import http from 'node:http';
-import { randomUUID } from 'node:crypto';
-import { DemoAnalytics } from '../demo-analytics.mjs';
 let upstream, server, origin;
 before(async () => {
   upstream = http.createServer(async (req, res) => {
@@ -15,13 +13,19 @@ before(async () => {
   process.env.CONTENT_API_URL = `http://127.0.0.1:${upstream.address().port}`;
   process.env.QR_API_URL = process.env.CONTENT_API_URL;
   const { createServer } = await import('../server.mjs');
-  server = createServer({ analytics: new DemoAnalytics() }); await new Promise(resolve => server.listen(0, '127.0.0.1', resolve));
+  server = createServer(); await new Promise(resolve => server.listen(0, '127.0.0.1', resolve));
   origin = `http://127.0.0.1:${server.address().port}`;
 });
 after(async () => { await Promise.all([new Promise(r => server.close(r)), new Promise(r => upstream.close(r))]); });
 test('serves built app and modules with correct types and security headers', async () => {
   const res = await fetch(origin);
-  assert.equal(res.status, 200); assert.match(await res.text(), /Smart Audio Guide/);
+  assert.equal(res.status, 200);
+  const html = await res.text();
+  assert.match(html, /Smart Audio Guide/);
+  assert.doesNotMatch(html, /id="settings"|id="admin-token"|name="mode"/);
+  assert.doesNotMatch(html, /id="connection"/);
+  assert.match(html, /<header[\s\S]*<button id="logout-button"[^>]* hidden>Đăng xuất<\/button>[\s\S]*<\/header>/);
+  assert.match(html, /<dialog id="login-dialog"[\s\S]*id="login-button"/);
   assert.match(res.headers.get('content-security-policy'), /object-src 'none'/);
   assert.match(res.headers.get('content-security-policy'), /img-src 'self' data: https:\/\/tile\.openstreetmap\.org;/);
   assert.match(res.headers.get('content-security-policy'), /script-src 'self';/);
@@ -59,14 +63,11 @@ test('An unavailable login backend explains how to start the full application',a
   assert.match(message,/npm start/);
   assert.ok(!message.includes('private-test-password'));
 });
-test('demo HTTP analytics aggregate users and listeners with no caching', async () => {
-  const visitorId = randomUUID(), sessionId = randomUUID();
-  const post = (route, body) => fetch(`${origin}/demo-api/analytics/${route}`, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify(body) });
-  assert.equal((await post('presence', { visitorId, sessionId, active: true })).status, 200);
-  const listen = { visitorId, eventId: randomUUID(), poiId: 'demo-9', code: '9', name: 'Bàu Sấu', lang: 'vi' };
-  await post('listens', listen); await post('listens', listen);
-  const response = await fetch(`${origin}/demo-api/analytics`), data = await response.json();
-  assert.equal(data.activeUsers, 1); assert.equal(data.totalListens, 1); assert.equal(data.rows[0].count, 1);
-  assert.equal(response.headers.get('cache-control'), 'no-store');
-  assert.equal((await post('presence', { visitorId: 'invalid' })).status, 400);
+test('analytics use the backend and the old demo endpoint is gone', async () => {
+  assert.equal((await fetch(`${origin}/demo-api/analytics`)).status, 404);
+  const presence = await fetch(`${origin}/content-api/analytics/presence`, {
+    method: 'POST', headers: { 'content-type': 'application/json' }, body: '{"active":true}',
+  });
+  assert.equal((await presence.json()).path, '/api/v1/analytics/presence');
+  assert.equal(presence.headers.get('cache-control'), 'no-store');
 });

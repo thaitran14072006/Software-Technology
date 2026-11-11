@@ -1,6 +1,5 @@
-import { localize, MAP_ID, LANGS, toDto, newId } from './core.mjs';
+import { MAP_ID, LANGS, toDto } from './core.mjs';
 import {currentCatalogItems} from './poi-catalog.mjs';
-export const settings = JSON.parse(localStorage.getItem('sag:settings') || 'null') || { mode: 'demo' };
 let seed;
 export function useExactSeedAudio(items, catalog) {
   const byCode = new Map((catalog?.pois || []).map(p => [p.code, p]));
@@ -14,19 +13,29 @@ export function useExactSeedAudio(items, catalog) {
   });
 }
 export async function loadSeed() {
-  if (!seed) { const res = await fetch('./data/pois.json'); if (!res.ok) throw new Error('Không tải được dữ liệu demo.'); seed = await res.json(); }
+  if (!seed) { const res = await fetch('./data/pois.json'); if (!res.ok) throw new Error('Không tải được dữ liệu sơ đồ.'); seed = await res.json(); }
   return seed;
 }
-export function saveSettings(mode) { settings.mode = mode; localStorage.setItem('sag:settings', JSON.stringify(settings)); }
 export function token() { return sessionStorage.getItem('sag:token') || ''; }
 // Read JSON once, including Nest DELETE endpoints which can return an empty 200 response.
 export async function api(path, options = {}, qr = false) {
   const multipart = typeof FormData !== 'undefined' && options.body instanceof FormData;
+  const refreshToken = sessionStorage.getItem('sag:refresh');
   const res = await fetch(`${qr ? '/qr-api' : '/content-api'}/${path}`, {
     ...options, headers: { ...(multipart ? {} : {'content-type': 'application/json'}), ...(options.method || path.startsWith('admin/') || path === 'auth/me' ? { Authorization: `Bearer ${token()}` } : {}) }, signal: AbortSignal.timeout(20000),
   });
-  if (res.status === 401 && (!path.startsWith('auth/') || path==='auth/me') && !options._refreshed && sessionStorage.getItem('sag:refresh')) {
-    try { const fresh = await api('auth/refresh', {method:'POST',body:JSON.stringify({refreshToken:sessionStorage.getItem('sag:refresh')})}); sessionStorage.setItem('sag:token',fresh.accessToken);sessionStorage.setItem('sag:refresh',fresh.refreshToken);return api(path,{...options,_refreshed:true},qr); } catch { sessionStorage.removeItem('sag:refresh'); }
+  if (res.status === 401 && (!path.startsWith('auth/') || path === 'auth/me') && !options._refreshed &&
+      refreshToken && refreshToken === sessionStorage.getItem('sag:refresh')) {
+    try {
+      const fresh = await api('auth/refresh', { method: 'POST', body: JSON.stringify({ refreshToken }) });
+      if (refreshToken === sessionStorage.getItem('sag:refresh')) {
+        sessionStorage.setItem('sag:token', fresh.accessToken);
+        sessionStorage.setItem('sag:refresh', fresh.refreshToken);
+        return api(path, { ...options, _refreshed: true }, qr);
+      }
+    } catch {
+      if (refreshToken === sessionStorage.getItem('sag:refresh')) sessionStorage.removeItem('sag:refresh');
+    }
   }
   const body = await res.text();
   let parsed;
@@ -42,23 +51,13 @@ export async function api(path, options = {}, qr = false) {
         throw new Error('Vui lòng kiểm tra lại email và mật khẩu.');
       }
     }
-    throw new Error(res.status === 401 ? 'JWT không hợp lệ hoặc hết hạn. Mở Kết nối để nhập token.' : serverMessage);
+    throw new Error(res.status === 401 ? 'Phiên quản trị đã hết hạn. Vui lòng đăng nhập lại.' : serverMessage);
   }
   return parsed;
 }
-export async function demoPois() {
-  const data = await loadSeed();
-  const saved=JSON.parse(localStorage.getItem(demoStorageKey())||'null');
-  return saved ? currentCatalogItems(saved,data) : structuredClone(data.pois);
-}
-const demoStorageKey=()=>seed?.catalogVersion?`sag:demo-pois:${seed.catalogVersion}`:'sag:demo-pois';
-export const packKey = (lang) => `sag:pack:${settings.mode}:${lang}`;
+export const packKey = (lang) => `sag:pack:api:${lang}`;
 export async function getPois(lang) {
   const catalog=seed;
-  if (settings.mode === 'demo') {
-    const items = (await demoPois()).filter(p => p.status === 'PUBLISHED').map(p => localize(p, lang));
-    return { items: useExactSeedAudio(items, seed), source: 'demo' };
-  }
   try {
     const data = await api(`pois?mapId=${MAP_ID}&lang=${lang}`);
     const items=currentCatalogItems(data.items,catalog);
@@ -70,26 +69,15 @@ export async function getPois(lang) {
   }
 }
 export async function getAdminPois() {
-  if (settings.mode === 'demo') return demoPois();
   let page = 1, items = [], data;
   do { data = await api(`admin/pois?limit=100&page=${page++}`); items.push(...data.items); } while (items.length < data.total);
   return items.map(p => ({ ...p, lat: p.latitude, lng: p.longitude, schematic: p.schematicX == null ? null : [p.schematicX, p.schematicY] }));
 }
 export async function savePoi(poi, isNew) {
-  if (settings.mode === 'demo') {
-    const pois = await demoPois();
-    if (pois.some(p => p.code === poi.code && p.id !== poi.id)) throw new Error('Mã điểm đã tồn tại.');
-    const i = pois.findIndex(p => p.id === poi.id);
-    if (isNew) pois.push({ ...poi, id: newId(), version: 1 });
-    else { if (i < 0) throw new Error('Điểm không tồn tại.'); pois[i] = { ...poi, version: (pois[i].version || 1) + 1 }; }
-    localStorage.setItem(demoStorageKey(), JSON.stringify(pois));
-    return;
-  }
   return api(isNew ? 'admin/pois' : `admin/pois/${encodeURIComponent(poi.id)}`, { method: isNew ? 'POST' : 'PATCH', body: JSON.stringify(toDto(poi)) });
 }
 export async function deletePoi(id) {
-  if (settings.mode === 'demo') localStorage.setItem(demoStorageKey(), JSON.stringify((await demoPois()).filter(p => p.id !== id)));
-  else await api(`admin/pois/${encodeURIComponent(id)}`, { method: 'DELETE' });
+  await api(`admin/pois/${encodeURIComponent(id)}`, { method: 'DELETE' });
 }
 export async function saveOffline(onProgress, {provider} = {}) {
   let audioCount = 0, audioFailed = 0, audioMissing = 0;
@@ -116,7 +104,7 @@ export async function saveOffline(onProgress, {provider} = {}) {
   if(audioFailed)throw new Error(`${audioFailed} audio chưa tải đủ. Gói cũ được giữ lại; hãy tải lại khi mạng ổn định.`);
   if(provider && !audioCount)throw new Error('Chưa có audio Google AI Studio để tải. Cần tạo audio trên máy chủ trước.');
   for (const [lang, data] of packs) localStorage.setItem(packKey(lang), JSON.stringify(data));
-  localStorage.setItem(`sag:pack-date:${settings.mode}`, new Date().toISOString());
-  localStorage.setItem(`sag:pack-meta:${settings.mode}`,JSON.stringify({provider:provider||null,audioCount,audioMissing,catalogVersion:seed?.catalogVersion}));
+  localStorage.setItem('sag:pack-date:api', new Date().toISOString());
+  localStorage.setItem('sag:pack-meta:api',JSON.stringify({provider:provider||null,audioCount,audioMissing,catalogVersion:seed?.catalogVersion}));
   return { audioCount, audioFailed, audioMissing };
 }

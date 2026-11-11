@@ -4,9 +4,7 @@ export function joinURL(input) {
   const url = new URL(input.trim());
   if (!['http:', 'https:'].includes(url.protocol) || url.username || url.password || url.href.length > 1500) throw new Error('Nhập địa chỉ web http hoặc https hợp lệ, không chứa thông tin đăng nhập.');
   // A join link opens the visitor page, without selection or credentials.
-  const source = url.searchParams.get('source');
   url.search = ''; url.hash = '';
-  if (['demo', 'api'].includes(source)) url.searchParams.set('source', source);
   return url.href;
 }
 export function isLoopback(input) {

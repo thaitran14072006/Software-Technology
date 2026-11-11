@@ -58,7 +58,7 @@ npm run dev:gemini:lan
 
 Nếu đã có phiên đang chạy, dừng bằng Ctrl+C trước khi chạy thêm để tránh trùng cổng. Trong lần làm việc này, hệ thống đã được khởi động lại bằng chế độ Gemini; không cần mở phiên thứ hai.
 
-Mở `http://127.0.0.1:4173/?source=api&poi=9` để nghe Bàu Sấu tiếng Việt. Trên điện thoại cùng Wi-Fi, dùng địa chỉ LAN do terminal in ra, hiện là `http://192.168.1.60:4173/?source=api`. **Không dùng `source=demo` để kiểm tra nội dung Google**, vì demo là bộ mẫu riêng.
+Mở `http://127.0.0.1:4173/?poi=9` để nghe Bàu Sấu tiếng Việt. Trên điện thoại cùng Wi-Fi, dùng địa chỉ LAN do terminal in ra, hiện là `http://192.168.1.60:4173/`.
 
 Nguồn giọng mặc định ưu tiên **Google AI Studio · MP3 có sẵn**. Nếu thiếu MP3 hoặc file lỗi, web/mobile thử voice hệ thống đúng ngôn ngữ; nếu thiết bị không có voice phù hợp, ứng dụng báo rõ và không đọc bằng ngôn ngữ khác. Người dùng vẫn có thể chọn riêng giọng trình duyệt hoặc MP3.
 

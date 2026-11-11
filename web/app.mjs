@@ -1,5 +1,5 @@
 import { LANGS, LOCALES, localize, routeTo, haversine, qrValue, validatePoi, normalizeSearch, matchesPoiQuery } from './core.mjs';
-import { settings, saveSettings, token, loadSeed, getPois, getAdminPois, savePoi, deletePoi, saveOffline, api, packKey } from './store.mjs';
+import { token, loadSeed, getPois, getAdminPois, savePoi, deletePoi, saveOffline, api, packKey } from './store.mjs';
 import { VisitorAnalytics, playbackCounter, getAnalytics } from './analytics.mjs';
 import { joinURL, isLoopback, qrSVG } from './join-qr.mjs';
 import { setupAdminTools } from './admin-tools.mjs';
@@ -10,9 +10,6 @@ import {stopNumber,schematicStops,schematicStopName,renderSchematic} from './sch
 import {withSchematicNarration} from './schematic-content.mjs';
 import {installUITranslations,translateUI,formatUI} from './ui-i18n.mjs';
 import {gpsErrorKey,gpsText,hasVerifiedGps,startGpsWatch} from './gps.mjs';
-
-const requestedSource = new URL(location.href).searchParams.get('source');
-if (['demo', 'api'].includes(requestedSource)) saveSettings(requestedSource);
 
 const $ = s => document.querySelector(s);
 const $$ = s => [...document.querySelectorAll(s)];
@@ -37,7 +34,7 @@ const refreshUITranslations = installUITranslations(() => state.lang);
 const outdoorMap = createOutdoorMap({ container: $('#outdoor-map'), note: $('#outdoor-note'), onSelect: id => selectPoi(id) });
 function updateOutdoor() { outdoorMap.update({ pois: filtered(), selectedId: state.selected, gps: state.gps }); }
 const usage = new VisitorAnalytics();
-const counter = playbackCounter((poi, mode) => { try { usage.record(poi, mode); } catch { toast('Không lưu được lượt nghe. Bộ nhớ trình duyệt có thể đã đầy.', true); } });
+const counter = playbackCounter(poi => { try { usage.record(poi); } catch { toast('Không lưu được lượt nghe. Bộ nhớ trình duyệt có thể đã đầy.', true); } });
 const t = key => copy[state.lang][key];
 function toast(message, error = false) { $('#toast').textContent = message; $('#toast').classList.toggle('error', error); $('#toast').hidden = false; clearTimeout(toastTimer); toastTimer = setTimeout(() => $('#toast').hidden = true, 6500); }
 function filtered() {
@@ -111,13 +108,11 @@ async function refresh() {
     state.source = result.source;
     if (!selected()) state.selected = state.pois.find(p => p.code === new URL(location.href).searchParams.get('poi'))?.id || state.pois.find(p => p.code === '9')?.id || state.pois[0]?.id;
     state.route = null;
-    $('#data-note').textContent = state.source === 'demo' ? 'DEMO CỤC BỘ · Dữ liệu mẫu; thay đổi quản trị được lưu trong trình duyệt này.' : state.source === 'offline' ? 'NGOẠI TUYẾN · Đang dùng gói đã lưu. API hiện không truy cập được.' : 'BACKEND TRỰC TIẾP · Nội dung được tải từ API NestJS.';
-    $('#connection').textContent = { demo: 'Demo cục bộ', api: 'Backend trực tiếp', offline: 'Gói ngoại tuyến' }[state.source];
+    $('#data-note').textContent = state.source === 'offline' ? 'NGOẠI TUYẾN · Đang dùng gói đã lưu. API hiện không truy cập được.' : 'BACKEND TRỰC TIẾP · Nội dung được tải từ API NestJS.';
   } catch (error) {
     if (run !== refreshId) return;
     state.pois = []; state.selected = null; state.source = 'error';
-    $('#data-note').textContent = `${error.message} Mở Kết nối để kiểm tra chế độ hoặc chọn demo cục bộ.`;
-    $('#connection').textContent = 'Mất kết nối API';
+    $('#data-note').textContent = error.message;
     toast(error.message, true);
   }
   if (run !== refreshId) return;
@@ -199,7 +194,7 @@ async function playAudio() {
   const p = selected(); if (!p) return;
   if (p.translationMissing || p.lang !== state.lang) { toast('Bản thuyết minh ngôn ngữ đã chọn chưa có.', true); return; }
   stopAudio(); state.playing = true; $('#play').textContent = t('stop');
-  const onStarted = counter.begin(p, settings.mode);
+  const onStarted = counter.begin(p);
   const url = safeURL(p.audio?.url);
   // Auto uses the MP3 localized for the selected language, then falls back
   // to a matching browser voice when that translation has no MP3.
@@ -234,7 +229,7 @@ function toggleGPS() {
 async function showAdmin() {
   const run = ++adminRefreshId;
   $('#admin-error').textContent = ''; $('#admin-list').innerHTML = '<tr><td colspan="7">Đang tải…</td></tr>';
-  $('#admin-note').textContent = settings.mode === 'demo' ? 'Chế độ demo: nội dung riêng trong trình duyệt; thống kê dùng chung trên máy chủ web.' : 'Dữ liệu backend thật. Admin quản lý nội dung và vẫn dùng được trang Khám phá.';
+  $('#admin-note').textContent = 'Dữ liệu backend thật. Admin quản lý nội dung và vẫn dùng được trang Khám phá.';
   loadAnalytics();
   try {
     const rows = await getAdminPois();
@@ -242,22 +237,22 @@ async function showAdmin() {
     state.admin = rows;
     renderAnalytics();
     $('#admin-stats').innerHTML = [[rows.length, 'Điểm tham quan'], [rows.filter(p => p.status === 'PUBLISHED').length, 'Đã xuất bản'], [rows.reduce((n, p) => n + p.translations.length, 0), 'Bản dịch']].map(([n, label]) => `<div class="stat"><strong>${n}</strong><span>${label}</span></div>`).join('');
-    $('#admin-list').innerHTML = rows.length ? rows.map(p => `<tr><td>${esc(p.code)}</td><td><strong>${esc(localize(p, state.lang).name)}</strong></td><td>${esc(group(p.categoryId))}</td><td><span class="badge ${p.status !== 'PUBLISHED' ? 'draft' : ''}">${esc(p.status === 'PUBLISHED' ? 'Đã xuất bản' : 'Bản nháp')}</span></td><td>${p.translations.length} / 5</td><td>${p.geoVerified ? '✓ Đã xác thực' : 'Chưa xác thực'}</td><td><button class="button" data-edit="${esc(p.id)}">Sửa</button>${settings.mode === 'api' ? `<button class="button" data-upload="${esc(p.id)}">Tải MP3</button><button class="button" data-generate="${esc(p.id)}">Tạo MP3 miễn phí</button><button class="button" data-regen="${esc(p.id)}">Tạo lại audio lỗi</button>` : ''}<button class="button" data-delete="${esc(p.id)}">Xóa</button></td></tr>`).join('') : '<tr><td colspan="7">Chưa có điểm tham quan. Bấm Thêm điểm để bắt đầu.</td></tr>';
+    $('#admin-list').innerHTML = rows.length ? rows.map(p => `<tr><td>${esc(p.code)}</td><td><strong>${esc(localize(p, state.lang).name)}</strong></td><td>${esc(group(p.categoryId))}</td><td><span class="badge ${p.status !== 'PUBLISHED' ? 'draft' : ''}">${esc(p.status === 'PUBLISHED' ? 'Đã xuất bản' : 'Bản nháp')}</span></td><td>${p.translations.length} / 5</td><td>${p.geoVerified ? '✓ Đã xác thực' : 'Chưa xác thực'}</td><td><button class="button" data-edit="${esc(p.id)}">Sửa</button><button class="button" data-upload="${esc(p.id)}">Tải MP3</button><button class="button" data-generate="${esc(p.id)}">Tạo MP3 miễn phí</button><button class="button" data-regen="${esc(p.id)}">Tạo lại audio lỗi</button><button class="button" data-delete="${esc(p.id)}">Xóa</button></td></tr>`).join('') : '<tr><td colspan="7">Chưa có điểm tham quan. Bấm Thêm điểm để bắt đầu.</td></tr>';
   } catch (error) {
     if (run !== adminRefreshId) return;
     state.admin = []; $('#admin-list').innerHTML = ''; $('#admin-stats').innerHTML = ''; $('#admin-error').textContent = error.message;
   }
 }
 async function loadAnalytics() {
-  const run = ++analyticsRun, mode = settings.mode;
+  const run = ++analyticsRun;
   $('#analytics-refresh').disabled = true;
   try {
     const data = await getAnalytics();
-    if (run !== analyticsRun || mode !== settings.mode) return;
+    if (run !== analyticsRun) return;
     analyticsData = data; $('#analytics-error').textContent = ''; renderAnalytics();
-    $('#analytics-updated').textContent = `${mode === 'demo' ? 'Demo · thống kê chung trên máy chủ web này' : 'Backend · thống kê tập trung'} · Cập nhật ${new Date(data.updatedAt).toLocaleTimeString('vi-VN')}`;
+    $('#analytics-updated').textContent = `Backend · thống kê tập trung · Cập nhật ${new Date(data.updatedAt).toLocaleTimeString('vi-VN')}`;
   } catch (error) {
-    if (run !== analyticsRun || mode !== settings.mode) return;
+    if (run !== analyticsRun) return;
     analyticsData = null; renderAnalytics(); $('#analytics-updated').textContent = 'Chưa có số liệu cập nhật'; $('#analytics-error').textContent = error.message;
   } finally { if (run === analyticsRun) $('#analytics-refresh').disabled = false; }
 }
@@ -277,16 +272,14 @@ function renderAnalytics() {
 function visitorVisible() { return state.tab === 'visitor' && document.visibilityState === 'visible' && state.pois.length > 0; }
 function renderJoinQR() {
   try {
-    const url = new URL(joinURL($('#join-url').value));
-    url.searchParams.set('source', settings.mode);
-    joinLink = url.href;
+    joinLink = joinURL($('#join-url').value);
     const svg = qrSVG(joinLink);
     $('#join-qr').innerHTML = svg;
     if (joinBlobUrl) URL.revokeObjectURL(joinBlobUrl);
     joinBlobUrl = URL.createObjectURL(new Blob([svg], { type: 'image/svg+xml' }));
     $('#join-download').href = joinBlobUrl; $('#join-download').hidden = false; $('#join-copy').disabled = false;
     $('#join-url').value = joinLink;
-    $('#join-note').textContent = isLoopback(joinLink) ? 'Địa chỉ này chỉ truy cập trên máy đang chạy. Để quét bằng điện thoại, nhập URL công khai hoặc IP LAN mà điện thoại truy cập được.' : `Mã mở chế độ ${settings.mode === 'api' ? 'backend' : 'demo'}. Điện thoại cần truy cập được địa chỉ này.`;
+    $('#join-note').textContent = isLoopback(joinLink) ? 'Địa chỉ này chỉ truy cập trên máy đang chạy. Để quét bằng điện thoại, nhập URL công khai hoặc IP LAN mà điện thoại truy cập được.' : '';
   } catch (error) { joinLink = ''; $('#join-qr').textContent = ''; $('#join-download').hidden = true; $('#join-copy').disabled = true; $('#join-note').textContent = `Không tạo được mã QR: ${error.message}`; }
 }
 function openEditor(poi) {
@@ -310,7 +303,7 @@ async function submitEditor(event) {
   const poi = { ...state.editing, code: fields.get('code').trim(), categoryId: n('categoryId'), status: fields.get('status'), triggerRadiusM: n('triggerRadiusM'), lat: n('lat'), lng: n('lng'), geoVerified: fields.get('geoVerified') === 'on', schematic: n('x') === null && n('y') === null ? null : [n('x'), n('y')], translations: Object.keys(LANGS).map(lang => ({ langCode: lang, name: fields.get(`name-${lang}`).trim(), summary: fields.get(`summary-${lang}`).trim(), scriptText: fields.get(`script-${lang}`).trim() })).filter(tr => tr.name || tr.scriptText || tr.summary) };
   $('#editor-save').disabled = true; $('#editor-error').textContent = '';
   try {
-    validatePoi(poi, settings.mode === 'api');
+    validatePoi(poi, true);
     await savePoi(poi, state.isNew);
     $('#editor-dialog').close(); toast('Đã lưu nội dung.'); await refresh(); await showAdmin();
   } catch (error) { $('#editor-error').textContent = error.message; }
@@ -321,7 +314,6 @@ async function resolveQR(input) {
   const value = qrValue(input);
   let p;
   if (value.code) p = state.pois.find(p => p.code === value.code);
-  else if (settings.mode === 'demo') p = state.pois.find(p => p.code === (value.token === 'demo-bausau-001' ? '9' : value.token.replace(/^demo-poi-/, '')));
   else {
     let match;
     try { match = await api(`qr/${encodeURIComponent(value.token)}`, {}, true); }
@@ -350,14 +342,95 @@ async function startCamera() {
   } catch (error) { closeCamera(); message.textContent = `Không mở được camera: ${error.message}`; }
 }
 function updateOfflineStatus() {
-  const date = localStorage.getItem(`sag:pack-date:${settings.mode}`);
-  const meta=JSON.parse(localStorage.getItem(`sag:pack-meta:${settings.mode}`)||'null');
+  const date = localStorage.getItem('sag:pack-date:api');
+  const meta=JSON.parse(localStorage.getItem('sag:pack-meta:api')||'null');
   if(date&&seed?.catalogVersion&&meta?.catalogVersion!==seed.catalogVersion){$('#offline-status').textContent=translateUI('Danh sách điểm đã thay đổi. Hãy lưu lại gói ngoại tuyến.',state.lang);return;}
-  $('#offline-status').textContent = date && meta?.provider==='GEMINI' ? formatUI('Gói ngoại tuyến: {0} audio Google, {1} bản chưa sẵn sàng. Lưu lúc {2}.',[meta.audioCount,meta.audioMissing,new Date(date).toLocaleString(LOCALES[state.lang])],state.lang) : date ? formatUI('Đã lưu gói {0} lúc {1}. Giọng TTS phụ thuộc giọng cài trên thiết bị.',[settings.mode,new Date(date).toLocaleString(LOCALES[state.lang])],state.lang) : translateUI('Lưu nội dung 5 ngôn ngữ và audio MP3 sẵn có. Giọng đọc của trình duyệt có thể cần mạng.',state.lang);
+  $('#offline-status').textContent = date && meta?.provider==='GEMINI' ? formatUI('Gói ngoại tuyến: {0} audio Google, {1} bản chưa sẵn sàng. Lưu lúc {2}.',[meta.audioCount,meta.audioMissing,new Date(date).toLocaleString(LOCALES[state.lang])],state.lang) : date ? formatUI('Đã lưu gói {0} lúc {1}. Giọng TTS phụ thuộc giọng cài trên thiết bị.',['API',new Date(date).toLocaleString(LOCALES[state.lang])],state.lang) : translateUI('Lưu nội dung 5 ngôn ngữ và audio MP3 sẵn có. Giọng đọc của trình duyệt có thể cần mạng.',state.lang);
 }
 
 $('#visitor-tab').onclick = () => { state.tab = 'visitor'; $('#visitor').hidden = false; $('#admin').hidden = true; $('#visitor-tab').classList.add('active'); $('#admin-tab').classList.remove('active'); $('#visitor-tab').ariaPressed = 'true'; $('#admin-tab').ariaPressed = 'false'; usage.presence(visitorVisible()); };
-$('#admin-tab').onclick = async () => { if(settings.mode!=='api'||!token()){$('#settings').click();$('#login-status').textContent='Khách sử dụng không cần đăng nhập. Chỉ admin đăng nhập để quản lý.';return;}try{await api('auth/me');}catch(error){$('#settings').click();$('#login-status').textContent=error.message;return;} stopAudio(); state.tab = 'admin'; usage.presence(false); $('#visitor').hidden = true; $('#admin').hidden = false; $('#admin-tab').classList.add('active'); $('#visitor-tab').classList.remove('active'); $('#visitor-tab').ariaPressed = 'false'; $('#admin-tab').ariaPressed = 'true'; showAdmin(); };
+const loginDialog = $('#login-dialog');
+const logoutButton = $('#logout-button');
+logoutButton.hidden = !token();
+function openAdmin() {
+  stopAudio();
+  logoutButton.hidden = false;
+  state.tab = 'admin';
+  usage.presence(false);
+  $('#visitor').hidden = true;
+  $('#admin').hidden = false;
+  $('#admin-tab').classList.add('active');
+  $('#visitor-tab').classList.remove('active');
+  $('#admin-tab').ariaPressed = 'true';
+  $('#visitor-tab').ariaPressed = 'false';
+  showAdmin();
+}
+$('#admin-tab').onclick = async () => {
+  $('#login-status').textContent = '';
+  if (token()) {
+    const button = $('#admin-tab');
+    button.disabled = true;
+    try {
+      await api('auth/me');
+      if (token()) openAdmin();
+      return;
+    } catch (error) {
+      $('#login-status').textContent = error.message;
+    } finally {
+      button.disabled = false;
+    }
+  }
+  loginDialog.showModal();
+};
+$('#login-form').onsubmit = async event => {
+  event.preventDefault();
+  const button = $('#login-button');
+  if (button.disabled) return;
+  const email = $('#login-email');
+  const password = $('#login-password');
+  const status = $('#login-status');
+  status.textContent = '';
+  button.disabled = true;
+  try {
+    if (!email.validity.valid) {
+      email.focus();
+      throw new Error('Vui lòng nhập địa chỉ email hợp lệ (tối đa 255 ký tự).');
+    }
+    if (!password.value) {
+      password.focus();
+      throw new Error('Vui lòng nhập mật khẩu.');
+    }
+    const session = await api('auth/login', {
+      method: 'POST',
+      body: JSON.stringify({ email: email.value.trim(), password: password.value }),
+    });
+    if (!loginDialog.open) return;
+    sessionStorage.setItem('sag:token', session.accessToken);
+    sessionStorage.setItem('sag:refresh', session.refreshToken);
+    loginDialog.close();
+    openAdmin();
+  } catch (error) {
+    status.textContent = error.message;
+  } finally {
+    button.disabled = false;
+  }
+};
+loginDialog.addEventListener('close', () => { $('#login-password').value = ''; });
+logoutButton.onclick = async () => {
+  const refreshToken = sessionStorage.getItem('sag:refresh');
+  sessionStorage.removeItem('sag:token');
+  sessionStorage.removeItem('sag:refresh');
+  logoutButton.hidden = true;
+  adminRefreshId++;
+  analyticsRun++;
+  state.admin = [];
+  analyticsData = null;
+  $('#visitor-tab').click();
+  $('#visitor-tab').focus();
+  if (refreshToken) {
+    try { await api('auth/logout', { method: 'POST', body: JSON.stringify({ refreshToken }) }); } catch {}
+  }
+};
 $('#search').oninput = event => {
   state.query = event.target.value;
   $('#search-clear').hidden = !state.query;
@@ -418,8 +491,6 @@ $('#detail').onclick = async event => {
   if (b.id === 'share') { try { const u = new URL(location.href); u.searchParams.set('poi', selected().code); await navigator.clipboard.writeText(u.href); toast(t('share')); } catch { toast('Không sao chép được. Bạn có thể lấy liên kết trên thanh địa chỉ.', true); } }
 };
 $('#detail').onchange = event => { if (event.target.id === 'voice-mode') { stopAudio(); voiceMode = ['mp3','browser'].includes(event.target.value) ? event.target.value : 'auto'; localStorage.setItem(voiceModeKey, voiceMode); renderDetail(); } if (event.target.id === 'auto') { state.auto = event.target.checked && state.pois.some(hasVerifiedGps); if (state.auto && !gpsWatch) toggleGPS(); } if (event.target.id === 'route-from') state.from = event.target.value; };
-$('#settings').onclick = () => { $(`#settings-form input[value="${settings.mode}"]`).checked = true; $('#admin-token').value = token(); $('#settings-dialog').showModal(); };
-$('#settings-form').onsubmit = async event => { event.preventDefault(); stopAudio(); const mode = new FormData(event.target).get('mode'); saveSettings(mode); const url = new URL(location.href); if (url.searchParams.has('source')) { url.searchParams.set('source', mode); history.replaceState(null, '', url); } usage.changeMode(); analyticsData = null; renderAnalytics(); sessionStorage.setItem('sag:token', $('#admin-token').value.trim()); state.selected = null; state.hits.clear(); $('#settings-dialog').close(); await refresh(); if (state.tab === 'admin') await showAdmin(); };
 $$('.close-dialog').forEach(b => b.onclick = () => b.closest('dialog').close());
 $('#qr-open').onclick = async () => {
   $('#qr-message').textContent = '';
@@ -443,7 +514,7 @@ $('#offline-save').onclick = async () => {
     await Promise.race([navigator.serviceWorker.ready, new Promise((_, reject) => setTimeout(() => reject(new Error('Bộ nhớ ngoại tuyến chưa sẵn sàng. Thử tải lại trang.')), 10000))]);
     const result = await saveOffline(lang => $('#offline-status').textContent = `Đang lưu ${LANGS[lang]}…`, {provider:runtimeConfig.tts_provider==='GEMINI'?'GEMINI':undefined});
     let qrWarning = '';
-    if (settings.mode === 'api') { try { localStorage.setItem('sag:qr:api', JSON.stringify(await api('qr', {}, true))); } catch { qrWarning = ' Không lưu được bảng mã QR.'; } }
+    try { localStorage.setItem('sag:qr:api', JSON.stringify(await api('qr', {}, true))); } catch { qrWarning = ' Không lưu được bảng mã QR.'; }
     updateOfflineStatus();
     const message = formatUI('Đã tải {0} audio Google. Còn {1} bản chưa được tạo do hạn mức.',[result.audioCount,result.audioMissing||0],state.lang)+qrWarning;
     $('#offline-status').textContent += ` ${message}`; toast(message, Boolean(result.audioFailed || qrWarning));
@@ -463,7 +534,7 @@ $('#admin-list').onclick = async event => {
   }
   if (b.dataset.regen) { b.disabled = true; try { const config = await api('configs'); if (config.tts_paused_until && Date.parse(config.tts_paused_until) > Date.now()) throw new Error(`TTS đang tạm dừng do hết hạn mức đến ${new Date(config.tts_paused_until).toLocaleString('vi-VN')}.`); const result = await api(`admin/pois/${b.dataset.regen}/audios/regenerate`, { method: 'POST' }); toast(`Đã đưa ${result.queued} audio lỗi vào hàng đợi tạo lại.`); } catch (error) { toast(error.message, true); } finally { b.disabled = false; } }
 };
-window.addEventListener('offline', () => { $('#connection').textContent = 'Ngoại tuyến'; });
+window.addEventListener('offline', () => { $('#data-note').textContent = 'Ngoại tuyến'; });
 window.addEventListener('online', () => { refresh(); usage.flush(); });
 document.addEventListener('visibilitychange', () => { usage.presence(visitorVisible(), document.visibilityState !== 'visible'); if (state.tab === 'admin' && document.visibilityState === 'visible') loadAnalytics(); });
 let usageTimer;
@@ -476,7 +547,7 @@ try {
   seed = await loadSeed();
   if ('serviceWorker' in navigator) navigator.serviceWorker.register('./sw.js').catch(() => toast('Không bật được bộ nhớ ngoại tuyến. Kiểm tra localhost hoặc HTTPS.', true));
   await refresh();
-  if(settings.mode==='api' && !localStorage.getItem('sag:entry-download-seen') && state.pois.some(p=>p.audio?.provider==='GEMINI')) {
+  if(!localStorage.getItem('sag:entry-download-seen') && state.pois.some(p=>p.audio?.provider==='GEMINI')) {
     const entry=document.createElement('dialog');entry.innerHTML='<h2>Lưu giọng Google trước khi vào rừng</h2><p>MP3 đã tải dùng được ngoại tuyến. Bài chưa có MP3 chỉ đọc được nếu thiết bị đã cài giọng cùng ngôn ngữ.</p><div class="dialog-actions"><button class="button" data-later>Để sau</button><button class="button primary" data-save>Tải gói thuyết minh</button></div>';
     document.body.append(entry);entry.querySelector('[data-later]').onclick=()=>{localStorage.setItem('sag:entry-download-seen','1');entry.close();};entry.querySelector('[data-save]').onclick=()=>{localStorage.setItem('sag:entry-download-seen','1');entry.close();$('#offline-save').click();};entry.showModal();
   }

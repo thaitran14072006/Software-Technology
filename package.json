@@ -3,7 +3,7 @@
   "version": "0.2.0",
   "private": true,
   "scripts": {
-    "dev": "node web/build.mjs && node web/server.mjs",
+    "dev": "node scripts/dev-full.mjs",
     "start": "node scripts/dev-full.mjs",
     "dev:full": "node scripts/dev-full.mjs",
     "token": "node scripts/print-dev-token.mjs",
