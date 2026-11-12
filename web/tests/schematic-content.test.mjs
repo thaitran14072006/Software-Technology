@@ -5,7 +5,8 @@ import {withSchematicNarration} from '../schematic-content.mjs';
 import {localize,LANGS} from '../core.mjs';
 import {renderSchematic,stopNumber,schematicStops} from '../schematic-map.mjs';
 import {REFERENCE_STOPS} from '../reference-map.mjs';
-import {verifiedCoordinates} from '../outdoor-map.mjs';
+import {estimatedCoordinates,verifiedCoordinates} from '../outdoor-map.mjs';
+import {hasVerifiedGps} from '../gps.mjs';
 
 const seed=JSON.parse(await readFile(new URL('../dist/data/pois.json',import.meta.url)));
 const missing=['3','4','6','10','11','12'];
@@ -22,7 +23,9 @@ test('All six poster-only stops have readable localized narration and clickable 
       assert.ok(poi.name);
       assert.ok(poi.scriptText.length>70);
       assert.equal(stopNumber(poi),code);
-      assert.equal(verifiedCoordinates(poi),null);
+      assert.ok(verifiedCoordinates(poi),`Missing map coordinates for ${code}`);
+      assert.equal(estimatedCoordinates(poi),code!=='6');
+      assert.equal(hasVerifiedGps(poi),false);
       assert.equal(poi.audio,null);
       const svg=renderSchematic({pois:items,selectedId:poi.id,visibleIds:[poi.id]});
       assert.match(svg,new RegExp(`data-reference-stop="${code}"[^>]*data-id="${poi.id}"[^>]*aria-pressed="true"`));

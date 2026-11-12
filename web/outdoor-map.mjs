@@ -1,12 +1,17 @@
 import {stopNumber} from './schematic-map.mjs';
-// Adapted from cat-tien-app/js/map/leaflet-map.js. Never project schematic points to fake GPS.
+import {SCHEMATIC_ESTIMATE_SOURCE} from './schematic-content.mjs';
+import {translateUI} from './ui-i18n.mjs';
+// Adapted from cat-tien-app/js/map/leaflet-map.js.
 export const OSM_TILE_URL = 'https://tile.openstreetmap.org/{z}/{x}/{y}.png';
 export const PARK_CENTER = [11.423368, 107.422042];
 export function documentCoordinates(poi) {
   return /^urn:sha256:[a-f0-9]{64}#point-\d{2}$/.test(poi.geoSourceUrl || '');
 }
+export function estimatedCoordinates(poi) {
+  return poi.geoSourceUrl === SCHEMATIC_ESTIMATE_SOURCE;
+}
 export function verifiedCoordinates(poi) {
-  return (poi.geoVerified || documentCoordinates(poi) || /^https:\/\//.test(poi.geoSourceUrl || '')) && typeof poi.lat === 'number' && typeof poi.lng === 'number'
+  return (poi.geoVerified || documentCoordinates(poi) || estimatedCoordinates(poi) || /^https:\/\//.test(poi.geoSourceUrl || '')) && typeof poi.lat === 'number' && typeof poi.lng === 'number'
     && Number.isFinite(poi.lat) && Number.isFinite(poi.lng)
     && Math.abs(poi.lat) <= 90 && Math.abs(poi.lng) <= 180 ? [poi.lat, poi.lng] : null;
 }
@@ -36,10 +41,16 @@ export function createOutdoorMap({ container, note, onSelect }) {
     if (!visible || !map) return;
     markers.clearLayers(); position.clearLayers();
     const L = window.L;
+    let estimates = 0;
+    let plotted = 0;
     for (const p of data.pois) {
       const ll = verifiedCoordinates(p);
       if (!ll) continue;
-      const label = document.createElement('span'); label.textContent = `${stopNumber(p)}. ${p.name}`;
+      plotted++;
+      const estimated = estimatedCoordinates(p);
+      if (estimated) estimates++;
+      const label = document.createElement('span');
+      label.textContent = `${stopNumber(p)}. ${p.name}${estimated ? ` · ${translateUI('Vị trí ước tính',p.lang)}` : ''}`;
       L.circleMarker(ll, { radius: p.id === data.selectedId ? 12 : 9, color: '#234d3a', fillColor: '#d8e9ac', fillOpacity: 1 })
         .addTo(markers).bindTooltip(label).on('click', () => onSelect(p.id));
     }
@@ -48,7 +59,7 @@ export function createOutdoorMap({ container, note, onSelect }) {
       L.circle(ll, { radius: data.gps.accuracy || 0, color: '#297fc5', weight: 1, fillOpacity: .1 }).addTo(position);
       L.circleMarker(ll, { radius: 7, color: '#fff', fillColor: '#297fc5', fillOpacity: 1 }).addTo(position);
     }
-    note.textContent = `OpenStreetMap · ${data.pois.filter(verifiedCoordinates).length}/${data.pois.length} điểm đang lọc có tọa độ đối chiếu nguồn. Tuyến tham quan xem trên sơ đồ.`;
+    note.textContent = `OpenStreetMap · ${plotted}/${data.pois.length} điểm có ghim${estimates ? ` (${estimates} vị trí ước tính)` : ''}. Tuyến tham quan xem trên sơ đồ.`;
   }
   return {
     update,

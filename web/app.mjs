@@ -4,7 +4,7 @@ import { VisitorAnalytics, playbackCounter, getAnalytics } from './analytics.mjs
 import { joinURL, isLoopback, qrSVG } from './join-qr.mjs';
 import { setupAdminTools } from './admin-tools.mjs';
 import { runtimeConfig, loadRuntimeConfig, sharePosition } from './visitor-config.mjs';
-import { createOutdoorMap, documentCoordinates } from './outdoor-map.mjs';
+import { createOutdoorMap, documentCoordinates, estimatedCoordinates } from './outdoor-map.mjs';
 import { loadVoices, selectVoice, playbackSource } from './browser-tts.mjs';
 import {stopNumber,schematicStops,schematicStopName,renderSchematic} from './schematic-map.mjs';
 import {withSchematicNarration} from './schematic-content.mjs';
@@ -105,7 +105,8 @@ async function refresh() {
     if (run !== refreshId) return;
     state.pois = withSchematicNarration(result.items,state.lang,seed.schematicPois).sort((a, b) => (a.sortOrder??0)-(b.sortOrder??0)||a.code.localeCompare(b.code, undefined, { numeric: true }));
     state.source = result.source;
-    if (!selected()) state.selected = state.pois.find(p => p.code === new URL(location.href).searchParams.get('poi'))?.id || state.pois.find(p => p.code === '9')?.id || state.pois[0]?.id;    $('#data-note').textContent = state.source === 'offline' ? 'NGOẠI TUYẾN · Đang dùng gói đã lưu. API hiện không truy cập được.' : 'BACKEND TRỰC TIẾP · Nội dung được tải từ API NestJS.';
+    if (!selected()) state.selected = state.pois.find(p => p.code === new URL(location.href).searchParams.get('poi'))?.id || state.pois.find(p => p.code === '9')?.id || state.pois[0]?.id;
+    $('#data-note').textContent = state.source === 'offline' ? 'NGOẠI TUYẾN · Đang dùng gói đã lưu. API hiện không truy cập được.' : 'BACKEND TRỰC TIẾP · Nội dung được tải từ API NestJS.';
   } catch (error) {
     if (run !== refreshId) return;
     state.pois = []; state.selected = null; state.source = 'error';
@@ -145,7 +146,7 @@ function renderDetail() {
   const kind = p.categoryId === 3 ? 'water' : p.categoryId === 1 ? 'facility' : '';
   const autoAvailable = state.pois.some(hasVerifiedGps);
   if (!autoAvailable) state.auto = false;
-  $('#detail').innerHTML = `<div class="detail-art ${kind}"><span class="detail-number">${esc(stopNumber(p))}</span><span class="detail-tag">${esc(LANGS[p.lang] || LANGS[state.lang])}</span></div><div class="detail-body"><p class="detail-category">${esc(group(p.categoryId))}</p><h2>${esc(schematicStopName(p) || p.code)}</h2><p class="script-text">${esc(p.translationMissing ? 'Chưa có lời thuyết minh cho ngôn ngữ này.' : p.scriptText || p.summary)}</p><div class="detail-info"><span>⌖ ${esc(p.geoVerified ? t('verified') : documentCoordinates(p) ? translateUI('Tọa độ theo tài liệu',state.lang) : p.geoSourceUrl ? translateUI('Tọa độ đối chiếu nguồn bản đồ',state.lang) : t('schematic'))}</span><span>◎ ${esc(LANGS[p.lang] || LANGS[state.lang])}</span></div><div class="player"><button id="play" class="button primary" ${p.translationMissing ? 'disabled' : ''}>${esc(state.playing ? t('stop') : t('play'))}</button><div class="player-options"><label class="check" title="${esc(t('autoHint'))}"><input id="auto" type="checkbox" ${state.auto ? 'checked' : ''} ${autoAvailable ? '' : 'disabled'}>${esc(t('auto'))}</label><button id="share" class="button quiet">${esc(t('share'))}</button></div><p class="gps-auto-hint" role="status">${esc(autoAvailable ? t('autoHint') : gpsText('autoUnavailable',state.lang))}</p><p id="player-status" class="player-status" role="status">${esc(state.playing ? t('narration') : p.audio?.url ? 'MP3 · Audio' : 'TTS · Giọng đọc của trình duyệt')}</p></div></div>`;
+  $('#detail').innerHTML = `<div class="detail-art ${kind}"><span class="detail-number">${esc(stopNumber(p))}</span><span class="detail-tag">${esc(LANGS[p.lang] || LANGS[state.lang])}</span></div><div class="detail-body"><p class="detail-category">${esc(group(p.categoryId))}</p><h2>${esc(schematicStopName(p) || p.code)}</h2><p class="script-text">${esc(p.translationMissing ? 'Chưa có lời thuyết minh cho ngôn ngữ này.' : p.scriptText || p.summary)}</p><div class="detail-info"><span>⌖ ${esc(estimatedCoordinates(p) ? translateUI('Vị trí ước tính',state.lang) : p.geoVerified ? t('verified') : documentCoordinates(p) ? translateUI('Tọa độ theo tài liệu',state.lang) : p.geoSourceUrl ? translateUI('Tọa độ đối chiếu nguồn bản đồ',state.lang) : t('schematic'))}</span><span>◎ ${esc(LANGS[p.lang] || LANGS[state.lang])}</span></div><div class="player"><button id="play" class="button primary" ${p.translationMissing ? 'disabled' : ''}>${esc(state.playing ? t('stop') : t('play'))}</button><div class="player-options"><label class="check" title="${esc(t('autoHint'))}"><input id="auto" type="checkbox" ${state.auto ? 'checked' : ''} ${autoAvailable ? '' : 'disabled'}>${esc(t('auto'))}</label><button id="share" class="button quiet">${esc(t('share'))}</button></div><p class="gps-auto-hint" role="status">${esc(autoAvailable ? t('autoHint') : gpsText('autoUnavailable',state.lang))}</p><p id="player-status" class="player-status" role="status">${esc(state.playing ? t('narration') : p.audio?.url ? 'MP3 · Audio' : 'TTS · Giọng đọc của trình duyệt')}</p></div></div>`;
   $('#share').ariaLabel = t('share'); $('#share').title = t('share');
   const sourceControl = document.createElement('label');
   sourceControl.className = 'field';
@@ -447,7 +448,8 @@ languageSwitcher.onclick = event => { const button=event.target.closest('[data-l
 $('#stop-list').onclick = event => { const b = event.target.closest('[data-id]'); if (b) selectPoi(b.dataset.id); };
 $('#map').onclick = event => { const b = event.target.closest('[data-id]'); if (b) selectPoi(b.dataset.id); };
 $('#map').onkeydown = event => { if (['Enter', ' '].includes(event.key) && event.target.matches('[data-id]')) { event.preventDefault(); selectPoi(event.target.dataset.id); } };
-$('#map-reset').onclick = () => {  state.selected = null;
+$('#map-reset').onclick = () => {
+  state.selected = null;
   state.query = '';
   state.category = 0;
   $('#search').value = '';

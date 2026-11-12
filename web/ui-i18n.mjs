@@ -13,6 +13,7 @@ const rows = [
 ['Đường lớn','Main road','幹線道路','주요 도로','主路'],['Đường mòn đi bộ','Walking trail','遊歩道','산책로','步行道'],['Bến phà','Ferry landing','渡し場','나루터','渡口'],['Tiếp nước','Water refill','給水所','급수대','补水点'],
 ['QR Code','QR Code','QRコード','QR 코드','二维码'],
 ['Tọa độ đối chiếu nguồn bản đồ','Coordinates checked against a map source','地図資料と照合した座標','지도 출처와 대조한 좌표','已与地图来源核对的坐标'],
+['Vị trí ước tính','Estimated location','推定位置','추정 위치','估计位置'],
 ['Hạn mức Google đã hết. Có thể tiếp tục từ {0}.','Google quota is exhausted. Generation can resume from {0}.','Googleの利用上限に達しました。{0}以降に生成を再開できます。','Google 할당량을 모두 사용했습니다. {0}부터 생성을 재개할 수 있습니다.','Google配额已用完，可从{0}起继续生成。'],
 ['Gói ngoại tuyến: {0} audio Google, {1} bản chưa sẵn sàng. Lưu lúc {2}.','Offline pack: {0} Google recordings, {1} not ready. Saved at {2}.','オフラインパック：Google音声{0}件、未準備{1}件。保存日時：{2}。','오프라인 패키지: Google 음성 {0}개, 미완료 {1}개. 저장: {2}.','离线包：{0}个Google音频，{1}个尚未就绪。保存时间：{2}。'],
 ['Đã tải {0} audio Google. Còn {1} bản chưa được tạo do hạn mức.','Downloaded {0} Google recordings. {1} are not generated due to quota limits.','Google音声{0}件を保存しました。制限により未生成は{1}件です。','Google 음성 {0}개를 다운로드했습니다. 할당량 제한으로 {1}개가 아직 생성되지 않았습니다.','已下载{0}个Google音频，仍有{1}个因配额限制尚未生成。'],

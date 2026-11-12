@@ -1,8 +1,23 @@
 import {localize} from './core.mjs';
 import {REFERENCE_STOPS} from './reference-map.mjs';
 
-// Narration for poster-only stops. Keep these separate from the GPS catalog:
-// the drawing supplies positions, not verified geographic coordinates.
+export const SCHEMATIC_ESTIMATE_SOURCE = 'urn:cat-tien:schematic-estimate';
+
+// For estimates, average the three nearest sourced positions on the drawing,
+// weighting each by the inverse square of its pixel distance to the stop.
+const estimatedPositions = {
+  3: [11.4422, 107.4242], // Stops 2, 1, 5
+  4: [11.4381, 107.4269], // Stops 2, 1, Visitor Center
+  10: [11.4613, 107.3637], // Stops 9, 13, 8
+  11: [11.4658, 107.3811], // Stops 13, 9, 8
+  12: [11.4692, 107.3844], // Stops 13, 9, 8
+};
+
+const geographicPositions = {
+  6: {lat:11.4415798,lng:107.4305197,geoSourceUrl:'https://www.openstreetmap.org/node/13587216603'},
+};
+
+// Narration for numbered stops outside the coordinate catalog.
 const stories = {
   '3': {
     vi: ['Bằng lăng 5 ngọn', 'Bằng lăng 5 ngọn là điểm dừng để ngắm một dáng cây đặc biệt giữa rừng Cát Tiên. Từ gốc cây, hãy đưa mắt theo những nhánh vươn lên cao và thử nhận ra năm ngọn cây đã gợi nên tên gọi này. Những đường nét của thân và cành tạo nên vẻ đẹp riêng, khiến một cây rừng trở thành dấu mốc đáng nhớ trên hành trình. Dừng lại dưới tán lá, bạn có thể quan sát hình dáng cây từ nhiều phía và cảm nhận sự đa dạng của thế giới thực vật quanh mình.'],
@@ -52,6 +67,10 @@ export function withSchematicNarration(items, lang, recordings=[]) {
   const codes = new Set(items.map(p => p.code));
   const lastOrder = Math.max(0, ...items.map(p => Number(p.sortOrder) || 0));
   const extra = REFERENCE_STOPS.filter(([n]) => stories[n] && !codes.has(String(n))).map(([n,x,y,,,type], index) => {
+    const estimate = estimatedPositions[n];
+    const position = estimate
+      ? {lat:estimate[0],lng:estimate[1],geoSourceUrl:SCHEMATIC_ESTIMATE_SOURCE}
+      : geographicPositions[n];
     const translations = Object.entries(stories[n]).map(([langCode,[name,scriptText]]) => ({langCode,name,scriptText,summary:''}));
     const recorded=recordings.find(p=>p.code===String(n));
     const audios=(recorded?.audios || []).filter(audio=>{
@@ -61,7 +80,7 @@ export function withSchematicNarration(items, lang, recordings=[]) {
     });
     return localize({id:`schematic-${n}`,code:String(n),sortOrder:lastOrder+index+1,
       categoryId:type==='facility'?1:2,status:'PUBLISHED',schematic:[x,y],
-      lat:null,lng:null,geoVerified:false,geoSourceUrl:null,translations,audios},lang);
+      lat:null,lng:null,geoVerified:false,geoSourceUrl:null,...position,translations,audios},lang);
   });
   return [...items, ...extra];
 }
