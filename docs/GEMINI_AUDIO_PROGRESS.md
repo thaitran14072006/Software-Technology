@@ -1,3 +1,13 @@
+# Tiến độ hiện hành — 13/11/2026
+
+Repo hiện dùng 10 POI theo danh sách nhóm cập nhật ngày 12/11; năm điểm đã lưu trữ không được khôi phục trong lần đồng bộ audio này.
+
+**47/50 bài Google hợp lệ, còn thiếu 3:** Việt 10/10, Anh 10/10, Nhật 9/10, Hàn 9/10, Trung 9/10. Bổ sung coord-01:vi (Trung tâm Du Khách) và 1:en (Trạm cứu hộ gấu) từ MP3 đã có, khớp text hash. Kiểm tra kích thước và SHA-256 đạt. Giữ nguyên kịch bản, tọa độ, tên và các bản thu hiện có. Không gọi Google thêm.
+
+Các mốc 15 POI/75 bài bên dưới là lịch sử trước khi nhóm thu gọn danh sách; không dùng làm tổng số hiện tại. Thành viên pull rồi chạy npm run content:seed để nhập audio phù hợp nội dung database của mình. Tạo/tải lại gói offline sau khi nhập.
+
+## Lịch sử
+
 # Tiến độ đã kiểm chứng — 10/11/2026
 
 45/75 bài Google hợp lệ, còn thiếu 30: Việt 9, Anh 8, Nhật 10, Hàn 9, Trung 9. Ghép audio khớp transcript giữa hai thư mục (Git từ 29 lên 40), sau đó tạo thêm 5 bản. Giữ nguyên 15 POI, bản dịch và tọa độ.

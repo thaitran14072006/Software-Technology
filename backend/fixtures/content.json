@@ -1,6 +1,6 @@
 {
   "formatVersion": 1,
-  "exportedAt": "2026-11-10T15:34:31.607Z",
+  "exportedAt": "2026-11-12T17:50:52.510828+00:00",
   "pois": [
     {
       "code": "coord-01",
@@ -52,7 +52,16 @@
           "name": "Trung tâm Du Khách",
           "summary": "Nơi bắt đầu mọi hành trình, mua vé và qua đò vượt sông Đồng Nai để vào ranh giới vườn.",
           "script_text": "Nơi bắt đầu mọi hành trình, mua vé và qua đò vượt sông Đồng Nai để vào ranh giới vườn.",
-          "text_hash": "1dabac733eb6d3439dd9a14a8ccba1d928d931982882ce092ae29c954f82ddd4"
+          "text_hash": "1dabac733eb6d3439dd9a14a8ccba1d928d931982882ce092ae29c954f82ddd4",
+          "audio": {
+            "file": "audio/coord-01-vi-93af32547b1d.mp3",
+            "sha256": "93af32547b1d35542ca7eb037ec724daa512ee9c43ed829529a2339662584784",
+            "sizeBytes": 106028,
+            "durationSec": "6.62",
+            "voiceGender": "FEMALE",
+            "voiceName": "Gemini gemini-3.8-flash-tts · Kore",
+            "provider": "GEMINI"
+          }
         },
         {
           "lang_code": "zh",
@@ -859,7 +868,16 @@
           "name": "Bear Rescue Station",
           "summary": "Khu Cuu ho dong vat hoang da",
           "script_text": "This is the place that receives, provides medical treatment, and gives special care to individual wild animals, especially Asian black bears and sun bears, that have been injured by illegal poaching and trafficking. Here, you will learn humane rescue stories and the work of rehabilitating wild behaviors before releasing the animals back into nature.",
-          "text_hash": "af8cc79611d3d5a184cd53465ab5e45bca0866d672ce67af4881b80657192824"
+          "text_hash": "af8cc79611d3d5a184cd53465ab5e45bca0866d672ce67af4881b80657192824",
+          "audio": {
+            "file": "audio/1-en-c821b86029bf.mp3",
+            "sha256": "c821b86029bf00a19db03e25a4de60438a7961c0a5e423adcf8de000a6d8a3f5",
+            "sizeBytes": 390572,
+            "durationSec": "24.41",
+            "voiceGender": "FEMALE",
+            "voiceName": "Gemini gemini-3.8-flash-tts · Kore",
+            "provider": "GEMINI"
+          }
         },
         {
           "lang_code": "ja",
