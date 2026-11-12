@@ -60,7 +60,9 @@ test('QR supports known formats and rejects executable or malformed URLs', () =>
   assert.deepEqual(qrValue(' 9 '), { code: '9' });
   assert.deepEqual(qrValue('sag://poi/demo-bausau-001'), { token: 'demo-bausau-001' });
   assert.deepEqual(qrValue('https://example.com/?poi=14'), { code: '14' });
-  for (const input of ['javascript:alert(1)', '<script>', 'sag://poi/short', 'https://example.com/?poi=abc', '']) assert.throws(() => qrValue(input));
+  assert.deepEqual(qrValue('http://127.0.0.1:4173/?source=api&poi=coord-02'), { code: 'coord-02' });
+  assert.deepEqual(qrValue('https://example.com/?poi=doc-14'), { code: 'doc-14' });
+  for (const input of ['javascript:alert(1)', '<script>', 'sag://poi/short', 'https://example.com/?poi=bad%2Fcode', 'https://example.com/?poi=' + 'a'.repeat(21), '']) assert.throws(() => qrValue(input));
 });
 test('admin validation blocks malformed content and API requires real coordinates', () => {
   const poi = structuredClone(seed.pois[0]);
