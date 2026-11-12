@@ -4,8 +4,8 @@ import { readFile } from 'node:fs/promises';
 import { LANGS, localize, routeTo, haversine, qrValue, validatePoi, toDto, MAP_ID, matchesPoiQuery } from '../core.mjs';
 const seed = JSON.parse(await readFile(new URL('../dist/data/pois.json', import.meta.url)));
 
-test('all 15 stops have five complete translations and no fabricated GPS', () => {
-  assert.equal(seed.pois.length, 15);
+test('coordinate points have five complete translations and no fabricated GPS', () => {
+  assert.equal(seed.pois.length, 10);
   for (const poi of seed.pois) {
     assert.equal(poi.translations.length, 5);
     for (const lang of Object.keys(LANGS)) { const item = localize(poi, lang); assert.equal(item.lang, lang); assert.ok(item.name); assert.ok(item.scriptText); }

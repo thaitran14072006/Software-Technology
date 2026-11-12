@@ -1,22 +1,22 @@
 {
   "version": 1,
-  "source": "User revised 15-POI table supplied in chat on 2026-10-25; supersedes the earlier Word coordinate list.",
-  "sourceSha256": "2ede2f7c00e63638604ebdeb843bb7e94aa1e7829fbd982ede01e5b9f5b8a664",
+  "source": "Coordinate points that appear on the visitor schematic, including the Visitor Center.",
+  "sourceSha256": "182525eff7515ce3498d0725cbd45ae71f422ae789e6a6de23d7cf73476b70e3",
   "points": [
     {
       "order": 1,
       "code": "coord-01",
-      "name": "Trung tâm Hành chính VQG",
+      "name": "Trung tâm Du Khách",
       "latitude": 11.4316,
       "longitude": 107.4323,
       "categoryId": 1,
       "note": "Bến phà đi vào vườn, điểm xuất phát của mọi tuyến đi.",
       "names": {
-        "vi": "Trung tâm Hành chính VQG",
-        "en": "Park Administration Centre",
-        "ja": "国立公園管理センター",
-        "ko": "국립공원 행정센터",
-        "zh": "国家公园行政中心"
+        "vi": "Trung tâm Du Khách",
+        "en": "Visitor Center",
+        "ja": "ビジターセンター",
+        "ko": "방문자 센터",
+        "zh": "游客中心"
       },
       "geoSourceUrl": "urn:sha256:2ede2f7c00e63638604ebdeb843bb7e94aa1e7829fbd982ede01e5b9f5b8a664#point-01",
       "geoVerified": false
@@ -131,24 +131,6 @@
     },
     {
       "order": 8,
-      "code": "coord-12",
-      "name": "Thác Dựng",
-      "latitude": 11.4289,
-      "longitude": 107.461,
-      "categoryId": 3,
-      "note": "Nằm tiếp nối phía dưới trục đường đi Thác Trời.",
-      "names": {
-        "vi": "Thác Dựng",
-        "en": "Dung Waterfall",
-        "ja": "ドゥン滝",
-        "ko": "증 폭포",
-        "zh": "Dung 瀑布"
-      },
-      "geoSourceUrl": "urn:sha256:2ede2f7c00e63638604ebdeb843bb7e94aa1e7829fbd982ede01e5b9f5b8a664#point-08",
-      "geoVerified": false
-    },
-    {
-      "order": 9,
       "code": "5",
       "name": "Ghềnh Bến Cự",
       "latitude": 11.4431,
@@ -166,7 +148,7 @@
       "geoVerified": false
     },
     {
-      "order": 10,
+      "order": 9,
       "code": "15",
       "name": "Rừng Bằng lăng Đà Cộ",
       "latitude": 11.4552,
@@ -184,25 +166,7 @@
       "geoVerified": false
     },
     {
-      "order": 11,
-      "code": "doc-13",
-      "name": "Đảo Tiên",
-      "latitude": 11.4242,
-      "longitude": 107.429,
-      "categoryId": 1,
-      "note": "Nằm ở phân khu phía Nam, di chuyển bằng thuyền.",
-      "names": {
-        "vi": "Đảo Tiên",
-        "en": "Dao Tien Island",
-        "ja": "ダオティエン島",
-        "ko": "다오띠엔 섬",
-        "zh": "仙岛"
-      },
-      "geoSourceUrl": "urn:sha256:2ede2f7c00e63638604ebdeb843bb7e94aa1e7829fbd982ede01e5b9f5b8a664#point-11",
-      "geoVerified": false
-    },
-    {
-      "order": 12,
+      "order": 10,
       "code": "1",
       "name": "Trạm cứu hộ gấu",
       "latitude": 11.4325,
@@ -217,60 +181,6 @@
         "zh": "熊类救护站"
       },
       "geoSourceUrl": "urn:sha256:2ede2f7c00e63638604ebdeb843bb7e94aa1e7829fbd982ede01e5b9f5b8a664#point-12",
-      "geoVerified": false
-    },
-    {
-      "order": 13,
-      "code": "coord-02",
-      "name": "Bảo tàng Thiên nhiên",
-      "latitude": 11.431,
-      "longitude": 107.4328,
-      "categoryId": 1,
-      "note": "Đối diện khu vực nhà hàng trung tâm.",
-      "names": {
-        "vi": "Bảo tàng Thiên nhiên",
-        "en": "Nature Museum",
-        "ja": "自然博物館",
-        "ko": "자연박물관",
-        "zh": "自然博物馆"
-      },
-      "geoSourceUrl": "urn:sha256:2ede2f7c00e63638604ebdeb843bb7e94aa1e7829fbd982ede01e5b9f5b8a664#point-13",
-      "geoVerified": false
-    },
-    {
-      "order": 14,
-      "code": "doc-14",
-      "name": "Di chỉ khảo cổ Cát Tiên",
-      "latitude": 11.5235,
-      "longitude": 107.3385,
-      "categoryId": 1,
-      "note": "Nằm ở huyện Cát Tiên (Lâm Đồng), cách trung tâm vườn khá xa.",
-      "names": {
-        "vi": "Di chỉ khảo cổ Cát Tiên",
-        "en": "Cat Tien Archaeological Site",
-        "ja": "カットティエン考古遺跡",
-        "ko": "깟띠엔 고고학 유적",
-        "zh": "吉仙考古遗址"
-      },
-      "geoSourceUrl": "urn:sha256:2ede2f7c00e63638604ebdeb843bb7e94aa1e7829fbd982ede01e5b9f5b8a664#point-14",
-      "geoVerified": false
-    },
-    {
-      "order": 15,
-      "code": "coord-15",
-      "name": "Bản văn hóa Tà Lài",
-      "latitude": 11.3685,
-      "longitude": 107.382,
-      "categoryId": 1,
-      "note": "Nằm ở vùng đệm phía Tây Nam của vườn quốc gia.",
-      "names": {
-        "vi": "Bản văn hóa Tà Lài",
-        "en": "Ta Lai Cultural Village",
-        "ja": "タライ文化村",
-        "ko": "따라이 문화마을",
-        "zh": "塔莱文化村"
-      },
-      "geoSourceUrl": "urn:sha256:2ede2f7c00e63638604ebdeb843bb7e94aa1e7829fbd982ede01e5b9f5b8a664#point-15",
       "geoVerified": false
     }
   ]

@@ -8,7 +8,7 @@ import {renderSchematic,schematicStops} from '../schematic-map.mjs';
 
 const seed=JSON.parse(await readFile(new URL('../dist/data/pois.json',import.meta.url)));
 const labels={
-  vi:['VƯỜN QUỐC GIA','SƠ ĐỒ THAM QUAN','Đường lớn','Đường mòn đi bộ','Tiếp nước','Bến phà','Trung tâm Du khách'],
+  vi:['VƯỜN QUỐC GIA','SƠ ĐỒ THAM QUAN','Đường lớn','Đường mòn đi bộ','Tiếp nước','Bến phà','Trung tâm Du Khách'],
   en:['NATIONAL PARK','VISITOR MAP','Main road','Walking trail','Water refill','Ferry pier','Visitor Center'],
   ja:['国立公園','観光案内図','主要道路','遊歩道','給水所','渡し船乗り場','ビジターセンター'],
   ko:['국립공원','관광 안내도','주도로','도보 탐방로','급수 지점','선착장','방문자 센터'],

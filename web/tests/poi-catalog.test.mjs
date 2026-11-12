@@ -5,8 +5,10 @@ import {currentCatalogItems} from '../poi-catalog.mjs';
 import {verifiedCoordinates} from '../outdoor-map.mjs';
 const seed=JSON.parse(await readFile(new URL('../dist/data/pois.json',import.meta.url)));
 const expected=JSON.parse(await readFile(new URL('../../scripts/data/active-pois.json',import.meta.url)));
-test('Packaged map catalog has precisely the fifteen supplied points, in order',()=>{
- assert.equal(seed.pois.length,15);
+test('Packaged coordinate catalog retains only points shown on the visitor schematic',()=>{
+ assert.equal(seed.pois.length,10);
+ assert.equal(seed.pois.find(p=>p.code==='coord-01').translations.find(t=>t.langCode==='vi').name,'Trung tâm Du Khách');
+ for(const code of ['coord-12','doc-13','coord-02','doc-14','coord-15'])assert.ok(!seed.pois.some(p=>p.code===code));
  assert.deepEqual(seed.pois.map(p=>p.code),expected.points.map(p=>p.code));
  for(const p of expected.points){const row=seed.pois.find(x=>x.code===p.code);assert.deepEqual(verifiedCoordinates(row),[p.latitude,p.longitude]);assert.equal(row.geoVerified,false);assert.equal(row.translations.find(t=>t.langCode==='vi').name,p.name);}
  const allowed=new Set(['0',...expected.points.map(p=>p.code)]);for(const [a,b] of seed.edges){assert.ok(allowed.has(String(a)));assert.ok(allowed.has(String(b)));}

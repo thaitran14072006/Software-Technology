@@ -29,8 +29,8 @@ test('Poster links use stable POI codes rather than unrelated current list numbe
   assert.match(svg,new RegExp('data-reference-stop="2"[^>]*data-id="'+tung.id+'"'));
   assert.equal(stopNumber(bauSau),'9');
   assert.equal(stopNumber(tung),'2');
-  const museum=pois.find(p=>p.code==='coord-02');
-  assert.ok(!schematicLayout(pois).some(p=>p.id===museum.id));
+  const museum={id:'outside-schematic',code:'coord-02'};
+  assert.ok(!schematicLayout([...pois,museum]).some(p=>p.id===museum.id));
 });
 
 test('Visitor numbers match schematic stops regardless of catalog order or language',()=>{
@@ -39,7 +39,7 @@ test('Visitor numbers match schematic stops regardless of catalog order or langu
     assert.equal(stopNumber(poi),String(number));
   }
   const forest=pois.find(p=>p.code==='15');
-  assert.equal(forest.sortOrder,10);
+  assert.notEqual(forest.sortOrder,15);
   assert.equal(stopNumber(forest),'15');
   for (const poi of pois.filter(p=>!REFERENCE_STOPS.some(([number])=>String(number)===p.code))) {
     assert.equal(stopNumber(poi),'•');

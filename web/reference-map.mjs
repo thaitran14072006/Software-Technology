@@ -26,7 +26,7 @@ const names = {
 };
 
 const copy = {
-  vi:{park:'VƯỜN QUỐC GIA',place:'CÁT TIÊN',map:'SƠ ĐỒ THAM QUAN',title:'VƯỜN QUỐC GIA CÁT TIÊN — Sơ đồ tham quan',description:'Sơ đồ cố định gồm 15 điểm dừng, đường lớn màu xanh ngọc và đường mòn nét đứt.',road:'Đường lớn',trail:'Đường mòn đi bộ',water:'Tiếp nước',ferry:'Bến phà',center:'Trung tâm Du khách',stop:'DỪNG'},
+  vi:{park:'VƯỜN QUỐC GIA',place:'CÁT TIÊN',map:'SƠ ĐỒ THAM QUAN',title:'VƯỜN QUỐC GIA CÁT TIÊN — Sơ đồ tham quan',description:'Sơ đồ cố định gồm 15 điểm dừng, đường lớn màu xanh ngọc và đường mòn nét đứt.',road:'Đường lớn',trail:'Đường mòn đi bộ',water:'Tiếp nước',ferry:'Bến phà',center:'Trung tâm Du Khách',stop:'DỪNG'},
   en:{park:'NATIONAL PARK',place:'CAT TIEN',map:'VISITOR MAP',title:'CAT TIEN NATIONAL PARK — Visitor map',description:'Fixed schematic with 15 stops, a teal main road and dashed walking trails.',road:'Main road',trail:'Walking trail',water:'Water refill',ferry:'Ferry pier',center:'Visitor Center',stop:'STOP'},
   ja:{park:'国立公園',place:'カッティエン',map:'観光案内図',title:'カッティエン国立公園 — 観光案内図',description:'15のスポット、青緑の主要道路、破線の遊歩道を示す固定概略図です。',road:'主要道路',trail:'遊歩道',water:'給水所',ferry:'渡し船乗り場',center:'ビジターセンター',stop:'停止'},
   ko:{park:'국립공원',place:'깟띠엔',map:'관광 안내도',title:'깟띠엔 국립공원 — 관광 안내도',description:'15개 방문지, 청록색 주도로와 점선 탐방로를 표시한 고정 안내도입니다.',road:'주도로',trail:'도보 탐방로',water:'급수 지점',ferry:'선착장',center:'방문자 센터',stop:'정지'},
