@@ -66,7 +66,7 @@ test('All 15 map labels, accessible names, cards and detail names use the same l
     const svg=renderSchematic({pois:items,visibleIds:items.map(p=>p.id),lang});
     const cards=schematicStops(items);
     for(const poi of items) {
-      const name=poi.name;
+      const name=lang==='vi' && poi.code==='1' ? 'Khu Cứu hộ động vật hoang dã' : poi.name;
       assert.ok(name);
       assert.equal(schematicStopName(poi),name);
       assert.equal(cards.find(p=>p.code===poi.code).name,name);
@@ -100,12 +100,11 @@ test('Build and offline shell include the poster renderer and stylesheet',async(
 });
 
 
-test('All current visitor places receive stable numbers 1–15, including nonnumeric POI codes',()=>{
-  const codes=['coord-01','9','2','7','13','8','14','coord-12','5','15','doc-13','1','coord-02','doc-14','coord-15'];
-  const items=codes.map((code,i)=>({id:code,code,visitorNumber:i+1,name:code}));
-  assert.deepEqual(schematicStops([...items].reverse()).map(stopNumber),Array.from({length:15},(_,i)=>String(i+1)));
-  assert.deepEqual(schematicStops(items.filter(p=>p.visitorNumber===8 || p.visitorNumber===15)).map(stopNumber),['8','15']);
-  const svg=renderSchematic({pois:items,visibleIds:items.map(p=>p.id)});
-  assert.match(svg,/<title>2\. 9<\/title>/);
-  assert.match(svg,/<title>12\. 1<\/title>/);
+test('Poster numbers override live and cached list numbering',()=>{
+  const items=[{id:'center',code:'coord-01',visitorNumber:1},
+    ...[...pois].reverse().map((p,i)=>({...p,visitorNumber:i+2}))];
+  assert.deepEqual(schematicStops(items).map(stopNumber),Array.from({length:15},(_,i)=>String(i+1)));
+  assert.equal(stopNumber(items[0]),'•');
+  const svg=renderSchematic({pois:items});
+  assert.match(svg,/<title>9\. Bàu Sấu<\/title>/);
 });

@@ -1,4 +1,4 @@
-import {stopNumber} from './schematic-map.mjs';
+import {stopNumber,schematicStopName} from './schematic-map.mjs';
 import {SCHEMATIC_ESTIMATE_SOURCE} from './schematic-content.mjs';
 import {translateUI} from './ui-i18n.mjs';
 // Adapted from cat-tien-app/js/map/leaflet-map.js.
@@ -50,7 +50,7 @@ export function createOutdoorMap({ container, note, onSelect }) {
       const estimated = estimatedCoordinates(p);
       if (estimated) estimates++;
       const label = document.createElement('span');
-      label.textContent = `${stopNumber(p)}. ${p.name}${estimated ? ` · ${translateUI('Vị trí ước tính',p.lang)}` : ''}`;
+      label.textContent = `${stopNumber(p)}. ${schematicStopName(p)}${estimated ? ` · ${translateUI('Vị trí ước tính',p.lang)}` : ''}`;
       L.circleMarker(ll, { radius: p.id === data.selectedId ? 12 : 9, color: '#234d3a', fillColor: '#d8e9ac', fillOpacity: 1 })
         .addTo(markers).bindTooltip(label).on('click', () => onSelect(p.id));
     }

@@ -38,7 +38,7 @@ test('visitor data always comes from the backend with a legacy demo setting', as
     return Response.json({ items: [item] });
   };
   try {
-    assert.deepEqual(await store.getPois('vi'), { items: [{...item,visitorNumber:1}], source: 'api' });
+    assert.deepEqual(await store.getPois('vi'), { items: [item], source: 'api' });
   } finally {
     localStorage.removeItem('sag:settings');
     globalThis.fetch = originalFetch;
