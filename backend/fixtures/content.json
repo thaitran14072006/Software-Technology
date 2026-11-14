@@ -1,6 +1,6 @@
 {
   "formatVersion": 1,
-  "exportedAt": "2026-11-12T17:50:52.510828+00:00",
+  "exportedAt": "2026-11-13T17:55:23.212Z",
   "pois": [
     {
       "code": "coord-01",
@@ -38,14 +38,32 @@
           "name": "ビジターセンター",
           "summary": "ここは見学の出発点です。入場券を購入し、渡し船でドンナイ川を渡って公園に入ります。",
           "script_text": "ここは見学の出発点です。入場券を購入し、渡し船でドンナイ川を渡って公園に入ります。",
-          "text_hash": "92b5de40081b2680b7a1202c6e44d37eb4fff01ee82ed0c0fc8288ba7baa02e1"
+          "text_hash": "92b5de40081b2680b7a1202c6e44d37eb4fff01ee82ed0c0fc8288ba7baa02e1",
+          "audio": {
+            "file": "audio/coord-01-ja-a4e5323b0988.mp3",
+            "sha256": "a4e5323b0988c7433baf756ec1bb9b25ebe0172f1c92855c4b700f939a369fa8",
+            "sizeBytes": 141740,
+            "durationSec": "8.86",
+            "voiceGender": "FEMALE",
+            "voiceName": "gemini-3.8-flash-lite-tts/Aoede",
+            "provider": "GEMINI"
+          }
         },
         {
           "lang_code": "ko",
           "name": "방문자 센터",
           "summary": "탐방을 시작하는 곳입니다. 입장권을 구입한 뒤 배를 타고 동나이강을 건너 공원으로 들어갑니다.",
           "script_text": "탐방을 시작하는 곳입니다. 입장권을 구입한 뒤 배를 타고 동나이강을 건너 공원으로 들어갑니다.",
-          "text_hash": "096059bbc6d4d44308e7c559cdbd5f60e99b61fec0906d8c8473693e94fe78bc"
+          "text_hash": "096059bbc6d4d44308e7c559cdbd5f60e99b61fec0906d8c8473693e94fe78bc",
+          "audio": {
+            "file": "audio/coord-01-ko-7218af6f8f5b.mp3",
+            "sha256": "7218af6f8f5b0136e512462b5cab3896d2793893ef5b63b3282b62935d3cbca8",
+            "sizeBytes": 130220,
+            "durationSec": "8.14",
+            "voiceGender": "FEMALE",
+            "voiceName": "gemini-3.8-flash-lite-tts/Iapetus",
+            "provider": "GEMINI"
+          }
         },
         {
           "lang_code": "vi",
@@ -68,7 +86,16 @@
           "name": "游客中心",
           "summary": "这里是游览的起点。游客在此购票，乘渡船跨越同奈河，进入国家公园。",
           "script_text": "这里是游览的起点。游客在此购票，乘渡船跨越同奈河，进入国家公园。",
-          "text_hash": "f5fd3fe0d29311ad0bce3dc6f696c4f1166ae467a182a994c361c4b99816bfe0"
+          "text_hash": "f5fd3fe0d29311ad0bce3dc6f696c4f1166ae467a182a994c361c4b99816bfe0",
+          "audio": {
+            "file": "audio/coord-01-zh-1af920eb94d5.mp3",
+            "sha256": "1af920eb94d512598c2a0253335682699c8d2da83b84d48ffaf69d7192a20fdd",
+            "sizeBytes": 140972,
+            "durationSec": "8.81",
+            "voiceGender": "FEMALE",
+            "voiceName": "gemini-3.8-flash-lite-tts/Sulafat",
+            "provider": "GEMINI"
+          }
         }
       ]
     },

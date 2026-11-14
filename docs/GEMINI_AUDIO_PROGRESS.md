@@ -1,3 +1,15 @@
+# Hoàn tất audio — 14/11/2026
+
+**50/50 bài Google hợp lệ cho 10 POI hiện hành**, mỗi ngôn ngữ Việt/Anh/Nhật/Hàn/Trung đủ 10/10. Đã tạo ba bài còn thiếu của Trung tâm Du Khách (coord-01): ja, ko, zh. Giữ nguyên nội dung, tọa độ, tên, các MP3 cũ và danh sách 10 POI; không khôi phục 5 điểm lưu trữ.
+
+Đã build lại worker và xác minh bộ lọc TTS_CODES; phiên tạm chỉ xử lý coord-01 với ja,ko,zh. Khóa server hiện có được giữ riêng, không đổi khóa/bật billing. Không dùng giọng thay thế.
+
+Fixture đủ 50 bài, text hash/kích thước/SHA-256 và giải mã toàn bộ bằng FFmpeg đạt. ZIP web/dist/offline-guide.zip đủ 50 MP3, partial=false, 20,182,088 byte; CRC và kích thước/SHA-256 từng file khớp fixture. SHA-256 ZIP: 122f7eb2fef4b964f267aa4a2e80d8594b849f5d99e76a880c54e4d719937e9b.
+
+Database đã có ba bản mới khớp nội dung. Fixture chỉ xuất ba bản mục tiêu để không nhập lại danh mục cũ từ database dùng chung. Chưa commit/push Git. Phiên dịch vụ tạm dừng sau kiểm chứng; lịch được xóa vì phạm vi hiện hành đã hoàn tất. Máy khác cần nhận fixture/MP3 rồi chạy content:seed, tải lại gói offline.
+
+## Lịch sử
+
 # Tiến độ hiện hành — 13/11/2026
 
 Repo hiện dùng 10 POI theo danh sách nhóm cập nhật ngày 12/11; năm điểm đã lưu trữ không được khôi phục trong lần đồng bộ audio này.

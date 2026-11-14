@@ -2,7 +2,7 @@
 
 ## Database riêng vẫn có dữ liệu giống nhau
 
-Mỗi thành viên chạy cùng schema/migration và nhập `backend/fixtures/content.json`. Bộ mẫu hiện có 15 POI, 75 bản dịch, 45 MP3 Google thật (10/11/2026); còn thiếu 30 bài. Không cần dùng database chứa tài khoản, lịch sử khách và mật khẩu trên máy tác giả. ID nội bộ có thể khác; dữ liệu/audio được ghép bằng mã POI, ngôn ngữ và SHA-256 của nội dung, không phụ thuộc UUID của máy tạo.
+Mỗi thành viên chạy cùng schema/migration và nhập `backend/fixtures/content.json`. Bộ mẫu hiện có 10 POI, 50 bản dịch, đủ 50 MP3 Google thật (14/11/2026). Không cần dùng database chứa tài khoản, lịch sử khách và mật khẩu trên máy tác giả. ID nội bộ có thể khác; dữ liệu/audio được ghép bằng mã POI, ngôn ngữ và SHA-256 của nội dung, không phụ thuộc UUID của máy tạo.
 
 Git chỉ đồng bộ các file đã commit. Sau khi pull bản ghi mới, `npm run content:seed` nhập MP3 phù hợp vào database local. Nhập audio không thay văn bản; transcript đã sửa trên máy sẽ được giữ, audio không khớp bị bỏ qua. Bản Google hoặc bản thu âm READY đang hợp lệ được giữ nguyên. Gói ngoại tuyến cần tạo/tải lại sau khi nhập.
 
@@ -33,11 +33,11 @@ Nhóm thống nhất mỗi ngôn ngữ chỉ có một người phụ trách t�
 
 | Phần | TTS_LANGUAGES | Google đã có | Còn thiếu |
 |---|---|---:|---:|
-| Người phụ trách Việt | vi | 9 | 6 |
-| Người phụ trách Anh | en | 8 | 7 |
-| Người phụ trách Nhật | ja | 10 | 5 |
-| Người phụ trách Hàn | ko | 9 | 6 |
-| Người phụ trách Trung | zh | 9 | 6 |
+| Người phụ trách Việt | vi | 10 | 0 |
+| Người phụ trách Anh | en | 10 | 0 |
+| Người phụ trách Nhật | ja | 10 | 0 |
+| Người phụ trách Hàn | ko | 10 | 0 |
+| Người phụ trách Trung | zh | 10 | 0 |
 
 Nếu ít hơn năm người, một người nhận nhiều tiếng, ví dụ `TTS_LANGUAGES=vi,ja`. Nếu muốn chia nhỏ một tiếng, dùng `--codes=1,2,3` và thống nhất mã POI không trùng. Khi có `TTS_CODES`, lệnh tạo mặc định chỉ chọn các mã được giao và từ chối mã ngoài danh sách; `--codes` chỉ thu hẹp thêm phạm vi đó. Worker vẫn chỉ lấy mã/ngôn ngữ đã khai báo trong env, kể cả database có các job cũ khác. Không dùng chung database đang chạy nhiều worker với các khóa khác nhau: trạng thái dừng quota hiện lưu theo provider trên database đó.
 
