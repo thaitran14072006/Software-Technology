@@ -1,7 +1,7 @@
 import { LANGS, LOCALES, localize, haversine, qrValue, validatePoi, normalizeSearch, matchesPoiQuery, safeMediaUrl } from './core.mjs';
 import { token, loadSeed, getPois, getAdminPois, savePoi, deletePoi, saveOffline, api, packKey, resolveQrToken } from './store.mjs';
 import { VisitorAnalytics, playbackCounter, getAnalytics } from './analytics.mjs';
-import { joinURL, isLoopback, qrSVG } from './join-qr.mjs';
+import { joinURL, isLoopback, qrSVG, preferredJoinURL } from './join-qr.mjs';
 import { setupAdminTools } from './admin-tools.mjs';
 import { runtimeConfig, loadRuntimeConfig, sharePosition } from './visitor-config.mjs';
 import { createOutdoorMap, documentCoordinates, estimatedCoordinates } from './outdoor-map.mjs';
@@ -489,8 +489,7 @@ $('#qr-open').onclick = async () => {
   $('#qr-message').textContent = '';
   try { const response = await fetch('/web-config', {signal:AbortSignal.timeout(2500)}); const config = response.ok ? await response.json() : null; if (config?.joinUrl) defaultJoinUrl = joinURL(config.joinUrl); } catch {}
   const saved = localStorage.getItem('sag:join-url');
-  let preferred = saved || defaultJoinUrl;
-  try { if (saved && isLoopback(saved) && !isLoopback(defaultJoinUrl)) preferred = defaultJoinUrl; } catch { preferred = defaultJoinUrl; }
+  const preferred = preferredJoinURL(defaultJoinUrl, saved);
   $('#join-url').value = preferred; renderJoinQR(); $('#qr-dialog').showModal();
 };
 $('#join-form').onsubmit = event => { event.preventDefault(); renderJoinQR(); if (joinLink) localStorage.setItem('sag:join-url', joinLink); };
