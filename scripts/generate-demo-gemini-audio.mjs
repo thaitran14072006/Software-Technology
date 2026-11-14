@@ -1,6 +1,6 @@
 import { spawn } from 'node:child_process';
 import { createHash } from 'node:crypto';
-import { mkdir, readFile, rename, writeFile } from 'node:fs/promises';
+import { mkdir, readFile, rename, writeFile, open, unlink } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import {withSchematicNarration} from '../web/schematic-content.mjs';
@@ -34,6 +34,23 @@ const excludePoiArg = process.argv.find(a => a.startsWith('--exclude-pois='))?.s
 const excludedPois = excludePoiArg ? new Set(excludePoiArg.split(',').map(value => Number(value.trim()))) : null;
 const force = process.argv.includes('--force');
 const dryRun = process.argv.includes('--dry-run');
+const japaneseMap = process.argv.includes('--japanese-map');
+const japaneseMapKeys = new Set(['3:ja','4:ja','6:ja','10:ja','11:ja','12:ja']);
+if (japaneseMap && (!process.argv.includes('--schematic') || !onlyTasks || onlyTasks.size !== 6 || [...onlyTasks].some(k => !japaneseMapKeys.has(k)) || voices.ja !== 'Aoede')) throw new Error('Japanese map batch requires exactly stops 3,4,6,10,11,12 in ja with Aoede.');
+let quotaDb;
+const failedMapPath = path.join(root, 'backend/.runtime/japanese-map-quota-failures.json');
+let failedMap = {};
+if (japaneseMap) {
+  try { failedMap = JSON.parse(await readFile(failedMapPath, 'utf8')); } catch (e) { if (e.code !== 'ENOENT') throw e; }
+}
+async function checkQuota() {
+  if (!quotaDb) return;
+  const {rows:[row]} = await quotaDb.query("SELECT value FROM app_configs WHERE key='tts_pause_GEMINI'");
+  const pause = row?.value;
+  if (pause?.requiresReview || (pause?.until && Date.parse(pause.until) > Date.now())) throw new Error(`Google quota paused: ${pause.reason}; until=${pause.until}; requiresReview=${pause.requiresReview}`);
+  const {rows:[running]} = await quotaDb.query("SELECT count(*)::int AS count FROM tts_jobs WHERE status='RUNNING' AND payload->>'provider'='GEMINI'");
+  if (running.count) throw new Error('A Gemini worker is processing jobs; stop it before the Japanese map batch.');
+}
 const maxArg = process.argv.find(a => a.startsWith('--max='))?.slice(6);
 const maxTasks = maxArg ? Number(maxArg) : Infinity;
 if (!(maxTasks > 0)) throw new Error(`Invalid --max value: ${maxArg}`);
@@ -61,6 +78,7 @@ for (const poi of pois) for (const [lang, language] of Object.entries(langs)) {
   if (excludedPois?.has(Number(poi.code))) continue;
   const tr = poi.translations.find(t => t.lang_code === lang);
   if (onlyTasks && !onlyTasks.has(`${poi.code}:${lang}`)) continue;
+  if (japaneseMap && failedMap[`${poi.code}:${lang}`]) throw new Error(`Quota-failed recording ${poi.code}:${lang} requires review; automatic retry is disabled.`);
   if (!tr?.script_text?.trim()) throw new Error(`Missing script ${poi.code}:${lang}`);
   const hash = tr.text_hash || createHash('sha256').update(tr.script_text).digest('hex');
   const old = manifest[`${poi.code}:${lang}`];
@@ -95,6 +113,7 @@ function convertToMp3(wav) {
 }
 
 async function synthesize(task) {
+  await checkQuota();
   const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent`, {
     method: 'POST',
     headers: { 'content-type': 'application/json', 'x-goog-api-key': key },
@@ -112,8 +131,19 @@ async function synthesize(task) {
     signal: AbortSignal.timeout(150000),
   });
   if (!response.ok) {
-    const detail = (await response.text()).slice(0, 800);
+    const responseText = await response.text();
+    const detail = japaneseMap ? responseText : responseText.slice(0, 800);
     if (response.status === 429) {
+      if (japaneseMap) {
+        const {geminiQuotaPause} = await import('../backend/apps/audio-tts-service/src/providers/gemini-quota.ts');
+        let body; try { body = JSON.parse(detail); } catch { body = {}; }
+        const pause = geminiQuotaPause(body, response.headers.get('retry-after'));
+        await quotaDb.query("INSERT INTO app_configs(key,value) VALUES('tts_pause_GEMINI',$1::jsonb) ON CONFLICT(key) DO UPDATE SET value=excluded.value", [JSON.stringify(pause)]);
+        failedMap[`${task.code}:${task.lang}`] = pause;
+        await mkdir(path.dirname(failedMapPath), {recursive:true});
+        await writeFile(failedMapPath, JSON.stringify(failedMap,null,2));
+        throw new Error(`Google quota paused: ${pause.reason}; until=${pause.until}. Recording was not retried.`);
+      }
       if (/requests per day|daily request|RPD/i.test(detail)) throw new Error('Gemini Free tier daily request quota is exhausted; rerun after the quota resets.');
       const seconds = Number(detail.match(/retry in ([\d.]+)s/i)?.[1] || 60);
       throw new RateLimitError(`Gemini free-tier rate limit; waiting ${Math.ceil(seconds)}s`, Math.ceil(seconds * 1000));
@@ -142,6 +172,21 @@ async function synthesize(task) {
 console.log(`Generating ${batchTasks.length} of ${batchTasks.length + tasks.length} missing clips with ${model}; narrator by language: ${Object.entries(voices).map(([lang, voice]) => `${lang}=${voice}`).join(', ')}.`);
 if (dryRun) {
   console.log(batchTasks.map(task => `${task.code}:${task.lang}`).join(', '));
+  process.exit(0);
+}
+if (japaneseMap) {
+  const {createRequire} = await import('node:module');
+  const {Client} = createRequire(new URL('../backend/package.json',import.meta.url))('pg');
+  quotaDb = new Client({connectionString:process.env.DATABASE_URL || 'postgres://sag:sag@127.0.0.1:5432/sag',connectionTimeoutMillis:5000});
+  const lockPath = path.join(root, 'backend/.runtime/japanese-map.lock');
+  await mkdir(path.dirname(lockPath), {recursive:true});
+  const lock = await open(lockPath, 'wx');
+  try {
+    await quotaDb.connect();
+    await checkQuota();
+    for (const task of batchTasks) { await synthesize(task); if (task !== batchTasks.at(-1)) await wait(61000); }
+  } finally { await quotaDb.end(); await lock.close(); await unlink(lockPath); }
+  console.log(`Finished ${batchTasks.length} Japanese map clips; listening review is still required.`);
   process.exit(0);
 }
 for (let i = 0; i < batchTasks.length; i += 3) {
