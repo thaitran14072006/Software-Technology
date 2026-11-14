@@ -1,4 +1,35 @@
+import {haversine} from './core.mjs';
 export const GPS_OPTIONS = Object.freeze({ enableHighAccuracy: true, maximumAge: 0, timeout: 20000 });
+
+export function validGpsPosition(position,now=Date.now()) {
+  const c=position?.coords;
+  return Boolean(c && Number.isFinite(c.latitude) && Math.abs(c.latitude)<=90 && Number.isFinite(c.longitude) && Math.abs(c.longitude)<=180
+    && Number.isFinite(c.accuracy) && c.accuracy>=0 && Number.isFinite(position.timestamp) && now-position.timestamp<=10000 && position.timestamp-now<=5000);
+}
+export function createGpsTrigger({now=Date.now}={}) {
+  const hits=new Map(),played=new Map(),attempts=new Map();let timestamp=0;
+  return {
+    reset(){hits.clear();timestamp=0;},
+    played(id){played.set(id,now());},
+    next(pois,position,{radius=10,cooldownMin=30}={}) {
+      if(!validGpsPosition(position,now())){hits.clear();return null;}
+      if(position.timestamp<=timestamp)return null;
+      if(position.timestamp-timestamp>15000)hits.clear();
+      timestamp=position.timestamp;
+      const here={lat:position.coords.latitude,lng:position.coords.longitude},candidates=[];
+      for(const p of pois.filter(hasVerifiedGps)) {
+        const r=p.triggerRadiusM||radius,d=haversine(here,p);
+        const near=d<=r && position.coords.accuracy<=Math.max(30,r);
+        hits.set(p.id,near?(hits.get(p.id)||0)+1:0);
+        if(hits.get(p.id)>=2 && now()-(played.get(p.id)??-Infinity)>=cooldownMin*60000 && now()-(attempts.get(p.id)??-Infinity)>=10000)candidates.push({p,d});
+      }
+      candidates.sort((a,b)=>a.d-b.d);
+      const p=candidates[0]?.p;
+      if(p){attempts.set(p.id,now());hits.set(p.id,0);}
+      return p||null;
+    },
+  };
+}
 
 const messages = {
   vi: {
@@ -61,9 +92,9 @@ export function startGpsWatch(geolocation, { onPosition, onError, options = GPS_
   };
   const fail = error => {
     if (!active) return;
-    active = false;
-    clear();
-    onError(error);
+    const recoverable=[2,3].includes(Number(error?.code));
+    if(!recoverable){active = false;clear();}
+    onError(error,{recoverable});
   };
   try {
     watchId = geolocation.watchPosition(position => { if (active) onPosition(position); }, fail, options);

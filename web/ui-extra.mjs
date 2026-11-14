@@ -1,4 +1,5 @@
 export const EXTRA_ROWS = [
+  ['GPS cần HTTPS hoặc localhost. Địa chỉ HTTP qua Wi-Fi không cấp được vị trí.','GPS requires HTTPS or localhost. HTTP over Wi-Fi cannot access location.','GPSにはHTTPSまたはlocalhostが必要です。Wi-Fi経由のHTTPでは位置情報を取得できません。','GPS는 HTTPS 또는 localhost가 필요합니다. Wi-Fi의 HTTP에서는 위치를 사용할 수 없습니다.','GPS需要HTTPS或localhost。通过Wi-Fi的HTTP地址无法获取位置。'],
   ['MP3 thuyết minh · đúng ngôn ngữ','Narration MP3 · selected language','解説MP3・選択した言語','해설 MP3 · 선택한 언어','解说MP3 · 所选语言'],
   ['Giọng đọc trên thiết bị','Device voice','端末の音声','기기 음성','设备语音'],
   ['Gói ngoại tuyến: {0}/{1} MP3, thiếu {2} bài. Lưu lúc {3}.','Offline pack: {0}/{1} MP3s, {2} missing. Saved {3}.','オフライン：MP3 {0}/{1}、不足 {2}件。保存日時 {3}。','오프라인: MP3 {0}/{1}, {2}개 누락. 저장 {3}.','离线包：MP3 {0}/{1}，缺少{2}篇。保存于{3}。'],

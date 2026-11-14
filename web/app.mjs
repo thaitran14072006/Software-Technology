@@ -8,7 +8,7 @@ import { createOutdoorMap, documentCoordinates, estimatedCoordinates } from './o
 import { loadVoices, selectVoice, playbackSource } from './browser-tts.mjs';
 import {stopNumber,schematicStops,schematicStopName,renderSchematic} from './schematic-map.mjs';
 import {installUITranslations,translateUI,formatUI} from './ui-i18n.mjs';
-import {gpsErrorKey,gpsText,hasVerifiedGps,startGpsWatch} from './gps.mjs';
+import {gpsErrorKey,gpsText,hasVerifiedGps,startGpsWatch,validGpsPosition,createGpsTrigger} from './gps.mjs';
 
 const $ = s => document.querySelector(s);
 const $$ = s => [...document.querySelectorAll(s)];
@@ -26,6 +26,7 @@ if (!LANGS[state.lang]) state.lang = 'vi';
 let seed, audio, gpsWatch = null, refreshId = 0, adminRefreshId = 0, toastTimer, cameraStream, scanFrame;
 let analyticsData = null, analyticsRun = 0, joinBlobUrl, joinLink = '', defaultJoinUrl = new URL('./', location.href).href;
 let audioRun = 0, outdoorVisible = false, adminTools;
+const gpsTrigger=createGpsTrigger();
 const voiceModeKey = 'sag:voice-mode-v3';
 let voiceMode = ['mp3','browser'].includes(localStorage.getItem(voiceModeKey)) ? localStorage.getItem(voiceModeKey) : 'auto';
 const languageSwitcher = $('#language-switcher');
@@ -190,7 +191,8 @@ async function playAudio() {
   const p = selected(); if (!p) return;
   if (p.translationMissing || p.lang !== state.lang) { toast('Bản thuyết minh ngôn ngữ đã chọn chưa có.', true); return; }
   stopAudio(); state.playing = true; $('#play').textContent = t('stop');
-  const onStarted = counter.begin(p);
+  const countStarted = counter.begin(p);
+  const onStarted = () => { countStarted(); gpsTrigger.played(p.id); };
   const url = safeURL(p.audio?.url);
   // Browser speech is an explicit choice; MP3 errors never change narrator.
   const source = playbackSource(voiceMode, Boolean(url), 'speechSynthesis' in window);
@@ -204,22 +206,34 @@ async function playAudio() {
     try { await current.play(); if ($('#player-status') && audio === current) $('#player-status').textContent = translateUI('MP3 thuyết minh · đúng ngôn ngữ',state.lang); } catch { fallback(); }
   } else speak(p, onStarted);
 }
+function stopGPS() {
+  gpsWatch?.stop();gpsWatch=null;state.gps=null;state.auto=false;gpsTrigger.reset();
+  if($('#auto'))$('#auto').checked=false;
+  updateOutdoor();$('#gps').textContent=gpsText('start',state.lang);
+}
 function toggleGPS() {
-  if (gpsWatch) { gpsWatch.stop(); gpsWatch = null; state.gps = null; state.hits.clear(); updateOutdoor(); $('#gps').textContent = gpsText('start',state.lang); return; }
-  if (!navigator.geolocation || typeof navigator.geolocation.watchPosition !== 'function') { toast(gpsText('unsupported',state.lang), true); return; }
-  $('#gps').textContent = gpsText('pending',state.lang);
-  const watch = startGpsWatch(navigator.geolocation, { onPosition: pos => {
-    state.gps = { lat: pos.coords.latitude, lng: pos.coords.longitude, accuracy: pos.coords.accuracy };
-    updateOutdoor();
-    $('#gps').textContent = gpsText('active',state.lang,Math.round(pos.coords.accuracy));
-    sharePosition(pos); if (!state.auto) return;
-    for (const p of state.pois.filter(hasVerifiedGps)) {
-      const near = haversine(state.gps, p) <= (p.triggerRadiusM || runtimeConfig.default_trigger_radius_m) && pos.coords.accuracy <= Math.max(30, p.triggerRadiusM || 10);
-      state.hits.set(p.id, near ? (state.hits.get(p.id) || 0) + 1 : 0);
-      if (near && state.hits.get(p.id) >= 2 && Date.now() - (state.cooldown.get(p.id) || 0) > runtimeConfig.replay_audio_cooldown_min * 60 * 1000) { state.cooldown.set(p.id, Date.now()); selectPoi(p.id, true); break; }
-    }
-  }, onError: error => { gpsWatch = null; state.gps = null; state.hits.clear(); updateOutdoor(); toast(gpsText(gpsErrorKey(error),state.lang), true); $('#gps').textContent = gpsText('start',state.lang); } });
-  gpsWatch = watch.active ? watch : null;
+  if(gpsWatch){stopGPS();return;}
+  if(!window.isSecureContext){toast(translateUI('GPS cần HTTPS hoặc localhost. Địa chỉ HTTP qua Wi-Fi không cấp được vị trí.',state.lang),true);return;}
+  if(!navigator.geolocation?.watchPosition){toast(gpsText('unsupported',state.lang),true);return;}
+  $('#gps').textContent=gpsText('pending',state.lang);gpsTrigger.reset();
+  const watch=startGpsWatch(navigator.geolocation,{
+    onPosition:pos=>{
+      if(!validGpsPosition(pos))return;
+      state.gps={lat:pos.coords.latitude,lng:pos.coords.longitude,accuracy:pos.coords.accuracy};updateOutdoor();
+      $('#gps').textContent=gpsText('active',state.lang,Math.round(pos.coords.accuracy));
+      sharePosition(pos);
+      if(!state.auto || state.playing)return;
+      const p=gpsTrigger.next(state.pois,pos,{radius:runtimeConfig.default_trigger_radius_m,cooldownMin:runtimeConfig.replay_audio_cooldown_min});
+      if(p)selectPoi(p.id,true);
+    },
+    onError:(error,{recoverable}={})=>{
+      gpsTrigger.reset();state.gps=null;updateOutdoor();
+      if(!recoverable)stopGPS();
+      else $('#gps').textContent=gpsText('pending',state.lang);
+      toast(gpsText(gpsErrorKey(error),state.lang),true);
+    },
+  });
+  gpsWatch=watch.active?watch:null;
 }
 async function showAdmin() {
   const run = ++adminRefreshId;
@@ -483,7 +497,7 @@ $('#detail').onclick = async event => {
   if (b.id === 'play') { if (state.playing) stopAudio(); else playAudio(); }
   if (b.id === 'share') { try { const u = new URL(location.href); u.searchParams.set('poi', selected().code); await navigator.clipboard.writeText(u.href); toast(t('share')); } catch { toast('Không sao chép được. Bạn có thể lấy liên kết trên thanh địa chỉ.', true); } }
 };
-$('#detail').onchange = event => { if (event.target.id === 'voice-mode') { stopAudio(); voiceMode = ['mp3','browser'].includes(event.target.value) ? event.target.value : 'auto'; localStorage.setItem(voiceModeKey, voiceMode); renderDetail(); } if (event.target.id === 'auto') { state.auto = event.target.checked && state.pois.some(hasVerifiedGps); if (state.auto && !gpsWatch) toggleGPS(); } };
+$('#detail').onchange = event => { if (event.target.id === 'voice-mode') { stopAudio(); voiceMode = ['mp3','browser'].includes(event.target.value) ? event.target.value : 'auto'; localStorage.setItem(voiceModeKey, voiceMode); renderDetail(); } if (event.target.id === 'auto') { state.auto = event.target.checked && state.pois.some(hasVerifiedGps); gpsTrigger.reset(); if (state.auto && !gpsWatch) toggleGPS(); if(state.auto && !gpsWatch){state.auto=false;event.target.checked=false;} } };
 $$('.close-dialog').forEach(b => b.onclick = () => b.closest('dialog').close());
 $('#qr-open').onclick = async () => {
   $('#qr-message').textContent = '';
@@ -532,7 +546,7 @@ document.addEventListener('visibilitychange', () => { usage.presence(visitorVisi
 let usageTimer;
 function startUsageLoop() { clearInterval(usageTimer); usageTimer = setInterval(() => { usage.presence(visitorVisible()); usage.flush(); if (state.tab === 'admin' && document.visibilityState === 'visible') loadAnalytics(); }, 25000); }
 window.addEventListener('pageshow', startUsageLoop);
-window.addEventListener('pagehide', () => { usage.presence(false, true); clearInterval(usageTimer); stopAudio(); closeCamera(); gpsWatch?.stop(); gpsWatch=null; });
+window.addEventListener('pagehide', () => { usage.presence(false, true); clearInterval(usageTimer); stopAudio(); closeCamera(); stopGPS(); });
 try {
   adminTools=setupAdminTools({ refresh, showAdmin, toast });
   await loadRuntimeConfig();
