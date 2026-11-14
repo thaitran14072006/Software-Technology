@@ -70,7 +70,7 @@ for (const poi of pois) {
 }
 await mkdir(out, { recursive: true });
 // Only replace generated output inside the fixed web/dist directory.
-for (const name of ['index.html', 'styles.css', 'app.mjs', 'core.mjs', 'store.mjs', 'analytics.mjs', 'join-qr.mjs', 'admin-tools.mjs', 'visitor-config.mjs', 'outdoor-map.mjs', 'poi-catalog.mjs', 'schematic-map.mjs', 'schematic-content.mjs', 'reference-map.mjs', 'map-viewport.mjs', 'browser-tts.mjs', 'gps.mjs', 'ui-i18n.mjs', 'ui-extra.mjs', 'sw.js', 'manifest.webmanifest', 'icon.svg']) {
+for (const name of ['index.html', 'styles.css', 'app.mjs', 'core.mjs', 'store.mjs', 'analytics.mjs', 'join-qr.mjs', 'admin-tools.mjs', 'visitor-config.mjs', 'outdoor-map.mjs', 'poi-catalog.mjs', 'schematic-map.mjs', 'schematic-content.mjs', 'reference-map.mjs', 'map-viewport.mjs', 'browser-tts.mjs', 'gps.mjs', 'camera.mjs', 'ui-i18n.mjs', 'ui-extra.mjs', 'sw.js', 'manifest.webmanifest', 'icon.svg']) {
   await cp(path.join(root, 'web', name), path.join(out, name));
 }
 await writeFile(path.join(out,'reference-map.css'),`@font-face{font-family:"Poster Noto";src:url("./vendor/fonts/NotoSans.ttf");font-weight:100 900}${REFERENCE_MAP_CSS}`);

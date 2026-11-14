@@ -9,6 +9,7 @@ import { loadVoices, selectVoice, playbackSource } from './browser-tts.mjs';
 import {stopNumber,schematicStops,schematicStopName,renderSchematic} from './schematic-map.mjs';
 import {installUITranslations,translateUI,formatUI} from './ui-i18n.mjs';
 import {gpsErrorKey,gpsText,hasVerifiedGps,startGpsWatch,validGpsPosition,createGpsTrigger} from './gps.mjs';
+import {createCameraScanner,cameraText} from './camera.mjs';
 
 const $ = s => document.querySelector(s);
 const $$ = s => [...document.querySelectorAll(s)];
@@ -23,7 +24,7 @@ const copy = {
 };
 const state = { lang: localStorage.getItem('sag:lang') || 'vi', pois: [], searchIndex: new Map(), selected: null, category: 0, query: '', route: null, source: '', admin: [], editing: null, isNew: false, tab: 'visitor', playing: false, auto: false, gps: null, hits: new Map(), cooldown: new Map() };
 if (!LANGS[state.lang]) state.lang = 'vi';
-let seed, audio, gpsWatch = null, refreshId = 0, adminRefreshId = 0, toastTimer, cameraStream, scanFrame;
+let seed, audio, gpsWatch = null, refreshId = 0, adminRefreshId = 0, toastTimer;
 let analyticsData = null, analyticsRun = 0, joinBlobUrl, joinLink = '', defaultJoinUrl = new URL('./', location.href).href;
 let audioRun = 0, outdoorVisible = false, adminTools;
 const gpsTrigger=createGpsTrigger();
@@ -320,7 +321,13 @@ async function submitEditor(event) {
   } catch (error) { $('#editor-error').textContent = error.message; }
   finally { $('#editor-save').disabled = false; }
 }
-function closeCamera() { cameraStream?.getTracks().forEach(track => track.stop()); cameraStream = null; cancelAnimationFrame(scanFrame); $('#qr-video').srcObject = null; $('#qr-video').hidden = true; }
+const cameraStop=document.createElement('button');cameraStop.id='camera-stop';cameraStop.className='button';cameraStop.hidden=true;cameraStop.textContent=cameraText('stop',state.lang);$('#camera-start').after(cameraStop);
+const cameraScanner=createCameraScanner({video:$('#qr-video'),mediaDevices:navigator.mediaDevices,secure:window.isSecureContext,onCode:resolveQR,
+  onStatus:(key,message)=>{$('#qr-message').textContent=message||cameraText(key,state.lang);},
+  onState:value=>{$('#camera-start').disabled=value!=='stopped';cameraStop.hidden=value==='stopped';cameraStop.textContent=cameraText('stop',state.lang);},
+});
+function closeCamera(){cameraScanner.stop();}
+cameraStop.onclick=()=>{closeCamera();$('#qr-message').textContent=cameraText('stopped',state.lang);};
 async function resolveQR(input) {
   const value = qrValue(input);
   let p;
@@ -334,23 +341,7 @@ async function resolveQR(input) {
   if (!p) throw new Error('Không tìm thấy điểm đã xuất bản tương ứng với mã.');
   $('#qr-dialog').close(); closeCamera(); selectPoi(p.id, true); $('#detail').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
 }
-async function startCamera() {
-  const message = $('#qr-message');
-  if (!('BarcodeDetector' in window) || !navigator.mediaDevices?.getUserMedia || !(await BarcodeDetector.getSupportedFormats()).includes('qr_code')) { message.textContent = 'Trình duyệt này chưa hỗ trợ quét QR bằng camera. Hãy nhập hoặc dán nội dung mã ở trên.'; return; }
-  closeCamera();
-  try {
-    cameraStream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' }, audio: false });
-    $('#qr-video').srcObject = cameraStream; $('#qr-video').hidden = false; await $('#qr-video').play();
-    const detector = new BarcodeDetector({ formats: ['qr_code'] });
-    const scan = async () => {
-      if (!cameraStream) return;
-      try { const codes = await detector.detect($('#qr-video')); if (codes[0]) { closeCamera(); await resolveQR(codes[0].rawValue); return; } }
-      catch (error) { message.textContent = error.message; closeCamera(); return; }
-      scanFrame = requestAnimationFrame(scan);
-    };
-    message.textContent = 'Đưa mã QR vào giữa khung hình.'; scanFrame = requestAnimationFrame(scan);
-  } catch (error) { closeCamera(); message.textContent = `Không mở được camera: ${error.message}`; }
-}
+async function startCamera(){await cameraScanner.start();}
 function updateOfflineStatus() {
   const date = localStorage.getItem('sag:pack-date:api');
   let meta;try{meta=JSON.parse(localStorage.getItem('sag:pack-meta:api')||'null');}catch{meta=null;}
@@ -542,7 +533,7 @@ $('#admin-list').onclick = async event => {
 };
 window.addEventListener('offline', () => { $('#data-note').textContent = 'Ngoại tuyến'; });
 window.addEventListener('online', () => { refresh(); usage.flush(); });
-document.addEventListener('visibilitychange', () => { usage.presence(visitorVisible(), document.visibilityState !== 'visible'); if (state.tab === 'admin' && document.visibilityState === 'visible') loadAnalytics(); });
+document.addEventListener('visibilitychange', () => { if(document.hidden)closeCamera(); usage.presence(visitorVisible(), document.visibilityState !== 'visible'); if (state.tab === 'admin' && document.visibilityState === 'visible') loadAnalytics(); });
 let usageTimer;
 function startUsageLoop() { clearInterval(usageTimer); usageTimer = setInterval(() => { usage.presence(visitorVisible()); usage.flush(); if (state.tab === 'admin' && document.visibilityState === 'visible') loadAnalytics(); }, 25000); }
 window.addEventListener('pageshow', startUsageLoop);
