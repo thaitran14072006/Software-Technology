@@ -4,6 +4,23 @@ import {readFile} from 'node:fs/promises';
 
 const dist=new URL('../dist/',import.meta.url);
 
+test('The offline shell caches every transitive browser module',async()=>{
+  const sw=await readFile(new URL('sw.js',dist),'utf8');
+  const assets=new Set([...sw.match(/const ASSETS\s*=\s*\[([^\]]+)\]/)[1].matchAll(/'([^']+)'/g)].map(m=>new URL(m[1],dist).href));
+  const visited=new Set();
+  async function visit(url){
+    if(visited.has(url.href))return;
+    visited.add(url.href);
+    assert.ok(assets.has(url.href),`Browser module missing from offline cache: ${url.href}`);
+    const source=await readFile(url,'utf8');
+    for(const match of source.matchAll(/^\s*(?:import|export)\s+.*?\bfrom\s*['"]([^'"]+)['"]|^\s*import\s*['"]([^'"]+)['"]|\bimport\(\s*['"]([^'"]+)['"]\s*\)/gm)){
+      const specifier=match[1]||match[2]||match[3];
+      if(specifier.startsWith('.'))await visit(new URL(specifier,url));
+    }
+  }
+  await visit(new URL('app.mjs',dist));
+});
+
 test('The production app includes every transitive browser module it imports',async()=>{
   const visited=new Set();
   async function visit(url){

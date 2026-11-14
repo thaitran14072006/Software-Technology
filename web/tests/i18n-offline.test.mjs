@@ -20,6 +20,13 @@ test('All mobile locale catalogs cover the same keys without English fallback ga
 const memory=()=>{const data=new Map();return {getItem:k=>data.get(k)??null,setItem:(k,v)=>data.set(k,String(v)),removeItem:k=>data.delete(k)};};
 globalThis.localStorage=memory();globalThis.sessionStorage=memory();globalThis.window=globalThis;globalThis.location={href:'http://127.0.0.1:4173/'};
 const store=await import('../store.mjs');
+
+test('Offline coverage counts every stop and missing file even without a provider filter',async()=>{
+ const original=globalThis.fetch;globalThis.caches={open:async()=>({put:async()=>{}})};
+ globalThis.fetch=async url=>String(url).includes('/pois?')?Response.json({items:[{id:'ready',audio:{provider:'UPLOAD',url:'/audio-assets/a.mp3',sizeBytes:3}},{id:'missing',audio:null}]}):new Response(new Uint8Array([1,2,3]),{headers:{'content-type':'audio/mpeg'}});
+ try{const out=await store.saveOffline(()=>{});assert.equal(out.audioExpected,10);assert.equal(out.audioCount,5);assert.equal(out.audioMissing,5);assert.deepEqual(out.languages.ja,{expected:2,ready:1,missing:1});}
+ finally{globalThis.fetch=original;}
+});
 test('Google offline downloads reject truncated files and preserve the old saved pack',async()=>{
  const original=globalThis.fetch;const key=store.packKey('vi');localStorage.setItem(key,'{"old":true}');
  globalThis.caches={open:async()=>({put:async()=>{}})};
