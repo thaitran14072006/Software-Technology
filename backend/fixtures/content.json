@@ -245,7 +245,16 @@
           "name": "五つ又のサルスベリ",
           "summary": "",
           "script_text": "カッティエンの森で、特徴ある樹形を楽しめる場所です。根元から枝を目でたどり、名前の由来となった五つの梢を探してみましょう。見る角度によって幹や枝の姿が変わります。木陰で足を止め、森の木々が持つ形の多様さを感じてください。",
-          "text_hash": "9fa896bd0df203dba60aaf9ba412ce52c4bc725710f5d94f15cee237cce03e76"
+          "text_hash": "9fa896bd0df203dba60aaf9ba412ce52c4bc725710f5d94f15cee237cce03e76",
+          "audio": {
+            "file": "audio/3-ja-79159aaf906c.mp3",
+            "sha256": "79159aaf906c62b32310e589eb647cb9838d1c404b4f2d82710533934e54a142",
+            "sizeBytes": 333740,
+            "durationSec": null,
+            "voiceGender": "FEMALE",
+            "voiceName": "Gemini gemini-3.8-flash-lite-tts · Aoede",
+            "provider": "GEMINI"
+          }
         },
         {
           "lang_code": "ko",
@@ -323,7 +332,16 @@
           "name": "ソテツ",
           "summary": "",
           "script_text": "この場所では、森の植物を違った視点から観察できます。高木の梢だけでなく、幹や頂部から広がる長い葉にも注目してください。葉の並び方が、周囲の緑の中で特徴ある輪郭を作ります。幹の表情や葉の対称性など、小さな細部をゆっくり眺めてみましょう。",
-          "text_hash": "085a37f6a889c2846a5a0b4756d4d5ace3ae15b17d16ba2be92abae1758bc194"
+          "text_hash": "085a37f6a889c2846a5a0b4756d4d5ace3ae15b17d16ba2be92abae1758bc194",
+          "audio": {
+            "file": "audio/4-ja-a44481d61da6.mp3",
+            "sha256": "a44481d61da66795a3acf8f2c060d7afb4a5c4386262cbf119eaa28ffad23134",
+            "sizeBytes": 363692,
+            "durationSec": null,
+            "voiceGender": "FEMALE",
+            "voiceName": "Gemini gemini-3.8-flash-lite-tts · Aoede",
+            "provider": "GEMINI"
+          }
         },
         {
           "lang_code": "ko",
@@ -497,7 +515,16 @@
           "name": "植物園",
           "summary": "",
           "script_text": "植物園は、カッティエンの植物の多様さに親しむ場所です。道沿いの葉の形、樹皮の色、枝の伸び方を比べてみましょう。小さな特徴の一つ一つが植物を知る手がかりになります。屋外の教室のようにゆっくり歩き、植物と森の環境とのつながりを考えてみてください。",
-          "text_hash": "86909ef87c5776d1e7a38fab6ef4fea417d3f73c5a16f0e4a5f052d1d7e1f7b1"
+          "text_hash": "86909ef87c5776d1e7a38fab6ef4fea417d3f73c5a16f0e4a5f052d1d7e1f7b1",
+          "audio": {
+            "file": "audio/6-ja-8fc376afb54c.mp3",
+            "sha256": "8fc376afb54c31cdcd3723e173c28106d2cce97e6168926e93fdb7f418a4193e",
+            "sizeBytes": 356012,
+            "durationSec": null,
+            "voiceGender": "FEMALE",
+            "voiceName": "Gemini gemini-3.8-flash-lite-tts · Aoede",
+            "provider": "GEMINI"
+          }
         },
         {
           "lang_code": "ko",
@@ -863,7 +890,16 @@
           "name": "六稜の木",
           "summary": "",
           "script_text": "この場所では、特徴ある幹の形に注目してみましょう。名前は幹に浮かぶ稜を連想させます。いろいろな方向から眺めると、光と影によって輪郭の見え方が変わります。森の美しさは高い梢だけでなく、一本の幹の細部にも見つかります。",
-          "text_hash": "2a9bfe0a9e01ed2b458731c2a700d1f7ad96c8fe1f6cc192ae4970993c3e6ab1"
+          "text_hash": "2a9bfe0a9e01ed2b458731c2a700d1f7ad96c8fe1f6cc192ae4970993c3e6ab1",
+          "audio": {
+            "file": "audio/10-ja-07b7893720f7.mp3",
+            "sha256": "07b7893720f7fa9f759e839c7eee2d106da57ef7768721ba2aa7401e4c9a278c",
+            "sizeBytes": 322988,
+            "durationSec": null,
+            "voiceGender": "FEMALE",
+            "voiceName": "Gemini gemini-3.8-flash-lite-tts · Aoede",
+            "provider": "GEMINI"
+          }
         },
         {
           "lang_code": "ko",
@@ -941,7 +977,16 @@
           "name": "花瓶形のサルスベリ",
           "summary": "",
           "script_text": "この木は、花瓶を思わせる特徴ある幹が印象的です。少し離れて全体を眺めてから、幹の曲線や膨らみを観察してみましょう。上に広がる葉とともに、自然が作った独特の姿を見せてくれます。カッティエンの木々の多様な形を感じられる場所です。",
-          "text_hash": "dae226f49906d3b4247b1f9982a9649783e3876043ab62e9cf21557715c817e9"
+          "text_hash": "dae226f49906d3b4247b1f9982a9649783e3876043ab62e9cf21557715c817e9",
+          "audio": {
+            "file": "audio/11-ja-221f75b19a2d.mp3",
+            "sha256": "221f75b19a2d5ebeaafe71c658bae70779aa0bd7a1a8ad03a5df3cab6693185e",
+            "sizeBytes": 334508,
+            "durationSec": null,
+            "voiceGender": "FEMALE",
+            "voiceName": "Gemini gemini-3.8-flash-lite-tts · Aoede",
+            "provider": "GEMINI"
+          }
         },
         {
           "lang_code": "ko",
@@ -1019,7 +1064,16 @@
           "name": "大風子の森",
           "summary": "",
           "script_text": "大風子の森では、カッティエンの森の別の一面に出会えます。大風子は園内に見られる樹木の一つで、植物の多様さを支えています。道を歩きながら、重なる木々や木漏れ日、森の音に注目してください。植物、動物、環境がつながる一つの生きた仕組みとして森を感じてみましょう。",
-          "text_hash": "6c9690c33ea9005e9dea3c06436c00ecb8aef6d7234b54fb53495511bb446520"
+          "text_hash": "6c9690c33ea9005e9dea3c06436c00ecb8aef6d7234b54fb53495511bb446520",
+          "audio": {
+            "file": "audio/12-ja-e0a5eb7cb322.mp3",
+            "sha256": "e0a5eb7cb322a92493eac2c250dadac7ee90cb6c883b892e377516abf65573b9",
+            "sizeBytes": 414380,
+            "durationSec": null,
+            "voiceGender": "FEMALE",
+            "voiceName": "Gemini gemini-3.8-flash-lite-tts · Aoede",
+            "provider": "GEMINI"
+          }
         },
         {
           "lang_code": "ko",
@@ -1331,6 +1385,67 @@
             "voiceName": "gemini-3.8-flash-lite-tts/Kore",
             "provider": "GEMINI"
           }
+        }
+      ]
+    },
+    {
+      "code": "coord-01",
+      "map_id": "00000000-0000-0000-0000-000000000001",
+      "category_id": 1,
+      "latitude": 11.4316,
+      "longitude": 107.4323,
+      "geo_verified": false,
+      "geo_source_url": "urn:sha256:2ede2f7c00e63638604ebdeb843bb7e94aa1e7829fbd982ede01e5b9f5b8a664#point-01",
+      "schematic_x": null,
+      "schematic_y": null,
+      "trigger_radius_m": null,
+      "image_url": null,
+      "status": "PUBLISHED",
+      "sort_order": 16,
+      "translations": [
+        {
+          "lang_code": "en",
+          "name": "Visitor Center",
+          "summary": "Start your visit here: buy tickets and take the ferry across the Dong Nai River to enter the park.",
+          "script_text": "Start your visit here: buy tickets and take the ferry across the Dong Nai River to enter the park.",
+          "text_hash": "00613c7650998c0f8a8ae5f60eb5b74c52182693a6fdcaa6961753338a03a222"
+        },
+        {
+          "lang_code": "ja",
+          "name": "ビジターセンター",
+          "summary": "ここは見学の出発点です。入場券を購入し、渡し船でドンナイ川を渡って公園に入ります。",
+          "script_text": "ここは見学の出発点です。入場券を購入し、渡し船でドンナイ川を渡って公園に入ります。",
+          "text_hash": "92b5de40081b2680b7a1202c6e44d37eb4fff01ee82ed0c0fc8288ba7baa02e1",
+          "audio": {
+            "file": "audio/coord-01-ja-a4e5323b0988.mp3",
+            "sha256": "a4e5323b0988c7433baf756ec1bb9b25ebe0172f1c92855c4b700f939a369fa8",
+            "sizeBytes": 141740,
+            "durationSec": "8.86",
+            "voiceGender": "FEMALE",
+            "voiceName": "gemini-3.8-flash-lite-tts/Aoede",
+            "provider": "GEMINI"
+          }
+        },
+        {
+          "lang_code": "ko",
+          "name": "방문자 센터",
+          "summary": "탐방을 시작하는 곳입니다. 입장권을 구입한 뒤 배를 타고 동나이강을 건너 공원으로 들어갑니다.",
+          "script_text": "탐방을 시작하는 곳입니다. 입장권을 구입한 뒤 배를 타고 동나이강을 건너 공원으로 들어갑니다.",
+          "text_hash": "096059bbc6d4d44308e7c559cdbd5f60e99b61fec0906d8c8473693e94fe78bc"
+        },
+        {
+          "lang_code": "vi",
+          "name": "Trung tâm Du Khách",
+          "summary": "Nơi bắt đầu mọi hành trình, mua vé và qua đò vượt sông Đồng Nai để vào ranh giới vườn.",
+          "script_text": "Nơi bắt đầu mọi hành trình, mua vé và qua đò vượt sông Đồng Nai để vào ranh giới vườn.",
+          "text_hash": "1dabac733eb6d3439dd9a14a8ccba1d928d931982882ce092ae29c954f82ddd4"
+        },
+        {
+          "lang_code": "zh",
+          "name": "游客中心",
+          "summary": "这里是游览的起点。游客在此购票，乘渡船跨越同奈河，进入国家公园。",
+          "script_text": "这里是游览的起点。游客在此购票，乘渡船跨越同奈河，进入国家公园。",
+          "text_hash": "f5fd3fe0d29311ad0bce3dc6f696c4f1166ae467a182a994c361c4b99816bfe0"
         }
       ]
     }

@@ -2,7 +2,7 @@ import { MAP_ID, LANGS, toDto } from './core.mjs';
 import {currentCatalogItems} from './poi-catalog.mjs';
 let seed;
 export function useExactSeedAudio(items, catalog) {
-  const byCode = new Map((catalog?.pois || []).map(p => [p.code, p]));
+  const byCode = new Map([...(catalog?.schematicPois || []), ...(catalog?.pois || [])].map(p => [p.code, p]));
   return items.map(item => {
     if (item.audio?.url || item.translationMissing) return item;
     const source = byCode.get(item.code);

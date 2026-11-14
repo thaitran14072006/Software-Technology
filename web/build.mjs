@@ -78,9 +78,22 @@ await cp(path.join(root, 'web', 'vendor'), path.join(out, 'vendor'), { recursive
 await mkdir(path.join(out, 'data'), { recursive: true });
 const audioOut = path.join(out, 'audio');
 await mkdir(audioOut, { recursive: true });
+const schematicPois=withSchematicNarration([], 'vi').map(p=>({...p,
+  translations:p.translations.map(t=>({...t,textHash:createHash('sha256').update(t.scriptText).digest('hex')})),audios:[],audio:null}));
+const center = fixtureByCode.get('coord-01');
+if (center && !pois.some(p => p.code === center.code)) {
+  schematicPois.push({
+    code: center.code,
+    translations: center.translations.map(t => ({
+      langCode: t.lang_code, name: t.name, scriptText: t.script_text, textHash: t.text_hash,
+      audioNeedsRefresh: Boolean(t.audio_needs_refresh),
+    })),
+    audios: [],
+  });
+}
 // The fixture manifest identifies the accepted recording, not its directory
 // order or filename segments (POI codes themselves may contain hyphens).
-for(const poi of pois)for(const translation of poi.translations){
+for(const poi of [...pois,...schematicPois.filter(p=>!pois.some(x=>x.code===p.code))])for(const translation of poi.translations){
   const source=fixtureByCode.get(poi.code)?.translations.find(t=>t.lang_code===translation.langCode);
   const audio=source?.audio;
   if(!audio||translation.audioNeedsRefresh||source.text_hash!==translation.textHash||source.script_text!==translation.scriptText)continue;
@@ -92,8 +105,6 @@ for(const poi of pois)for(const translation of poi.translations){
   poi.audios.push({langCode:translation.langCode,status:'READY',audioUrl:`/audio/${filename}`,provider:audio.provider,voiceName:audio.voiceName,textHash:translation.textHash,durationSec:audio.durationSec,sizeBytes:audio.sizeBytes});
 }
 // Generated clips only fill missing languages with an exact transcript match.
-const schematicPois=withSchematicNarration([], 'vi').map(p=>({...p,
-  translations:p.translations.map(t=>({...t,textHash:createHash('sha256').update(t.scriptText).digest('hex')})),audios:[],audio:null}));
 for (const [key, record] of Object.entries(generatedAudio)) {
   const [code, lang] = key.split(':');
   const poi = [...pois,...schematicPois].find(p => p.code === code);

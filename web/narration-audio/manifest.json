@@ -64,12 +64,12 @@
   },
   "12:ja": {
     "file": "12-ja.mp3",
-    "textHash": "45d3c6e98fc184ef12a17cdda6fcacde39bb45775229da898e29e4c7d61a19ff",
+    "textHash": "6c9690c33ea9005e9dea3c06436c00ecb8aef6d7234b54fb53495511bb446520",
     "provider": "GEMINI",
-    "model": "gemini-3.8-flash-tts",
-    "voice": "Kore",
-    "voiceName": "Gemini gemini-3.8-flash-tts · Kore",
-    "bytes": 112940
+    "model": "gemini-3.8-flash-lite-tts",
+    "voice": "Aoede",
+    "voiceName": "Gemini gemini-3.8-flash-lite-tts · Aoede",
+    "bytes": 414380
   },
   "12:ko": {
     "file": "12-ko.mp3",
@@ -223,9 +223,12 @@
   },
   "3:ja": {
     "file": "3-ja.mp3",
-    "textHash": "e73dc2816640dea64e9ecb1c4174124d7ed0b6b25cd225aac80c2ae427efb85a",
-    "voiceName": "eSpeak NG ja+f3",
-    "bytes": 125013
+    "textHash": "9fa896bd0df203dba60aaf9ba412ce52c4bc725710f5d94f15cee237cce03e76",
+    "provider": "GEMINI",
+    "model": "gemini-3.8-flash-lite-tts",
+    "voice": "Aoede",
+    "voiceName": "Gemini gemini-3.8-flash-lite-tts · Aoede",
+    "bytes": 333740
   },
   "3:ko": {
     "file": "3-ko.mp3",
@@ -262,9 +265,12 @@
   },
   "4:ja": {
     "file": "4-ja.mp3",
-    "textHash": "9be87c9e44500b10f3bb1709448993fa16932fc0b012f2303487ce6f0b77c98d",
-    "voiceName": "eSpeak NG ja+f3",
-    "bytes": 120416
+    "textHash": "085a37f6a889c2846a5a0b4756d4d5ace3ae15b17d16ba2be92abae1758bc194",
+    "provider": "GEMINI",
+    "model": "gemini-3.8-flash-lite-tts",
+    "voice": "Aoede",
+    "voiceName": "Gemini gemini-3.8-flash-lite-tts · Aoede",
+    "bytes": 363692
   },
   "4:ko": {
     "file": "4-ko.mp3",
@@ -337,9 +343,12 @@
   },
   "6:ja": {
     "file": "6-ja.mp3",
-    "textHash": "1bd65e864c55b7672927f6887003fd488a706bfe711fd39c1cb50aae6d1b7586",
-    "voiceName": "eSpeak NG ja+f3",
-    "bytes": 285928
+    "textHash": "86909ef87c5776d1e7a38fab6ef4fea417d3f73c5a16f0e4a5f052d1d7e1f7b1",
+    "provider": "GEMINI",
+    "model": "gemini-3.8-flash-lite-tts",
+    "voice": "Aoede",
+    "voiceName": "Gemini gemini-3.8-flash-lite-tts · Aoede",
+    "bytes": 356012
   },
   "6:ko": {
     "file": "6-ko.mp3",
@@ -607,5 +616,23 @@
     "voice": "Kore",
     "voiceName": "Gemini gemini-3.8-flash-lite-tts · Kore",
     "bytes": 400172
+  },
+  "10:ja": {
+    "file": "10-ja.mp3",
+    "textHash": "2a9bfe0a9e01ed2b458731c2a700d1f7ad96c8fe1f6cc192ae4970993c3e6ab1",
+    "provider": "GEMINI",
+    "model": "gemini-3.8-flash-lite-tts",
+    "voice": "Aoede",
+    "voiceName": "Gemini gemini-3.8-flash-lite-tts · Aoede",
+    "bytes": 322988
+  },
+  "11:ja": {
+    "file": "11-ja.mp3",
+    "textHash": "dae226f49906d3b4247b1f9982a9649783e3876043ab62e9cf21557715c817e9",
+    "provider": "GEMINI",
+    "model": "gemini-3.8-flash-lite-tts",
+    "voice": "Aoede",
+    "voiceName": "Gemini gemini-3.8-flash-lite-tts · Aoede",
+    "bytes": 334508
   }
 }

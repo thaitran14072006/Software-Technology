@@ -8,7 +8,7 @@ test('Built audio uses the exact shared manifest file and voice, including hyphe
  let checked=0;
  for(const poi of fixture.pois)for(const t of poi.translations){
   if(!t.audio)continue;
-  const actual=built.pois.find(p=>p.code===poi.code)?.audios.find(a=>a.langCode===t.lang_code);
+  const actual=[...built.pois,...built.schematicPois].find(p=>p.code===poi.code)?.audios.find(a=>a.langCode===t.lang_code);
   assert.ok(actual,`${poi.code}/${t.lang_code}`);
   assert.equal(actual.voiceName,t.audio.voiceName);
   assert.equal(actual.audioUrl,'/'+t.audio.file);
