@@ -14,7 +14,7 @@ import {createCameraScanner,cameraText} from './camera.mjs';
 const $ = s => document.querySelector(s);
 const $$ = s => [...document.querySelectorAll(s)];
 const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
-const group = id => copy[state.lang][{ 1: 'facility', 2: 'tree', 3: 'water' }[id] || 'all'].replace(/^[♧≈⌂] /, '');
+const group = (id, lang = state.lang) => copy[lang][{ 1: 'facility', 2: 'tree', 3: 'water' }[id] || 'all'].replace(/^[♧≈⌂] /, '');
 const copy = {
   vi: { play: '▶ Nghe thuyết minh', stop: '■ Dừng phát', auto: 'Tự phát theo GPS', search: 'Tìm điểm đến theo tên, mã hoặc nội dung…', clearSearch: 'Xóa nội dung tìm kiếm', empty: 'Không có điểm phù hợp.', choose: 'Chọn một điểm trên sơ đồ để khám phá câu chuyện.', all: 'Tất cả', tree: '♧ Cây & rừng', water: '≈ Nước & thác', facility: '⌂ Khu chức năng', verified: 'GPS đã xác thực', schematic: 'Vị trí trên sơ đồ', share: 'Sao chép liên kết', point: 'điểm dừng', narration: 'Lời thuyết minh', autoHint: 'Tự phát chỉ áp dụng cho điểm có GPS đã xác thực.' },
   en: { play: '▶ Play audio guide', stop: '■ Stop playback', auto: 'GPS autoplay', search: 'Search by name, code, or story…', clearSearch: 'Clear search', empty: 'No matching stops.', choose: 'Choose a stop on the map to discover its story.', all: 'All stops', tree: '♧ Trees & forest', water: '≈ Water & rapids', facility: '⌂ Facilities', verified: 'Verified GPS', schematic: 'Schematic location', share: 'Copy link', point: 'stops', narration: 'Audio guide', autoHint: 'Autoplay is available only for stops with verified GPS.' },
@@ -31,13 +31,14 @@ const gpsTrigger=createGpsTrigger();
 const voiceModeKey = 'sag:voice-mode-v3';
 let voiceMode = ['mp3','browser'].includes(localStorage.getItem(voiceModeKey)) ? localStorage.getItem(voiceModeKey) : 'auto';
 const languageSwitcher = $('#language-switcher');
-const refreshUITranslations = installUITranslations(() => state.lang);
+const interfaceLanguage = () => state.tab === 'admin' ? 'vi' : state.lang;
+const refreshUITranslations = installUITranslations(interfaceLanguage);
 const outdoorMap = createOutdoorMap({ container: $('#outdoor-map'), note: $('#outdoor-note'), onSelect: id => selectPoi(id) });
 function updateOutdoor() { outdoorMap.update({ pois: filtered(), selectedId: state.selected, gps: state.gps }); }
 const usage = new VisitorAnalytics();
 const counter = playbackCounter(poi => { try { usage.record(poi); } catch { toast('Không lưu được lượt nghe. Bộ nhớ trình duyệt có thể đã đầy.', true); } });
 const t = key => copy[state.lang][key];
-function toast(message, error = false) { $('#toast').textContent = translateUI(message,state.lang); $('#toast').classList.toggle('error', error); $('#toast').hidden = false; clearTimeout(toastTimer); toastTimer = setTimeout(() => $('#toast').hidden = true, 6500); }
+function toast(message, error = false) { $('#toast').textContent = translateUI(message,interfaceLanguage()); $('#toast').classList.toggle('error', error); $('#toast').hidden = false; clearTimeout(toastTimer); toastTimer = setTimeout(() => $('#toast').hidden = true, 6500); }
 function filtered() {
   const query = state.query.trim();
   const numericQuery = /^\d+$/.test(query) ? Number(query) : null;
@@ -79,9 +80,13 @@ async function refreshSearchIndex(run, source, currentItems) {
 function selected() { return state.pois.find(p => p.id === state.selected); }
 function safeURL(url) { return safeMediaUrl(url,location.href); }
 function updateLanguage() {
-  document.documentElement.lang = state.lang;
+  document.documentElement.lang = interfaceLanguage();
   languageSwitcher.querySelectorAll('[data-lang]').forEach(button => {
-    const active = button.dataset.lang === state.lang;
+    const lang = button.dataset.lang;
+    const active = lang === state.lang;
+    const label = LANGS[lang];
+    button.lang = lang;
+    if (button.textContent !== label) button.textContent = label;
     button.classList.toggle('active', active);
     button.setAttribute('aria-pressed', String(active));
   });
@@ -246,10 +251,10 @@ async function showAdmin() {
     if (run !== adminRefreshId) return;
     state.admin = rows;
     adminTools?.setPois(rows);
-    $('#audio-matrix').innerHTML = `<div class="table-wrap"><table><thead><tr><th>Điểm tham quan</th>${Object.values(LANGS).map(l=>`<th>${esc(l)}</th>`).join('')}</tr></thead><tbody>${rows.map(p=>`<tr><td>${esc(p.translations.find(t=>t.langCode===state.lang)?.name || p.code)}</td>${Object.keys(LANGS).map(lang=>{const item=localize(p,lang),a=p.audios?.find(a=>a.langCode===lang);return `<td title="${esc(item.audio?.voiceName || '')}">${item.translationMissing?'Thiếu bản dịch':item.audio?.url?'✓ Có MP3':a?.status==='FAILED'?'Lỗi tạo file':'Chưa có MP3'}</td>`;}).join('')}</tr>`).join('')}</tbody></table></div><p class="muted">Có MP3 là trạng thái file. Cần nghe kiểm tra ngôn ngữ và chất lượng trước khi sử dụng.</p>`;
+    $('#audio-matrix').innerHTML = `<div class="table-wrap"><table><thead><tr><th>Điểm tham quan</th>${Object.values(LANGS).map(l=>`<th>${esc(l)}</th>`).join('')}</tr></thead><tbody>${rows.map(p=>`<tr><td>${esc(p.translations.find(t=>t.langCode==='vi')?.name || p.code)}</td>${Object.keys(LANGS).map(lang=>{const item=localize(p,lang),a=p.audios?.find(a=>a.langCode===lang);return `<td title="${esc(item.audio?.voiceName || '')}">${item.translationMissing?'Thiếu bản dịch':item.audio?.url?'✓ Có MP3':a?.status==='FAILED'?'Lỗi tạo file':'Chưa có MP3'}</td>`;}).join('')}</tr>`).join('')}</tbody></table></div><p class="muted">Có MP3 là trạng thái file. Cần nghe kiểm tra ngôn ngữ và chất lượng trước khi sử dụng.</p>`;
     renderAnalytics();
     $('#admin-stats').innerHTML = [[rows.length, 'Điểm tham quan'], [rows.filter(p => p.status === 'PUBLISHED').length, 'Đã xuất bản'], [rows.reduce((n, p) => n + p.translations.length, 0), 'Bản dịch']].map(([n, label]) => `<div class="stat"><strong>${n}</strong><span>${label}</span></div>`).join('');
-    $('#admin-list').innerHTML = rows.length ? rows.map(p => `<tr><td>${esc(p.code)}</td><td><strong>${esc(localize(p, state.lang).name)}</strong></td><td>${esc(group(p.categoryId))}</td><td><span class="badge ${p.status !== 'PUBLISHED' ? 'draft' : ''}">${esc(p.status === 'PUBLISHED' ? 'Đã xuất bản' : 'Bản nháp')}</span></td><td>${p.translations.length} / 5</td><td>${p.geoVerified ? '✓ Đã xác thực' : 'Chưa xác thực'}</td><td><button class="button" data-edit="${esc(p.id)}">Sửa</button><button class="button" data-upload="${esc(p.id)}">Tải MP3</button><button class="button" data-generate="${esc(p.id)}">Tạo audio</button><button class="button" data-regen="${esc(p.id)}">Tạo lại audio lỗi</button><button class="button" data-delete="${esc(p.id)}">Xóa</button></td></tr>`).join('') : '<tr><td colspan="7">Chưa có điểm tham quan. Bấm Thêm điểm để bắt đầu.</td></tr>';
+    $('#admin-list').innerHTML = rows.length ? rows.map(p => `<tr><td>${esc(p.code)}</td><td><strong>${esc(localize(p, 'vi').name)}</strong></td><td>${esc(group(p.categoryId, 'vi'))}</td><td><span class="badge ${p.status !== 'PUBLISHED' ? 'draft' : ''}">${esc(p.status === 'PUBLISHED' ? 'Đã xuất bản' : 'Bản nháp')}</span></td><td>${p.translations.length} / 5</td><td>${p.geoVerified ? '✓ Đã xác thực' : 'Chưa xác thực'}</td><td><button class="button" data-edit="${esc(p.id)}">Sửa</button><button class="button" data-upload="${esc(p.id)}">Tải MP3</button><button class="button" data-generate="${esc(p.id)}">Tạo audio</button><button class="button" data-regen="${esc(p.id)}">Tạo lại audio lỗi</button><button class="button" data-delete="${esc(p.id)}">Xóa</button></td></tr>`).join('') : '<tr><td colspan="7">Chưa có điểm tham quan. Bấm Thêm điểm để bắt đầu.</td></tr>';
   } catch (error) {
     if (run !== adminRefreshId) return;
     state.admin = []; $('#admin-list').innerHTML = ''; $('#admin-stats').innerHTML = ''; $('#admin-error').textContent = error.message;
@@ -349,7 +354,7 @@ function updateOfflineStatus() {
   $('#offline-status').textContent = date && Number.isInteger(meta?.audioExpected) ? formatUI('Gói ngoại tuyến: {0}/{1} MP3, thiếu {2} bài. Lưu lúc {3}.',[meta.audioCount,meta.audioExpected,meta.audioMissing,new Date(date).toLocaleString(LOCALES[state.lang])],state.lang) : date ? translateUI('Gói đã lưu dùng danh mục cũ. Hãy tải lại để kiểm tra đủ bài và ngôn ngữ.',state.lang) : translateUI('Lưu nội dung 5 ngôn ngữ và audio MP3 sẵn có. Giọng đọc của trình duyệt có thể cần mạng.',state.lang);
 }
 
-$('#visitor-tab').onclick = () => { state.tab = 'visitor'; $('#visitor').hidden = false; $('#admin').hidden = true; $('#visitor-tab').classList.add('active'); $('#admin-tab').classList.remove('active'); $('#visitor-tab').ariaPressed = 'true'; $('#admin-tab').ariaPressed = 'false'; usage.presence(visitorVisible()); };
+$('#visitor-tab').onclick = () => { state.tab = 'visitor'; $('#visitor').hidden = false; $('#admin').hidden = true; $('#visitor-tab').classList.add('active'); $('#admin-tab').classList.remove('active'); $('#visitor-tab').ariaPressed = 'true'; $('#admin-tab').ariaPressed = 'false'; updateLanguage(); usage.presence(visitorVisible()); };
 const loginDialog = $('#login-dialog');
 const logoutButton = $('#logout-button');
 logoutButton.hidden = !token();
@@ -364,6 +369,7 @@ function openAdmin() {
   $('#visitor-tab').classList.remove('active');
   $('#admin-tab').ariaPressed = 'true';
   $('#visitor-tab').ariaPressed = 'false';
+  updateLanguage();
   showAdmin();
 }
 $('#admin-tab').onclick = async () => {
@@ -447,7 +453,15 @@ $('#search').oninput = event => {
 };
 $('#search-clear').onclick = () => { $('#search').value = ''; state.query = ''; $('#search-clear').hidden = true; renderMap(); renderList(); $('#search').focus(); };
 $('#filters').onclick = event => { const b = event.target.closest('[data-category]'); if (!b) return; state.category = Number(b.dataset.category); $$('#filters button').forEach(x => { const active = x === b; x.classList.toggle('active', active); x.ariaPressed = String(active); }); renderMap(); renderList(); };
-const changeLanguage = async lang => { if(!LANGS[lang]||lang===state.lang)return; stopAudio(); state.lang = lang; localStorage.setItem('sag:lang', state.lang); await refresh();if(state.tab==='admin')await showAdmin(); };
+const changeLanguage = async lang => {
+  if (!Object.hasOwn(LANGS, lang) || lang === state.lang) return;
+  stopAudio();
+  state.lang = lang;
+  localStorage.setItem('sag:lang', lang);
+  updateLanguage();
+  await refresh();
+  if (state.lang === lang && state.tab === 'admin') await showAdmin();
+};
 languageSwitcher.onclick = event => { const button=event.target.closest('[data-lang]');if(button)changeLanguage(button.dataset.lang); };
 $('#stop-list').onclick = event => { const b = event.target.closest('[data-id]'); if (b) selectPoi(b.dataset.id); };
 $('#map').onclick = event => { const b = event.target.closest('[data-id]'); if (b) selectPoi(b.dataset.id); };
