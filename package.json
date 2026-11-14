@@ -34,7 +34,8 @@
     "test:shared-content": "node scripts/test-shared-content.mjs",
     "test:local-tts": "node scripts/smoke-local-tts.mjs",
     "content:coordinates": "node scripts/import-document-coordinates.mjs",
-    "content:catalog": "node scripts/apply-poi-catalog.mjs"
+    "content:catalog": "node scripts/apply-poi-catalog.mjs",
+    "content:visitor-map": "node scripts/sync-visitor-map.mjs"
   },
   "engines": {
     "node": ">=24"

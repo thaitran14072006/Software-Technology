@@ -34,6 +34,7 @@ const copy = {
 };
 
 export function referenceStopName(number,lang='vi',poi) {
+  if(poi?.name && (!poi.lang || poi.lang===lang))return poi.name;
   const stop=REFERENCE_STOPS.find(([n])=>String(n)===String(number));
   if(!stop)return poi?.name || '';
   if(!copy[lang] || lang==='vi')return stop[3];

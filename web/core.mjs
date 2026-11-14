@@ -88,6 +88,10 @@ export function validatePoi(poi, api = false) {
   if (poi.schematic && (poi.schematic.length !== 2 || poi.schematic.some((n, i) => !Number.isFinite(n) || n < 0 || n > [1380, 900][i]))) throw new Error('Tọa độ sơ đồ phải nằm trong khung 1380 × 900.');
   return poi;
 }
+export function safeMediaUrl(value,base) {
+  if(typeof value!=='string'||!value.trim())return null;
+  try{const url=new URL(value,base);return ['http:','https:'].includes(url.protocol)?url.href:null;}catch{return null;}
+}
 export function toDto(poi) {
   validatePoi(poi, true);
   return { code: poi.code, mapId: MAP_ID, categoryId: poi.categoryId, latitude: poi.lat, longitude: poi.lng, geoVerified: poi.geoVerified, schematicX: poi.schematic?.[0] ?? null, schematicY: poi.schematic?.[1] ?? null, triggerRadiusM: poi.triggerRadiusM, status: poi.status, translations: poi.translations };

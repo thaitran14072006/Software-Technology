@@ -11,11 +11,11 @@ import {hasVerifiedGps} from '../gps.mjs';
 const seed=JSON.parse(await readFile(new URL('../dist/data/pois.json',import.meta.url)));
 const missing=['3','4','6','10','11','12'];
 
-test('All six poster-only stops have readable localized narration and clickable map pins',()=>{
+test('All fifteen stops are in the catalog without requiring synthetic visitor points',()=>{
   for(const lang of Object.keys(LANGS)) {
     const original=seed.pois.map(p=>localize(p,lang));
     const items=withSchematicNarration(original,lang);
-    assert.equal(items.length,original.length+6);
+    assert.equal(items.length,15);
     for(const code of missing) {
       const poi=items.find(p=>p.code===code);
       assert.equal(poi.translationMissing,false);
@@ -26,7 +26,7 @@ test('All six poster-only stops have readable localized narration and clickable 
       assert.ok(verifiedCoordinates(poi),`Missing map coordinates for ${code}`);
       assert.equal(estimatedCoordinates(poi),code!=='6');
       assert.equal(hasVerifiedGps(poi),false);
-      assert.equal(poi.audio,null);
+      assert.equal(poi.id,original.find(p=>p.code===code).id);
       const svg=renderSchematic({pois:items,selectedId:poi.id,visibleIds:[poi.id]});
       assert.match(svg,new RegExp(`data-reference-stop="${code}"[^>]*data-id="${poi.id}"[^>]*aria-pressed="true"`));
     }

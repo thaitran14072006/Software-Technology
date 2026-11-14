@@ -8,16 +8,17 @@ export function stopNumber(poi) {
 }
 
 export function schematicStopName(poi) {
-  return referenceStopName(poi.code,poi.lang || 'vi') || poi.name;
+  return poi.name || referenceStopName(poi.code,poi.lang || 'vi');
 }
 
 // Cards follow the same fifteen numbered stops and order as the drawing.
 export function schematicStops(pois) {
   const byCode = new Map(pois.map(p => [String(p.code), p]));
-  return REFERENCE_STOPS.flatMap(([number]) => {
+  const numbered = REFERENCE_STOPS.flatMap(([number]) => {
     const poi = byCode.get(String(number));
     return poi ? [{...poi, name:schematicStopName(poi)}] : [];
   });
+  return [...numbered,...pois.filter(p=>!posterNumbers.has(String(p.code)))];
 }
 
 // Match by stable code, never by a visitor sort order with different numbering.

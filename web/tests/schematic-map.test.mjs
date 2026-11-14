@@ -39,7 +39,7 @@ test('Visitor numbers match schematic stops regardless of catalog order or langu
     assert.equal(stopNumber(poi),String(number));
   }
   const forest=pois.find(p=>p.code==='15');
-  assert.notEqual(forest.sortOrder,15);
+  assert.equal(stopNumber({...forest,sortOrder:99}),'15');
   assert.equal(stopNumber(forest),'15');
   for (const poi of pois.filter(p=>!REFERENCE_STOPS.some(([number])=>String(number)===p.code))) {
     assert.equal(stopNumber(poi),'•');
@@ -66,7 +66,7 @@ test('All 15 map labels, accessible names, cards and detail names use the same l
     const svg=renderSchematic({pois:items,visibleIds:items.map(p=>p.id),lang});
     const cards=schematicStops(items);
     for(const poi of items) {
-      const name=referenceStopName(poi.code,lang);
+      const name=poi.name;
       assert.ok(name);
       assert.equal(schematicStopName(poi),name);
       assert.equal(cards.find(p=>p.code===poi.code).name,name);
@@ -75,7 +75,7 @@ test('All 15 map labels, accessible names, cards and detail names use the same l
       assert.ok(svg.includes(`<title>${poi.code}. ${name}</title>`));
       if(lang!=='vi')assert.notEqual(name,referenceStopName(poi.code,'vi'));
     }
-    assert.ok(!svg.includes('Unrelated API facility name'));
+    assert.ok(svg.includes('Unrelated API facility name'));
   }
 });
 
@@ -83,7 +83,7 @@ test('Existing route codes and center links use positions in the poster',()=>{
   const svg=renderSchematic({...input,routeCodes:['0','2']});
   assert.ok(svg.includes('class="map-route" d="M385,817L329,619"'));
   assert.ok(!renderSchematic({...input,routeCodes:['0','doc-14']}).includes('class="map-route"'));
-  assert.equal(schematicLayout(pois).find(p=>p.code==='coord-01').x,385);
+  assert.equal(schematicLayout([...pois,{id:'optional-center',code:'coord-01'}]).find(p=>p.code==='coord-01').x,385);
 });
 
 test('Build and offline shell include the poster renderer and stylesheet',async()=>{

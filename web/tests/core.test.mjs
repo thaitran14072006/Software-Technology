@@ -1,11 +1,17 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
-import { LANGS, localize, routeTo, haversine, qrValue, validatePoi, toDto, MAP_ID, matchesPoiQuery } from '../core.mjs';
+import { LANGS, localize, routeTo, haversine, qrValue, validatePoi, toDto, MAP_ID, matchesPoiQuery, safeMediaUrl } from '../core.mjs';
 const seed = JSON.parse(await readFile(new URL('../dist/data/pois.json', import.meta.url)));
 
+test('Missing audio URLs never become requests for /undefined or /null',()=>{
+ const base='http://127.0.0.1:4173/';
+ for(const input of [undefined,null,'','   ','javascript:alert(1)'])assert.equal(safeMediaUrl(input,base),null);
+ assert.equal(safeMediaUrl('/audio/3-vi.mp3',base),base+'audio/3-vi.mp3');
+});
+
 test('coordinate points have five complete translations and no fabricated GPS', () => {
-  assert.equal(seed.pois.length, 10);
+  assert.equal(seed.pois.length, 15);
   for (const poi of seed.pois) {
     assert.equal(poi.translations.length, 5);
     for (const lang of Object.keys(LANGS)) { const item = localize(poi, lang); assert.equal(item.lang, lang); assert.ok(item.name); assert.ok(item.scriptText); }
@@ -18,7 +24,7 @@ test('routes preserve distance and symmetry without reintroducing retired POI no
   const allowed=new Set(['0',...seed.pois.map(p=>p.code)]);for(const [a,b] of seed.edges){assert.ok(allowed.has(String(a)));assert.ok(allowed.has(String(b)));}
   assert.equal(routeTo(seed.edges,'0','missing'),null);
   const bauSau=routeTo(seed.edges,'0','9');
-  assert.deepEqual(bauSau.codes,['0','5','7','8','9']);
+  assert.deepEqual(bauSau.codes,['0','4','5','6','7','8','9']);
   assert.equal(bauSau.km,8.9);
   for(const code of ['1','2','5','7','8','9','13','14','15'])assert.ok(routeTo(seed.edges,'0',code),`Missing route to active POI ${code}`);
 });
