@@ -1,5 +1,5 @@
-import { LANGS, LOCALES, localize, haversine, qrValue, validatePoi, normalizeSearch, matchesPoiQuery } from './core.mjs';
-import { token, loadSeed, getPois, getAdminPois, savePoi, deletePoi, saveOffline, api, packKey } from './store.mjs';
+import { LANGS, LOCALES, localize, haversine, qrValue, validatePoi, normalizeSearch, matchesPoiQuery, safeMediaUrl } from './core.mjs';
+import { token, loadSeed, getPois, getAdminPois, savePoi, deletePoi, saveOffline, api, packKey, resolveQrToken } from './store.mjs';
 import { VisitorAnalytics, playbackCounter, getAnalytics } from './analytics.mjs';
 import { joinURL, isLoopback, qrSVG } from './join-qr.mjs';
 import { setupAdminTools } from './admin-tools.mjs';
@@ -7,7 +7,6 @@ import { runtimeConfig, loadRuntimeConfig, sharePosition } from './visitor-confi
 import { createOutdoorMap, documentCoordinates, estimatedCoordinates } from './outdoor-map.mjs';
 import { loadVoices, selectVoice, playbackSource } from './browser-tts.mjs';
 import {stopNumber,schematicStops,schematicStopName,renderSchematic} from './schematic-map.mjs';
-import {withSchematicNarration} from './schematic-content.mjs';
 import {installUITranslations,translateUI,formatUI} from './ui-i18n.mjs';
 import {gpsErrorKey,gpsText,hasVerifiedGps,startGpsWatch} from './gps.mjs';
 
@@ -26,7 +25,7 @@ const state = { lang: localStorage.getItem('sag:lang') || 'vi', pois: [], search
 if (!LANGS[state.lang]) state.lang = 'vi';
 let seed, audio, gpsWatch = null, refreshId = 0, adminRefreshId = 0, toastTimer, cameraStream, scanFrame;
 let analyticsData = null, analyticsRun = 0, joinBlobUrl, joinLink = '', defaultJoinUrl = new URL('./', location.href).href;
-let audioRun = 0, outdoorVisible = false;
+let audioRun = 0, outdoorVisible = false, adminTools;
 const voiceModeKey = 'sag:voice-mode-v3';
 let voiceMode = ['mp3','browser'].includes(localStorage.getItem(voiceModeKey)) ? localStorage.getItem(voiceModeKey) : 'auto';
 const languageSwitcher = $('#language-switcher');
@@ -36,7 +35,7 @@ function updateOutdoor() { outdoorMap.update({ pois: filtered(), selectedId: sta
 const usage = new VisitorAnalytics();
 const counter = playbackCounter(poi => { try { usage.record(poi); } catch { toast('Không lưu được lượt nghe. Bộ nhớ trình duyệt có thể đã đầy.', true); } });
 const t = key => copy[state.lang][key];
-function toast(message, error = false) { $('#toast').textContent = message; $('#toast').classList.toggle('error', error); $('#toast').hidden = false; clearTimeout(toastTimer); toastTimer = setTimeout(() => $('#toast').hidden = true, 6500); }
+function toast(message, error = false) { $('#toast').textContent = translateUI(message,state.lang); $('#toast').classList.toggle('error', error); $('#toast').hidden = false; clearTimeout(toastTimer); toastTimer = setTimeout(() => $('#toast').hidden = true, 6500); }
 function filtered() {
   const query = state.query.trim();
   const numericQuery = /^\d+$/.test(query) ? Number(query) : null;
@@ -76,7 +75,7 @@ async function refreshSearchIndex(run, source, currentItems) {
   renderMap(); renderList();
 }
 function selected() { return state.pois.find(p => p.id === state.selected); }
-function safeURL(url) { try { const u = new URL(url, location.href); return ['http:', 'https:'].includes(u.protocol) ? u.href : null; } catch { return null; } }
+function safeURL(url) { return safeMediaUrl(url,location.href); }
 function updateLanguage() {
   document.documentElement.lang = state.lang;
   languageSwitcher.querySelectorAll('[data-lang]').forEach(button => {
@@ -103,7 +102,7 @@ async function refresh() {
     await loadRuntimeConfig();
     const result = await getPois(state.lang);
     if (run !== refreshId) return;
-    state.pois = withSchematicNarration(result.items,state.lang,seed.schematicPois).sort((a, b) => (a.sortOrder??0)-(b.sortOrder??0)||a.code.localeCompare(b.code, undefined, { numeric: true }));
+    state.pois = result.items.sort((a, b) => (a.sortOrder??0)-(b.sortOrder??0)||a.code.localeCompare(b.code, undefined, { numeric: true }));
     state.source = result.source;
     if (!selected()) state.selected = state.pois.find(p => p.code === new URL(location.href).searchParams.get('poi'))?.id || state.pois.find(p => p.code === '9')?.id || state.pois[0]?.id;
     $('#data-note').textContent = state.source === 'offline' ? 'NGOẠI TUYẾN · Đang dùng gói đã lưu. API hiện không truy cập được.' : 'BACKEND TRỰC TIẾP · Nội dung được tải từ API NestJS.';
@@ -150,11 +149,11 @@ function renderDetail() {
   $('#share').ariaLabel = t('share'); $('#share').title = t('share');
   const sourceControl = document.createElement('label');
   sourceControl.className = 'field';
-  sourceControl.innerHTML = `<span>${esc(translateUI('Nguồn giọng đọc',state.lang))}</span><select id="voice-mode"><option value="auto">${esc(translateUI('Tự động · MP3 đúng ngôn ngữ, thiếu thì dùng giọng thiết bị',state.lang))}</option><option value="browser">${esc(translateUI('Giọng trình duyệt · như cat-tien-app',state.lang))}</option><option value="mp3">${esc(translateUI('MP3 đã lưu · dùng ngoại tuyến',state.lang))}</option></select>`;
+  sourceControl.innerHTML = `<span>${esc(translateUI('Nguồn giọng đọc',state.lang))}</span><select id="voice-mode"><option value="auto">${esc(translateUI('MP3 thuyết minh · đúng ngôn ngữ',state.lang))}</option><option value="browser">${esc(translateUI('Giọng đọc trên thiết bị',state.lang))}</option><option value="mp3">${esc(translateUI('MP3 đã lưu · dùng ngoại tuyến',state.lang))}</option></select>`;
   $('#player-status').before(sourceControl);
   $('#voice-mode').value = voiceMode;
-  if (!state.playing) $('#player-status').textContent = voiceMode === 'browser' ? 'TTS · Giọng đọc của trình duyệt' : p.audio?.url && voiceMode !== 'browser' ? `${p.audio.provider === 'GEMINI' ? 'Google AI Studio' : p.audio.provider || 'MP3'} · ${p.audio.voiceName || 'MP3'}` : voiceMode === 'auto' && runtimeConfig.tts_provider === 'GEMINI' ? 'Chưa có MP3 · sẽ thử giọng thiết bị cùng ngôn ngữ' : voiceMode === 'mp3' ? 'Chưa có MP3 cho ngôn ngữ này' : 'TTS · Giọng đọc của trình duyệt';
-  if(!state.playing && voiceMode==='auto' && p.audio?.provider!=='GEMINI' && runtimeConfig.tts_paused_until)$('#player-status').textContent+=' '+formatUI('Hạn mức Google đã hết. Có thể tiếp tục từ {0}.',[new Date(runtimeConfig.tts_paused_until).toLocaleString(LOCALES[state.lang])],state.lang);
+  if (!state.playing) $('#player-status').textContent = voiceMode === 'browser' ? translateUI('Giọng đọc trên thiết bị',state.lang) : p.audio?.url ? translateUI('MP3 thuyết minh · đúng ngôn ngữ',state.lang) : translateUI('Chưa có MP3 cho ngôn ngữ này',state.lang);
+  if(!state.playing && voiceMode==='auto' && !p.audio?.url && runtimeConfig.tts_paused_until && Date.parse(runtimeConfig.tts_paused_until)>Date.now())$('#player-status').textContent+=' '+formatUI('Hạn mức Google đã hết. Có thể tiếp tục từ {0}.',[new Date(runtimeConfig.tts_paused_until).toLocaleString(LOCALES[state.lang])],state.lang);
 }
 function stopAudio() {
   audioRun++;
@@ -193,17 +192,16 @@ async function playAudio() {
   stopAudio(); state.playing = true; $('#play').textContent = t('stop');
   const onStarted = counter.begin(p);
   const url = safeURL(p.audio?.url);
-  // Auto uses the MP3 localized for the selected language, then falls back
-  // to a matching browser voice when that translation has no MP3.
+  // Browser speech is an explicit choice; MP3 errors never change narrator.
   const source = playbackSource(voiceMode, Boolean(url), 'speechSynthesis' in window);
-  if (!source) { playbackDone(); toast('Trình duyệt chưa hỗ trợ giọng đọc và điểm này chưa có MP3.', true); return; }
+  if (!source) { playbackDone(); toast(voiceMode === 'browser' ? 'Trình duyệt chưa hỗ trợ giọng đọc.' : 'Chưa có MP3 cho bài và ngôn ngữ này. Bạn có thể chủ động chọn giọng thiết bị.', true); return; }
   if (source === 'mp3') {
     const current = audio = new Audio(url);
     current.onplaying = onStarted;
     current.onended = playbackDone;
-    const fallback = () => { if (audio === current && state.playing) { audio = null; current.onerror = null; current.pause(); current.removeAttribute('src'); current.load(); toast('MP3 không phát được. Đang thử giọng thiết bị cùng ngôn ngữ.', true); speak(p, onStarted); } };
+    const fallback = () => { if (audio === current && state.playing) { audio = null; current.onerror = null; current.pause(); current.removeAttribute('src'); current.load(); playbackDone(); $('#player-status').textContent = 'MP3 không tải được. Hãy kiểm tra mạng hoặc gói ngoại tuyến.'; toast('MP3 không phát được. Nguồn giọng được giữ nguyên; bạn có thể thử lại hoặc chọn giọng thiết bị.', true); } };
     current.onerror = fallback;
-    try { await current.play(); if ($('#player-status') && audio === current) $('#player-status').textContent = p.audio?.provider === 'GEMINI' ? `Google AI Studio · ${p.audio.voiceName || 'MP3'}` : 'MP3 · Audio'; } catch { fallback(); }
+    try { await current.play(); if ($('#player-status') && audio === current) $('#player-status').textContent = translateUI('MP3 thuyết minh · đúng ngôn ngữ',state.lang); } catch { fallback(); }
   } else speak(p, onStarted);
 }
 function toggleGPS() {
@@ -232,9 +230,11 @@ async function showAdmin() {
     const rows = await getAdminPois();
     if (run !== adminRefreshId) return;
     state.admin = rows;
+    adminTools?.setPois(rows);
+    $('#audio-matrix').innerHTML = `<div class="table-wrap"><table><thead><tr><th>Điểm tham quan</th>${Object.values(LANGS).map(l=>`<th>${esc(l)}</th>`).join('')}</tr></thead><tbody>${rows.map(p=>`<tr><td>${esc(p.translations.find(t=>t.langCode===state.lang)?.name || p.code)}</td>${Object.keys(LANGS).map(lang=>{const item=localize(p,lang),a=p.audios?.find(a=>a.langCode===lang);return `<td title="${esc(item.audio?.voiceName || '')}">${item.translationMissing?'Thiếu bản dịch':item.audio?.url?'✓ Có MP3':a?.status==='FAILED'?'Lỗi tạo file':'Chưa có MP3'}</td>`;}).join('')}</tr>`).join('')}</tbody></table></div><p class="muted">Có MP3 là trạng thái file. Cần nghe kiểm tra ngôn ngữ và chất lượng trước khi sử dụng.</p>`;
     renderAnalytics();
     $('#admin-stats').innerHTML = [[rows.length, 'Điểm tham quan'], [rows.filter(p => p.status === 'PUBLISHED').length, 'Đã xuất bản'], [rows.reduce((n, p) => n + p.translations.length, 0), 'Bản dịch']].map(([n, label]) => `<div class="stat"><strong>${n}</strong><span>${label}</span></div>`).join('');
-    $('#admin-list').innerHTML = rows.length ? rows.map(p => `<tr><td>${esc(p.code)}</td><td><strong>${esc(localize(p, state.lang).name)}</strong></td><td>${esc(group(p.categoryId))}</td><td><span class="badge ${p.status !== 'PUBLISHED' ? 'draft' : ''}">${esc(p.status === 'PUBLISHED' ? 'Đã xuất bản' : 'Bản nháp')}</span></td><td>${p.translations.length} / 5</td><td>${p.geoVerified ? '✓ Đã xác thực' : 'Chưa xác thực'}</td><td><button class="button" data-edit="${esc(p.id)}">Sửa</button><button class="button" data-upload="${esc(p.id)}">Tải MP3</button><button class="button" data-generate="${esc(p.id)}">Tạo MP3 miễn phí</button><button class="button" data-regen="${esc(p.id)}">Tạo lại audio lỗi</button><button class="button" data-delete="${esc(p.id)}">Xóa</button></td></tr>`).join('') : '<tr><td colspan="7">Chưa có điểm tham quan. Bấm Thêm điểm để bắt đầu.</td></tr>';
+    $('#admin-list').innerHTML = rows.length ? rows.map(p => `<tr><td>${esc(p.code)}</td><td><strong>${esc(localize(p, state.lang).name)}</strong></td><td>${esc(group(p.categoryId))}</td><td><span class="badge ${p.status !== 'PUBLISHED' ? 'draft' : ''}">${esc(p.status === 'PUBLISHED' ? 'Đã xuất bản' : 'Bản nháp')}</span></td><td>${p.translations.length} / 5</td><td>${p.geoVerified ? '✓ Đã xác thực' : 'Chưa xác thực'}</td><td><button class="button" data-edit="${esc(p.id)}">Sửa</button><button class="button" data-upload="${esc(p.id)}">Tải MP3</button><button class="button" data-generate="${esc(p.id)}">Tạo audio</button><button class="button" data-regen="${esc(p.id)}">Tạo lại audio lỗi</button><button class="button" data-delete="${esc(p.id)}">Xóa</button></td></tr>`).join('') : '<tr><td colspan="7">Chưa có điểm tham quan. Bấm Thêm điểm để bắt đầu.</td></tr>';
   } catch (error) {
     if (run !== adminRefreshId) return;
     state.admin = []; $('#admin-list').innerHTML = ''; $('#admin-stats').innerHTML = ''; $('#admin-error').textContent = error.message;
@@ -312,9 +312,8 @@ async function resolveQR(input) {
   let p;
   if (value.code) p = state.pois.find(p => p.code === value.code);
   else {
-    let match;
-    try { match = await api(`qr/${encodeURIComponent(value.token)}`, {}, true); }
-    catch (error) { const saved = JSON.parse(localStorage.getItem('sag:qr:api') || '[]'); match = saved.find(q => q.token === value.token); if (!match) throw error; }
+    const match = await resolveQrToken(value.token);
+    if (match.offline) toast('Đang dùng bảng QR đã lưu; trạng thái mã có thể chưa được cập nhật.');
     if (match.kind === 'GATE') throw new Error('Đây là mã cổng vào, không phải mã điểm tham quan.');
     p = state.pois.find(p => p.id === match.poiId);
   }
@@ -340,9 +339,9 @@ async function startCamera() {
 }
 function updateOfflineStatus() {
   const date = localStorage.getItem('sag:pack-date:api');
-  const meta=JSON.parse(localStorage.getItem('sag:pack-meta:api')||'null');
+  let meta;try{meta=JSON.parse(localStorage.getItem('sag:pack-meta:api')||'null');}catch{meta=null;}
   if(date&&seed?.catalogVersion&&meta?.catalogVersion!==seed.catalogVersion){$('#offline-status').textContent=translateUI('Danh sách điểm đã thay đổi. Hãy lưu lại gói ngoại tuyến.',state.lang);return;}
-  $('#offline-status').textContent = date && meta?.provider==='GEMINI' ? formatUI('Gói ngoại tuyến: {0} audio Google, {1} bản chưa sẵn sàng. Lưu lúc {2}.',[meta.audioCount,meta.audioMissing,new Date(date).toLocaleString(LOCALES[state.lang])],state.lang) : date ? formatUI('Đã lưu gói {0} lúc {1}. Giọng TTS phụ thuộc giọng cài trên thiết bị.',['API',new Date(date).toLocaleString(LOCALES[state.lang])],state.lang) : translateUI('Lưu nội dung 5 ngôn ngữ và audio MP3 sẵn có. Giọng đọc của trình duyệt có thể cần mạng.',state.lang);
+  $('#offline-status').textContent = date && Number.isInteger(meta?.audioExpected) ? formatUI('Gói ngoại tuyến: {0}/{1} MP3, thiếu {2} bài. Lưu lúc {3}.',[meta.audioCount,meta.audioExpected,meta.audioMissing,new Date(date).toLocaleString(LOCALES[state.lang])],state.lang) : date ? translateUI('Gói đã lưu dùng danh mục cũ. Hãy tải lại để kiểm tra đủ bài và ngôn ngữ.',state.lang) : translateUI('Lưu nội dung 5 ngôn ngữ và audio MP3 sẵn có. Giọng đọc của trình duyệt có thể cần mạng.',state.lang);
 }
 
 $('#visitor-tab').onclick = () => { state.tab = 'visitor'; $('#visitor').hidden = false; $('#admin').hidden = true; $('#visitor-tab').classList.add('active'); $('#admin-tab').classList.remove('active'); $('#visitor-tab').ariaPressed = 'true'; $('#admin-tab').ariaPressed = 'false'; usage.presence(visitorVisible()); };
@@ -449,6 +448,7 @@ $('#stop-list').onclick = event => { const b = event.target.closest('[data-id]')
 $('#map').onclick = event => { const b = event.target.closest('[data-id]'); if (b) selectPoi(b.dataset.id); };
 $('#map').onkeydown = event => { if (['Enter', ' '].includes(event.key) && event.target.matches('[data-id]')) { event.preventDefault(); selectPoi(event.target.dataset.id); } };
 $('#map-reset').onclick = () => {
+  stopAudio();
   state.selected = null;
   state.query = '';
   state.category = 0;
@@ -505,11 +505,11 @@ $('#offline-save').onclick = async () => {
   try {
     if (!('serviceWorker' in navigator) || !window.isSecureContext) { const check=await fetch('./offline-guide.zip',{method:'HEAD'});if(!check.ok)throw new Error('Gói audio tải về chưa được tạo. Cần localhost hoặc HTTPS để lưu PWA.');const link=document.createElement('a');link.href='./offline-guide.zip';link.download='CatTien-Google-Audio.zip';link.click();toast('Giải nén gói tải về, mở index.html để nghe ngoại tuyến.');return; }
     await Promise.race([navigator.serviceWorker.ready, new Promise((_, reject) => setTimeout(() => reject(new Error('Bộ nhớ ngoại tuyến chưa sẵn sàng. Thử tải lại trang.')), 10000))]);
-    const result = await saveOffline(lang => $('#offline-status').textContent = `Đang lưu ${LANGS[lang]}…`, {provider:runtimeConfig.tts_provider==='GEMINI'?'GEMINI':undefined});
+    const result = await saveOffline(lang => $('#offline-status').textContent = `Đang lưu ${LANGS[lang]}…`);
     let qrWarning = '';
     try { localStorage.setItem('sag:qr:api', JSON.stringify(await api('qr', {}, true))); } catch { qrWarning = ' Không lưu được bảng mã QR.'; }
     updateOfflineStatus();
-    const message = formatUI('Đã tải {0} audio Google. Còn {1} bản chưa được tạo do hạn mức.',[result.audioCount,result.audioMissing||0],state.lang)+qrWarning;
+    const message = formatUI('Đã tải {0}/{1} MP3. Còn {2} bài chưa có file.',[result.audioCount,result.audioExpected,result.audioMissing],state.lang)+qrWarning;
     $('#offline-status').textContent += ` ${message}`; toast(message, Boolean(result.audioFailed || qrWarning));
   } catch (error) { toast(error.message, true); $('#offline-status').textContent = error.message; }
   finally { b.disabled = false; }
@@ -533,9 +533,9 @@ document.addEventListener('visibilitychange', () => { usage.presence(visitorVisi
 let usageTimer;
 function startUsageLoop() { clearInterval(usageTimer); usageTimer = setInterval(() => { usage.presence(visitorVisible()); usage.flush(); if (state.tab === 'admin' && document.visibilityState === 'visible') loadAnalytics(); }, 25000); }
 window.addEventListener('pageshow', startUsageLoop);
-window.addEventListener('pagehide', () => { usage.presence(false, true); clearInterval(usageTimer); stopAudio(); closeCamera(); if (watchId !== null) navigator.geolocation.clearWatch(watchId); });
+window.addEventListener('pagehide', () => { usage.presence(false, true); clearInterval(usageTimer); stopAudio(); closeCamera(); gpsWatch?.stop(); gpsWatch=null; });
 try {
-  setupAdminTools({ refresh, showAdmin, toast });
+  adminTools=setupAdminTools({ refresh, showAdmin, toast });
   await loadRuntimeConfig();
   seed = await loadSeed();
   if ('serviceWorker' in navigator) navigator.serviceWorker.register('./sw.js').catch(() => toast('Không bật được bộ nhớ ngoại tuyến. Kiểm tra localhost hoặc HTTPS.', true));

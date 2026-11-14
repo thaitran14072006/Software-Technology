@@ -6,6 +6,20 @@ function memoryStorage() { const values = new Map(); return { getItem: k => valu
 globalThis.localStorage = memoryStorage(); globalThis.sessionStorage = memoryStorage();
 const store = await import('../store.mjs');
 const originalFetch = globalThis.fetch;
+
+test('disabled QR cannot be opened from an old downloaded registry', async () => {
+  localStorage.setItem('sag:qr:api',JSON.stringify([{token:'test-disabled',poiId:'saved-poi'}]));
+  globalThis.fetch=async()=>Response.json({code:'QR_INVALID'},{status:404});
+  try {await assert.rejects(()=>store.resolveQrToken('test-disabled'),e=>e.status===404 && /đã bị tắt/.test(e.message));}
+  finally {globalThis.fetch=originalFetch;localStorage.removeItem('sag:qr:api');}
+});
+
+test('downloaded QR remains usable on a network failure with an offline indication',async()=>{
+ localStorage.setItem('sag:qr:api',JSON.stringify([{token:'test-offline',poiId:'saved-poi'}]));
+ globalThis.fetch=async()=>{throw new TypeError('Network unavailable');};
+ try {assert.deepEqual(await store.resolveQrToken('test-offline'),{token:'test-offline',poiId:'saved-poi',kind:'POI',offline:true});}
+ finally {globalThis.fetch=originalFetch;localStorage.removeItem('sag:qr:api');}
+});
 test('API can use a packaged Gemini clip only when its language and exact transcript match', () => {
   const source=seed.pois.find(p=>p.code==='9'), translation=source.translations.find(t=>t.langCode==='vi');
   const apiPoi={id:'live-9',code:'9',lang:'vi',scriptText:translation.scriptText,audio:null};

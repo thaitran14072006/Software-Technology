@@ -7,8 +7,7 @@ export function selectVoice(voices, locale) {
 }
 
 export function playbackSource(preference, hasMp3, hasSpeech) {
-  if ((preference === 'mp3' || preference === 'auto') && hasMp3) return 'mp3';
-  if (hasSpeech) return 'browser';
+  if (preference === 'browser') return hasSpeech ? 'browser' : null;
   return hasMp3 ? 'mp3' : null;
 }
 

@@ -22,13 +22,13 @@ test('TTS matches cat-tien-app: exact locale first, preserving browser ordering 
   assert.equal(selectVoice(voices, 'ja-JP'), undefined);
   assert.equal(selectVoice(voices, 'en-AU'), voices[0]);
 });
-test('Automatic playback prefers the matching MP3 and uses the browser voice only as fallback', () => {
+test('MP3 playback never silently changes to a browser narrator', () => {
   assert.equal(playbackSource('auto', true, true), 'mp3');
-  assert.equal(playbackSource('auto', false, true), 'browser');
+  assert.equal(playbackSource('auto', false, true), null);
   assert.equal(playbackSource('browser', true, true), 'browser');
   assert.equal(playbackSource('mp3', true, true), 'mp3');
-  assert.equal(playbackSource('mp3', false, true), 'browser');
-  assert.equal(playbackSource('browser', true, false), 'mp3');
+  assert.equal(playbackSource('mp3', false, true), null);
+  assert.equal(playbackSource('browser', true, false), null);
   assert.equal(playbackSource('browser', false, false), null);
 });
 test('TTS waits for asynchronously installed voices and cleans its listener', async () => {
