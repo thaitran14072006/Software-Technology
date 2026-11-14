@@ -98,3 +98,14 @@ test('Build and offline shell include the poster renderer and stylesheet',async(
   assert.ok(!html.includes('id="map-zoom-in"'));
   assert.ok(!html.includes('id="map-zoom-out"'));
 });
+
+
+test('All current visitor places receive stable numbers 1–15, including nonnumeric POI codes',()=>{
+  const codes=['coord-01','9','2','7','13','8','14','coord-12','5','15','doc-13','1','coord-02','doc-14','coord-15'];
+  const items=codes.map((code,i)=>({id:code,code,visitorNumber:i+1,name:code}));
+  assert.deepEqual(schematicStops([...items].reverse()).map(stopNumber),Array.from({length:15},(_,i)=>String(i+1)));
+  assert.deepEqual(schematicStops(items.filter(p=>p.visitorNumber===8 || p.visitorNumber===15)).map(stopNumber),['8','15']);
+  const svg=renderSchematic({pois:items,visibleIds:items.map(p=>p.id)});
+  assert.match(svg,/<title>2\. 9<\/title>/);
+  assert.match(svg,/<title>12\. 1<\/title>/);
+});

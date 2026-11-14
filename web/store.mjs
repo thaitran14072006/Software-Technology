@@ -72,14 +72,14 @@ export async function getPois(lang) {
   const catalog=seed;
   try {
     const data = await api(`pois?mapId=${MAP_ID}&lang=${lang}`);
-    const items=currentCatalogItems(data.items,catalog);
+    const items=currentCatalogItems(data.items.map((p,i)=>({...p,visitorNumber:i+1})),catalog);
     return { ...data, items:useExactSeedAudio(items,catalog),source: 'api' };
   } catch (error) {
     const saved = localStorage.getItem(packKey(lang));
     if (saved) {
       const pack=JSON.parse(saved),meta=JSON.parse(localStorage.getItem('sag:pack-meta:api')||'null');
       if(catalog?.catalogVersion && meta?.catalogVersion!==catalog.catalogVersion) throw new Error('Gói ngoại tuyến dùng danh mục cũ. Kết nối mạng và tải lại gói để có đúng các điểm hiện tại.');
-      return { ...pack,items:currentCatalogItems(pack.items,catalog,{cached:true}), source: 'offline', warning: error.message };
+      return { ...pack,items:currentCatalogItems(pack.items.map((p,i)=>({...p,visitorNumber:p.visitorNumber || i+1})),catalog,{cached:true}), source: 'offline', warning: error.message };
     }
     throw error;
   }

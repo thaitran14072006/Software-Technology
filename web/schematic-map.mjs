@@ -1,10 +1,10 @@
 import {REFERENCE_STOPS,renderReferenceMap,referenceStopName} from './reference-map.mjs';
 
-// Use the poster as the single source for visitor-facing stop numbers.
-// Places outside the schematic stay unnumbered instead of borrowing a catalog order.
+// API list order supplies visitor numbers; codes remain stable database identities.
 const posterNumbers = new Map(REFERENCE_STOPS.map(([number]) => [String(number), String(number)]));
 export function stopNumber(poi) {
-  return posterNumbers.get(String(poi?.code)) || '•';
+  const n = poi?.visitorNumber;
+  return Number.isInteger(n) && n > 0 ? String(n) : posterNumbers.get(String(poi?.code)) || '•';
 }
 
 export function schematicStopName(poi) {
@@ -13,6 +13,7 @@ export function schematicStopName(poi) {
 
 // Cards follow the same fifteen numbered stops and order as the drawing.
 export function schematicStops(pois) {
+  if (pois.every(p => Number.isInteger(p.visitorNumber) && p.visitorNumber > 0)) return [...pois].sort((a,b)=>a.visitorNumber-b.visitorNumber).map(p=>({...p,name:schematicStopName(p)}));
   const byCode = new Map(pois.map(p => [String(p.code), p]));
   const numbered = REFERENCE_STOPS.flatMap(([number]) => {
     const poi = byCode.get(String(number));
