@@ -68,8 +68,8 @@
     "provider": "GEMINI",
     "model": "gemini-3.8-flash-lite-tts",
     "voice": "Aoede",
-    "voiceName": "Gemini gemini-3.8-flash-lite-tts · Aoede",
-    "bytes": 414380
+    "voiceName": "gemini-3.8-flash-lite-tts/Aoede",
+    "bytes": 420908
   },
   "12:ko": {
     "file": "12-ko.mp3",
@@ -227,14 +227,17 @@
     "provider": "GEMINI",
     "model": "gemini-3.8-flash-lite-tts",
     "voice": "Aoede",
-    "voiceName": "Gemini gemini-3.8-flash-lite-tts · Aoede",
-    "bytes": 333740
+    "voiceName": "gemini-3.8-flash-lite-tts/Aoede",
+    "bytes": 349868
   },
   "3:ko": {
     "file": "3-ko.mp3",
-    "textHash": "a2deedc313c54a8d78af61e409367e6525d6577741c7f98837099993366c2f3b",
-    "voiceName": "eSpeak NG ko+f3",
-    "bytes": 139224
+    "textHash": "2866cf5024398106f4566af00518f2bdfe6ce514dad6ad6c96bdd15d1e6e60a2",
+    "provider": "GEMINI",
+    "model": "gemini-3.8-flash-lite-tts",
+    "voice": "Iapetus",
+    "voiceName": "gemini-3.8-flash-lite-tts/Iapetus",
+    "bytes": 376748
   },
   "3:zh": {
     "file": "3-zh.mp3",
@@ -269,8 +272,8 @@
     "provider": "GEMINI",
     "model": "gemini-3.8-flash-lite-tts",
     "voice": "Aoede",
-    "voiceName": "Gemini gemini-3.8-flash-lite-tts · Aoede",
-    "bytes": 363692
+    "voiceName": "gemini-3.8-flash-lite-tts/Aoede",
+    "bytes": 401708
   },
   "4:ko": {
     "file": "4-ko.mp3",
@@ -347,8 +350,8 @@
     "provider": "GEMINI",
     "model": "gemini-3.8-flash-lite-tts",
     "voice": "Aoede",
-    "voiceName": "Gemini gemini-3.8-flash-lite-tts · Aoede",
-    "bytes": 356012
+    "voiceName": "gemini-3.8-flash-lite-tts/Aoede",
+    "bytes": 387500
   },
   "6:ko": {
     "file": "6-ko.mp3",
@@ -623,8 +626,8 @@
     "provider": "GEMINI",
     "model": "gemini-3.8-flash-lite-tts",
     "voice": "Aoede",
-    "voiceName": "Gemini gemini-3.8-flash-lite-tts · Aoede",
-    "bytes": 322988
+    "voiceName": "gemini-3.8-flash-lite-tts/Aoede",
+    "bytes": 356012
   },
   "11:ja": {
     "file": "11-ja.mp3",
@@ -632,7 +635,7 @@
     "provider": "GEMINI",
     "model": "gemini-3.8-flash-lite-tts",
     "voice": "Aoede",
-    "voiceName": "Gemini gemini-3.8-flash-lite-tts · Aoede",
-    "bytes": 334508
+    "voiceName": "gemini-3.8-flash-lite-tts/Aoede",
+    "bytes": 354860
   }
 }

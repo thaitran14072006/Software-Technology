@@ -1,3 +1,19 @@
+# Tiến độ kiểm chứng ngày 15/11/2026
+
+Fixture repo hiện có **70/75 bài** cho 15 POI. Lần cập nhật này tạo thêm 7 MP3 Google: 3:ja, 4:ja, 6:ja, 10:ja, 11:ja, 12:ja, 3:ko. Giữ nguyên các MP3 hợp lệ cũ, transcript và tọa độ.
+
+Theo ngôn ngữ: vi 15/15; en 15/15; ja 15/15; ko 10/15; zh 15/15. Còn thiếu: 4:ko, 6:ko, 10:ko, 11:ko, 12:ko.
+
+Google trả quota: DAILY_QUOTA_EXHAUSTED; retry UTC 2026-11-15T08:01:00.000Z. Đã ghi tts_pause_GEMINI và dừng yêu cầu mới, không đổi khóa/giọng hoặc bật billing.
+
+Gói web/dist/offline-guide.zip dựng từ fixture bằng công cụ hiện có, 70 MP3, 29299588 byte. SHA-256: 35f92bfd9a52b0b3c8e5a3758ba14a6de25eae58b9ff2d1085eee80651a30910. Đã kiểm tra CRC ZIP, kích thước/SHA-256 từng MP3 và giải mã toàn bộ bằng FFmpeg; không phát hiện lỗi.
+
+**Chưa đồng nhất database:** 7 bản mới chưa gắn vào API vì POI tương ứng đang lưu trữ hoặc nội dung khác. Không tự khôi phục POI hay ghi đè bản dịch. Danh mục API đang chạy khác fixture; ZIP này là snapshot fixture, không phải chứng nhận API có đủ 75 bài. Endpoint ZIP động của web vẫn dựng theo database đang chạy.
+
+Docker/PostgreSQL đã bật lại; giữ nguyên các phiên dịch vụ người dùng. Chưa commit/push.
+
+## Lịch sử trước lần kiểm tra này
+
 # Hoàn tất audio — 14/11/2026
 
 **50/50 bài Google hợp lệ cho 10 POI hiện hành**, mỗi ngôn ngữ Việt/Anh/Nhật/Hàn/Trung đủ 10/10. Đã tạo ba bài còn thiếu của Trung tâm Du Khách (coord-01): ja, ko, zh. Giữ nguyên nội dung, tọa độ, tên, các MP3 cũ và danh sách 10 POI; không khôi phục 5 điểm lưu trữ.
