@@ -29,7 +29,7 @@ try {
   assert.equal((await call(`/content-api/pois/${created}`)).status, 404);
   const updated = await call(`/content-api/admin/pois/${created}`, 'PATCH', { status: 'PUBLISHED', translations: [{ ...fixture.translations[0], scriptText: 'Nội dung đã cập nhật.' }] });
   assert.equal(updated.status, 200, JSON.stringify(updated.data));
-  const publicPoi = await call(`/content-api/pois/${created}?lang=en`); assert.equal(publicPoi.status, 200); assert.equal(publicPoi.data.lang, 'vi'); assert.equal(publicPoi.data.scriptText, 'Nội dung đã cập nhật.');
+  const publicPoi = await call(`/content-api/pois/${created}?lang=en`); assert.equal(publicPoi.status, 200); assert.equal(publicPoi.data.lang, 'en'); assert.equal(publicPoi.data.translationMissing, true); assert.equal(publicPoi.data.scriptText, ''); assert.equal(publicPoi.data.audio, null);
   const qr = await call('/qr-api/qr/demo-bausau-001'); assert.equal(qr.status, 200); assert.equal(qr.data.kind, 'POI');
   assert.equal(list.data.items.find(p => p.code === '9').id, qr.data.poiId);
   assert.equal((await call(`/content-api/admin/pois/${created}`, 'DELETE')).status, 200);
@@ -37,7 +37,7 @@ try {
   const manifest = await call('/content-api/sync/manifest?mapId=00000000-0000-0000-0000-000000000001&lang=vi&since=0');
   assert.equal(manifest.status, 200); assert.ok(manifest.data.deletedIds.includes(created));
   created = null;
-  console.log('PASS integration: JWT 401/403, pagination, validation, create draft, publish/update, language fallback, QR, soft delete, offline manifest.');
+  console.log('PASS integration: JWT 401/403, pagination, validation, create draft, publish/update, explicit missing translation, QR, soft delete, offline manifest.');
 } finally {
   // Only soft-delete the temporary fixture created by this run.
   if (created) await call(`/content-api/admin/pois/${created}`, 'DELETE');
