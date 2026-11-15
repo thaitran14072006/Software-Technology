@@ -71,6 +71,11 @@ export function qrValue(input) {
   if (/^[A-Za-z0-9_-]{8,64}$/.test(text)) return { token: text };
   try {
     const u = new URL(text);
+    if (['http:', 'https:'].includes(u.protocol) && u.searchParams.has('qr')) {
+      const token = u.searchParams.get('qr');
+      if (/^[A-Za-z0-9_-]{8,64}$/.test(token)) return { token };
+      throw new Error('Token QR không hợp lệ.');
+    }
     if (['http:', 'https:'].includes(u.protocol) && /^[A-Za-z0-9_-]{1,20}$/.test(u.searchParams.get('poi') || '')) return { code: u.searchParams.get('poi') };
   } catch {}
   throw new Error('Mã không hợp lệ. Nhập số điểm, token hoặc sag://poi/<token>.');

@@ -129,7 +129,9 @@ function selectPoi(id, play = false) {
   if (state.selected !== id) stopAudio();
   state.selected = id;
   const poi = selected();
-  if (poi) { const u = new URL(location.href); u.searchParams.set('poi', poi.code); history.replaceState(null, '', u); }
+  const u = new URL(location.href); u.searchParams.delete('qr');
+  if (poi) u.searchParams.set('poi', poi.code); else u.searchParams.delete('poi');
+  history.replaceState(null, '', u);
   render();
   if (play) playAudio();
 }
@@ -443,9 +445,10 @@ $('#search').oninput = event => {
   $('#search-clear').hidden = !state.query;
   if (state.query.trim()) {
     const matches = filtered();
-    state.selected = matches.length === 1
+    const next = matches.length === 1
       ? matches[0].id
       : matches.some(p => p.id === state.selected) ? state.selected : null;
+    if (next !== state.selected) { selectPoi(next); return; }
     renderDetail();
   }
   renderMap();
@@ -557,7 +560,11 @@ try {
   await loadRuntimeConfig();
   seed = await loadSeed();
   if ('serviceWorker' in navigator) navigator.serviceWorker.register('./sw.js').catch(() => toast('Không bật được bộ nhớ ngoại tuyến. Kiểm tra localhost hoặc HTTPS.', true));
+  const entryQrUrl = new URL(location.href).searchParams.has('qr') ? location.href : null;
   await refresh();
+  if (entryQrUrl) {
+    try { await resolveQR(entryQrUrl); } catch (error) { toast(error.message, true); }
+  }
   if(!localStorage.getItem('sag:entry-download-seen') && state.pois.some(p=>p.audio?.provider==='GEMINI')) {
     const entry=document.createElement('dialog');entry.innerHTML='<h2>Lưu giọng Google trước khi vào rừng</h2><p>MP3 đã tải dùng được ngoại tuyến. Bài chưa có MP3 chỉ đọc được nếu thiết bị đã cài giọng cùng ngôn ngữ.</p><div class="dialog-actions"><button class="button" data-later>Để sau</button><button class="button primary" data-save>Tải gói thuyết minh</button></div>';
     document.body.append(entry);entry.querySelector('[data-later]').onclick=()=>{localStorage.setItem('sag:entry-download-seen','1');entry.close();};entry.querySelector('[data-save]').onclick=()=>{localStorage.setItem('sag:entry-download-seen','1');entry.close();$('#offline-save').click();};entry.showModal();

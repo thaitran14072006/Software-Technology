@@ -1,5 +1,5 @@
 import {api} from './store.mjs';
-import {qrSVG} from './join-qr.mjs';
+import {poiQrSVG,preferredJoinURL,isLoopback} from './join-qr.mjs';
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 function heatmapSVG(rows){
  const points=rows.map(p=>({lat:+p.lat,lng:+p.lng,count:+p.count})).filter(p=>Number.isFinite(p.lat)&&Number.isFinite(p.lng)&&p.count>0);
@@ -40,7 +40,14 @@ export function setupAdminTools({refresh,showAdmin,toast}) {
  }
  document.querySelector('#tools-load').onclick=()=>load().catch(e=>document.querySelector('#tools-status').textContent=e.message);
  tools.addEventListener('click',async e=>{const b=e.target.closest('button');if(!b)return;
-  try{if(b.dataset.qrSvg){const a=document.createElement('a'),url=URL.createObjectURL(new Blob([qrSVG(`sag://poi/${b.dataset.qrSvg}`)],{type:'image/svg+xml'}));a.href=url;a.download=`poi-${b.dataset.qrSvg}.svg`;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);}
+  try{if(b.dataset.qrSvg){
+   const response=await fetch('/web-config',{signal:AbortSignal.timeout(5000)});
+   const config=response.ok?await response.json():{};
+   const base=preferredJoinURL(config.joinUrl||location.href,localStorage.getItem('sag:join-url'));
+   const a=document.createElement('a'),url=URL.createObjectURL(new Blob([poiQrSVG(base,b.dataset.qrSvg)],{type:'image/svg+xml'}));
+   a.href=url;a.download=`poi-${b.dataset.qrSvg}.svg`;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
+   if(isLoopback(base))toast('QR đang dùng localhost, chỉ mở được trên máy này. Hãy cấu hình URL LAN hoặc HTTPS công khai để điện thoại truy cập.',true);
+  }
    if(b.dataset.toggleQr||b.dataset.toggleBeacon){await api(`admin/${b.dataset.toggleQr?'qr':'beacons'}/${b.dataset.toggleQr||b.dataset.toggleBeacon}`,{method:'PATCH',body:JSON.stringify({isActive:b.dataset.active==='true'})});await load();}
   }catch(err){document.querySelector('#tools-status').textContent=err.message;}
  });

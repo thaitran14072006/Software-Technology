@@ -23,7 +23,19 @@ export function preferredJoinURL(defaultUrl, savedUrl) {
   } catch { return current; }
 }
 export function qrSVG(url) {
+  return renderQr(joinURL(url));
+}
+export function poiQrURL(base, token) {
+  if (!/^[A-Za-z0-9_-]{8,64}$/.test(token)) throw new Error('Token QR không hợp lệ.');
+  const url = new URL(joinURL(base));
+  url.searchParams.set('qr', token);
+  return url.href;
+}
+export function poiQrSVG(base, token) {
+  return renderQr(poiQrURL(base, token));
+}
+function renderQr(value) {
   const code = qrcode(0, 'M');
-  code.addData(joinURL(url)); code.make();
+  code.addData(value); code.make();
   return code.createSvgTag({ cellSize: 5, margin: 20, scalable: true });
 }
