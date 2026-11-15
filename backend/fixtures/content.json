@@ -1,6 +1,6 @@
 {
   "formatVersion": 1,
-  "exportedAt": "2026-11-14T06:23:36.518Z",
+  "exportedAt": "2026-11-14T17:53:25.728Z",
   "pois": [
     {
       "code": "1",
@@ -245,14 +245,32 @@
           "name": "五つ又のサルスベリ",
           "summary": "",
           "script_text": "カッティエンの森で、特徴ある樹形を楽しめる場所です。根元から枝を目でたどり、名前の由来となった五つの梢を探してみましょう。見る角度によって幹や枝の姿が変わります。木陰で足を止め、森の木々が持つ形の多様さを感じてください。",
-          "text_hash": "9fa896bd0df203dba60aaf9ba412ce52c4bc725710f5d94f15cee237cce03e76"
+          "text_hash": "9fa896bd0df203dba60aaf9ba412ce52c4bc725710f5d94f15cee237cce03e76",
+          "audio": {
+            "file": "audio/3-ja-2df337c7a806.mp3",
+            "sha256": "2df337c7a80657e046b41fb45c95921f20bb69612c945c457c32396bf2503fc3",
+            "sizeBytes": 349868,
+            "durationSec": 21.87,
+            "voiceGender": "FEMALE",
+            "voiceName": "gemini-3.8-flash-lite-tts/Aoede",
+            "provider": "GEMINI"
+          }
         },
         {
           "lang_code": "ko",
           "name": "다섯 갈래 배롱나무",
           "summary": "",
           "script_text": "깟띠엔 숲에서 독특한 나무의 모습을 감상하는 지점입니다. 밑동에서 가지를 따라 시선을 올리며 이름에 담긴 다섯 갈래의 꼭대기를 찾아보세요. 바라보는 방향에 따라 줄기와 가지의 모습도 달라집니다. 나무 그늘에서 잠시 쉬며 숲속 나무들의 다양한 형태를 느껴보세요.",
-          "text_hash": "2866cf5024398106f4566af00518f2bdfe6ce514dad6ad6c96bdd15d1e6e60a2"
+          "text_hash": "2866cf5024398106f4566af00518f2bdfe6ce514dad6ad6c96bdd15d1e6e60a2",
+          "audio": {
+            "file": "audio/3-ko-95b8edd0cd8d.mp3",
+            "sha256": "95b8edd0cd8d1a19d1c2630715ec503217d52e13d8515a690af08abfebe1d1c6",
+            "sizeBytes": 376748,
+            "durationSec": 23.55,
+            "voiceGender": "FEMALE",
+            "voiceName": "gemini-3.8-flash-lite-tts/Iapetus",
+            "provider": "GEMINI"
+          }
         },
         {
           "lang_code": "zh",
@@ -323,7 +341,16 @@
           "name": "ソテツ",
           "summary": "",
           "script_text": "この場所では、森の植物を違った視点から観察できます。高木の梢だけでなく、幹や頂部から広がる長い葉にも注目してください。葉の並び方が、周囲の緑の中で特徴ある輪郭を作ります。幹の表情や葉の対称性など、小さな細部をゆっくり眺めてみましょう。",
-          "text_hash": "085a37f6a889c2846a5a0b4756d4d5ace3ae15b17d16ba2be92abae1758bc194"
+          "text_hash": "085a37f6a889c2846a5a0b4756d4d5ace3ae15b17d16ba2be92abae1758bc194",
+          "audio": {
+            "file": "audio/4-ja-22b569ae09d3.mp3",
+            "sha256": "22b569ae09d34e8cc7de3c48a5e150d2e2521618df63f7b8b86e9d41559ce01c",
+            "sizeBytes": 401708,
+            "durationSec": 25.11,
+            "voiceGender": "FEMALE",
+            "voiceName": "gemini-3.8-flash-lite-tts/Aoede",
+            "provider": "GEMINI"
+          }
         },
         {
           "lang_code": "ko",
@@ -497,7 +524,16 @@
           "name": "植物園",
           "summary": "",
           "script_text": "植物園は、カッティエンの植物の多様さに親しむ場所です。道沿いの葉の形、樹皮の色、枝の伸び方を比べてみましょう。小さな特徴の一つ一つが植物を知る手がかりになります。屋外の教室のようにゆっくり歩き、植物と森の環境とのつながりを考えてみてください。",
-          "text_hash": "86909ef87c5776d1e7a38fab6ef4fea417d3f73c5a16f0e4a5f052d1d7e1f7b1"
+          "text_hash": "86909ef87c5776d1e7a38fab6ef4fea417d3f73c5a16f0e4a5f052d1d7e1f7b1",
+          "audio": {
+            "file": "audio/6-ja-4b253d60b782.mp3",
+            "sha256": "4b253d60b7821c584f74ce95dad4f742bd7adb3ee636c634a8b8f81a56cc89e8",
+            "sizeBytes": 387500,
+            "durationSec": 24.22,
+            "voiceGender": "FEMALE",
+            "voiceName": "gemini-3.8-flash-lite-tts/Aoede",
+            "provider": "GEMINI"
+          }
         },
         {
           "lang_code": "ko",
@@ -863,7 +899,16 @@
           "name": "六稜の木",
           "summary": "",
           "script_text": "この場所では、特徴ある幹の形に注目してみましょう。名前は幹に浮かぶ稜を連想させます。いろいろな方向から眺めると、光と影によって輪郭の見え方が変わります。森の美しさは高い梢だけでなく、一本の幹の細部にも見つかります。",
-          "text_hash": "2a9bfe0a9e01ed2b458731c2a700d1f7ad96c8fe1f6cc192ae4970993c3e6ab1"
+          "text_hash": "2a9bfe0a9e01ed2b458731c2a700d1f7ad96c8fe1f6cc192ae4970993c3e6ab1",
+          "audio": {
+            "file": "audio/10-ja-82b57ecb3268.mp3",
+            "sha256": "82b57ecb326812672c3fff234a5241e3bf87ba2fe42e4239cd31db24e77ca346",
+            "sizeBytes": 356012,
+            "durationSec": 22.25,
+            "voiceGender": "FEMALE",
+            "voiceName": "gemini-3.8-flash-lite-tts/Aoede",
+            "provider": "GEMINI"
+          }
         },
         {
           "lang_code": "ko",
@@ -941,7 +986,16 @@
           "name": "花瓶形のサルスベリ",
           "summary": "",
           "script_text": "この木は、花瓶を思わせる特徴ある幹が印象的です。少し離れて全体を眺めてから、幹の曲線や膨らみを観察してみましょう。上に広がる葉とともに、自然が作った独特の姿を見せてくれます。カッティエンの木々の多様な形を感じられる場所です。",
-          "text_hash": "dae226f49906d3b4247b1f9982a9649783e3876043ab62e9cf21557715c817e9"
+          "text_hash": "dae226f49906d3b4247b1f9982a9649783e3876043ab62e9cf21557715c817e9",
+          "audio": {
+            "file": "audio/11-ja-9f9d3fcfe220.mp3",
+            "sha256": "9f9d3fcfe2207c665b45dd99f3b2f7213b761ce3f8f1f191f9f17e1b9a6f6431",
+            "sizeBytes": 354860,
+            "durationSec": 22.18,
+            "voiceGender": "FEMALE",
+            "voiceName": "gemini-3.8-flash-lite-tts/Aoede",
+            "provider": "GEMINI"
+          }
         },
         {
           "lang_code": "ko",
@@ -1019,7 +1073,16 @@
           "name": "大風子の森",
           "summary": "",
           "script_text": "大風子の森では、カッティエンの森の別の一面に出会えます。大風子は園内に見られる樹木の一つで、植物の多様さを支えています。道を歩きながら、重なる木々や木漏れ日、森の音に注目してください。植物、動物、環境がつながる一つの生きた仕組みとして森を感じてみましょう。",
-          "text_hash": "6c9690c33ea9005e9dea3c06436c00ecb8aef6d7234b54fb53495511bb446520"
+          "text_hash": "6c9690c33ea9005e9dea3c06436c00ecb8aef6d7234b54fb53495511bb446520",
+          "audio": {
+            "file": "audio/12-ja-799b9e9c9e86.mp3",
+            "sha256": "799b9e9c9e861cf9989515575787997cc23b0a12129937f0f6b053d215d2db17",
+            "sizeBytes": 420908,
+            "durationSec": 26.31,
+            "voiceGender": "FEMALE",
+            "voiceName": "gemini-3.8-flash-lite-tts/Aoede",
+            "provider": "GEMINI"
+          }
         },
         {
           "lang_code": "ko",
