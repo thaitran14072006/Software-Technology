@@ -17,6 +17,21 @@ export async function loadSeed() {
   return seed;
 }
 export function token() { return sessionStorage.getItem('sag:token') || ''; }
+let pendingRefresh, completedRefresh;
+function refreshSession(refreshToken) {
+  if (pendingRefresh?.token === refreshToken) return pendingRefresh.promise;
+  const attempt = { token: refreshToken, promise: null };
+  attempt.promise = (async () => {
+    const fresh = await api('auth/refresh', { method: 'POST', body: JSON.stringify({ refreshToken }) });
+    if (refreshToken !== sessionStorage.getItem('sag:refresh')) return false;
+    sessionStorage.setItem('sag:token', fresh.accessToken);
+    sessionStorage.setItem('sag:refresh', fresh.refreshToken);
+    completedRefresh = { from: refreshToken, to: fresh.refreshToken };
+    return true;
+  })().finally(() => { if (pendingRefresh === attempt) pendingRefresh = null; });
+  pendingRefresh = attempt;
+  return attempt.promise;
+}
 // Read JSON once, including Nest DELETE endpoints which can return an empty 200 response.
 export async function api(path, options = {}, qr = false) {
   const multipart = typeof FormData !== 'undefined' && options.body instanceof FormData;
@@ -24,13 +39,13 @@ export async function api(path, options = {}, qr = false) {
   const res = await fetch(`${qr ? '/qr-api' : '/content-api'}/${path}`, {
     ...options, headers: { ...(multipart ? {} : {'content-type': 'application/json'}), ...(options.method || path.startsWith('admin/') || path === 'auth/me' ? { Authorization: `Bearer ${token()}` } : {}) }, signal: AbortSignal.timeout(20000),
   });
-  if (res.status === 401 && (!path.startsWith('auth/') || path === 'auth/me') && !options._refreshed &&
-      refreshToken && refreshToken === sessionStorage.getItem('sag:refresh')) {
+  if (res.status === 401 && (!path.startsWith('auth/') || path === 'auth/me') && !options._refreshed && refreshToken) {
+    // A slower response may arrive after another request has already rotated this session.
+    if (completedRefresh?.from === refreshToken && completedRefresh.to === sessionStorage.getItem('sag:refresh')) {
+      return api(path, { ...options, _refreshed: true }, qr);
+    }
     try {
-      const fresh = await api('auth/refresh', { method: 'POST', body: JSON.stringify({ refreshToken }) });
-      if (refreshToken === sessionStorage.getItem('sag:refresh')) {
-        sessionStorage.setItem('sag:token', fresh.accessToken);
-        sessionStorage.setItem('sag:refresh', fresh.refreshToken);
+      if (refreshToken === sessionStorage.getItem('sag:refresh') && await refreshSession(refreshToken)) {
         return api(path, { ...options, _refreshed: true }, qr);
       }
     } catch {

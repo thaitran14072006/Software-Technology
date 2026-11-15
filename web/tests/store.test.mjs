@@ -94,3 +94,62 @@ test('a pending refresh cannot restore a signed-out session', async () => {
     globalThis.fetch = originalFetch;
   }
 });
+
+test('parallel dashboard requests share one refresh and all retry successfully', async () => {
+  sessionStorage.setItem('sag:token', 'expired-token');
+  sessionStorage.setItem('sag:refresh', 'single-use-refresh');
+  let refreshCalls = 0;
+  const refresh = Promise.withResolvers();
+  const started = Promise.withResolvers();
+  globalThis.fetch = async (url, options) => {
+    if (url === '/content-api/auth/refresh') {
+      refreshCalls++;
+      started.resolve();
+      if (refreshCalls > 1) return Response.json({}, { status: 401 });
+      return refresh.promise;
+    }
+    return options.headers.Authorization === 'Bearer fresh-token'
+      ? Response.json({ ok: true }) : Response.json({}, { status: 401 });
+  };
+  try {
+    const requests = Promise.allSettled(['admin/pois', 'admin/analytics', 'admin/configs'].map(path => store.api(path)));
+    await started.promise;
+    await new Promise(resolve => setImmediate(resolve));
+    refresh.resolve(Response.json({ accessToken: 'fresh-token', refreshToken: 'rotated-refresh' }));
+    const results = await requests;
+    assert.equal(refreshCalls, 1);
+    assert.ok(results.every(result => result.status === 'fulfilled'), JSON.stringify(results));
+    assert.equal(sessionStorage.getItem('sag:refresh'), 'rotated-refresh');
+  } finally {
+    globalThis.fetch = originalFetch;
+    sessionStorage.removeItem('sag:token');
+    sessionStorage.removeItem('sag:refresh');
+  }
+});
+
+test('a late expired response reuses the rotated session without another refresh', async () => {
+  sessionStorage.setItem('sag:token', 'late-old-token');
+  sessionStorage.setItem('sag:refresh', 'late-old-refresh');
+  const late = Promise.withResolvers();
+  let refreshCalls = 0;
+  globalThis.fetch = async (url, options) => {
+    if (url === '/content-api/auth/refresh') {
+      refreshCalls++;
+      return Response.json({ accessToken: 'late-fresh-token', refreshToken: 'late-new-refresh' });
+    }
+    if (options.headers.Authorization === 'Bearer late-fresh-token') return Response.json({ ok: true });
+    if (url === '/content-api/admin/configs') return late.promise;
+    return Response.json({}, { status: 401 });
+  };
+  try {
+    const slow = store.api('admin/configs');
+    assert.deepEqual(await store.api('admin/pois'), { ok: true });
+    late.resolve(Response.json({}, { status: 401 }));
+    assert.deepEqual(await slow, { ok: true });
+    assert.equal(refreshCalls, 1);
+  } finally {
+    globalThis.fetch = originalFetch;
+    sessionStorage.removeItem('sag:token');
+    sessionStorage.removeItem('sag:refresh');
+  }
+});
