@@ -2,7 +2,8 @@ import assert from 'node:assert/strict';
 import {randomUUID,randomBytes,scryptSync} from 'node:crypto';
 import {createRequire} from 'node:module';
 import {writeFile,mkdir} from 'node:fs/promises';
-try{process.loadEnvFile(new URL('../backend/.env',import.meta.url));}catch{}
+import {fileURLToPath} from 'node:url';
+try{process.loadEnvFile(fileURLToPath(new URL('../backend/.env',import.meta.url)));}catch{}
 const require=createRequire(new URL('../backend/package.json',import.meta.url));const {Client}=require('pg');
 const base=process.env.SMOKE_URL||'http://127.0.0.1:4173';
 assert.equal(process.env.DATABASE_URL,'postgres://sag:sag@localhost:5432/sag','This test only changes isolated fixtures in the local demo database.');
@@ -26,6 +27,7 @@ try{
  const rotate=await call('/content-api/auth/refresh','POST',{refreshToken:refresh},'');assert.equal(rotate.status,201);assert.equal((await call('/content-api/auth/refresh','POST',{refreshToken:refresh},'')).status,401);token=rotate.data.accessToken;refresh=rotate.data.refreshToken;pass('Refresh rotation rejects reused tokens');
  const fixture={code:`qa-${uid.slice(0,12)}`,mapId,latitude:11.4,longitude:107.4,geoVerified:false,status:'PUBLISHED',audioMode:'TTS',translations:[{langCode:'vi',name:'QA isolated POI',scriptText:'Nội dung kiểm thử thứ nhất.'}]};
  const created=await call('/content-api/admin/pois','POST',fixture);assert.equal(created.status,201,JSON.stringify(created.data));poi=created.data.id;
+ assert.equal(Number((await db.query('SELECT count(*) FROM tts_jobs j JOIN poi_audios a ON a.id=j.audio_id WHERE a.poi_id=$1',[poi])).rows[0].count),0);pass('Saving TTS content does not enqueue synthesis');
  assert.equal((await call(`/content-api/admin/pois/${poi}`,'PATCH',{translations:[fixture.translations[0],fixture.translations[0]]})).status,400);
  assert.equal((await call(`/content-api/admin/pois/${poi}`,'PATCH',{translations:[{...fixture.translations[0],scriptText:' '}]})).status,400);pass('POI creation, duplicate-language and empty-content validation');
  const frame=Buffer.alloc(417);frame.set([255,251,144,0]);const mp3=Buffer.concat([frame,frame,frame]);
@@ -33,10 +35,11 @@ try{
  const uploaded=await call(`/content-api/admin/pois/${poi}/audios/upload`,'POST',formMp3(mp3));assert.equal(uploaded.status,201,JSON.stringify(uploaded.data));
  const published=await call(`/content-api/pois/${poi}?lang=vi`,'GET',undefined,'');assert.ok(published.data.audio.url.startsWith('/audio-assets/'));
  const file=await fetch(base+published.data.audio.url);assert.equal(file.status,200);assert.equal((await file.arrayBuffer()).byteLength,mp3.length);pass('MP3 upload validation, publication and same-origin asset proxy');
- await new Promise(r=>setTimeout(r,2500));const stable=await call(`/content-api/pois/${poi}`);assert.equal(stable.data.audio.url,published.data.audio.url);pass('Superseded TTS job cannot overwrite uploaded audio');
+ const stable=await call(`/content-api/pois/${poi}`);assert.equal(stable.data.audio.url,published.data.audio.url);pass('Uploaded MP3 remains the current published audio');
  const before=(await call(`/content-api/sync/manifest?mapId=${mapId}&lang=vi&since=0`,'GET',undefined,'')).data.rev;
  const writes=await Promise.all(['B','C'].map(label=>call(`/content-api/admin/pois/${poi}`,'PATCH',{translations:[{...fixture.translations[0],scriptText:`Phiên bản ${label}.`}]})));assert.ok(writes.every(w=>w.status===200));
  const delta=await call(`/content-api/sync/manifest?mapId=${mapId}&lang=vi&since=${before}`,'GET',undefined,'');assert.equal(delta.status,200);assert.ok(delta.data.rev>before);assert.ok(delta.data.items.some(p=>p.id===poi&&p.audio===null));pass('Serialized concurrent edits produce a complete offline delta and invalidate stale MP3');
+ assert.equal(Number((await db.query('SELECT count(*) FROM tts_jobs j JOIN poi_audios a ON a.id=j.audio_id WHERE a.poi_id=$1',[poi])).rows[0].count),0);pass('Editing narration does not automatically generate audio');
  const newQr=await call('/content-api/admin/qr','POST',{kind:'POI',poiId:poi});assert.equal(newQr.status,201);qr=newQr.data;
  assert.equal((await call(`/qr-api/qr/${qr.token}`,'GET',undefined,'')).status,200);
  await call(`/content-api/admin/qr/${qr.id}`,'PATCH',{isActive:false});assert.equal((await call(`/qr-api/qr/${qr.token}`,'GET',undefined,'')).status,404);

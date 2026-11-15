@@ -49,7 +49,7 @@ export class PoiService {
      for(const t of translations) {
        const tr=await m.save(PoiTranslation,m.create(PoiTranslation,{...t,poiId:poi.id,textHash:sha256(t.scriptText)}));
        const a=await m.save(PoiAudio,m.create(PoiAudio,{poiId:poi.id,translationId:tr.id,langCode:tr.langCode,voiceGender:voiceGender??'FEMALE',source:audioMode??(['GOOGLE','LOCAL','GEMINI'].includes(process.env.TTS_PROVIDER??'DEVICE')?'TTS':'UPLOAD'),status:'PENDING'}));
-       await this.queue(m,poi,tr,a);
+       // Saving content never starts synthesis. An admin must explicitly generate audio.
      }
      await m.query("INSERT INTO poi_qr_codes(kind,poi_id,token) VALUES ('POI',$1,$2)",[poi.id,randomUUID().replace(/-/g,'')]);
      return {value:poi.id,ids:[poi.id]};
@@ -78,7 +78,7 @@ export class PoiService {
        if(refresh) {
          await m.query("UPDATE poi_audios SET current_job_id=NULL,status='FAILED',audio_url=NULL WHERE translation_id=$1",[tr.id]);
          Object.assign(a,{source,status:'PENDING',audioUrl:null,textHash:null,currentJobId:null}); a=await m.save(PoiAudio,a);
-         await this.queue(m,poi,tr,a);
+         // Invalidate outdated audio, then wait for an explicit generation request.
        }
      }
      return {value:null,ids:[id]};
