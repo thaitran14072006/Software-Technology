@@ -1,0 +1,18 @@
+@font-face{font-family:"Poster Noto";src:url("./vendor/fonts/NotoSans.ttf");font-weight:100 900}
+.reference-map{display:block;width:100%;height:auto;background:#edf5f2;font-family:"Poster Noto","Segoe UI",Arial,sans-serif}
+.reference-map text{font-family:inherit}
+.reference-map .poster-name{font-size:18px;font-weight:650;fill:#164c40;paint-order:stroke;stroke:#f1f7f4;stroke-width:4px;stroke-linejoin:round}
+.reference-map .poster-name-small{font-size:15.5px}
+.reference-map .poster-number{font-size:19px;font-weight:750;fill:#164c40;dominant-baseline:central;text-anchor:middle}
+.reference-map .poster-distance{font-size:14px;font-weight:650;fill:#59726b;paint-order:stroke;stroke:#f1f7f4;stroke-width:5px;stroke-linejoin:round}
+.reference-map .poster-water-label{font-size:11.5px;font-weight:550;fill:#3c898a;paint-order:stroke;stroke:#f1f7f4;stroke-width:4px}
+.reference-map .poster-label-box{fill:#ffffff;fill-opacity:0;stroke:none;transition:fill-opacity .15s}
+.reference-map .poster-selected{fill:#b9e3c9;fill-opacity:.55;stroke:#6cb997;stroke-width:1.5}
+.reference-map .poster-legend text{font-size:15px;font-weight:550;fill:#607d70}
+.reference-map .map-stop:focus-visible{outline:none}
+.reference-map .map-stop:hover .poster-label-box,.reference-map .map-stop:focus-visible .poster-label-box{fill:#ffffff;fill-opacity:.95;stroke:#a4cabb;stroke-width:1.2}
+.reference-map .map-stop[aria-pressed="true"] .poster-label-box{fill:#12674f;fill-opacity:1;stroke:#12674f;stroke-width:1}
+.reference-map .map-stop[aria-pressed="true"] .poster-name{fill:#ffffff;stroke:none}
+.reference-map .map-stop[aria-pressed="true"] .poster-number{fill:#ffffff}
+.reference-map .map-route{stroke:#174d40;stroke-width:7;stroke-dasharray:4 8;opacity:.85}
+.reference-map .poster-botanical{pointer-events:none}

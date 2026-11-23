@@ -1,0 +1,2137 @@
+{
+  "mapId": "00000000-0000-0000-0000-000000000001",
+  "catalogVersion": "8dbbfc6402601ca0025e5d1efdf99ddbcad3b3559c1c385b9dc887f242214a7d",
+  "pois": [
+    {
+      "id": "demo-1",
+      "code": "1",
+      "categoryId": 1,
+      "sortOrder": 1,
+      "schematic": [
+        320,
+        742
+      ],
+      "lat": 11.4325,
+      "lng": 107.4315,
+      "geoVerified": false,
+      "geoSourceUrl": "urn:sha256:2ede2f7c00e63638604ebdeb843bb7e94aa1e7829fbd982ede01e5b9f5b8a664#point-12",
+      "status": "PUBLISHED",
+      "version": 1,
+      "triggerRadiusM": 10,
+      "audio": null,
+      "translations": [
+        {
+          "langCode": "vi",
+          "name": "Khu Cứu hộ động vật hoang dã",
+          "summary": "",
+          "scriptText": "Đây là nơi tiếp nhận, chữa trị y tế và chăm sóc đặc biệt cho các cá thể động vật hoang dã, đặc biệt là gấu ngựa và gấu chó, bị tổn thương do nạn săn bắt và buôn bán trái phép. Tại đây, bạn sẽ được tìm hiểu những câu chuyện cứu hộ đầy nhân văn, và công tác phục hồi tập tính hoang dã trước khi thả các loài về với thiên nhiên.",
+          "textHash": "97ec68a7522f8f2547bc5b504386bf3fca4c171b38713bc4ae6c0df1c466f6a6",
+          "audioNeedsRefresh": false
+        },
+        {
+          "langCode": "en",
+          "name": "Wildlife Rescue Station",
+          "summary": "Khu Cuu ho dong vat hoang da",
+          "scriptText": "This is the place that receives, provides medical treatment, and gives special care to individual wild animals, especially Asian black bears and sun bears, that have been injured by illegal poaching and trafficking. Here, you will learn humane rescue stories and the work of rehabilitating wild behaviors before releasing the animals back into nature.",
+          "textHash": "af8cc79611d3d5a184cd53465ab5e45bca0866d672ce67af4881b80657192824",
+          "audioNeedsRefresh": false
+        },
+        {
+          "langCode": "ja",
+          "name": "野生動物救護所",
+          "summary": "Khu Cuu ho dong vat hoang da",
+          "scriptText": "密猟や違法取引の被害に遭い傷ついた野生動物、特にツキノワグマやマレーグマを受け入れ、治療と特別なケアを行う施設です。ここでは、人道的な救護活動の歩みや、動物たちを自然へと戻す前に行われる野生復帰トレーニングの取り組みについて学ぶことができます。",
+          "textHash": "c5864befd4f568eb7b1ef711f97e8c266995f660656e005393bf6fff5b0b89fa",
+          "audioNeedsRefresh": false
+        },
+        {
+          "langCode": "ko",
+          "name": "야생동물 구조소",
+          "summary": "Khu Cuu ho dong vat hoang da",
+          "scriptText": "이곳은 불법 밀렵과 거래로 부상을 입거나 피해를 본 야생동물, 특히 아시아흑곰(반달가슴곰)과 말레이곰을 인계받아 의학적 치료와 전문적인 보살핌을 제공하는 공간입니다. 이곳에서는 가슴 뭉클한 동물 구조 이야기와 함께, 치료를 마친 동물들을 다시 대자연으로 돌려보내기 위해 진행하는 야생성 회복 훈련 과정을 자세히 살펴보실 수 있습니다.",
+          "textHash": "987ea326c62e6661bf7b1c2a21a8728d36ea2810567201d9e940b941a524caa0",
+          "audioNeedsRefresh": false
+        },
+        {
+          "langCode": "zh",
+          "name": "野生动物救护站",
+          "summary": "Khu Cuu ho dong vat hoang da",
+          "scriptText": "这里负责接收、救治并特殊照料因非法盗猎和贩卖而受伤的野生动物个体，特别是亚洲黑熊和马来熊。在这里，您将了解到充满人道关怀的救助故事，并认识帮助动物重获野外生存习性、最终将它们放归自然的相关工作。",
+          "textHash": "8a185289fbf6ddfc235bbe07d4bfa7faf62c413571106d987ce658ae487c30df",
+          "audioNeedsRefresh": false
+        }
+      ],
+      "audios": [
+        {
+          "langCode": "vi",
+          "status": "READY",
+          "audioUrl": "/audio/1-vi-152f817ac83c.mp3",
+          "provider": "GEMINI",
+          "voiceName": "gemini-3.8-flash-tts/Achird",
+          "textHash": "97ec68a7522f8f2547bc5b504386bf3fca4c171b38713bc4ae6c0df1c466f6a6",
+          "durationSec": 19.97,
+          "sizeBytes": 319532
+        },
+        {
+          "langCode": "en",
+          "status": "READY",
+          "audioUrl": "/audio/1-en-c821b86029bf.mp3",
+          "provider": "GEMINI",
+          "voiceName": "Gemini gemini-3.8-flash-tts · Kore",
+          "textHash": "af8cc79611d3d5a184cd53465ab5e45bca0866d672ce67af4881b80657192824",
+          "durationSec": "24.41",
+          "sizeBytes": 390572
+        },
+        {
+          "langCode": "ja",
+          "status": "READY",
+          "audioUrl": "/audio/1-ja-94e1d6829784.mp3",
+          "provider": "GEMINI",
+          "voiceName": "gemini-3.8-flash-tts/Aoede",
+          "textHash": "c5864befd4f568eb7b1ef711f97e8c266995f660656e005393bf6fff5b0b89fa",
+          "durationSec": 24.7,
+          "sizeBytes": 395180
+        },
+        {
+          "langCode": "ko",
+          "status": "READY",
+          "audioUrl": "/audio/1-ko-4c0140ec2ff0.mp3",
+          "provider": "GEMINI",
+          "voiceName": "gemini-3.8-flash-tts/Iapetus",
+          "textHash": "987ea326c62e6661bf7b1c2a21a8728d36ea2810567201d9e940b941a524caa0",
+          "durationSec": 29.67,
+          "sizeBytes": 474668
+        },
+        {
+          "langCode": "zh",
+          "status": "READY",
+          "audioUrl": "/audio/1-zh-e5af4b53cc82.mp3",
+          "provider": "GEMINI",
+          "voiceName": "gemini-3.8-flash-tts/Sulafat",
+          "textHash": "8a185289fbf6ddfc235bbe07d4bfa7faf62c413571106d987ce658ae487c30df",
+          "durationSec": 22.06,
+          "sizeBytes": 352940
+        }
+      ]
+    },
+    {
+      "id": "demo-2",
+      "code": "2",
+      "categoryId": 2,
+      "sortOrder": 2,
+      "schematic": [
+        329,
+        619
+      ],
+      "lat": 11.4428,
+      "lng": 107.423,
+      "geoVerified": false,
+      "geoSourceUrl": "urn:sha256:2ede2f7c00e63638604ebdeb843bb7e94aa1e7829fbd982ede01e5b9f5b8a664#point-03",
+      "status": "PUBLISHED",
+      "version": 1,
+      "triggerRadiusM": 10,
+      "audio": null,
+      "translations": [
+        {
+          "langCode": "vi",
+          "name": "Tung đại thụ",
+          "summary": "",
+          "scriptText": "Đây là cây đại thụ có tuổi đời hơn bốn trăm năm, với chiều cao sừng sững. Điểm đặc sắc nhất của cây Tung là bộ rễ nổi khổng lồ, đồ sộ, lan rộng và bám chặt vào lòng đất, tạo thành những vách ngăn tự nhiên kỳ vĩ. Để ôm trọn gốc cây này, cần vòng tay nối kết của khoảng hai mươi người trưởng thành.",
+          "textHash": "9c9b5a0d91993e577103b931a80764c2245fa423f42524f0455e37d55abf3d9b",
+          "audioNeedsRefresh": false
+        },
+        {
+          "langCode": "en",
+          "name": "Tung Giant Tree",
+          "summary": "Tung dai thu",
+          "scriptText": "This is a giant tree more than four hundred years old, soaring in height. The most distinctive feature of the Tung tree is its massive, exposed buttress root system that spreads wide and grips tightly into the earth, forming magnificent natural buttresses. To completely encircle the base of this tree requires the joined hands of about twenty adults.",
+          "textHash": "374c1a5258f527e076561ffdffdadd59a4e37321b94d65749f817a09ec4ef6a5",
+          "audioNeedsRefresh": false
+        },
+        {
+          "langCode": "ja",
+          "name": "トゥンの巨木",
+          "summary": "Tung dai thu",
+          "scriptText": "樹齢四百年を超え、そびえ立つ高さを誇る大樹です。トゥンの木の最大の特徴は、地表に露出した巨大で壮大な板根で、地面に広く張り巡らされ、堅固に根づいて雄大な天然の衝立を形成しています。この木の根元を一回り抱きかかえるには、およそ二十人の大人が手をつなぎ合う必要があります。",
+          "textHash": "c3ed77fa1f5eab02d85bfc37f235df6de913eb44af8cdbc52e1397f012552bd0",
+          "audioNeedsRefresh": false
+        },
+        {
+          "langCode": "ko",
+          "name": "퉁 거목",
+          "summary": "Tung dai thu",
+          "scriptText": "이 나무는 수령이 사백 년 이상 된 거목으로 하늘 높이 우뚝 솟아 있습니다. 뚱 나무의 가장 두드러진 특징은 땅 위로 거대하게 드러나 사방으로 뻗어 나가며 대지를 단단히 움켜쥐고 있는 판근(판자뿌리)으로, 경이로운 자연의 칸막이 벽을 이룹니다. 이 나무의 밑동을 완전히 둘러싸려면 성인 스무 명가량이 양팔을 이어 벌려야 합니다.",
+          "textHash": "a72f0f4c97ec437e1eb8aebb1b99bc0522778c509eac3d354905ed339d23178c",
+          "audioNeedsRefresh": false
+        },
+        {
+          "langCode": "zh",
+          "name": "Tung 巨树",
+          "summary": "Tung dai thu",
+          "scriptText": "这是一棵树龄超过四百年的参天大树，身姿高耸挺拔。栋木最引人注目的特点是其巨大壮观的板根系统，这些气生根向四周蔓延并紧紧扎入泥土中，形成了雄伟壮丽的天然屏障隔断。要合抱这棵树的树根，需要大约二十名成年人手拉手连成一圈。",
+          "textHash": "71df9871611d08099350522c7678a541b42a5ecba783f3fa7b025a332900eb36",
+          "audioNeedsRefresh": false
+        }
+      ],
+      "audios": [
+        {
+          "langCode": "vi",
+          "status": "READY",
+          "audioUrl": "/audio/2-vi-3f06ca048086.mp3",
+          "provider": "GEMINI",
+          "voiceName": "gemini-3.8-flash-lite-tts/Kore",
+          "textHash": "9c9b5a0d91993e577103b931a80764c2245fa423f42524f0455e37d55abf3d9b",
+          "durationSec": "21.46",
+          "sizeBytes": 343340
+        },
+        {
+          "langCode": "en",
+          "status": "READY",
+          "audioUrl": "/audio/2-en-958147edc929.mp3",
+          "provider": "GEMINI",
+          "voiceName": "gemini-3.8-flash-tts/Charon",
+          "textHash": "374c1a5258f527e076561ffdffdadd59a4e37321b94d65749f817a09ec4ef6a5",
+          "durationSec": 25.13,
+          "sizeBytes": 402092
+        },
+        {
+          "langCode": "ja",
+          "status": "READY",
+          "audioUrl": "/audio/2-ja-e448a1d029b8.mp3",
+          "provider": "GEMINI",
+          "voiceName": "gemini-3.8-flash-tts/Aoede",
+          "textHash": "c3ed77fa1f5eab02d85bfc37f235df6de913eb44af8cdbc52e1397f012552bd0",
+          "durationSec": 28.06,
+          "sizeBytes": 448940
+        },
+        {
+          "langCode": "ko",
+          "status": "READY",
+          "audioUrl": "/audio/2-ko-786e22872e55.mp3",
+          "provider": "GEMINI",
+          "voiceName": "gemini-3.8-flash-tts/Iapetus",
+          "textHash": "a72f0f4c97ec437e1eb8aebb1b99bc0522778c509eac3d354905ed339d23178c",
+          "durationSec": 27.29,
+          "sizeBytes": 436652
+        },
+        {
+          "langCode": "zh",
+          "status": "READY",
+          "audioUrl": "/audio/2-zh-88717d4e152f.mp3",
+          "provider": "GEMINI",
+          "voiceName": "gemini-3.8-flash-lite-tts/Kore",
+          "textHash": "71df9871611d08099350522c7678a541b42a5ecba783f3fa7b025a332900eb36",
+          "durationSec": "29.33",
+          "sizeBytes": 469292
+        }
+      ]
+    },
+    {
+      "id": "demo-3",
+      "code": "3",
+      "categoryId": 2,
+      "sortOrder": 3,
+      "schematic": [
+        354,
+        585
+      ],
+      "lat": 11.4422,
+      "lng": 107.4242,
+      "geoVerified": false,
+      "geoSourceUrl": "urn:cat-tien:schematic-estimate",
+      "status": "PUBLISHED",
+      "version": 1,
+      "triggerRadiusM": 10,
+      "audio": null,
+      "translations": [
+        {
+          "langCode": "vi",
+          "name": "Bằng lăng 5 ngọn",
+          "summary": "",
+          "scriptText": "Bằng lăng 5 ngọn là điểm dừng để ngắm một dáng cây đặc biệt giữa rừng Cát Tiên. Từ gốc cây, hãy đưa mắt theo những nhánh vươn lên cao và thử nhận ra năm ngọn cây đã gợi nên tên gọi này. Những đường nét của thân và cành tạo nên vẻ đẹp riêng, khiến một cây rừng trở thành dấu mốc đáng nhớ trên hành trình. Dừng lại dưới tán lá, bạn có thể quan sát hình dáng cây từ nhiều phía và cảm nhận sự đa dạng của thế giới thực vật quanh mình.",
+          "textHash": "9576f1dc3395fada43b79f1e9b5e7406e570a88a31c9564d6db8500ffc934a8c",
+          "audioNeedsRefresh": false
+        },
+        {
+          "langCode": "en",
+          "name": "Five-topped Lagerstroemia",
+          "summary": "",
+          "scriptText": "This stop invites you to discover an unusual tree in Cat Tien forest. Follow its branches upward and look for the five tops reflected in its name. Viewed from different angles, the trunk and branches form a distinctive silhouette. Pause beneath the canopy to appreciate the variety of shapes found in forest trees.",
+          "textHash": "efbf5fc8cd49fbd41c2f3742f91f704b4c2e1cf406e585ba3b50144266d63b24",
+          "audioNeedsRefresh": false
+        },
+        {
+          "langCode": "ja",
+          "name": "五つ又のサルスベリ",
+          "summary": "",
+          "scriptText": "カッティエンの森で、特徴ある樹形を楽しめる場所です。根元から枝を目でたどり、名前の由来となった五つの梢を探してみましょう。見る角度によって幹や枝の姿が変わります。木陰で足を止め、森の木々が持つ形の多様さを感じてください。",
+          "textHash": "9fa896bd0df203dba60aaf9ba412ce52c4bc725710f5d94f15cee237cce03e76",
+          "audioNeedsRefresh": false
+        },
+        {
+          "langCode": "ko",
+          "name": "다섯 갈래 배롱나무",
+          "summary": "",
+          "scriptText": "깟띠엔 숲에서 독특한 나무의 모습을 감상하는 지점입니다. 밑동에서 가지를 따라 시선을 올리며 이름에 담긴 다섯 갈래의 꼭대기를 찾아보세요. 바라보는 방향에 따라 줄기와 가지의 모습도 달라집니다. 나무 그늘에서 잠시 쉬며 숲속 나무들의 다양한 형태를 느껴보세요.",
+          "textHash": "2866cf5024398106f4566af00518f2bdfe6ce514dad6ad6c96bdd15d1e6e60a2",
+          "audioNeedsRefresh": false
+        },
+        {
+          "langCode": "zh",
+          "name": "五冠紫薇树",
+          "summary": "",
+          "scriptText": "在这里，您可以欣赏吉仙森林中形态独特的树木。从树干底部向上观察枝条，寻找名称中提到的五个树冠。从不同角度观看，树干与枝条呈现出不同的轮廓。在树荫下稍作停留，感受森林植物形态的丰富多样。",
+          "textHash": "c82313a49b279d219ec0ab4440148c186b798c2c7ad520091e0a0a14fb89fb08",
+          "audioNeedsRefresh": false
+        }
+      ],
+      "audios": [
+        {
+          "langCode": "vi",
+          "status": "READY",
+          "audioUrl": "/audio/3-vi-5936ec897cc7.mp3",
+          "provider": "GEMINI",
+          "voiceName": "Gemini gemini-3.8-flash-tts · Sulafat",
+          "textHash": "9576f1dc3395fada43b79f1e9b5e7406e570a88a31c9564d6db8500ffc934a8c",
+          "durationSec": null,
+          "sizeBytes": 433580
+        },
+        {
+          "langCode": "en",
+          "status": "READY",
+          "audioUrl": "/audio/3-en-d08bb5110b65.mp3",
+          "provider": "GEMINI",
+          "voiceName": "Gemini gemini-3.8-flash-tts · Charon",
+          "textHash": "efbf5fc8cd49fbd41c2f3742f91f704b4c2e1cf406e585ba3b50144266d63b24",
+          "durationSec": null,
+          "sizeBytes": 361772
+        },
+        {
+          "langCode": "ja",
+          "status": "READY",
+          "audioUrl": "/audio/3-ja-2df337c7a806.mp3",
+          "provider": "GEMINI",
+          "voiceName": "gemini-3.8-flash-lite-tts/Aoede",
+          "textHash": "9fa896bd0df203dba60aaf9ba412ce52c4bc725710f5d94f15cee237cce03e76",
+          "durationSec": 21.87,
+          "sizeBytes": 349868
+        },
+        {
+          "langCode": "ko",
+          "status": "READY",
+          "audioUrl": "/audio/3-ko-95b8edd0cd8d.mp3",
+          "provider": "GEMINI",
+          "voiceName": "gemini-3.8-flash-lite-tts/Iapetus",
+          "textHash": "2866cf5024398106f4566af00518f2bdfe6ce514dad6ad6c96bdd15d1e6e60a2",
+          "durationSec": 23.55,
+          "sizeBytes": 376748
+        },
+        {
+          "langCode": "zh",
+          "status": "READY",
+          "audioUrl": "/audio/3-zh-6c89694771b7.mp3",
+          "provider": "GEMINI",
+          "voiceName": "Gemini gemini-3.8-flash-tts · Sulafat",
+          "textHash": "c82313a49b279d219ec0ab4440148c186b798c2c7ad520091e0a0a14fb89fb08",
+          "durationSec": null,
+          "sizeBytes": 354092
+        }
+      ]
+    },
+    {
+      "id": "demo-4",
+      "code": "4",
+      "categoryId": 2,
+      "sortOrder": 4,
+      "schematic": [
+        390,
+        665
+      ],
+      "lat": 11.4381,
+      "lng": 107.4269,
+      "geoVerified": false,
+      "geoSourceUrl": "urn:cat-tien:schematic-estimate",
+      "status": "PUBLISHED",
+      "version": 1,
+      "triggerRadiusM": 10,
+      "audio": null,
+      "translations": [
+        {
+          "langCode": "vi",
+          "name": "Thiên tuế",
+          "summary": "",
+          "scriptText": "Điểm Thiên tuế mang đến một góc nhìn khác về thế giới cây rừng. Thay vì chỉ ngước nhìn những tán đại thụ, hãy chú ý đến dáng thân và những tàu lá dài xòe quanh ngọn của cây. Cách sắp xếp của lá tạo nên một hình dáng dễ nhận biết giữa nhiều tầng cây xanh. Đây là dịp để quan sát kỹ những chi tiết nhỏ thường bị bỏ qua khi đi bộ trong rừng, từ đường nét của thân đến sự đối xứng của tán lá.",
+          "textHash": "09a98c5f25b910f055d694d2c7ce7c3c87a526d5edd7f3d6143d1b165b943371",
+          "audioNeedsRefresh": false
+        },
+        {
+          "langCode": "en",
+          "name": "Cycad",
+          "summary": "",
+          "scriptText": "The cycad stop offers a different perspective on forest plants. Look beyond the tall canopy and notice the trunk and long leaves spreading around the crown. Their arrangement gives the plant a recognisable outline among the surrounding greenery. Take time to observe small details, from the texture of the trunk to the symmetry of the leaves.",
+          "textHash": "f96ebb5f293637e9a7d8873a6f4bbd8d2e116188918ee3d44824f36a1c3130d5",
+          "audioNeedsRefresh": false
+        },
+        {
+          "langCode": "ja",
+          "name": "ソテツ",
+          "summary": "",
+          "scriptText": "この場所では、森の植物を違った視点から観察できます。高木の梢だけでなく、幹や頂部から広がる長い葉にも注目してください。葉の並び方が、周囲の緑の中で特徴ある輪郭を作ります。幹の表情や葉の対称性など、小さな細部をゆっくり眺めてみましょう。",
+          "textHash": "085a37f6a889c2846a5a0b4756d4d5ace3ae15b17d16ba2be92abae1758bc194",
+          "audioNeedsRefresh": false
+        },
+        {
+          "langCode": "ko",
+          "name": "소철",
+          "summary": "",
+          "scriptText": "이 지점에서는 숲의 식물을 다른 시선으로 살펴볼 수 있습니다. 높은 나무의 수관뿐 아니라 줄기와 꼭대기에서 사방으로 펼쳐지는 긴 잎에 주목해 보세요. 잎의 배열은 주변 녹음 속에서 독특한 윤곽을 만듭니다. 줄기의 질감과 잎의 대칭 같은 작은 특징을 천천히 관찰해 보세요.",
+          "textHash": "7b56a1fed14a7de4dd27cf74e55fbf19606e923f8c609346ca3123720b6b0c0c",
+          "audioNeedsRefresh": false
+        },
+        {
+          "langCode": "zh",
+          "name": "苏铁",
+          "summary": "",
+          "scriptText": "这一站让您换个角度观察森林植物。除了仰望高大的树冠，也请留意苏铁的树干以及从顶部向四周伸展的长叶。叶片的排列使它在周围的绿意中呈现出鲜明轮廓。不妨放慢脚步，观察树干纹理与叶片的对称之美。",
+          "textHash": "0019054e580f08b054bd425ef59bdcaeee05fe5e402fe8eeff11afdf9e168821",
+          "audioNeedsRefresh": false
+        }
+      ],
+      "audios": [
+        {
+          "langCode": "vi",
+          "status": "READY",
+          "audioUrl": "/audio/4-vi-38972eacd382.mp3",
+          "provider": "GEMINI",
+          "voiceName": "Gemini gemini-3.8-flash-tts · Sulafat",
+          "textHash": "09a98c5f25b910f055d694d2c7ce7c3c87a526d5edd7f3d6143d1b165b943371",
+          "durationSec": null,
+          "sizeBytes": 397100
+        },
+        {
+          "langCode": "en",
+          "status": "READY",
+          "audioUrl": "/audio/4-en-c1bb0b85434b.mp3",
+          "provider": "GEMINI",
+          "voiceName": "Gemini gemini-3.8-flash-tts · Charon",
+          "textHash": "f96ebb5f293637e9a7d8873a6f4bbd8d2e116188918ee3d44824f36a1c3130d5",
+          "durationSec": null,
+          "sizeBytes": 354860
+        },
+        {
+          "langCode": "ja",
+          "status": "READY",
+          "audioUrl": "/audio/4-ja-22b569ae09d3.mp3",
+          "provider": "GEMINI",
+          "voiceName": "gemini-3.8-flash-lite-tts/Aoede",
+          "textHash": "085a37f6a889c2846a5a0b4756d4d5ace3ae15b17d16ba2be92abae1758bc194",
+          "durationSec": 25.11,
+          "sizeBytes": 401708
+        },
+        {
+          "langCode": "zh",
+          "status": "READY",
+          "audioUrl": "/audio/4-zh-8ac34a0837f5.mp3",
+          "provider": "GEMINI",
+          "voiceName": "Gemini gemini-3.8-flash-tts · Sulafat",
+          "textHash": "0019054e580f08b054bd425ef59bdcaeee05fe5e402fe8eeff11afdf9e168821",
+          "durationSec": null,
+          "sizeBytes": 386348
+        }
+      ]
+    },
+    {
+      "id": "demo-5",
+      "code": "5",
+      "categoryId": 3,
+      "sortOrder": 5,
+      "schematic": [
+        517,
+        527
+      ],
+      "lat": 11.4431,
+      "lng": 107.4355,
+      "geoVerified": false,
+      "geoSourceUrl": "urn:sha256:2ede2f7c00e63638604ebdeb843bb7e94aa1e7829fbd982ede01e5b9f5b8a664#point-09",
+      "status": "PUBLISHED",
+      "version": 1,
+      "triggerRadiusM": 10,
+      "audio": null,
+      "translations": [
+        {
+          "langCode": "vi",
+          "name": "Ghềnh Bến Cự",
+          "summary": "",
+          "scriptText": "Ghềnh thác Bến Cự tọa lạc cách trụ sở vườn không xa. Đây là đoạn sông Đồng Nai co hẹp lại, dòng nước chảy xiết, luồn lách qua những bãi ghềnh đá lớn nhấp nhô. Bến Cự mang vẻ đẹp hoang sơ, mộc mạc, là điểm dừng chân lý tưởng để bạn ngồi nghỉ, lắng nghe tiếng nước chảy rì rào hòa quyện cùng tiếng chim rừng.",
+          "textHash": "78080688529a3d0bebf036a0bcdf8f99feabd398def97f0384b705d67d780498",
+          "audioNeedsRefresh": false
+        },
+        {
+          "langCode": "en",
+          "name": "Ben Cu Rapids",
+          "summary": "Ghenh Ben Cu",
+          "scriptText": "Ben Cu Rapids is located not far from the park headquarters. Here, a section of the Dong Nai River narrows, its torrent rushing and weaving through large, undulating rocky rapids. Ben Cu possesses a wild and rustic beauty, serving as an ideal stopover for you to rest and listen to the murmuring sound of flowing water harmonizing with the songs of forest birds.",
+          "textHash": "a51778f3abfa1be0613a43c71ee5d79342702f27347158073c9539cba6c11981",
+          "audioNeedsRefresh": false
+        },
+        {
+          "langCode": "ja",
+          "name": "ベンクーの急流",
+          "summary": "Ghenh Ben Cu",
+          "scriptText": "ベンクーの浅瀬は、国立公園管理本部からそう遠くない場所に位置しています。ここはドンナイ川の川幅が狭まり、起伏のある大きな岩礁地帯を縫って急流が激しく流れる場所です。素朴で手つかずの美しさを持ち、腰を下ろして休憩しながら、森の鳥の声と溶け合うせせらぎの音に耳を傾けるのに理想的な立ち寄りスポットです。",
+          "textHash": "a5988415847ec7d97ec3f3b39a21da1a9a1e2713810240290c30e13e4a76e91b",
+          "audioNeedsRefresh": false
+        },
+        {
+          "langCode": "ko",
+          "name": "벤꾸 급류",
+          "summary": "Ghenh Ben Cu",
+          "scriptText": "벤끄 급류는 공원 관리사무소에서 그리 멀지 않은 곳에 있습니다. 이곳은 동나이강의 강폭이 좁아지며 물살이 거세져 올록볼록 솟은 거대한 암초들 사이를 파고들며 흐르는 구간입니다. 원시적이고 소박한 멋을 지닌 벤끄는 잠시 멈추어 서서 숲속 새소리와 어우러지는 청량한 물소리를 들으며 휴식을 취하기에 안성맞춤인 곳입니다.",
+          "textHash": "15e9260cf9c0090ed6fa1c12ca498b121d59cd991dc646201783f11a86052b93",
+          "audioNeedsRefresh": false
+        },
+        {
+          "langCode": "zh",
+          "name": "Ben Cu 急流",
+          "summary": "Ghenh Ben Cu",
+          "scriptText": "巨滩险滩距离公园管理总部不远。这里是同奈河收窄的河段，水流湍急，穿行在起伏交错的巨石滩之间。巨滩散发着原始质朴之美，是您歇脚小憩的理想去处，您可以坐在这里聆听潺潺流水声与林中鸟鸣交织共鸣。",
+          "textHash": "c89a0ef0c595e119742582a764b98579a210570cece2a3db3a8e7950be2dc46a",
+          "audioNeedsRefresh": false
+        }
+      ],
+      "audios": [
+        {
+          "langCode": "vi",
+          "status": "READY",
+          "audioUrl": "/audio/5-vi-aa44eb2c1ee1.mp3",
+          "provider": "GEMINI",
+          "voiceName": "gemini-3.8-flash-lite-tts/Kore",
+          "textHash": "78080688529a3d0bebf036a0bcdf8f99feabd398def97f0384b705d67d780498",
+          "durationSec": "21.63",
+          "sizeBytes": 346028
+        },
+        {
+          "langCode": "en",
+          "status": "READY",
+          "audioUrl": "/audio/5-en-c0cb5d3dccd3.mp3",
+          "provider": "GEMINI",
+          "voiceName": "gemini-3.8-flash-lite-tts/Kore",
+          "textHash": "a51778f3abfa1be0613a43c71ee5d79342702f27347158073c9539cba6c11981",
+          "durationSec": "27.27",
+          "sizeBytes": 436268
+        },
+        {
+          "langCode": "ja",
+          "status": "READY",
+          "audioUrl": "/audio/5-ja-374dd5315d7f.mp3",
+          "provider": "GEMINI",
+          "voiceName": "gemini-3.8-flash-lite-tts/Kore",
+          "textHash": "a5988415847ec7d97ec3f3b39a21da1a9a1e2713810240290c30e13e4a76e91b",
+          "durationSec": "25.71",
+          "sizeBytes": 411308
+        },
+        {
+          "langCode": "ko",
+          "status": "READY",
+          "audioUrl": "/audio/5-ko-ff3935238924.mp3",
+          "provider": "GEMINI",
+          "voiceName": "gemini-3.8-flash-lite-tts/Kore",
+          "textHash": "15e9260cf9c0090ed6fa1c12ca498b121d59cd991dc646201783f11a86052b93",
+          "durationSec": "28.49",
+          "sizeBytes": 455852
+        },
+        {
+          "langCode": "zh",
+          "status": "READY",
+          "audioUrl": "/audio/5-zh-a8fd20a6c58d.mp3",
+          "provider": "GEMINI",
+          "voiceName": "gemini-3.8-flash-lite-tts/Kore",
+          "textHash": "c89a0ef0c595e119742582a764b98579a210570cece2a3db3a8e7950be2dc46a",
+          "durationSec": "24.17",
+          "sizeBytes": 386732
+        }
+      ]
+    },
+    {
+      "id": "demo-6",
+      "code": "6",
+      "categoryId": 1,
+      "sortOrder": 6,
+      "schematic": [
+        557,
+        461
+      ],
+      "lat": 11.4415798,
+      "lng": 107.4305197,
+      "geoVerified": false,
+      "geoSourceUrl": "https://www.openstreetmap.org/node/13587216603",
+      "status": "PUBLISHED",
+      "version": 1,
+      "triggerRadiusM": 10,
+      "audio": null,
+      "translations": [
+        {
+          "langCode": "vi",
+          "name": "Vườn thực vật",
+          "summary": "",
+          "scriptText": "Vườn thực vật là điểm dừng để làm quen với sự phong phú của cây cỏ trong hành trình khám phá Cát Tiên. Hãy thử quan sát và so sánh hình dáng lá, màu sắc vỏ cây, cách phân cành và những tầng xanh quanh lối đi. Mỗi đặc điểm nhỏ đều là một gợi ý để nhận biết và tìm hiểu về thực vật. Không gian này giúp chuyến tham quan trở thành một buổi học ngoài trời, nơi bạn có thể đi chậm, đặt câu hỏi và khám phá mối liên hệ giữa cây xanh với môi trường sống của rừng.",
+          "textHash": "2ae448a50312facad8fa8c0963c9713ef7b10be59b06c528aba698ee85799606",
+          "audioNeedsRefresh": false
+        },
+        {
+          "langCode": "en",
+          "name": "Botanical Garden",
+          "summary": "",
+          "scriptText": "The botanical garden is a place to get acquainted with plant diversity during your Cat Tien visit. Compare leaf shapes, bark colours and branching patterns along the path. Each detail offers a clue for learning about plants. Treat this stop as an outdoor classroom: slow down, ask questions and explore the relationship between vegetation and the forest environment.",
+          "textHash": "e06c3d14514d942dcf048b0accf0556af09edd4d3e0d731d9465b344a9d16173",
+          "audioNeedsRefresh": false
+        },
+        {
+          "langCode": "ja",
+          "name": "植物園",
+          "summary": "",
+          "scriptText": "植物園は、カッティエンの植物の多様さに親しむ場所です。道沿いの葉の形、樹皮の色、枝の伸び方を比べてみましょう。小さな特徴の一つ一つが植物を知る手がかりになります。屋外の教室のようにゆっくり歩き、植物と森の環境とのつながりを考えてみてください。",
+          "textHash": "86909ef87c5776d1e7a38fab6ef4fea417d3f73c5a16f0e4a5f052d1d7e1f7b1",
+          "audioNeedsRefresh": false
+        },
+        {
+          "langCode": "ko",
+          "name": "식물원",
+          "summary": "",
+          "scriptText": "식물원은 깟띠엔의 다양한 식물을 알아가는 장소입니다. 길을 따라 잎 모양, 나무껍질 색깔, 가지가 뻗는 모습을 비교해 보세요. 작은 특징 하나하나가 식물을 이해하는 단서가 됩니다. 야외 교실을 걷듯 천천히 둘러보며 식물과 숲의 환경이 맺는 관계를 생각해 보세요.",
+          "textHash": "adc357e5be5751d106db70415a821a68e08f3bc847c01148502789f05ae56939",
+          "audioNeedsRefresh": false
+        },
+        {
+          "langCode": "zh",
+          "name": "植物园",
+          "summary": "",
+          "scriptText": "植物园是认识吉仙植物多样性的一个停留点。沿着步道，比较叶片形状、树皮颜色以及枝条的生长方式。每个细节都能成为了解植物的线索。把这里当作一间户外课堂，放慢脚步，带着问题探索植物与森林环境之间的联系。",
+          "textHash": "dffbb931df0b6384254ed31155bdac7394a888e5eccff68be42bb045ed3bb583",
+          "audioNeedsRefresh": false
+        }
+      ],
+      "audios": [
+        {
+          "langCode": "vi",
+          "status": "READY",
+          "audioUrl": "/audio/6-vi-dee692c3e3ac.mp3",
+          "provider": "GEMINI",
+          "voiceName": "Gemini gemini-3.8-flash-tts · Sulafat",
+          "textHash": "2ae448a50312facad8fa8c0963c9713ef7b10be59b06c528aba698ee85799606",
+          "durationSec": null,
+          "sizeBytes": 489260
+        },
+        {
+          "langCode": "en",
+          "status": "READY",
+          "audioUrl": "/audio/6-en-507ae8b0c12e.mp3",
+          "provider": "GEMINI",
+          "voiceName": "Gemini gemini-3.8-flash-tts · Charon",
+          "textHash": "e06c3d14514d942dcf048b0accf0556af09edd4d3e0d731d9465b344a9d16173",
+          "durationSec": null,
+          "sizeBytes": 400172
+        },
+        {
+          "langCode": "ja",
+          "status": "READY",
+          "audioUrl": "/audio/6-ja-4b253d60b782.mp3",
+          "provider": "GEMINI",
+          "voiceName": "gemini-3.8-flash-lite-tts/Aoede",
+          "textHash": "86909ef87c5776d1e7a38fab6ef4fea417d3f73c5a16f0e4a5f052d1d7e1f7b1",
+          "durationSec": 24.22,
+          "sizeBytes": 387500
+        },
+        {
+          "langCode": "zh",
+          "status": "READY",
+          "audioUrl": "/audio/6-zh-18bc3bc73a2d.mp3",
+          "provider": "GEMINI",
+          "voiceName": "Gemini gemini-3.8-flash-tts · Sulafat",
+          "textHash": "dffbb931df0b6384254ed31155bdac7394a888e5eccff68be42bb045ed3bb583",
+          "durationSec": null,
+          "sizeBytes": 355628
+        }
+      ]
+    },
+    {
+      "id": "demo-7",
+      "code": "7",
+      "categoryId": 2,
+      "sortOrder": 7,
+      "schematic": [
+        437,
+        428
+      ],
+      "lat": 11.4611,
+      "lng": 107.414,
+      "geoVerified": false,
+      "geoSourceUrl": "urn:sha256:2ede2f7c00e63638604ebdeb843bb7e94aa1e7829fbd982ede01e5b9f5b8a664#point-04",
+      "status": "PUBLISHED",
+      "version": 1,
+      "triggerRadiusM": 10,
+      "audio": null,
+      "translations": [
+        {
+          "langCode": "vi",
+          "name": "Cây Gõ Bác Đồng",
+          "summary": "",
+          "scriptText": "Đây là cây cổ thụ thuộc loài gõ đỏ quý hiếm, có tuổi thọ hơn bảy trăm năm. Tên gọi Cây Gõ Bác Đồng được đặt để kỷ niệm sự kiện cố Thủ tướng Phạm Văn Đồng đến thăm vườn, và căn dặn việc bảo tồn tài nguyên rừng, vào năm một nghìn chín trăm tám mươi tám. Thân cây to lớn, tán lá che bóng cả một góc rừng già nguyên sinh.",
+          "textHash": "59a80b22b16a7b3b2ed76c1068c749d1bdecf2cbce4279e3c0e5405e81c78ba0",
+          "audioNeedsRefresh": false
+        },
+        {
+          "langCode": "en",
+          "name": "Bac Dong Go Tree",
+          "summary": "Cay Go Bac Dong",
+          "scriptText": "This is an ancient tree belonging to the rare red wood species, more than seven hundred years old. The name Uncle Dong's Redwood Tree was given to commemorate the visit of the late Prime Minister Pham Van Dong to the park and his counsel on the conservation of forest resources in the year nineteen eighty-eight. The trunk is massive, with its canopy shading an entire corner of the pristine primary forest.",
+          "textHash": "c3e020288c1f88c60e0e7b8f6f8a2b41163fb1aaacd25039b743a3d3801e9fb9",
+          "audioNeedsRefresh": false
+        },
+        {
+          "langCode": "ja",
+          "name": "バックドンのゴーの木",
+          "summary": "Cay Go Bac Dong",
+          "scriptText": "希少な樹種であるゴドー（アフゼリア）の古木で、樹齢は七百年を超えています。「バック・ドンの木」という名称は、千九百八十八年に故ファム・ヴァン・ドン首相が当園を視察し、森林資源の保全を指示された出来事を記念して名づけられました。幹は極めて太く、その木陰は原生林の一角を覆い尽くすほどです。",
+          "textHash": "f10e129f01b3a99e806a4769133b39f77b4a836fb865352709b11805955b99ba",
+          "audioNeedsRefresh": false
+        },
+        {
+          "langCode": "ko",
+          "name": "박동 고 나무",
+          "summary": "Cay Go Bac Dong",
+          "scriptText": "이 나무는 희귀 수종인 적단목(Gõ đỏ)에 속하는 고목으로, 칠백 년 이상의 수명을 자랑합니다. '박동 고목나무'라는 명칭은 천구백팔십팔 년 고(故) 팜반동 총리가 공원을 방문하여 산림 자원 보존을 당부했던 뜻깊은 일을 기리기 위해 붙여졌습니다. 우람한 줄기와 무성한 잎사귀는 원시림의 한구석을 통째로 덮을 만큼 넓은 그늘을 드리웁니다.",
+          "textHash": "89a2c5b66f7f55b1c53e8a1a2c2ff9cdfe47de559134137c99b13bafcab7c2fa",
+          "audioNeedsRefresh": false
+        },
+        {
+          "langCode": "zh",
+          "name": "胡伯同纪念红木树",
+          "summary": "Cay Go Bac Dong",
+          "scriptText": "这是一棵珍稀的缅茄（红木）古树，树龄已有七百多年。这棵树被命名为“同叔红木树”，是为了纪念已故政府总理范文同于一千九百八十八年视察国家公园并嘱咐做好森林资源保护工作这一事件。树干粗壮宏伟，枝叶茂盛，树冠遮蔽了整整一片原始古林。",
+          "textHash": "52f96332f23cc081dc9d14e8277197df5ab09973367cde5bab5485c0ba039f8f",
+          "audioNeedsRefresh": false
+        }
+      ],
+      "audios": [
+        {
+          "langCode": "vi",
+          "status": "READY",
+          "audioUrl": "/audio/7-vi-2a50d137d6a1.mp3",
+          "provider": "GEMINI",
+          "voiceName": "gemini-3.8-flash-lite-tts/Kore",
+          "textHash": "59a80b22b16a7b3b2ed76c1068c749d1bdecf2cbce4279e3c0e5405e81c78ba0",
+          "durationSec": "23.33",
+          "sizeBytes": 373292
+        },
+        {
+          "langCode": "en",
+          "status": "READY",
+          "audioUrl": "/audio/7-en-869636802777.mp3",
+          "provider": "GEMINI",
+          "voiceName": "gemini-3.8-flash-lite-tts/Kore",
+          "textHash": "c3e020288c1f88c60e0e7b8f6f8a2b41163fb1aaacd25039b743a3d3801e9fb9",
+          "durationSec": "30.39",
+          "sizeBytes": 486188
+        },
+        {
+          "langCode": "ja",
+          "status": "READY",
+          "audioUrl": "/audio/7-ja-75ee8f2652c3.mp3",
+          "provider": "GEMINI",
+          "voiceName": "gemini-3.8-flash-tts/Aoede",
+          "textHash": "f10e129f01b3a99e806a4769133b39f77b4a836fb865352709b11805955b99ba",
+          "durationSec": 27.63,
+          "sizeBytes": 442028
+        },
+        {
+          "langCode": "ko",
+          "status": "READY",
+          "audioUrl": "/audio/7-ko-5375ce48ca87.mp3",
+          "provider": "GEMINI",
+          "voiceName": "gemini-3.8-flash-lite-tts/Kore",
+          "textHash": "89a2c5b66f7f55b1c53e8a1a2c2ff9cdfe47de559134137c99b13bafcab7c2fa",
+          "durationSec": "28.25",
+          "sizeBytes": 452012
+        },
+        {
+          "langCode": "zh",
+          "status": "READY",
+          "audioUrl": "/audio/7-zh-a24d45a7476e.mp3",
+          "provider": "GEMINI",
+          "voiceName": "gemini-3.8-flash-tts/Sulafat",
+          "textHash": "52f96332f23cc081dc9d14e8277197df5ab09973367cde5bab5485c0ba039f8f",
+          "durationSec": 25.42,
+          "sizeBytes": 406700
+        }
+      ]
+    },
+    {
+      "id": "demo-8",
+      "code": "8",
+      "categoryId": 2,
+      "sortOrder": 8,
+      "schematic": [
+        361,
+        389
+      ],
+      "lat": 11.4502,
+      "lng": 107.4195,
+      "geoVerified": false,
+      "geoSourceUrl": "urn:sha256:2ede2f7c00e63638604ebdeb843bb7e94aa1e7829fbd982ede01e5b9f5b8a664#point-06",
+      "status": "PUBLISHED",
+      "version": 1,
+      "triggerRadiusM": 10,
+      "audio": null,
+      "translations": [
+        {
+          "langCode": "vi",
+          "name": "Đa Lộc Giao",
+          "summary": "",
+          "scriptText": "Đây là một trong những kiệt tác kỳ lạ của thiên nhiên tại Cát Tiên. Cây có hình dáng vô cùng độc đáo, nhờ hàng trăm bộ rễ chùm và thân cây đan xen, quấn quýt quanh một cây chủ cũ. Cây Đa Lộc Giao tượng trưng cho sức sống mãnh liệt, bền bỉ và trường tồn của thảm thực vật rừng nhiệt đới.",
+          "textHash": "c281d93a850f2d4c2ff6ac3aaf4c205b441f2bb7a5db932d77f207de4eaa22ed",
+          "audioNeedsRefresh": false
+        },
+        {
+          "langCode": "en",
+          "name": "Loc Giao Banyan",
+          "summary": "Da Loc Giao",
+          "scriptText": "This is one of the wondrous masterpieces of nature in Cat Tien. The tree has an extraordinarily unique shape, formed by hundreds of clustered roots and trunks intertwining and clinging tightly around a former host tree. The Loc Giao Banyan Tree symbolizes the fierce, resilient, and enduring vitality of tropical forest vegetation.",
+          "textHash": "cd914112e80ee8b373e38111fdae064e9aeaa40d2175201539752558409a319f",
+          "audioNeedsRefresh": false
+        },
+        {
+          "langCode": "ja",
+          "name": "ロックザオのガジュマル",
+          "summary": "Da Loc Giao",
+          "scriptText": "カッティエンにおける自然の驚異的な傑作の一つです。宿主となった古い木を取り囲み、絡み合いながら密集する何百本もの気根や幹によって、非常に独特な姿をしています。ダ・ロックザオの木は、熱帯雨林の植物が持つ力強く、粘り強く、永続的な生命力を象徴しています。",
+          "textHash": "44ec42fd8f6122706ea7318f710833e3dd63a56312aa8074bdd60d822a6bfba0",
+          "audioNeedsRefresh": false
+        },
+        {
+          "langCode": "ko",
+          "name": "록자오 반얀나무",
+          "summary": "Da Loc Giao",
+          "scriptText": "이 나무는 깟띠엔 자연이 빚어낸 경이로운 걸작 중 하나입니다. 수백 가닥의 수염뿌리와 줄기가 기존의 숙주 나무를 칭칭 감고 얽혀 자라면서 매우 독특한 형태를 띠고 있습니다. 록자오 반얀트리는 열대 우림 식생의 강인하고 끈질기며 영원한 생명력을 상징합니다.",
+          "textHash": "34d400b98d8facb7680873427c34c8a00145b3ea39ed1de6d5aa0b2a35b116e6",
+          "audioNeedsRefresh": false
+        },
+        {
+          "langCode": "zh",
+          "name": "鹿交榕树",
+          "summary": "Da Loc Giao",
+          "scriptText": "这是吉仙国家公园神奇的自然杰作之一。这棵树拥有极为奇特的形态，数百条气生根须和树干交织缠绕在一棵原宿主树上。交趾大榕树象征着热带雨林植被顽强、坚韧且生生不息的旺盛生命力。",
+          "textHash": "814113b318dbe4fe79c61f6526d71012fff6e6b4732eed4157df4e787a9374fc",
+          "audioNeedsRefresh": false
+        }
+      ],
+      "audios": [
+        {
+          "langCode": "vi",
+          "status": "READY",
+          "audioUrl": "/audio/8-vi-c833f6fd9c7a.mp3",
+          "provider": "GEMINI",
+          "voiceName": "gemini-3.8-flash-tts/Achird",
+          "textHash": "c281d93a850f2d4c2ff6ac3aaf4c205b441f2bb7a5db932d77f207de4eaa22ed",
+          "durationSec": 17.14,
+          "sizeBytes": 274220
+        },
+        {
+          "langCode": "en",
+          "status": "READY",
+          "audioUrl": "/audio/8-en-c8986693246d.mp3",
+          "provider": "GEMINI",
+          "voiceName": "gemini-3.8-flash-tts/Charon",
+          "textHash": "cd914112e80ee8b373e38111fdae064e9aeaa40d2175201539752558409a319f",
+          "durationSec": 24.75,
+          "sizeBytes": 395948
+        },
+        {
+          "langCode": "ja",
+          "status": "READY",
+          "audioUrl": "/audio/8-ja-650daa074b1d.mp3",
+          "provider": "GEMINI",
+          "voiceName": "gemini-3.8-flash-tts/Aoede",
+          "textHash": "44ec42fd8f6122706ea7318f710833e3dd63a56312aa8074bdd60d822a6bfba0",
+          "durationSec": 25.18,
+          "sizeBytes": 402860
+        },
+        {
+          "langCode": "ko",
+          "status": "READY",
+          "audioUrl": "/audio/8-ko-a9bfe9dbdd4e.mp3",
+          "provider": "GEMINI",
+          "voiceName": "gemini-3.8-flash-tts/Iapetus",
+          "textHash": "34d400b98d8facb7680873427c34c8a00145b3ea39ed1de6d5aa0b2a35b116e6",
+          "durationSec": 24.03,
+          "sizeBytes": 384428
+        },
+        {
+          "langCode": "zh",
+          "status": "READY",
+          "audioUrl": "/audio/8-zh-21b03286a3a3.mp3",
+          "provider": "GEMINI",
+          "voiceName": "gemini-3.8-flash-tts/Sulafat",
+          "textHash": "814113b318dbe4fe79c61f6526d71012fff6e6b4732eed4157df4e787a9374fc",
+          "durationSec": 21.58,
+          "sizeBytes": 345260
+        }
+      ]
+    },
+    {
+      "id": "demo-9",
+      "code": "9",
+      "categoryId": 3,
+      "sortOrder": 9,
+      "schematic": [
+        218,
+        318
+      ],
+      "lat": 11.4594,
+      "lng": 107.3486,
+      "geoVerified": false,
+      "geoSourceUrl": "urn:sha256:2ede2f7c00e63638604ebdeb843bb7e94aa1e7829fbd982ede01e5b9f5b8a664#point-02",
+      "status": "PUBLISHED",
+      "version": 1,
+      "triggerRadiusM": 10,
+      "audio": null,
+      "translations": [
+        {
+          "langCode": "vi",
+          "name": "Bàu Sấu",
+          "summary": "",
+          "scriptText": "Bàu Sấu là vùng đất ngập nước có tầm quan trọng quốc tế, được công nhận theo công ước Ram-xa. Nơi đây được xem là trái tim của hệ sinh thái Nam Cát Tiên. Đầm lầy rộng lớn này là ngôi nhà tự nhiên của hàng trăm cá thể cá sấu Xiêm, một loài cá sấu nước ngọt quý hiếm, từng được cho là đã tuyệt chủng. Đến đây, bạn sẽ ngắm nhìn cảnh sắc hoang sơ như tranh thủy mặc, và trải nghiệm chèo thuyền giữa đầm nước, nơi cá sấu sinh sống tự nhiên.",
+          "textHash": "81f5755e0aaa1b50ac0423d3769e6fda14a6baef260a1c2785b3064ebca9d383",
+          "audioNeedsRefresh": false
+        },
+        {
+          "langCode": "en",
+          "name": "Crocodile Lake",
+          "summary": "Bau Sau",
+          "scriptText": "Bau Sau is a wetland of international importance, recognized under the Ramsar Convention. This place is considered the heart of the Nam Cat Tien ecosystem. This vast wetland is the natural home of hundreds of Siamese crocodiles, a rare freshwater crocodile species once believed to be extinct. Visiting here, you will admire pristine scenery reminiscent of an ink wash painting, and experience rowing a boat amidst the wetland where crocodiles live in their natural habitat.",
+          "textHash": "66c55e508cd56594d7670c33c1ba6779d1dbea8d4f5e94f3ba6e7dd27a64cf15",
+          "audioNeedsRefresh": false
+        },
+        {
+          "langCode": "ja",
+          "name": "クロコダイル湖",
+          "summary": "Bau Sau",
+          "scriptText": "バウサウはラムサール条約に基づき認定された、国際的に重要な湿地帯です。ここはナムカッティエン生態系の心臓部と見なされています。この広大な湿地は、かつて絶滅したと考えられていた希少な淡水性のワニであるシャムワニ数百頭の自然の生息地となっています。ここを訪れると、まるで水墨画のように手つかずの自然の風景を眺めることができ、ワニが自然のまま暮らす湿地の真ん中でボートを漕ぐ体験ができます。",
+          "textHash": "239bde85d4302f2d5a9e68020838f07cd52fb26fa702e2f5201609928a4f4eab",
+          "audioNeedsRefresh": false
+        },
+        {
+          "langCode": "ko",
+          "name": "악어 호수",
+          "summary": "Bau Sau",
+          "scriptText": "바우서우는 람사르 협약에 따라 국제적 중요성을 인정받은 습지입니다. 이곳은 남깟띠엔 생태계의 심장부로 꼽힙니다. 이 광활한 늪지는 한때 멸종된 것으로 여겨졌던 희귀 민물 악어 종인 샴악어 수백 마리가 살아가는 자연의 보금자리입니다. 이곳에 오시면 수묵화처럼 원시적인 풍경을 감상할 수 있으며, 악어가 자연 그대로 서식하는 습지 한가운데에서 나룻배를 타는 특별한 체험을 즐기실 수 있습니다.",
+          "textHash": "26e70e645a51326511a23ae2bd0f8a75f1a4f7cc53f142e2886d0b3a709d8020",
+          "audioNeedsRefresh": false
+        },
+        {
+          "langCode": "zh",
+          "name": "鳄鱼湖",
+          "summary": "Bau Sau",
+          "scriptText": "鳄鱼湖是具有国际重要意义的湿地，已被列入《拉姆萨尔公约》国际重要湿地名录。这里被视为南吉仙生态系统的核心心脏。这片广袤的沼泽湿地是数百只暹罗鳄的自然家园，暹罗鳄是一种珍稀淡水鳄，曾一度被认为已经灭绝。来到这里，您将欣赏到宛如水墨画般的原始风光，并体验在鳄鱼自然栖息的湖水中荡舟。",
+          "textHash": "88226e9d8fdc94b978283128563b49f7560ce779515362531b5ac68de01f8848",
+          "audioNeedsRefresh": false
+        }
+      ],
+      "audios": [
+        {
+          "langCode": "vi",
+          "status": "READY",
+          "audioUrl": "/audio/9-vi-04db39243e81.mp3",
+          "provider": "GEMINI",
+          "voiceName": "gemini-3.8-flash-lite-tts/Kore",
+          "textHash": "81f5755e0aaa1b50ac0423d3769e6fda14a6baef260a1c2785b3064ebca9d383",
+          "durationSec": "28.68",
+          "sizeBytes": 459692
+        },
+        {
+          "langCode": "en",
+          "status": "READY",
+          "audioUrl": "/audio/9-en-2bef86f1c1e7.mp3",
+          "provider": "GEMINI",
+          "voiceName": "gemini-3.8-flash-tts/Charon",
+          "textHash": "66c55e508cd56594d7670c33c1ba6779d1dbea8d4f5e94f3ba6e7dd27a64cf15",
+          "durationSec": 32.74,
+          "sizeBytes": 523820
+        },
+        {
+          "langCode": "ja",
+          "status": "READY",
+          "audioUrl": "/audio/9-ja-45c145c10daf.mp3",
+          "provider": "GEMINI",
+          "voiceName": "gemini-3.8-flash-lite-tts/Kore",
+          "textHash": "239bde85d4302f2d5a9e68020838f07cd52fb26fa702e2f5201609928a4f4eab",
+          "durationSec": "38.19",
+          "sizeBytes": 610988
+        },
+        {
+          "langCode": "ko",
+          "status": "READY",
+          "audioUrl": "/audio/9-ko-a5b612d833a5.mp3",
+          "provider": "GEMINI",
+          "voiceName": "gemini-3.8-flash-lite-tts/Kore",
+          "textHash": "26e70e645a51326511a23ae2bd0f8a75f1a4f7cc53f142e2886d0b3a709d8020",
+          "durationSec": "33.75",
+          "sizeBytes": 539948
+        },
+        {
+          "langCode": "zh",
+          "status": "READY",
+          "audioUrl": "/audio/9-zh-29f8224e0a0f.mp3",
+          "provider": "GEMINI",
+          "voiceName": "gemini-3.8-flash-lite-tts/Kore",
+          "textHash": "88226e9d8fdc94b978283128563b49f7560ce779515362531b5ac68de01f8848",
+          "durationSec": "33.34",
+          "sizeBytes": 533420
+        }
+      ]
+    },
+    {
+      "id": "demo-10",
+      "code": "10",
+      "categoryId": 2,
+      "sortOrder": 10,
+      "schematic": [
+        216,
+        245
+      ],
+      "lat": 11.4613,
+      "lng": 107.3637,
+      "geoVerified": false,
+      "geoSourceUrl": "urn:cat-tien:schematic-estimate",
+      "status": "PUBLISHED",
+      "version": 1,
+      "triggerRadiusM": 10,
+      "audio": null,
+      "translations": [
+        {
+          "langCode": "vi",
+          "name": "Cây 6 múi",
+          "summary": "",
+          "scriptText": "Cây 6 múi là một điểm nhấn về hình dáng cây trên tuyến tham quan rừng Cát Tiên. Tên gọi gợi sự chú ý đến những đường múi nổi trên thân, tạo nên một dáng cây khác lạ giữa rừng xanh. Hãy quan sát từ nhiều hướng để cảm nhận cách ánh sáng và bóng râm làm nổi bật các đường nét ấy. Điểm dừng này nhắc chúng ta rằng vẻ đẹp của rừng không chỉ nằm ở những tán cây cao, mà còn ở các chi tiết độc đáo của từng thân cây.",
+          "textHash": "ab49da24e92025cb8d5c6dda53fb1355dc7b19f0a22d4859af167138e4c141d2",
+          "audioNeedsRefresh": false
+        },
+        {
+          "langCode": "en",
+          "name": "Six-lobed Tree",
+          "summary": "",
+          "scriptText": "The Six-lobed Tree is a stop for appreciating an unusual trunk shape. Its name draws attention to the raised lobes that distinguish it from surrounding trees. Look from several angles and notice how light and shade reveal its contours. Forest beauty can be found in the details of a single trunk as well as in the canopy above.",
+          "textHash": "e6374c8d53fc4ffe0e83e90541f8ab02885e7bf13dc98f405b8b01c470befc6f",
+          "audioNeedsRefresh": false
+        },
+        {
+          "langCode": "ja",
+          "name": "六稜の木",
+          "summary": "",
+          "scriptText": "この場所では、特徴ある幹の形に注目してみましょう。名前は幹に浮かぶ稜を連想させます。いろいろな方向から眺めると、光と影によって輪郭の見え方が変わります。森の美しさは高い梢だけでなく、一本の幹の細部にも見つかります。",
+          "textHash": "2a9bfe0a9e01ed2b458731c2a700d1f7ad96c8fe1f6cc192ae4970993c3e6ab1",
+          "audioNeedsRefresh": false
+        },
+        {
+          "langCode": "ko",
+          "name": "여섯 골 나무",
+          "summary": "",
+          "scriptText": "이 지점에서는 독특한 나무줄기의 형태에 주목해 보세요. 이름은 줄기에 도드라진 골을 떠올리게 합니다. 여러 방향에서 바라보면 빛과 그늘에 따라 윤곽이 다르게 보입니다. 숲의 아름다움은 높은 수관뿐 아니라 나무 한 그루의 세부 모습에서도 찾을 수 있습니다.",
+          "textHash": "df29bb24ad34022faddbdd49a37796386196513bb4d82e5398ae1f3277e93144",
+          "audioNeedsRefresh": false
+        },
+        {
+          "langCode": "zh",
+          "name": "六棱树",
+          "summary": "",
+          "scriptText": "这一站适合欣赏独特的树干形态。名称让人留意树干上隆起的棱线，使它在周围树木中显得与众不同。从几个方向观察，您会发现光影让轮廓呈现出不同层次。森林之美不仅在高处的树冠，也藏在一棵树的细节之中。",
+          "textHash": "401185676810c77a74c4143a48da76c1ae402d15569787d2d564dd1d85d321e6",
+          "audioNeedsRefresh": false
+        }
+      ],
+      "audios": [
+        {
+          "langCode": "vi",
+          "status": "READY",
+          "audioUrl": "/audio/10-vi-8e1a3f25c1bf.mp3",
+          "provider": "GEMINI",
+          "voiceName": "Gemini gemini-3.8-flash-tts · Sulafat",
+          "textHash": "ab49da24e92025cb8d5c6dda53fb1355dc7b19f0a22d4859af167138e4c141d2",
+          "durationSec": null,
+          "sizeBytes": 438572
+        },
+        {
+          "langCode": "en",
+          "status": "READY",
+          "audioUrl": "/audio/10-en-e5c2f2c482b1.mp3",
+          "provider": "GEMINI",
+          "voiceName": "Gemini gemini-3.8-flash-tts · Sulafat",
+          "textHash": "e6374c8d53fc4ffe0e83e90541f8ab02885e7bf13dc98f405b8b01c470befc6f",
+          "durationSec": null,
+          "sizeBytes": 334508
+        },
+        {
+          "langCode": "ja",
+          "status": "READY",
+          "audioUrl": "/audio/10-ja-82b57ecb3268.mp3",
+          "provider": "GEMINI",
+          "voiceName": "gemini-3.8-flash-lite-tts/Aoede",
+          "textHash": "2a9bfe0a9e01ed2b458731c2a700d1f7ad96c8fe1f6cc192ae4970993c3e6ab1",
+          "durationSec": 22.25,
+          "sizeBytes": 356012
+        },
+        {
+          "langCode": "zh",
+          "status": "READY",
+          "audioUrl": "/audio/10-zh-4ea3ab678aee.mp3",
+          "provider": "GEMINI",
+          "voiceName": "Gemini gemini-3.8-flash-lite-tts · Kore",
+          "textHash": "401185676810c77a74c4143a48da76c1ae402d15569787d2d564dd1d85d321e6",
+          "durationSec": null,
+          "sizeBytes": 402860
+        }
+      ]
+    },
+    {
+      "id": "demo-11",
+      "code": "11",
+      "categoryId": 2,
+      "sortOrder": 11,
+      "schematic": [
+        219,
+        146
+      ],
+      "lat": 11.4658,
+      "lng": 107.3811,
+      "geoVerified": false,
+      "geoSourceUrl": "urn:cat-tien:schematic-estimate",
+      "status": "PUBLISHED",
+      "version": 1,
+      "triggerRadiusM": 10,
+      "audio": null,
+      "translations": [
+        {
+          "langCode": "vi",
+          "name": "Bằng lăng lộc bình",
+          "summary": "",
+          "scriptText": "Bằng lăng lộc bình gây ấn tượng bởi thân cây có hình dáng khác lạ, gợi liên tưởng đến một chiếc lộc bình giữa rừng. Hãy lùi lại một chút để ngắm toàn bộ dáng cây, rồi quan sát những đường cong và chỗ phình trên thân. Cùng với tán lá phía trên, các chi tiết ấy tạo thành một tác phẩm tự nhiên không lặp lại. Đây là điểm dừng thích hợp để cảm nhận sự đa dạng về hình thái của cây rừng và lưu lại một góc nhìn riêng trong chuyến khám phá Cát Tiên.",
+          "textHash": "50357c792b139e2d7d47c1585979c8353c380054f5ce7d81677c54c0bef9d362",
+          "audioNeedsRefresh": false
+        },
+        {
+          "langCode": "en",
+          "name": "Vase-shaped Lagerstroemia",
+          "summary": "",
+          "scriptText": "This tree stands out for an unusual trunk that recalls the shape of a decorative vase. Step back to see its outline, then notice the curves and swollen sections of the trunk. Together with the canopy, they form a distinctive natural composition. This stop offers a chance to appreciate the variety of tree forms in Cat Tien.",
+          "textHash": "766f5be0ba79b18ef38a9ef6336f1abffdec6fd94bcbea61c2cdc9a37b7d8e7b",
+          "audioNeedsRefresh": false
+        },
+        {
+          "langCode": "ja",
+          "name": "花瓶形のサルスベリ",
+          "summary": "",
+          "scriptText": "この木は、花瓶を思わせる特徴ある幹が印象的です。少し離れて全体を眺めてから、幹の曲線や膨らみを観察してみましょう。上に広がる葉とともに、自然が作った独特の姿を見せてくれます。カッティエンの木々の多様な形を感じられる場所です。",
+          "textHash": "dae226f49906d3b4247b1f9982a9649783e3876043ab62e9cf21557715c817e9",
+          "audioNeedsRefresh": false
+        },
+        {
+          "langCode": "ko",
+          "name": "화병 모양 배롱나무",
+          "summary": "",
+          "scriptText": "이 나무는 장식용 화병을 떠올리게 하는 독특한 줄기가 인상적입니다. 조금 떨어져 전체 모습을 본 뒤 줄기의 곡선과 부풀어 오른 부분을 살펴보세요. 위로 펼쳐진 잎과 어우러져 자연이 만든 특별한 형태를 보여줍니다. 깟띠엔 나무들의 다양한 모습을 느낄 수 있는 지점입니다.",
+          "textHash": "cff425374b8a42b11ce211d1753b280e310c40fafc2b55bbf1f5f8a002c19448",
+          "audioNeedsRefresh": false
+        },
+        {
+          "langCode": "zh",
+          "name": "花瓶形紫薇树",
+          "summary": "",
+          "scriptText": "这棵树以形似花瓶的独特树干给人留下印象。先退后几步欣赏整体轮廓，再观察树干的曲线与膨大部位。它们与上方树冠共同组成一件独特的天然作品。这一站让您感受吉仙森林树木形态的多样之美。",
+          "textHash": "ebc7e4d8a8ff6d4da7b12812d20201c7c4e12a8331ddf070e2f97425b76cf69c",
+          "audioNeedsRefresh": false
+        }
+      ],
+      "audios": [
+        {
+          "langCode": "vi",
+          "status": "READY",
+          "audioUrl": "/audio/11-vi-3916a0fc61fa.mp3",
+          "provider": "GEMINI",
+          "voiceName": "Gemini gemini-3.8-flash-tts · Sulafat",
+          "textHash": "50357c792b139e2d7d47c1585979c8353c380054f5ce7d81677c54c0bef9d362",
+          "durationSec": null,
+          "sizeBytes": 452012
+        },
+        {
+          "langCode": "en",
+          "status": "READY",
+          "audioUrl": "/audio/11-en-bf0b92fe560d.mp3",
+          "provider": "GEMINI",
+          "voiceName": "Gemini gemini-3.8-flash-tts · Sulafat",
+          "textHash": "766f5be0ba79b18ef38a9ef6336f1abffdec6fd94bcbea61c2cdc9a37b7d8e7b",
+          "durationSec": null,
+          "sizeBytes": 327212
+        },
+        {
+          "langCode": "ja",
+          "status": "READY",
+          "audioUrl": "/audio/11-ja-9f9d3fcfe220.mp3",
+          "provider": "GEMINI",
+          "voiceName": "gemini-3.8-flash-lite-tts/Aoede",
+          "textHash": "dae226f49906d3b4247b1f9982a9649783e3876043ab62e9cf21557715c817e9",
+          "durationSec": 22.18,
+          "sizeBytes": 354860
+        },
+        {
+          "langCode": "zh",
+          "status": "READY",
+          "audioUrl": "/audio/11-zh-3ce9bbb9d3a7.mp3",
+          "provider": "GEMINI",
+          "voiceName": "Gemini gemini-3.8-flash-lite-tts · Kore",
+          "textHash": "ebc7e4d8a8ff6d4da7b12812d20201c7c4e12a8331ddf070e2f97425b76cf69c",
+          "durationSec": null,
+          "sizeBytes": 400172
+        }
+      ]
+    },
+    {
+      "id": "demo-12",
+      "code": "12",
+      "categoryId": 2,
+      "sortOrder": 12,
+      "schematic": [
+        149,
+        213
+      ],
+      "lat": 11.4692,
+      "lng": 107.3844,
+      "geoVerified": false,
+      "geoSourceUrl": "urn:cat-tien:schematic-estimate",
+      "status": "PUBLISHED",
+      "version": 1,
+      "triggerRadiusM": 10,
+      "audio": null,
+      "translations": [
+        {
+          "langCode": "vi",
+          "name": "Rừng Đại Phong Tử",
+          "summary": "",
+          "scriptText": "Rừng Đại Phong Tử mở ra một không gian khám phá khác trên hành trình tìm hiểu Cát Tiên. Đại phong tử là một trong những loài cây hiện diện trong hệ sinh thái rừng của vườn, góp phần tạo nên sự phong phú của thảm thực vật nơi đây. Theo bước trên đường mòn, hãy chú ý đến các tầng cây, khoảng sáng dưới tán và âm thanh của rừng. Điểm dừng này là dịp để cảm nhận khu rừng như một hệ thống sống, nơi cây cối, động vật và môi trường luôn gắn bó với nhau.",
+          "textHash": "33d4aaeb4d6bf1a61029bc18ba41546b9e9cda1447792b533a3b6f953f5669eb",
+          "audioNeedsRefresh": false
+        },
+        {
+          "langCode": "en",
+          "name": "Dai Phong Tu Forest",
+          "summary": "",
+          "scriptText": "Dai Phong Tu Forest offers another setting for exploring Cat Tien. Dai phong tu is among the tree species found in the park and contributes to its plant diversity. Along the trail, notice the layers of vegetation, patches of light beneath the canopy and forest sounds. Experience the forest as a living system connecting plants, animals and their environment.",
+          "textHash": "8b993845d1074fd4ba70d027ae1ced406622ff3d19e78e123ff107d16a810c78",
+          "audioNeedsRefresh": false
+        },
+        {
+          "langCode": "ja",
+          "name": "大風子の森",
+          "summary": "",
+          "scriptText": "大風子の森では、カッティエンの森の別の一面に出会えます。大風子は園内に見られる樹木の一つで、植物の多様さを支えています。道を歩きながら、重なる木々や木漏れ日、森の音に注目してください。植物、動物、環境がつながる一つの生きた仕組みとして森を感じてみましょう。",
+          "textHash": "6c9690c33ea9005e9dea3c06436c00ecb8aef6d7234b54fb53495511bb446520",
+          "audioNeedsRefresh": false
+        },
+        {
+          "langCode": "ko",
+          "name": "대풍자 숲",
+          "summary": "",
+          "scriptText": "대풍자 숲은 깟띠엔의 또 다른 모습을 만나는 장소입니다. 대풍자는 공원에 자라는 나무 중 하나로 식물의 다양성을 이룹니다. 숲길을 걸으며 여러 층의 식물, 나뭇잎 사이로 드는 빛, 숲의 소리에 귀 기울여 보세요. 식물과 동물, 환경이 연결된 살아 있는 하나의 체계로 숲을 느껴보세요.",
+          "textHash": "2df60366f7d4351f837144072b38112dafc9cb1e7d1d91d0c386921de79b8a68",
+          "audioNeedsRefresh": false
+        },
+        {
+          "langCode": "zh",
+          "name": "大风子林",
+          "summary": "",
+          "scriptText": "大风子林展现了吉仙森林的另一面。大风子是园内生长的树种之一，丰富了这里的植物多样性。沿步道前行时，请留意层层植被、林冠下的光斑以及森林的声音。您可以在这里感受森林是一个让植物、动物与环境彼此相连的生命系统。",
+          "textHash": "4aefbc721d3c00fbc680b36fbcf0b50bc06e3154acfeca9521968cf1029f914d",
+          "audioNeedsRefresh": false
+        }
+      ],
+      "audios": [
+        {
+          "langCode": "vi",
+          "status": "READY",
+          "audioUrl": "/audio/12-vi-d43b66bbb988.mp3",
+          "provider": "GEMINI",
+          "voiceName": "Gemini gemini-3.8-flash-tts · Sulafat",
+          "textHash": "33d4aaeb4d6bf1a61029bc18ba41546b9e9cda1447792b533a3b6f953f5669eb",
+          "durationSec": null,
+          "sizeBytes": 459692
+        },
+        {
+          "langCode": "en",
+          "status": "READY",
+          "audioUrl": "/audio/12-en-d06423135b17.mp3",
+          "provider": "GEMINI",
+          "voiceName": "Gemini gemini-3.8-flash-tts · Sulafat",
+          "textHash": "8b993845d1074fd4ba70d027ae1ced406622ff3d19e78e123ff107d16a810c78",
+          "durationSec": null,
+          "sizeBytes": 413228
+        },
+        {
+          "langCode": "ja",
+          "status": "READY",
+          "audioUrl": "/audio/12-ja-799b9e9c9e86.mp3",
+          "provider": "GEMINI",
+          "voiceName": "gemini-3.8-flash-lite-tts/Aoede",
+          "textHash": "6c9690c33ea9005e9dea3c06436c00ecb8aef6d7234b54fb53495511bb446520",
+          "durationSec": 26.31,
+          "sizeBytes": 420908
+        },
+        {
+          "langCode": "zh",
+          "status": "READY",
+          "audioUrl": "/audio/12-zh-dc1a340045a9.mp3",
+          "provider": "GEMINI",
+          "voiceName": "Gemini gemini-3.8-flash-lite-tts · Kore",
+          "textHash": "4aefbc721d3c00fbc680b36fbcf0b50bc06e3154acfeca9521968cf1029f914d",
+          "durationSec": null,
+          "sizeBytes": 445100
+        }
+      ]
+    },
+    {
+      "id": "demo-13",
+      "code": "13",
+      "categoryId": 2,
+      "sortOrder": 13,
+      "schematic": [
+        96,
+        182
+      ],
+      "lat": 11.4725,
+      "lng": 107.3912,
+      "geoVerified": false,
+      "geoSourceUrl": "urn:sha256:2ede2f7c00e63638604ebdeb843bb7e94aa1e7829fbd982ede01e5b9f5b8a664#point-05",
+      "status": "PUBLISHED",
+      "version": 1,
+      "triggerRadiusM": 10,
+      "audio": null,
+      "translations": [
+        {
+          "langCode": "vi",
+          "name": "Cây Si Trăm Thân",
+          "summary": "",
+          "scriptText": "Đây là quần thể si cổ thụ mọc ngay bên dòng suối mát. Qua hàng trăm năm phát triển, các cành nhánh và rễ phụ của cây buông xuống, cắm sâu vào lòng đất và mặt hồ. Chúng tạo nên một mạng lưới thân cây chằng chịt, uốn lượn u tịch, như một mê cung huyền bí.",
+          "textHash": "abc469007129d309d3cd64055ee1a2cfec14da8c8106826cd2a2dcde8e0c90f3",
+          "audioNeedsRefresh": false
+        },
+        {
+          "langCode": "en",
+          "name": "Hundred-trunked Ficus",
+          "summary": "Cay Si Tram Than",
+          "scriptText": "This is a cluster of ancient ficus trees growing right beside a cool stream. Over hundreds of years of growth, the branches and aerial roots of the tree have dropped down, penetrating deeply into the ground and the water's surface. They form an intricate, winding, and secluded network of trunks, resembling a mystical labyrinth.",
+          "textHash": "fafb2d2cd2d4c4901090c1caf274250a6a03d3745b1d124392d67349c2ee956d",
+          "audioNeedsRefresh": false
+        },
+        {
+          "langCode": "ja",
+          "name": "百幹のガジュマル",
+          "summary": "Cay Si Tram Than",
+          "scriptText": "清らかな小川のほとりに生えるガジュマル類の古木の群落です。数百年に及ぶ成長を経て、無数の枝や気根が垂れ下がり、大地や湖面深くへと突き刺さっています。それらが複雑に入り組んだ静寂な幹のネットワークを形成し、まるで神秘的な迷宮のようです。",
+          "textHash": "1bf40857673bff138d44790f266dbd03e65a842e99933e7b0c851636909c7b96",
+          "audioNeedsRefresh": false
+        },
+        {
+          "langCode": "ko",
+          "name": "백 줄기 반얀나무",
+          "summary": "Cay Si Tram Than",
+          "scriptText": "이곳은 맑고 시원한 계곡물 바로 곁에서 자라는 고대 시(Si) 무화과나무 군락입니다. 수백 년 동안 자라나며 나뭇가지와 곁뿌리가 아래로 드리워져 땅속과 호수 바닥에 깊숙이 뿌리를 내렸습니다. 이 뿌리와 줄기들이 어지럽게 얽히고설키며 구불구불 이어져, 마치 신비로운 미로와도 같은 고요한 숲 그늘을 만들어 냅니다.",
+          "textHash": "5e6014cf0fa73912acdbdf9aa31242aeb50a1dd785e0f48e7d3e3f0c958d9884",
+          "audioNeedsRefresh": false
+        },
+        {
+          "langCode": "zh",
+          "name": "百干榕树",
+          "summary": "Cay Si Tram Than",
+          "scriptText": "这是一处生长在清凉溪流旁的古榕树群落。历经数百年的生长演变，树枝与不定根垂落下来，深深扎入泥土与水底。它们交织成一片盘根错节、静谧幽深的树干网络，宛如一座神秘莫测的迷宫。",
+          "textHash": "3b2ba089d92e3af60952a7465a1fbef4f627b31ead113cbd9282c69ec29061ba",
+          "audioNeedsRefresh": false
+        }
+      ],
+      "audios": [
+        {
+          "langCode": "vi",
+          "status": "READY",
+          "audioUrl": "/audio/13-vi-e9136907d192.mp3",
+          "provider": "GEMINI",
+          "voiceName": "gemini-3.8-flash-tts/Achird",
+          "textHash": "abc469007129d309d3cd64055ee1a2cfec14da8c8106826cd2a2dcde8e0c90f3",
+          "durationSec": 16.95,
+          "sizeBytes": 271148
+        },
+        {
+          "langCode": "en",
+          "status": "READY",
+          "audioUrl": "/audio/13-en-b2f63aab584e.mp3",
+          "provider": "GEMINI",
+          "voiceName": "gemini-3.8-flash-tts/Charon",
+          "textHash": "fafb2d2cd2d4c4901090c1caf274250a6a03d3745b1d124392d67349c2ee956d",
+          "durationSec": 22.9,
+          "sizeBytes": 366380
+        },
+        {
+          "langCode": "ja",
+          "status": "READY",
+          "audioUrl": "/audio/13-ja-453394a8d435.mp3",
+          "provider": "GEMINI",
+          "voiceName": "gemini-3.8-flash-tts/Aoede",
+          "textHash": "1bf40857673bff138d44790f266dbd03e65a842e99933e7b0c851636909c7b96",
+          "durationSec": 24.34,
+          "sizeBytes": 389420
+        },
+        {
+          "langCode": "ko",
+          "status": "READY",
+          "audioUrl": "/audio/13-ko-4e10f8944617.mp3",
+          "provider": "GEMINI",
+          "voiceName": "gemini-3.8-flash-tts/Iapetus",
+          "textHash": "5e6014cf0fa73912acdbdf9aa31242aeb50a1dd785e0f48e7d3e3f0c958d9884",
+          "durationSec": 26.93,
+          "sizeBytes": 430892
+        },
+        {
+          "langCode": "zh",
+          "status": "READY",
+          "audioUrl": "/audio/13-zh-c24d5feb8210.mp3",
+          "provider": "GEMINI",
+          "voiceName": "gemini-3.8-flash-tts/Sulafat",
+          "textHash": "3b2ba089d92e3af60952a7465a1fbef4f627b31ead113cbd9282c69ec29061ba",
+          "durationSec": 20.38,
+          "sizeBytes": 326060
+        }
+      ]
+    },
+    {
+      "id": "demo-14",
+      "code": "14",
+      "categoryId": 3,
+      "sortOrder": 14,
+      "schematic": [
+        946,
+        334
+      ],
+      "lat": 11.4361,
+      "lng": 107.4525,
+      "geoVerified": false,
+      "geoSourceUrl": "urn:sha256:2ede2f7c00e63638604ebdeb843bb7e94aa1e7829fbd982ede01e5b9f5b8a664#point-07",
+      "status": "PUBLISHED",
+      "version": 1,
+      "triggerRadiusM": 10,
+      "audio": null,
+      "translations": [
+        {
+          "langCode": "vi",
+          "name": "Thác Trời",
+          "summary": "",
+          "scriptText": "Thác Trời, còn gọi là thác Dựng, là một ngọn thác hùng vĩ uốn lượn qua các bãi đá ba-dan nhấp nhô giữa đại ngàn xanh. Nước thác đổ xuống tung bọt trắng xóa quanh năm, tạo nên những màn sương hơi nước mờ ảo. Vào những ngày nắng đẹp, ánh mặt trời xuyên qua làn sương, tạo nên những dải cầu vồng rực rỡ. Vì vậy, nơi đây có tên gọi là Thác Trời.",
+          "textHash": "30570274085b8ca49c8e58a79cc6c157e814c5672fe39f92a9294148a232779d",
+          "audioNeedsRefresh": false
+        },
+        {
+          "langCode": "en",
+          "name": "Troi Waterfall",
+          "summary": "Thac Troi",
+          "scriptText": "Thac Troi, also known as Thac Dung, is a majestic waterfall winding through undulating basalt rock fields in the midst of the vast green forest. The waterfall cascades down with white frothing spray year-round, creating mystical veils of water mist. On beautiful sunny days, sunlight pierces through the mist, creating vibrant rainbows. That is why this place is called Thac Troi, or Heaven Waterfall.",
+          "textHash": "cf9918670b97fc20dc9dc4932a9ed366568e2c23731eccad9cdb8c3f97d7f148",
+          "audioNeedsRefresh": false
+        },
+        {
+          "langCode": "ja",
+          "name": "チョイ滝",
+          "summary": "Thac Troi",
+          "scriptText": "タックズンとも呼ばれるタックチョイは、緑豊かな大自然の中で起伏する玄武岩地帯を縫うように流れる雄大な滝です。滝の水は年中白い水しぶきを上げて流れ落ち、幻想的な水煙を漂わせています。晴れた日には太陽の光が霧を通り抜け、鮮やかな虹の帯を作り出します。そのため、この場所は「天の滝」と名づけられました。",
+          "textHash": "22edb8ac214134cf8d03e18f7ae65bdf120d9128e4d2babe8a57f7a72dc078e3",
+          "audioNeedsRefresh": false
+        },
+        {
+          "langCode": "ko",
+          "name": "쯔어이 폭포",
+          "summary": "Thac Troi",
+          "scriptText": "탁증(Thác Dựng)으로도 불리는 탁쩌이(Thác Trời)는 울창한 원시림 사이로 올록볼록 솟은 현무암 지대를 굽이쳐 흐르는 웅장한 폭포입니다. 일 년 내내 하얀 포말을 뿜어내며 쏟아지는 폭포수는 몽환적인 물안개를 피워 올립니다. 화창한 날이면 햇빛이 물안개를 관통하며 찬란한 무지개를 빚어내어, '하늘의 폭포'라는 뜻의 탁쩌이라는 이름을 얻게 되었습니다.",
+          "textHash": "98a4ad1dc418f6f9973a23409e16968967d10aca24bf8923bcb993e1184d6b92",
+          "audioNeedsRefresh": false
+        },
+        {
+          "langCode": "zh",
+          "name": "Troi 瀑布",
+          "summary": "Thac Troi",
+          "scriptText": "天瀑又称立瀑（thác Dựng），是一座雄伟的瀑布，在苍翠森林间起伏的玄武岩石滩中蜿蜒穿行。瀑布终年飞流直下，激起漫天白沫，营造出虚无缥缈的水雾轻纱。在晴好的日子里，阳光穿透薄雾，折射出绚丽多彩的道道彩虹。正因如此，这里才得名“天瀑”。",
+          "textHash": "3e5fb9c0ece6c323a2567a934675d3725b62d53a658a2d045d23bdbc54b24585",
+          "audioNeedsRefresh": false
+        }
+      ],
+      "audios": [
+        {
+          "langCode": "vi",
+          "status": "READY",
+          "audioUrl": "/audio/14-vi-b0142b3e391a.mp3",
+          "provider": "GEMINI",
+          "voiceName": "gemini-3.8-flash-tts/Achird",
+          "textHash": "30570274085b8ca49c8e58a79cc6c157e814c5672fe39f92a9294148a232779d",
+          "durationSec": 25.35,
+          "sizeBytes": 405548
+        },
+        {
+          "langCode": "en",
+          "status": "READY",
+          "audioUrl": "/audio/14-en-176e30b62bea.mp3",
+          "provider": "GEMINI",
+          "voiceName": "gemini-3.8-flash-tts/Charon",
+          "textHash": "cf9918670b97fc20dc9dc4932a9ed366568e2c23731eccad9cdb8c3f97d7f148",
+          "durationSec": 28.73,
+          "sizeBytes": 459692
+        },
+        {
+          "langCode": "ja",
+          "status": "READY",
+          "audioUrl": "/audio/14-ja-e19be1d1c02f.mp3",
+          "provider": "GEMINI",
+          "voiceName": "gemini-3.8-flash-lite-tts/Kore",
+          "textHash": "22edb8ac214134cf8d03e18f7ae65bdf120d9128e4d2babe8a57f7a72dc078e3",
+          "durationSec": "28.23",
+          "sizeBytes": 451628
+        },
+        {
+          "langCode": "ko",
+          "status": "READY",
+          "audioUrl": "/audio/14-ko-15558cee1f73.mp3",
+          "provider": "GEMINI",
+          "voiceName": "gemini-3.8-flash-lite-tts/Kore",
+          "textHash": "98a4ad1dc418f6f9973a23409e16968967d10aca24bf8923bcb993e1184d6b92",
+          "durationSec": "26.81",
+          "sizeBytes": 428972
+        },
+        {
+          "langCode": "zh",
+          "status": "READY",
+          "audioUrl": "/audio/14-zh-2374bee278ba.mp3",
+          "provider": "GEMINI",
+          "voiceName": "gemini-3.8-flash-tts/Sulafat",
+          "textHash": "3e5fb9c0ece6c323a2567a934675d3725b62d53a658a2d045d23bdbc54b24585",
+          "durationSec": 29.38,
+          "sizeBytes": 470060
+        }
+      ]
+    },
+    {
+      "id": "demo-15",
+      "code": "15",
+      "categoryId": 2,
+      "sortOrder": 15,
+      "schematic": [
+        1123,
+        339
+      ],
+      "lat": 11.4552,
+      "lng": 107.4045,
+      "geoVerified": false,
+      "geoSourceUrl": "urn:sha256:2ede2f7c00e63638604ebdeb843bb7e94aa1e7829fbd982ede01e5b9f5b8a664#point-10",
+      "status": "PUBLISHED",
+      "version": 1,
+      "triggerRadiusM": 10,
+      "audio": null,
+      "translations": [
+        {
+          "langCode": "vi",
+          "name": "Rừng bằng lăng Đà Cộ",
+          "summary": "",
+          "scriptText": "Đây là tuyến đường mòn ngập tràn sắc hoa của loài bằng lăng ổi lông. Vào mùa khô, đặc biệt từ tháng ba đến tháng năm hằng năm, cả khu rừng đồng loạt trút lá và khoác lên mình màu tím rực rỡ. Khung cảnh lãng mạn, nên thơ ấy khác hoàn toàn với màu xanh mướt quanh năm của rừng già.",
+          "textHash": "5d3aba52c0d2dba4c09645447baa2704af88eff59398ad973ee63a5b75844e86",
+          "audioNeedsRefresh": false
+        },
+        {
+          "langCode": "en",
+          "name": "Da Co Lagerstroemia Forest",
+          "summary": "Rung bang lang Da Co",
+          "scriptText": "This is a trail filled with the blossoms of the hairy crape myrtle. During the dry season, particularly from March to May every year, the entire forest sheds its leaves simultaneously and dons a brilliant purple cloak. That romantic and poetic scenery is completely different from the year-round lush green of the primeval forest.",
+          "textHash": "6d3fe5c314e612d6b0f2ab9515485d160dd7a29d356409f1d8c459b1b0703ed1",
+          "audioNeedsRefresh": false
+        },
+        {
+          "langCode": "ja",
+          "name": "ダコーのサルスベリ林",
+          "summary": "Rung bang lang Da Co",
+          "scriptText": "毛氈状の葉を持つバンランの花の色で溢れるトレイルコースです。乾季、特に毎年三月から五月にかけては、森全体が一斉に葉を落とし、鮮やかな紫色に染まります。このロマンチックで詩的な光景は、一年中青々と茂る原生林の緑とはまったく異なる表情を見せてくれます。",
+          "textHash": "d7e05560253741267515ec14f6f7ae7b58d1c7a918f2d617f3d073db20185031",
+          "audioNeedsRefresh": false
+        },
+        {
+          "langCode": "ko",
+          "name": "다꼬 배롱나무 숲",
+          "summary": "Rung bang lang Da Co",
+          "scriptText": "이곳은 털방랑(대왕배롱나무)의 꽃빛으로 물드는 숲길입니다. 건기, 특히 매년 삼월부터 오월 사이가 되면 온 숲이 일제히 낙엽을 떨구고 화려한 보랏빛으로 갈아입습니다. 그 낭만적이고 서정적인 정경은 사시사철 짙푸른 원시림의 풍경과는 완전히 다른 매력을 선사합니다.",
+          "textHash": "3f4e228dfc98b938c32690583487cb409647b0a136e716daca8a1753134353ee",
+          "audioNeedsRefresh": false
+        },
+        {
+          "langCode": "zh",
+          "name": "Da Co 紫薇林",
+          "summary": "Rung bang lang Da Co",
+          "scriptText": "这是一条开满毛果大花紫薇花朵的林间小径。在旱季，尤其是每年的三月至五月，整片森林几乎同时落叶，并披上绚丽夺目的紫色盛装。这番浪漫诗意的景致，与古老森林一年四季常青的翠绿截然不同。",
+          "textHash": "0f3f6cd43d259fbea3081181e71f5e8f95b89309dc133b3adf8766cba3a9a0bb",
+          "audioNeedsRefresh": false
+        }
+      ],
+      "audios": [
+        {
+          "langCode": "vi",
+          "status": "READY",
+          "audioUrl": "/audio/15-vi-bf60b8baa11e.mp3",
+          "provider": "GEMINI",
+          "voiceName": "gemini-3.8-flash-tts/Achird",
+          "textHash": "5d3aba52c0d2dba4c09645447baa2704af88eff59398ad973ee63a5b75844e86",
+          "durationSec": 18.46,
+          "sizeBytes": 295340
+        },
+        {
+          "langCode": "en",
+          "status": "READY",
+          "audioUrl": "/audio/15-en-ba7e056b0e91.mp3",
+          "provider": "GEMINI",
+          "voiceName": "gemini-3.8-flash-tts/Charon",
+          "textHash": "6d3fe5c314e612d6b0f2ab9515485d160dd7a29d356409f1d8c459b1b0703ed1",
+          "durationSec": 22.9,
+          "sizeBytes": 366380
+        },
+        {
+          "langCode": "ja",
+          "status": "READY",
+          "audioUrl": "/audio/15-ja-95b41c5abcf1.mp3",
+          "provider": "GEMINI",
+          "voiceName": "gemini-3.8-flash-tts/Aoede",
+          "textHash": "d7e05560253741267515ec14f6f7ae7b58d1c7a918f2d617f3d073db20185031",
+          "durationSec": 24.75,
+          "sizeBytes": 395948
+        },
+        {
+          "langCode": "ko",
+          "status": "READY",
+          "audioUrl": "/audio/15-ko-ba39719a1330.mp3",
+          "provider": "GEMINI",
+          "voiceName": "gemini-3.8-flash-tts/Iapetus",
+          "textHash": "3f4e228dfc98b938c32690583487cb409647b0a136e716daca8a1753134353ee",
+          "durationSec": 27.53,
+          "sizeBytes": 440492
+        },
+        {
+          "langCode": "zh",
+          "status": "READY",
+          "audioUrl": "/audio/15-zh-250db317c94b.mp3",
+          "provider": "GEMINI",
+          "voiceName": "gemini-3.8-flash-lite-tts/Kore",
+          "textHash": "0f3f6cd43d259fbea3081181e71f5e8f95b89309dc133b3adf8766cba3a9a0bb",
+          "durationSec": "24.75",
+          "sizeBytes": 395948
+        }
+      ]
+    }
+  ],
+  "schematicPois": [
+    {
+      "id": "schematic-3",
+      "code": "3",
+      "sortOrder": 1,
+      "categoryId": 2,
+      "status": "PUBLISHED",
+      "schematic": [
+        354,
+        585
+      ],
+      "lat": 11.4422,
+      "lng": 107.4242,
+      "geoVerified": false,
+      "geoSourceUrl": "urn:cat-tien:schematic-estimate",
+      "translations": [
+        {
+          "langCode": "vi",
+          "name": "Bằng lăng 5 ngọn",
+          "scriptText": "Bằng lăng 5 ngọn là điểm dừng để ngắm một dáng cây đặc biệt giữa rừng Cát Tiên. Từ gốc cây, hãy đưa mắt theo những nhánh vươn lên cao và thử nhận ra năm ngọn cây đã gợi nên tên gọi này. Những đường nét của thân và cành tạo nên vẻ đẹp riêng, khiến một cây rừng trở thành dấu mốc đáng nhớ trên hành trình. Dừng lại dưới tán lá, bạn có thể quan sát hình dáng cây từ nhiều phía và cảm nhận sự đa dạng của thế giới thực vật quanh mình.",
+          "summary": "",
+          "textHash": "9576f1dc3395fada43b79f1e9b5e7406e570a88a31c9564d6db8500ffc934a8c"
+        },
+        {
+          "langCode": "en",
+          "name": "Five-topped Lagerstroemia",
+          "scriptText": "This stop invites you to discover an unusual tree in Cat Tien forest. Follow its branches upward and look for the five tops reflected in its name. Viewed from different angles, the trunk and branches form a distinctive silhouette. Pause beneath the canopy to appreciate the variety of shapes found in forest trees.",
+          "summary": "",
+          "textHash": "efbf5fc8cd49fbd41c2f3742f91f704b4c2e1cf406e585ba3b50144266d63b24"
+        },
+        {
+          "langCode": "ja",
+          "name": "五つ又のサルスベリ",
+          "scriptText": "カッティエンの森で、特徴ある樹形を楽しめる場所です。根元から枝を目でたどり、名前の由来となった五つの梢を探してみましょう。見る角度によって幹や枝の姿が変わります。木陰で足を止め、森の木々が持つ形の多様さを感じてください。",
+          "summary": "",
+          "textHash": "9fa896bd0df203dba60aaf9ba412ce52c4bc725710f5d94f15cee237cce03e76"
+        },
+        {
+          "langCode": "ko",
+          "name": "다섯 갈래 배롱나무",
+          "scriptText": "깟띠엔 숲에서 독특한 나무의 모습을 감상하는 지점입니다. 밑동에서 가지를 따라 시선을 올리며 이름에 담긴 다섯 갈래의 꼭대기를 찾아보세요. 바라보는 방향에 따라 줄기와 가지의 모습도 달라집니다. 나무 그늘에서 잠시 쉬며 숲속 나무들의 다양한 형태를 느껴보세요.",
+          "summary": "",
+          "textHash": "2866cf5024398106f4566af00518f2bdfe6ce514dad6ad6c96bdd15d1e6e60a2"
+        },
+        {
+          "langCode": "zh",
+          "name": "五冠紫薇树",
+          "scriptText": "在这里，您可以欣赏吉仙森林中形态独特的树木。从树干底部向上观察枝条，寻找名称中提到的五个树冠。从不同角度观看，树干与枝条呈现出不同的轮廓。在树荫下稍作停留，感受森林植物形态的丰富多样。",
+          "summary": "",
+          "textHash": "c82313a49b279d219ec0ab4440148c186b798c2c7ad520091e0a0a14fb89fb08"
+        }
+      ],
+      "audios": [],
+      "lang": "vi",
+      "name": "Bằng lăng 5 ngọn",
+      "summary": "",
+      "scriptText": "Bằng lăng 5 ngọn là điểm dừng để ngắm một dáng cây đặc biệt giữa rừng Cát Tiên. Từ gốc cây, hãy đưa mắt theo những nhánh vươn lên cao và thử nhận ra năm ngọn cây đã gợi nên tên gọi này. Những đường nét của thân và cành tạo nên vẻ đẹp riêng, khiến một cây rừng trở thành dấu mốc đáng nhớ trên hành trình. Dừng lại dưới tán lá, bạn có thể quan sát hình dáng cây từ nhiều phía và cảm nhận sự đa dạng của thế giới thực vật quanh mình.",
+      "audio": null,
+      "translationMissing": false
+    },
+    {
+      "id": "schematic-4",
+      "code": "4",
+      "sortOrder": 2,
+      "categoryId": 2,
+      "status": "PUBLISHED",
+      "schematic": [
+        390,
+        665
+      ],
+      "lat": 11.4381,
+      "lng": 107.4269,
+      "geoVerified": false,
+      "geoSourceUrl": "urn:cat-tien:schematic-estimate",
+      "translations": [
+        {
+          "langCode": "vi",
+          "name": "Thiên tuế",
+          "scriptText": "Điểm Thiên tuế mang đến một góc nhìn khác về thế giới cây rừng. Thay vì chỉ ngước nhìn những tán đại thụ, hãy chú ý đến dáng thân và những tàu lá dài xòe quanh ngọn của cây. Cách sắp xếp của lá tạo nên một hình dáng dễ nhận biết giữa nhiều tầng cây xanh. Đây là dịp để quan sát kỹ những chi tiết nhỏ thường bị bỏ qua khi đi bộ trong rừng, từ đường nét của thân đến sự đối xứng của tán lá.",
+          "summary": "",
+          "textHash": "09a98c5f25b910f055d694d2c7ce7c3c87a526d5edd7f3d6143d1b165b943371"
+        },
+        {
+          "langCode": "en",
+          "name": "Cycad",
+          "scriptText": "The cycad stop offers a different perspective on forest plants. Look beyond the tall canopy and notice the trunk and long leaves spreading around the crown. Their arrangement gives the plant a recognisable outline among the surrounding greenery. Take time to observe small details, from the texture of the trunk to the symmetry of the leaves.",
+          "summary": "",
+          "textHash": "f96ebb5f293637e9a7d8873a6f4bbd8d2e116188918ee3d44824f36a1c3130d5"
+        },
+        {
+          "langCode": "ja",
+          "name": "ソテツ",
+          "scriptText": "この場所では、森の植物を違った視点から観察できます。高木の梢だけでなく、幹や頂部から広がる長い葉にも注目してください。葉の並び方が、周囲の緑の中で特徴ある輪郭を作ります。幹の表情や葉の対称性など、小さな細部をゆっくり眺めてみましょう。",
+          "summary": "",
+          "textHash": "085a37f6a889c2846a5a0b4756d4d5ace3ae15b17d16ba2be92abae1758bc194"
+        },
+        {
+          "langCode": "ko",
+          "name": "소철",
+          "scriptText": "이 지점에서는 숲의 식물을 다른 시선으로 살펴볼 수 있습니다. 높은 나무의 수관뿐 아니라 줄기와 꼭대기에서 사방으로 펼쳐지는 긴 잎에 주목해 보세요. 잎의 배열은 주변 녹음 속에서 독특한 윤곽을 만듭니다. 줄기의 질감과 잎의 대칭 같은 작은 특징을 천천히 관찰해 보세요.",
+          "summary": "",
+          "textHash": "7b56a1fed14a7de4dd27cf74e55fbf19606e923f8c609346ca3123720b6b0c0c"
+        },
+        {
+          "langCode": "zh",
+          "name": "苏铁",
+          "scriptText": "这一站让您换个角度观察森林植物。除了仰望高大的树冠，也请留意苏铁的树干以及从顶部向四周伸展的长叶。叶片的排列使它在周围的绿意中呈现出鲜明轮廓。不妨放慢脚步，观察树干纹理与叶片的对称之美。",
+          "summary": "",
+          "textHash": "0019054e580f08b054bd425ef59bdcaeee05fe5e402fe8eeff11afdf9e168821"
+        }
+      ],
+      "audios": [],
+      "lang": "vi",
+      "name": "Thiên tuế",
+      "summary": "",
+      "scriptText": "Điểm Thiên tuế mang đến một góc nhìn khác về thế giới cây rừng. Thay vì chỉ ngước nhìn những tán đại thụ, hãy chú ý đến dáng thân và những tàu lá dài xòe quanh ngọn của cây. Cách sắp xếp của lá tạo nên một hình dáng dễ nhận biết giữa nhiều tầng cây xanh. Đây là dịp để quan sát kỹ những chi tiết nhỏ thường bị bỏ qua khi đi bộ trong rừng, từ đường nét của thân đến sự đối xứng của tán lá.",
+      "audio": null,
+      "translationMissing": false
+    },
+    {
+      "id": "schematic-6",
+      "code": "6",
+      "sortOrder": 3,
+      "categoryId": 1,
+      "status": "PUBLISHED",
+      "schematic": [
+        557,
+        461
+      ],
+      "lat": 11.4415798,
+      "lng": 107.4305197,
+      "geoVerified": false,
+      "geoSourceUrl": "https://www.openstreetmap.org/node/13587216603",
+      "translations": [
+        {
+          "langCode": "vi",
+          "name": "Vườn thực vật",
+          "scriptText": "Vườn thực vật là điểm dừng để làm quen với sự phong phú của cây cỏ trong hành trình khám phá Cát Tiên. Hãy thử quan sát và so sánh hình dáng lá, màu sắc vỏ cây, cách phân cành và những tầng xanh quanh lối đi. Mỗi đặc điểm nhỏ đều là một gợi ý để nhận biết và tìm hiểu về thực vật. Không gian này giúp chuyến tham quan trở thành một buổi học ngoài trời, nơi bạn có thể đi chậm, đặt câu hỏi và khám phá mối liên hệ giữa cây xanh với môi trường sống của rừng.",
+          "summary": "",
+          "textHash": "2ae448a50312facad8fa8c0963c9713ef7b10be59b06c528aba698ee85799606"
+        },
+        {
+          "langCode": "en",
+          "name": "Botanical Garden",
+          "scriptText": "The botanical garden is a place to get acquainted with plant diversity during your Cat Tien visit. Compare leaf shapes, bark colours and branching patterns along the path. Each detail offers a clue for learning about plants. Treat this stop as an outdoor classroom: slow down, ask questions and explore the relationship between vegetation and the forest environment.",
+          "summary": "",
+          "textHash": "e06c3d14514d942dcf048b0accf0556af09edd4d3e0d731d9465b344a9d16173"
+        },
+        {
+          "langCode": "ja",
+          "name": "植物園",
+          "scriptText": "植物園は、カッティエンの植物の多様さに親しむ場所です。道沿いの葉の形、樹皮の色、枝の伸び方を比べてみましょう。小さな特徴の一つ一つが植物を知る手がかりになります。屋外の教室のようにゆっくり歩き、植物と森の環境とのつながりを考えてみてください。",
+          "summary": "",
+          "textHash": "86909ef87c5776d1e7a38fab6ef4fea417d3f73c5a16f0e4a5f052d1d7e1f7b1"
+        },
+        {
+          "langCode": "ko",
+          "name": "식물원",
+          "scriptText": "식물원은 깟띠엔의 다양한 식물을 알아가는 장소입니다. 길을 따라 잎 모양, 나무껍질 색깔, 가지가 뻗는 모습을 비교해 보세요. 작은 특징 하나하나가 식물을 이해하는 단서가 됩니다. 야외 교실을 걷듯 천천히 둘러보며 식물과 숲의 환경이 맺는 관계를 생각해 보세요.",
+          "summary": "",
+          "textHash": "adc357e5be5751d106db70415a821a68e08f3bc847c01148502789f05ae56939"
+        },
+        {
+          "langCode": "zh",
+          "name": "植物园",
+          "scriptText": "植物园是认识吉仙植物多样性的一个停留点。沿着步道，比较叶片形状、树皮颜色以及枝条的生长方式。每个细节都能成为了解植物的线索。把这里当作一间户外课堂，放慢脚步，带着问题探索植物与森林环境之间的联系。",
+          "summary": "",
+          "textHash": "dffbb931df0b6384254ed31155bdac7394a888e5eccff68be42bb045ed3bb583"
+        }
+      ],
+      "audios": [],
+      "lang": "vi",
+      "name": "Vườn thực vật",
+      "summary": "",
+      "scriptText": "Vườn thực vật là điểm dừng để làm quen với sự phong phú của cây cỏ trong hành trình khám phá Cát Tiên. Hãy thử quan sát và so sánh hình dáng lá, màu sắc vỏ cây, cách phân cành và những tầng xanh quanh lối đi. Mỗi đặc điểm nhỏ đều là một gợi ý để nhận biết và tìm hiểu về thực vật. Không gian này giúp chuyến tham quan trở thành một buổi học ngoài trời, nơi bạn có thể đi chậm, đặt câu hỏi và khám phá mối liên hệ giữa cây xanh với môi trường sống của rừng.",
+      "audio": null,
+      "translationMissing": false
+    },
+    {
+      "id": "schematic-10",
+      "code": "10",
+      "sortOrder": 4,
+      "categoryId": 2,
+      "status": "PUBLISHED",
+      "schematic": [
+        216,
+        245
+      ],
+      "lat": 11.4613,
+      "lng": 107.3637,
+      "geoVerified": false,
+      "geoSourceUrl": "urn:cat-tien:schematic-estimate",
+      "translations": [
+        {
+          "langCode": "vi",
+          "name": "Cây 6 múi",
+          "scriptText": "Cây 6 múi là một điểm nhấn về hình dáng cây trên tuyến tham quan rừng Cát Tiên. Tên gọi gợi sự chú ý đến những đường múi nổi trên thân, tạo nên một dáng cây khác lạ giữa rừng xanh. Hãy quan sát từ nhiều hướng để cảm nhận cách ánh sáng và bóng râm làm nổi bật các đường nét ấy. Điểm dừng này nhắc chúng ta rằng vẻ đẹp của rừng không chỉ nằm ở những tán cây cao, mà còn ở các chi tiết độc đáo của từng thân cây.",
+          "summary": "",
+          "textHash": "ab49da24e92025cb8d5c6dda53fb1355dc7b19f0a22d4859af167138e4c141d2"
+        },
+        {
+          "langCode": "en",
+          "name": "Six-lobed Tree",
+          "scriptText": "The Six-lobed Tree is a stop for appreciating an unusual trunk shape. Its name draws attention to the raised lobes that distinguish it from surrounding trees. Look from several angles and notice how light and shade reveal its contours. Forest beauty can be found in the details of a single trunk as well as in the canopy above.",
+          "summary": "",
+          "textHash": "e6374c8d53fc4ffe0e83e90541f8ab02885e7bf13dc98f405b8b01c470befc6f"
+        },
+        {
+          "langCode": "ja",
+          "name": "六稜の木",
+          "scriptText": "この場所では、特徴ある幹の形に注目してみましょう。名前は幹に浮かぶ稜を連想させます。いろいろな方向から眺めると、光と影によって輪郭の見え方が変わります。森の美しさは高い梢だけでなく、一本の幹の細部にも見つかります。",
+          "summary": "",
+          "textHash": "2a9bfe0a9e01ed2b458731c2a700d1f7ad96c8fe1f6cc192ae4970993c3e6ab1"
+        },
+        {
+          "langCode": "ko",
+          "name": "여섯 골 나무",
+          "scriptText": "이 지점에서는 독특한 나무줄기의 형태에 주목해 보세요. 이름은 줄기에 도드라진 골을 떠올리게 합니다. 여러 방향에서 바라보면 빛과 그늘에 따라 윤곽이 다르게 보입니다. 숲의 아름다움은 높은 수관뿐 아니라 나무 한 그루의 세부 모습에서도 찾을 수 있습니다.",
+          "summary": "",
+          "textHash": "df29bb24ad34022faddbdd49a37796386196513bb4d82e5398ae1f3277e93144"
+        },
+        {
+          "langCode": "zh",
+          "name": "六棱树",
+          "scriptText": "这一站适合欣赏独特的树干形态。名称让人留意树干上隆起的棱线，使它在周围树木中显得与众不同。从几个方向观察，您会发现光影让轮廓呈现出不同层次。森林之美不仅在高处的树冠，也藏在一棵树的细节之中。",
+          "summary": "",
+          "textHash": "401185676810c77a74c4143a48da76c1ae402d15569787d2d564dd1d85d321e6"
+        }
+      ],
+      "audios": [],
+      "lang": "vi",
+      "name": "Cây 6 múi",
+      "summary": "",
+      "scriptText": "Cây 6 múi là một điểm nhấn về hình dáng cây trên tuyến tham quan rừng Cát Tiên. Tên gọi gợi sự chú ý đến những đường múi nổi trên thân, tạo nên một dáng cây khác lạ giữa rừng xanh. Hãy quan sát từ nhiều hướng để cảm nhận cách ánh sáng và bóng râm làm nổi bật các đường nét ấy. Điểm dừng này nhắc chúng ta rằng vẻ đẹp của rừng không chỉ nằm ở những tán cây cao, mà còn ở các chi tiết độc đáo của từng thân cây.",
+      "audio": null,
+      "translationMissing": false
+    },
+    {
+      "id": "schematic-11",
+      "code": "11",
+      "sortOrder": 5,
+      "categoryId": 2,
+      "status": "PUBLISHED",
+      "schematic": [
+        219,
+        146
+      ],
+      "lat": 11.4658,
+      "lng": 107.3811,
+      "geoVerified": false,
+      "geoSourceUrl": "urn:cat-tien:schematic-estimate",
+      "translations": [
+        {
+          "langCode": "vi",
+          "name": "Bằng lăng lộc bình",
+          "scriptText": "Bằng lăng lộc bình gây ấn tượng bởi thân cây có hình dáng khác lạ, gợi liên tưởng đến một chiếc lộc bình giữa rừng. Hãy lùi lại một chút để ngắm toàn bộ dáng cây, rồi quan sát những đường cong và chỗ phình trên thân. Cùng với tán lá phía trên, các chi tiết ấy tạo thành một tác phẩm tự nhiên không lặp lại. Đây là điểm dừng thích hợp để cảm nhận sự đa dạng về hình thái của cây rừng và lưu lại một góc nhìn riêng trong chuyến khám phá Cát Tiên.",
+          "summary": "",
+          "textHash": "50357c792b139e2d7d47c1585979c8353c380054f5ce7d81677c54c0bef9d362"
+        },
+        {
+          "langCode": "en",
+          "name": "Vase-shaped Lagerstroemia",
+          "scriptText": "This tree stands out for an unusual trunk that recalls the shape of a decorative vase. Step back to see its outline, then notice the curves and swollen sections of the trunk. Together with the canopy, they form a distinctive natural composition. This stop offers a chance to appreciate the variety of tree forms in Cat Tien.",
+          "summary": "",
+          "textHash": "766f5be0ba79b18ef38a9ef6336f1abffdec6fd94bcbea61c2cdc9a37b7d8e7b"
+        },
+        {
+          "langCode": "ja",
+          "name": "花瓶形のサルスベリ",
+          "scriptText": "この木は、花瓶を思わせる特徴ある幹が印象的です。少し離れて全体を眺めてから、幹の曲線や膨らみを観察してみましょう。上に広がる葉とともに、自然が作った独特の姿を見せてくれます。カッティエンの木々の多様な形を感じられる場所です。",
+          "summary": "",
+          "textHash": "dae226f49906d3b4247b1f9982a9649783e3876043ab62e9cf21557715c817e9"
+        },
+        {
+          "langCode": "ko",
+          "name": "화병 모양 배롱나무",
+          "scriptText": "이 나무는 장식용 화병을 떠올리게 하는 독특한 줄기가 인상적입니다. 조금 떨어져 전체 모습을 본 뒤 줄기의 곡선과 부풀어 오른 부분을 살펴보세요. 위로 펼쳐진 잎과 어우러져 자연이 만든 특별한 형태를 보여줍니다. 깟띠엔 나무들의 다양한 모습을 느낄 수 있는 지점입니다.",
+          "summary": "",
+          "textHash": "cff425374b8a42b11ce211d1753b280e310c40fafc2b55bbf1f5f8a002c19448"
+        },
+        {
+          "langCode": "zh",
+          "name": "花瓶形紫薇树",
+          "scriptText": "这棵树以形似花瓶的独特树干给人留下印象。先退后几步欣赏整体轮廓，再观察树干的曲线与膨大部位。它们与上方树冠共同组成一件独特的天然作品。这一站让您感受吉仙森林树木形态的多样之美。",
+          "summary": "",
+          "textHash": "ebc7e4d8a8ff6d4da7b12812d20201c7c4e12a8331ddf070e2f97425b76cf69c"
+        }
+      ],
+      "audios": [],
+      "lang": "vi",
+      "name": "Bằng lăng lộc bình",
+      "summary": "",
+      "scriptText": "Bằng lăng lộc bình gây ấn tượng bởi thân cây có hình dáng khác lạ, gợi liên tưởng đến một chiếc lộc bình giữa rừng. Hãy lùi lại một chút để ngắm toàn bộ dáng cây, rồi quan sát những đường cong và chỗ phình trên thân. Cùng với tán lá phía trên, các chi tiết ấy tạo thành một tác phẩm tự nhiên không lặp lại. Đây là điểm dừng thích hợp để cảm nhận sự đa dạng về hình thái của cây rừng và lưu lại một góc nhìn riêng trong chuyến khám phá Cát Tiên.",
+      "audio": null,
+      "translationMissing": false
+    },
+    {
+      "id": "schematic-12",
+      "code": "12",
+      "sortOrder": 6,
+      "categoryId": 2,
+      "status": "PUBLISHED",
+      "schematic": [
+        149,
+        213
+      ],
+      "lat": 11.4692,
+      "lng": 107.3844,
+      "geoVerified": false,
+      "geoSourceUrl": "urn:cat-tien:schematic-estimate",
+      "translations": [
+        {
+          "langCode": "vi",
+          "name": "Rừng Đại Phong Tử",
+          "scriptText": "Rừng Đại Phong Tử mở ra một không gian khám phá khác trên hành trình tìm hiểu Cát Tiên. Đại phong tử là một trong những loài cây hiện diện trong hệ sinh thái rừng của vườn, góp phần tạo nên sự phong phú của thảm thực vật nơi đây. Theo bước trên đường mòn, hãy chú ý đến các tầng cây, khoảng sáng dưới tán và âm thanh của rừng. Điểm dừng này là dịp để cảm nhận khu rừng như một hệ thống sống, nơi cây cối, động vật và môi trường luôn gắn bó với nhau.",
+          "summary": "",
+          "textHash": "33d4aaeb4d6bf1a61029bc18ba41546b9e9cda1447792b533a3b6f953f5669eb"
+        },
+        {
+          "langCode": "en",
+          "name": "Dai Phong Tu Forest",
+          "scriptText": "Dai Phong Tu Forest offers another setting for exploring Cat Tien. Dai phong tu is among the tree species found in the park and contributes to its plant diversity. Along the trail, notice the layers of vegetation, patches of light beneath the canopy and forest sounds. Experience the forest as a living system connecting plants, animals and their environment.",
+          "summary": "",
+          "textHash": "8b993845d1074fd4ba70d027ae1ced406622ff3d19e78e123ff107d16a810c78"
+        },
+        {
+          "langCode": "ja",
+          "name": "大風子の森",
+          "scriptText": "大風子の森では、カッティエンの森の別の一面に出会えます。大風子は園内に見られる樹木の一つで、植物の多様さを支えています。道を歩きながら、重なる木々や木漏れ日、森の音に注目してください。植物、動物、環境がつながる一つの生きた仕組みとして森を感じてみましょう。",
+          "summary": "",
+          "textHash": "6c9690c33ea9005e9dea3c06436c00ecb8aef6d7234b54fb53495511bb446520"
+        },
+        {
+          "langCode": "ko",
+          "name": "대풍자 숲",
+          "scriptText": "대풍자 숲은 깟띠엔의 또 다른 모습을 만나는 장소입니다. 대풍자는 공원에 자라는 나무 중 하나로 식물의 다양성을 이룹니다. 숲길을 걸으며 여러 층의 식물, 나뭇잎 사이로 드는 빛, 숲의 소리에 귀 기울여 보세요. 식물과 동물, 환경이 연결된 살아 있는 하나의 체계로 숲을 느껴보세요.",
+          "summary": "",
+          "textHash": "2df60366f7d4351f837144072b38112dafc9cb1e7d1d91d0c386921de79b8a68"
+        },
+        {
+          "langCode": "zh",
+          "name": "大风子林",
+          "scriptText": "大风子林展现了吉仙森林的另一面。大风子是园内生长的树种之一，丰富了这里的植物多样性。沿步道前行时，请留意层层植被、林冠下的光斑以及森林的声音。您可以在这里感受森林是一个让植物、动物与环境彼此相连的生命系统。",
+          "summary": "",
+          "textHash": "4aefbc721d3c00fbc680b36fbcf0b50bc06e3154acfeca9521968cf1029f914d"
+        }
+      ],
+      "audios": [],
+      "lang": "vi",
+      "name": "Rừng Đại Phong Tử",
+      "summary": "",
+      "scriptText": "Rừng Đại Phong Tử mở ra một không gian khám phá khác trên hành trình tìm hiểu Cát Tiên. Đại phong tử là một trong những loài cây hiện diện trong hệ sinh thái rừng của vườn, góp phần tạo nên sự phong phú của thảm thực vật nơi đây. Theo bước trên đường mòn, hãy chú ý đến các tầng cây, khoảng sáng dưới tán và âm thanh của rừng. Điểm dừng này là dịp để cảm nhận khu rừng như một hệ thống sống, nơi cây cối, động vật và môi trường luôn gắn bó với nhau.",
+      "audio": null,
+      "translationMissing": false
+    },
+    {
+      "code": "coord-01",
+      "translations": [
+        {
+          "langCode": "en",
+          "name": "Visitor Center",
+          "scriptText": "Start your visit here: buy tickets and take the ferry across the Dong Nai River to enter the park.",
+          "textHash": "00613c7650998c0f8a8ae5f60eb5b74c52182693a6fdcaa6961753338a03a222",
+          "audioNeedsRefresh": false
+        },
+        {
+          "langCode": "ja",
+          "name": "ビジターセンター",
+          "scriptText": "ここは見学の出発点です。入場券を購入し、渡し船でドンナイ川を渡って公園に入ります。",
+          "textHash": "92b5de40081b2680b7a1202c6e44d37eb4fff01ee82ed0c0fc8288ba7baa02e1",
+          "audioNeedsRefresh": false
+        },
+        {
+          "langCode": "ko",
+          "name": "방문자 센터",
+          "scriptText": "탐방을 시작하는 곳입니다. 입장권을 구입한 뒤 배를 타고 동나이강을 건너 공원으로 들어갑니다.",
+          "textHash": "096059bbc6d4d44308e7c559cdbd5f60e99b61fec0906d8c8473693e94fe78bc",
+          "audioNeedsRefresh": false
+        },
+        {
+          "langCode": "vi",
+          "name": "Trung tâm Du Khách",
+          "scriptText": "Nơi bắt đầu mọi hành trình, mua vé và qua đò vượt sông Đồng Nai để vào ranh giới vườn.",
+          "textHash": "1dabac733eb6d3439dd9a14a8ccba1d928d931982882ce092ae29c954f82ddd4",
+          "audioNeedsRefresh": false
+        },
+        {
+          "langCode": "zh",
+          "name": "游客中心",
+          "scriptText": "这里是游览的起点。游客在此购票，乘渡船跨越同奈河，进入国家公园。",
+          "textHash": "f5fd3fe0d29311ad0bce3dc6f696c4f1166ae467a182a994c361c4b99816bfe0",
+          "audioNeedsRefresh": false
+        }
+      ],
+      "audios": [
+        {
+          "langCode": "ja",
+          "status": "READY",
+          "audioUrl": "/audio/coord-01-ja-a4e5323b0988.mp3",
+          "provider": "GEMINI",
+          "voiceName": "gemini-3.8-flash-lite-tts/Aoede",
+          "textHash": "92b5de40081b2680b7a1202c6e44d37eb4fff01ee82ed0c0fc8288ba7baa02e1",
+          "durationSec": "8.86",
+          "sizeBytes": 141740
+        },
+        {
+          "langCode": "vi",
+          "status": "READY",
+          "audioUrl": "/audio/coord-01-vi.mp3",
+          "provider": "GEMINI",
+          "voiceName": "Gemini gemini-3.8-flash-tts · Kore",
+          "textHash": "1dabac733eb6d3439dd9a14a8ccba1d928d931982882ce092ae29c954f82ddd4"
+        },
+        {
+          "langCode": "en",
+          "status": "READY",
+          "audioUrl": "/audio/coord-01-en.mp3",
+          "provider": "GEMINI",
+          "voiceName": "Gemini gemini-3.8-flash-tts · Charon",
+          "textHash": "00613c7650998c0f8a8ae5f60eb5b74c52182693a6fdcaa6961753338a03a222"
+        }
+      ]
+    }
+  ],
+  "edges": [
+    [
+      "0",
+      "1",
+      0.12
+    ],
+    [
+      "0",
+      "4",
+      0.7
+    ],
+    [
+      "2",
+      "4",
+      0.2
+    ],
+    [
+      "3",
+      "4",
+      0.2
+    ],
+    [
+      "4",
+      "5",
+      0.6
+    ],
+    [
+      "5",
+      "6",
+      0.1
+    ],
+    [
+      "6",
+      "7",
+      0.5
+    ],
+    [
+      "6",
+      "14",
+      3.6
+    ],
+    [
+      "7",
+      "8",
+      2
+    ],
+    [
+      "8",
+      "9",
+      5
+    ],
+    [
+      "8",
+      "10",
+      7.5
+    ],
+    [
+      "10",
+      "11",
+      1
+    ],
+    [
+      "11",
+      "12",
+      0.5
+    ],
+    [
+      "11",
+      "13",
+      2
+    ],
+    [
+      "14",
+      "15",
+      0.7
+    ]
+  ]
+}
