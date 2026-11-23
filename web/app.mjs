@@ -280,14 +280,14 @@ function renderAnalytics() {
   const currentHour = Math.floor(Date.now() / 3_600_000) * 3_600_000;
   const hours = analyticsData?.hourlyListens ?? Array.from({ length: 5 }, (_, index) => ({
     hour: hourLabel.format(currentHour - (4 - index) * 3_600_000),
-    count: '?',
+    count: '—',
   }));
   const columns = hours.map(({ hour, count }) => `<div class="stat"><strong>${esc(count)}</strong><span>${esc(hour)}</span></div>`).join('');
   $('#activity-stats').innerHTML = `
-    <div class="stat online-stat"><strong>${esc(analyticsData?.activeUsers ?? '?')}</strong><span>Ng??i ?ang s? d?ng</span></div>
-    <div class="stat"><strong>${esc(analyticsData?.todayListens ?? '?')}</strong><span>L??t nghe h?m nay</span></div>
-    <section class="hourly-listens" aria-label="L??t nghe 5 gi? g?n nh?t">
-      <h3>L??t nghe 5 gi? g?n nh?t</h3>
+    <div class="stat online-stat"><strong>${esc(analyticsData?.activeUsers ?? '—')}</strong><span>Người đang sử dụng</span></div>
+    <div class="stat"><strong>${esc(analyticsData?.todayListens ?? '—')}</strong><span>Lượt nghe hôm nay</span></div>
+    <section class="hourly-listens" aria-label="Lượt nghe 5 giờ gần nhất">
+      <h3>Lượt nghe 5 giờ gần nhất</h3>
       <div class="hourly-listen-columns">${columns}</div>
     </section>`;
   if (!analyticsData) { $('#analytics-list').innerHTML = '<tr><td colspan="4">Chưa tải được thống kê.</td></tr>'; return; }
