@@ -1,0 +1,15 @@
+KẾT QUẢ BUILD NGÀY 23/11/2026
+
+Đã build lại web/dist và ba dịch vụ backend:
+- content-poi-service
+- audio-tts-service
+- qr-fallback-service
+
+Web được đóng gói với 15 điểm và 5 ngôn ngữ.
+4/4 kiểm thử build-output và shared-audio-build đạt.
+Web, API danh sách 15 điểm và URL audio mẫu trả HTTP 200.
+
+Audio bản sao nằm ở C:\Users\LEGION\Music\CatTien_Audio.
+Ứng dụng vẫn sử dụng audio gốc trong dự án.
+Thư mục build không được đưa vào Git; thành viên khác cần build trên máy của mình.
+Build thành công không có nghĩa các tiến trình backend đang chạy đã được khởi động lại.
