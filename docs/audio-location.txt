@@ -1,0 +1,18 @@
+VỊ TRÍ BẢN SAO AUDIO
+
+Thư mục trên máy: C:\Users\LEGION\Music\CatTien_Audio
+
+- web-audio: 79 file MP3 và manifest.json.
+- backend-audio: 91 file MP3.
+- Tổng cộng: 170 file MP3 và 1 manifest.
+
+Thư mục bản sao đã được chuyển từ D:\CatTien_Audio sang vị trí trên ổ C.
+Các file được đối chiếu SHA256 trước khi xóa bản sao trên ổ D.
+Số lượng này bao gồm các phiên bản audio, không phải 170 bài riêng biệt đã duyệt.
+
+Audio gốc phục vụ dự án vẫn giữ tại:
+- web/narration-audio
+- backend/fixtures/audio
+
+Đường dẫn Music là thư mục local ngoài repository, không được tải lên GitHub.
+Commit này ghi nhận vị trí bản sao; không đổi đường dẫn phát audio của ứng dụng.
