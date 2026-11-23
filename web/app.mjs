@@ -276,8 +276,15 @@ async function loadAnalytics() {
   } finally { if (run === analyticsRun) $('#analytics-refresh').disabled = false; }
 }
 function renderAnalytics() {
-  const values = analyticsData ? [analyticsData.activeUsers, analyticsData.totalListens, analyticsData.todayListens] : ['—', '—', '—'];
-  $('#activity-stats').innerHTML = values.map((value, index) => `<div class="stat ${index === 0 ? 'online-stat' : ''}"><strong>${esc(value)}</strong><span>${['Người đang sử dụng', 'Tổng lượt nghe', 'Lượt nghe hôm nay'][index]}</span></div>`).join('');
+  const hours = analyticsData?.hourlyListens ?? [];
+  const maxCount = Math.max(1, ...hours.map(hour => hour.count));
+  const columns = hours.map(({ hour, count }) => `<div class="hourly-listen">
+    <b>${esc(count)}</b><i aria-hidden="true" style="height:${count / maxCount * 32}px"></i><span>${esc(hour)}</span>
+  </div>`).join('');
+  $('#activity-stats').innerHTML = `
+    <div class="stat online-stat"><strong>${esc(analyticsData?.activeUsers ?? '—')}</strong><span>Người đang sử dụng</span></div>
+    <div class="stat hourly-listens"><span>Lượt nghe 5 giờ gần nhất</span><div class="hourly-listen-columns">${columns || '—'}</div></div>
+    <div class="stat today-listens"><strong>${esc(analyticsData?.todayListens ?? '—')}</strong><span>Lượt nghe hôm nay</span></div>`;
   if (!analyticsData) { $('#analytics-list').innerHTML = '<tr><td colspan="4">Chưa tải được thống kê.</td></tr>'; return; }
   const rows = new Map(analyticsData.rows.map(row => [`${row.poiId}:${row.lang}`, { ...row }]));
   for (const poi of state.admin.filter(p => p.status === 'PUBLISHED')) for (const tr of poi.translations) {

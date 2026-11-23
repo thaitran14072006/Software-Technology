@@ -34,11 +34,21 @@ export class AnalyticsService {
       const [totals] = await manager.query(`SELECT count(*)::int AS total,
         count(*) FILTER (WHERE started_at >= (date_trunc('day', now() AT TIME ZONE 'Asia/Ho_Chi_Minh') AT TIME ZONE 'Asia/Ho_Chi_Minh'))::int AS today
         FROM audio_listen_events`);
+      const hourlyListens = await manager.query(`SELECT to_char(bucket.start_at AT TIME ZONE 'Asia/Ho_Chi_Minh', 'HH24:MI') AS hour,
+        count(e.started_at)::int AS count
+        FROM generate_series(
+          date_trunc('hour', now(), 'Asia/Ho_Chi_Minh') - interval '4 hours',
+          date_trunc('hour', now(), 'Asia/Ho_Chi_Minh'),
+          interval '1 hour'
+        ) AS bucket(start_at)
+        LEFT JOIN audio_listen_events e ON e.started_at >= bucket.start_at
+          AND e.started_at < bucket.start_at + interval '1 hour'
+        GROUP BY bucket.start_at ORDER BY bucket.start_at`);
       const rows = await manager.query(`SELECT p.id AS "poiId", p.code, e.lang_code AS lang, count(*)::int AS count,
         COALESCE((SELECT name FROM poi_translations WHERE poi_id = p.id AND lang_code = e.lang_code), p.code) AS name
         FROM audio_listen_events e JOIN pois p ON p.id = e.poi_id
         GROUP BY p.id, p.code, e.lang_code ORDER BY count(*) DESC, p.code, e.lang_code`);
-      return { activeUsers: presence.count, activeWindowSeconds: 90, totalListens: totals.total, todayListens: totals.today, rows, updatedAt: new Date().toISOString() };
+      return { activeUsers: presence.count, activeWindowSeconds: 90, totalListens: totals.total, todayListens: totals.today, hourlyListens, rows, updatedAt: new Date().toISOString() };
     });
   }
 }
