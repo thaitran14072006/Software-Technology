@@ -276,15 +276,20 @@ async function loadAnalytics() {
   } finally { if (run === analyticsRun) $('#analytics-refresh').disabled = false; }
 }
 function renderAnalytics() {
-  const hours = analyticsData?.hourlyListens ?? [];
-  const maxCount = Math.max(1, ...hours.map(hour => hour.count));
-  const columns = hours.map(({ hour, count }) => `<div class="hourly-listen">
-    <b>${esc(count)}</b><i aria-hidden="true" style="height:${count / maxCount * 32}px"></i><span>${esc(hour)}</span>
-  </div>`).join('');
+  const hourLabel = new Intl.DateTimeFormat('vi-VN', { timeZone: 'Asia/Ho_Chi_Minh', hour: '2-digit', minute: '2-digit', hourCycle: 'h23' });
+  const currentHour = Math.floor(Date.now() / 3_600_000) * 3_600_000;
+  const hours = analyticsData?.hourlyListens ?? Array.from({ length: 5 }, (_, index) => ({
+    hour: hourLabel.format(currentHour - (4 - index) * 3_600_000),
+    count: '?',
+  }));
+  const columns = hours.map(({ hour, count }) => `<div class="stat"><strong>${esc(count)}</strong><span>${esc(hour)}</span></div>`).join('');
   $('#activity-stats').innerHTML = `
-    <div class="stat online-stat"><strong>${esc(analyticsData?.activeUsers ?? '—')}</strong><span>Người đang sử dụng</span></div>
-    <div class="stat hourly-listens"><span>Lượt nghe 5 giờ gần nhất</span><div class="hourly-listen-columns">${columns || '—'}</div></div>
-    <div class="stat today-listens"><strong>${esc(analyticsData?.todayListens ?? '—')}</strong><span>Lượt nghe hôm nay</span></div>`;
+    <div class="stat online-stat"><strong>${esc(analyticsData?.activeUsers ?? '?')}</strong><span>Ng??i ?ang s? d?ng</span></div>
+    <div class="stat"><strong>${esc(analyticsData?.todayListens ?? '?')}</strong><span>L??t nghe h?m nay</span></div>
+    <section class="hourly-listens" aria-label="L??t nghe 5 gi? g?n nh?t">
+      <h3>L??t nghe 5 gi? g?n nh?t</h3>
+      <div class="hourly-listen-columns">${columns}</div>
+    </section>`;
   if (!analyticsData) { $('#analytics-list').innerHTML = '<tr><td colspan="4">Chưa tải được thống kê.</td></tr>'; return; }
   const rows = new Map(analyticsData.rows.map(row => [`${row.poiId}:${row.lang}`, { ...row }]));
   for (const poi of state.admin.filter(p => p.status === 'PUBLISHED')) for (const tr of poi.translations) {
